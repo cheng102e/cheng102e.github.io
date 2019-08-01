@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="##java的三种随机数生成方式 随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种： 第一种：new Random() 第二种：Math.random() 第三种：currentTimeMillis() ###第一种第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(l">
+<meta name="description" content="java的三种随机数生成方式随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种： 第一种：new Random() 第二种：Math.random() 第三种：currentTimeMillis() 第一种第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(long se">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java的三种随机数生成方式">
 <meta property="og:url" content="http://yoursite.com/2018/09/21/java的三种随机数生成方式/index.html">
 <meta property="og:site_name" content="cheng102e的博客">
-<meta property="og:description" content="##java的三种随机数生成方式 随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种： 第一种：new Random() 第二种：Math.random() 第三种：currentTimeMillis() ###第一种第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(l">
+<meta property="og:description" content="java的三种随机数生成方式随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种： 第一种：new Random() 第二种：Math.random() 第三种：currentTimeMillis() 第一种第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(long se">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-01T00:23:58.004Z">
+<meta property="og:updated_time" content="2019-08-01T00:30:37.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java的三种随机数生成方式">
-<meta name="twitter:description" content="##java的三种随机数生成方式 随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种： 第一种：new Random() 第二种：Math.random() 第三种：currentTimeMillis() ###第一种第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(l">
+<meta name="twitter:description" content="java的三种随机数生成方式随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种： 第一种：new Random() 第二种：Math.random() 第三种：currentTimeMillis() 第一种第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(long se">
 
 
 
@@ -357,21 +357,19 @@
       
 
       
-        <p>##java的三种随机数生成方式</p>
-<p>随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种：</p>
+        <h2 id="java的三种随机数生成方式"><a href="#java的三种随机数生成方式" class="headerlink" title="java的三种随机数生成方式"></a>java的三种随机数生成方式</h2><p>随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种：</p>
 <p>第一种：new Random()</p>
 <p>第二种：Math.random()</p>
 <p>第三种：currentTimeMillis()</p>
-<p>###第一种<br>第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(long seed)。第一个就是以当前时间为默认种子，第二个是以指定的种子值进行。产生之后，借助不同的语句产生不同类型的数。</p>
+<h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><p>第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(long seed)。第一个就是以当前时间为默认种子，第二个是以指定的种子值进行。产生之后，借助不同的语句产生不同类型的数。</p>
 <p>种子就是产生随机数的第一次使用值,机制是通过一个函数,将这个种子的值转化为随机数空间中的某一个点上,并且产生的随机数均匀的散布在空间中。以后产生的随机数都与前一个随机数有关。以代码为例。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;    </span><br><span class="line">　　Random r = new Random(1);</span><br><span class="line">　　for(int i=0 ; i&lt;5 ;  i++)</span><br><span class="line">　　&#123;</span><br><span class="line">　　　　int ran1 = r.nextInt(100);</span><br><span class="line">　　　　System.out.println(ran1);</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;</span><br><span class="line">　　Random r = new Random(1);</span><br><span class="line">　　for(int i=0 ; i&lt;5 ;  i++)</span><br><span class="line">　　&#123;</span><br><span class="line">　　　　int ran1 = r.nextInt(100);</span><br><span class="line">　　　　System.out.println(ran1);</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在我的编译器下产生的五个数均为85,88,47,13,54，如果采用Random r = new Random()，产生的随机数就不同，这就是确定种子导致的结果。</p>
-<p>###第二种</p>
-<p>而第二种方法返回的数值是[0.0,1.0）的double型数值，由于double类数的精度很高，可以在一定程度下看做随机数，借助（int）来进行类型转换就可以得到整数随机数了，代码如下。</p>
+<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3><p>而第二种方法返回的数值是[0.0,1.0）的double型数值，由于double类数的精度很高，可以在一定程度下看做随机数，借助（int）来进行类型转换就可以得到整数随机数了，代码如下。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;    </span><br><span class="line">    int max=100,min=1;</span><br><span class="line">    int ran2 = (int) (Math.random()*(max-min)+min); </span><br><span class="line">    System.out.println(ran2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>###第三种<br>至于第三种方法虽然不常用，但是也是一种思路。方法返回从1970年1月1日0时0分0秒（这与UNIX系统有关）到现在的一个long型的毫秒数，取模之后即可得到所需范围内的随机数。</p>
+<h3 id="第三种"><a href="#第三种" class="headerlink" title="第三种"></a>第三种</h3><p>至于第三种方法虽然不常用，但是也是一种思路。方法返回从1970年1月1日0时0分0秒（这与UNIX系统有关）到现在的一个long型的毫秒数，取模之后即可得到所需范围内的随机数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;    </span><br><span class="line">    int max=100,min=1;</span><br><span class="line">    long randomNum = System.currentTimeMillis();  </span><br><span class="line">    int ran3 = (int) (randomNum%(max-min)+min);  </span><br><span class="line">    System.out.println(ran3);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -462,8 +460,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -478,12 +485,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -514,6 +530,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java的三种随机数生成方式"><span class="nav-number">1.</span> <span class="nav-text">java的三种随机数生成方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种"><span class="nav-number">1.1.</span> <span class="nav-text">第一种</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二种"><span class="nav-number">1.2.</span> <span class="nav-text">第二种</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三种"><span class="nav-number">1.3.</span> <span class="nav-text">第三种</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

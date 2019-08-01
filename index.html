@@ -281,6 +281,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/01/洛谷 P1307 数字反转/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cheng102e">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cheng102e的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/01/洛谷 P1307 数字反转/" itemprop="url">洛谷 P1307 数字反转</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-01T08:41:00+08:00">
+                2019-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="链接："><a href="#链接：" class="headerlink" title="链接："></a>链接：</h3><pre><code>https://www.luogu.org/problem/P1307</code></pre><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>####　　题目描述<br>　　给定一个整数，请将该数各个位上数字反转得到一个新数。新数也应满足整数的常见形式，即除非给定的原数为零，否则反转后得到的新数的最高位数字不应为零（参见样例2）。</p>
+<p>####　　输入格式<br>　　一个整数 NN</p>
+<p>####　　输出格式<br>　　一个整数，表示反转后的新数。</p>
+<p>####　　输入输出样例<br>　　输入 #1<br>　　123<br>　　输出 #1<br>　　321<br>　　输入 #2<br>　　-380<br>　　输出 #2<br>　　-83</p>
+<p>####　　说明/提示<br>　　数据范围</p>
+<p>　　-1,000,000,000≤N≤1,000,000,000</p>
+<p>　　noip2011普及组第一题</p>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>　　思路清晰，先判断是否为负数，记录一下，之后反复取尾数，直到结束，输出。</p>
+<p>　　这题真的做过，不过上次是在LeetCode上面做的，用的java。</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;limits.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int ans = 0;</span><br><span class="line">    int x;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    int num = abs(x);</span><br><span class="line">    int max = INT_MAX/10;</span><br><span class="line">    while(num&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        int t = num % 10;</span><br><span class="line">        if(ans &gt; max)</span><br><span class="line">            return 0;</span><br><span class="line">        ans = ans * 10 + t;</span><br><span class="line"></span><br><span class="line">        num = num / 10;</span><br><span class="line">    &#125;</span><br><span class="line">    if(x&gt;0)</span><br><span class="line">        cout &lt;&lt; ans;</span><br><span class="line">    else</span><br><span class="line">        cout &lt;&lt; -ans;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/My-New-Post/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -604,21 +756,19 @@
       
         
           
-            <p>##java的三种随机数生成方式</p>
-<p>随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种：</p>
+            <h2 id="java的三种随机数生成方式"><a href="#java的三种随机数生成方式" class="headerlink" title="java的三种随机数生成方式"></a>java的三种随机数生成方式</h2><p>随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种：</p>
 <p>第一种：new Random()</p>
 <p>第二种：Math.random()</p>
 <p>第三种：currentTimeMillis()</p>
-<p>###第一种<br>第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(long seed)。第一个就是以当前时间为默认种子，第二个是以指定的种子值进行。产生之后，借助不同的语句产生不同类型的数。</p>
+<h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><p>第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(long seed)。第一个就是以当前时间为默认种子，第二个是以指定的种子值进行。产生之后，借助不同的语句产生不同类型的数。</p>
 <p>种子就是产生随机数的第一次使用值,机制是通过一个函数,将这个种子的值转化为随机数空间中的某一个点上,并且产生的随机数均匀的散布在空间中。以后产生的随机数都与前一个随机数有关。以代码为例。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;    </span><br><span class="line">　　Random r = new Random(1);</span><br><span class="line">　　for(int i=0 ; i&lt;5 ;  i++)</span><br><span class="line">　　&#123;</span><br><span class="line">　　　　int ran1 = r.nextInt(100);</span><br><span class="line">　　　　System.out.println(ran1);</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;</span><br><span class="line">　　Random r = new Random(1);</span><br><span class="line">　　for(int i=0 ; i&lt;5 ;  i++)</span><br><span class="line">　　&#123;</span><br><span class="line">　　　　int ran1 = r.nextInt(100);</span><br><span class="line">　　　　System.out.println(ran1);</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在我的编译器下产生的五个数均为85,88,47,13,54，如果采用Random r = new Random()，产生的随机数就不同，这就是确定种子导致的结果。</p>
-<p>###第二种</p>
-<p>而第二种方法返回的数值是[0.0,1.0）的double型数值，由于double类数的精度很高，可以在一定程度下看做随机数，借助（int）来进行类型转换就可以得到整数随机数了，代码如下。</p>
+<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3><p>而第二种方法返回的数值是[0.0,1.0）的double型数值，由于double类数的精度很高，可以在一定程度下看做随机数，借助（int）来进行类型转换就可以得到整数随机数了，代码如下。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;    </span><br><span class="line">    int max=100,min=1;</span><br><span class="line">    int ran2 = (int) (Math.random()*(max-min)+min); </span><br><span class="line">    System.out.println(ran2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>###第三种<br>至于第三种方法虽然不常用，但是也是一种思路。方法返回从1970年1月1日0时0分0秒（这与UNIX系统有关）到现在的一个long型的毫秒数，取模之后即可得到所需范围内的随机数。</p>
+<h3 id="第三种"><a href="#第三种" class="headerlink" title="第三种"></a>第三种</h3><p>至于第三种方法虽然不常用，但是也是一种思路。方法返回从1970年1月1日0时0分0秒（这与UNIX系统有关）到现在的一个long型的毫秒数，取模之后即可得到所需范围内的随机数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;    </span><br><span class="line">    int max=100,min=1;</span><br><span class="line">    long randomNum = System.currentTimeMillis();  </span><br><span class="line">    int ran3 = (int) (randomNum%(max-min)+min);  </span><br><span class="line">    System.out.println(ran3);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
@@ -700,12 +850,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
