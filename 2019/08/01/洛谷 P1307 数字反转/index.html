@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -74,22 +81,24 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="cheng102e的博客" type="application/atom+xml">
 
 
 
 
 
-<meta name="description" content="洛谷 P1307 数字反转链接https://www.luogu.org/problem/P1307 题目####　题目描述　　给定一个整数，请将该数各个位上数字反转得到一个新数。新数也应满足整数的常见形式，即除非给定的原数为零，否则反转后得到的新数的最高位数字不应为零（参见样例2）。 ####　输入格式　　一个整数 NN ####　输出格式　　一个整数，表示反转后的新数。 ####　输入输出样例">
+
+<meta name="description" content="洛谷 P1307 数字反转链接https://www.luogu.org/problem/P1307 题目题目描述　　给定一个整数，请将该数各个位上数字反转得到一个新数。新数也应满足整数的常见形式，即除非给定的原数为零，否则反转后得到的新数的最高位数字不应为零（参见样例2）。 输入格式　　一个整数 NN 输出格式　　一个整数，表示反转后的新数。 输入输出样例　　输入 #1　　123　　输出 #1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷 P1307 数字反转">
 <meta property="og:url" content="http://yoursite.com/2019/08/01/洛谷 P1307 数字反转/index.html">
 <meta property="og:site_name" content="cheng102e的博客">
-<meta property="og:description" content="洛谷 P1307 数字反转链接https://www.luogu.org/problem/P1307 题目####　题目描述　　给定一个整数，请将该数各个位上数字反转得到一个新数。新数也应满足整数的常见形式，即除非给定的原数为零，否则反转后得到的新数的最高位数字不应为零（参见样例2）。 ####　输入格式　　一个整数 NN ####　输出格式　　一个整数，表示反转后的新数。 ####　输入输出样例">
+<meta property="og:description" content="洛谷 P1307 数字反转链接https://www.luogu.org/problem/P1307 题目题目描述　　给定一个整数，请将该数各个位上数字反转得到一个新数。新数也应满足整数的常见形式，即除非给定的原数为零，否则反转后得到的新数的最高位数字不应为零（参见样例2）。 输入格式　　一个整数 NN 输出格式　　一个整数，表示反转后的新数。 输入输出样例　　输入 #1　　123　　输出 #1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-01T05:03:39.218Z">
+<meta property="og:updated_time" content="2019-08-01T07:21:03.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷 P1307 数字反转">
-<meta name="twitter:description" content="洛谷 P1307 数字反转链接https://www.luogu.org/problem/P1307 题目####　题目描述　　给定一个整数，请将该数各个位上数字反转得到一个新数。新数也应满足整数的常见形式，即除非给定的原数为零，否则反转后得到的新数的最高位数字不应为零（参见样例2）。 ####　输入格式　　一个整数 NN ####　输出格式　　一个整数，表示反转后的新数。 ####　输入输出样例">
+<meta name="twitter:description" content="洛谷 P1307 数字反转链接https://www.luogu.org/problem/P1307 题目题目描述　　给定一个整数，请将该数各个位上数字反转得到一个新数。新数也应满足整数的常见形式，即除非给定的原数为零，否则反转后得到的新数的最高位数字不应为零（参见样例2）。 输入格式　　一个整数 NN 输出格式　　一个整数，表示反转后的新数。 输入输出样例　　输入 #1　　123　　输出 #1">
 
 
 
@@ -99,7 +108,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -162,7 +171,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">我暂时喜欢学习</p>
+        <p class="site-subtitle">我永远喜欢学习（期间限定）</p>
       
   </div>
 
@@ -301,7 +310,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cheng102e">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/images.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -376,6 +385,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  292
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
 
           
 
@@ -393,11 +433,10 @@
 
       
         <h2 id="洛谷-P1307-数字反转"><a href="#洛谷-P1307-数字反转" class="headerlink" title="洛谷 P1307 数字反转"></a>洛谷 P1307 数字反转</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.org/problem/P1307" target="_blank" rel="noopener">https://www.luogu.org/problem/P1307</a></p>
-<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>####　题目描述<br>　　给定一个整数，请将该数各个位上数字反转得到一个新数。新数也应满足整数的常见形式，即除非给定的原数为零，否则反转后得到的新数的最高位数字不应为零（参见样例2）。</p>
-<p>####　输入格式<br>　　一个整数 NN</p>
-<p>####　输出格式<br>　　一个整数，表示反转后的新数。</p>
-<p>####　输入输出样例<br>　　输入 #1<br>　　123<br>　　输出 #1<br>　　321<br>　　输入 #2<br>　　-380<br>　　输出 #2<br>　　-83</p>
-<p>####　说明/提示<br>　　数据范围</p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>题目描述<br>　　给定一个整数，请将该数各个位上数字反转得到一个新数。新数也应满足整数的常见形式，即除非给定的原数为零，否则反转后得到的新数的最高位数字不应为零（参见样例2）。</p>
+<p>输入格式<br>　　一个整数 NN</p>
+<p>输出格式<br>　　一个整数，表示反转后的新数。</p>
+<p>输入输出样例<br>　　输入 #1<br>　　123<br>　　输出 #1<br>　　321<br>　　输入 #2<br>　　-380<br>　　输出 #2<br>　　-83<br>明/提示<br>　　数据范围</p>
 <p>　　-1,000,000,000≤N≤1,000,000,000</p>
 <p>　　noip2011普及组第一题</p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>　　思路清晰，先判断是否为负数，记录一下，之后反复取尾数，直到结束，输出。</p>
@@ -507,6 +546,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="cheng102e">
+            
               <p class="site-author-name" itemprop="name">cheng102e</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -549,16 +590,82 @@
           </nav>
 
           
-
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cheng102e" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xjc1024@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tencent://Message/?Uin=961811632&websiteName=q-zone.qq.com&Menu=yes" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/blogxjc/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-copyright"></i>博客园</a>
+                  </span>
+                
+            </div>
           
 
           
           
 
           
+          
+
+          
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/2019/08/01/洛谷 P1307 数字反转/" title="洛谷 P1307 数字反转" target="_blank">洛谷 P1307 数字反转</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/01/Hello World/" title="Hello World" target="_blank">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/30/CCF 201712-1 最小差值/" title="CCF 201712-1 最小差值" target="_blank">CCF 201712-1 最小差值</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/29/洛谷 P1003 铺地毯/" title="洛谷 P1003 铺地毯" target="_blank">洛谷 P1003 铺地毯</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/28/LeetCode 334. Increasing Triplet Subsequence/" title="LeetCode 334. Increasing Triplet Subsequence" target="_blank">LeetCode 334. Increasing Triplet Subsequence</a>
+          </li>
+        
+      </ul>
+    </div>
 
         </div>
       </section>
@@ -584,6 +691,8 @@
       
         <div class="back-to-top">
           <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
           
         </div>
       
@@ -624,6 +733,11 @@
 
 <!-- 页面点击小红心，在末尾添加，避免找不到 -->
 <script type="text/javascript" src="/js/src/love.js"></script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共33.2k字</span>
+</div>
         
 <div class="busuanzi-count">
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -681,6 +795,8 @@
   
 
 
+  
+
 
 
 
@@ -719,6 +835,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
