@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[洛谷 P1011 车站]]></title>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1011%20%E8%BD%A6%E7%AB%99.html</url>
+    <content type="text"><![CDATA[洛谷 P1011 车站链接https://www.luogu.org/problem/P1011 题目题目描述火车从始发站（称为第1站）开出，在始发站上车的人数为a，然后到达第2站，在第22站有人上、下车，但上、下车的人数相同，因此在第2站开出时（即在到达第3站之前）车上的人数保持为a人。从第3站起（包括第3站）上、下车的人数有一定规律：上车的人数都是前两站上车人数之和，而下车人数等于上一站上车人数，一直到终点站的前一站（第n-1站），都满足此规律。现给出的条件是：共有N个车站，始发站上车的人数为a，最后一站下车的人数是m（全部下车）。试问x站开出时车上的人数是多少？ 输入格式a(≤20)，n(≤20)，m(≤2000)，和x(≤20)， 输出格式从x站开出时车上的人数。 输入输出样例输入 #1 5 7 32 4输出 #1 13图解 站序号(i) 上车(f) 下车(g) 剩余人数(k) 1 a 0 a 2 t t a 3 a+t t 2a 4 a+2t a+t 2a+t 5 2a+3t a+2t 3a+2t 6 0 3a+2t 0 思路总结一下规律(中间几站) 1. 每一站下车人数等于上一站上车人数 2. 每一站上车人数等于前两站上车人数和我们假设第6站就全部下车，可以得到图解中的表格，归纳总结可以发现(s为斐波那契数列，直接可以计算) 1. g(i) = f(i-1) 2. f(i) = f(i-1) + f(i-2) 3. g(n) = f(n-1) + a - t = m 4. f(i) = s(i-2)*a + s(i-1)*t 5. k(i) = f(i) + f(1) - g(2)之后我们就能发现，我们需要的k(x) = f(x) + a - t,推导后只需要两个等式 1. m - [s(n-3) + 1]*a = [s(n-2) - 1]*t 2. k(x) = [s(x-2) + 1]*a + [s(x-1) - 1]*t给了我们m,a,n,我们由公式1算出t，公式2算出k(x)即可。 代码123456789101112131415161718192021#include&lt;iostream&gt;using namespace std;int main()&#123; int a,n,m,x,t; cin&gt;&gt;a&gt;&gt;n&gt;&gt;m&gt;&gt;x; int s[n]; s[1]=1; s[2]=1; for(int i=3;i&lt;=n;i++) s[i]=s[i-1]+s[i-2]; t=(m-(s[n-3]+1)*a)/(s[n-2]-1); cout&lt;&lt;(s[x-2]+1)*a+(s[x-1]-1)*t; return 0;&#125;]]></content>
+      <categories>
+        <category>洛谷</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[洛谷 P1307 数字反转]]></title>
-    <url>%2F2019%2F08%2F01%2F%E6%B4%9B%E8%B0%B7%20P1307%20%E6%95%B0%E5%AD%97%E5%8F%8D%E8%BD%AC%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1307%20%E6%95%B0%E5%AD%97%E5%8F%8D%E8%BD%AC.html</url>
     <content type="text"><![CDATA[洛谷 P1307 数字反转链接https://www.luogu.org/problem/P1307 题目题目描述 给定一个整数，请将该数各个位上数字反转得到一个新数。新数也应满足整数的常见形式，即除非给定的原数为零，否则反转后得到的新数的最高位数字不应为零（参见样例2）。 输入格式 一个整数 NN 输出格式 一个整数，表示反转后的新数。 输入输出样例 输入 #1 123 输出 #1 321 输入 #2 -380 输出 #2 -83明/提示 数据范围 -1,000,000,000≤N≤1,000,000,000 noip2011普及组第一题 思路 思路清晰，先判断是否为负数，记录一下，之后反复取尾数，直到结束，输出。 这题真的做过，不过上次是在LeetCode上面做的，用的java。 代码1234567891011121314151617181920212223242526#include&lt;iostream&gt;#include&lt;cmath&gt;#include&lt;limits.h&gt;using namespace std;int main()&#123; int ans = 0; int x; cin &gt;&gt; x; int num = abs(x); int max = INT_MAX/10; while(num&gt;0) &#123; int t = num % 10; if(ans &gt; max) return 0; ans = ans * 10 + t; num = num / 10; &#125; if(x&gt;0) cout &lt;&lt; ans; else cout &lt;&lt; -ans; return 0;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -10,12 +18,12 @@
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F08%2F01%2FHello%20World%2F</url>
+    <url>%2FHello%20World.html</url>
     <content type="text"><![CDATA[这是我在GitHub上的写第一篇博客，希望大家能互相学习，共同进步。 这边的博客因为才开始，所以界面功能也不怎么完善，会慢慢改进。 博客园地址：https://www.cnblogs.com/blogxjc/ 因为在那边还有不少博客，迁移过来还需要不短时间。 迁移的时候出了点问题，所以8月1日前的博客会存在时间上的问题。]]></content>
   </entry>
   <entry>
     <title><![CDATA[CCF 201712-1 最小差值]]></title>
-    <url>%2F2019%2F07%2F30%2FCCF%20201712-1%20%E6%9C%80%E5%B0%8F%E5%B7%AE%E5%80%BC%2F</url>
+    <url>%2FCCF%20201712-1%20%E6%9C%80%E5%B0%8F%E5%B7%AE%E5%80%BC.html</url>
     <content type="text"><![CDATA[CCF 201712-1 最小差值题目问题描述给定 n 个数，请找出其中相差（差的绝对值）最小的两个数，输出它们的差值的绝对值。 输入格式输入第一行包含一个整数 n 。第二行包含 n 个正整数，相邻整数之间使用一个空格分隔。 输出格式输出一个整数，表示答案。 样例输入5 1 5 4 8 20样例输出1样例说明相差最小的两个数是5和4，它们之间的差值是1。 样例输入5 9 3 6 1 3样例输出0样例说明有两个相同的数3，它们之间的差值是0. 数据规模和约定对于所有评测用例，2 ≤ n ≤ 1000，每个给定的整数都是不超过10000的正整数。 思路数组处理，来个二重循环找最小值，第一题也不会在时间上面卡人的。 代码12345678910111213141516171819202122232425#include&lt;iostream&gt;#include&lt;cmath&gt;using namespace std;int main()&#123; int n; cin&gt;&gt;n; int min=10000; int a[n]; for(int i=0;i&lt;n;i++) &#123; cin&gt;&gt;a[i]; &#125; for(int i=0;i&lt;n;i++) &#123; for(int j=i+1;j&lt;n;j++) &#123; if(abs(a[i]-a[j])&lt;min) min=abs(a[i]-a[j]); &#125; &#125; cout&lt;&lt;min; return 0;&#125;]]></content>
       <categories>
         <category>CCF</category>
@@ -23,7 +31,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1003 铺地毯]]></title>
-    <url>%2F2019%2F07%2F29%2F%E6%B4%9B%E8%B0%B7%20P1003%20%E9%93%BA%E5%9C%B0%E6%AF%AF%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1003%20%E9%93%BA%E5%9C%B0%E6%AF%AF.html</url>
     <content type="text"><![CDATA[洛谷 P1003 铺地毯链接https://www.luogu.org/problem/P1003 题目题目描述为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 n张地毯，编号从 1到n。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。 地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。 输入格式输入共n+2行 第一行，一个整数n，表示总共有nn张地毯 接下来的n行中，第 i+1行表示编号ii的地毯的信息，包含四个正整数a ,b ,g ,k，每两个整数之间用一个空格隔开，分别表示铺设地毯的左下角的坐标(a,b)以及地毯在x轴和y轴方向的长度 第n+2行包含两个正整数x和y，表示所求的地面的点的坐标(x,y) 输出格式输出共1行，一个整数，表示所求的地毯的编号；若此处没有被地毯覆盖则输出-1 输入输出样例输入 #1 3 1 0 2 3 0 2 3 3 2 1 3 3 2 2输出 #1 3输入 #2 3 1 0 2 3 0 2 3 3 2 1 3 3 4 5输出 #2 -1说明/提示【样例解释1】 如下图，1号地毯用实线表示，2 号地毯用虚线表示，3号用双实线表示，覆盖点(2,2)的最上面一张地毯是 3 号地毯。 【数据范围】 对于30% 的数据，有 n ≤2 ；对于50% 的数据，0 ≤a, b, g, k≤100；对于100%的数据，有 0 ≤n ≤10,000，0≤a, b, g, k ≤100,000。 noip2011提高组day1第1题 思路本来是打算偷懒的，但是我的devc++好像不能初始化10000*10000的数组，我就换了个方式。 先把所有数据输入，之后倒序查找，查找点是否在最后一张地毯上，在就跳出，不然就查找倒数第二条。 （话说洛谷题目复制，有数字字母会重影，就很浮夸） 代码123456789101112131415161718192021222324252627282930313233#include&lt;iostream&gt;using namespace std;int main()&#123; int n; cin&gt;&gt;n; int a[10001],b[10001],c[10001],d[10001]; int ans; int x,y; for(int i=1;i&lt;=n;i++) &#123; cin&gt;&gt;a[i]&gt;&gt;b[i]&gt;&gt;c[i]&gt;&gt;d[i]; &#125;cin&gt;&gt;x&gt;&gt;y;bool flag=false;for(int i=n;i&gt;0;i--)&#123; if(a[i]&lt;=x&amp;&amp;a[i]+c[i]&gt;=x&amp;&amp;b[i]&lt;=y&amp;&amp;b[i]+d[i]&gt;=y) &#123; ans=i; flag=true; break; &#125;&#125;if(flag) cout&lt;&lt;ans;else cout&lt;&lt;&quot;-1&quot;;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -31,7 +39,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 334. Increasing Triplet Subsequence]]></title>
-    <url>%2F2019%2F07%2F28%2FLeetCode%20334.%20Increasing%20Triplet%20Subsequence%2F</url>
+    <url>%2FLeetCode%20334.%20Increasing%20Triplet%20Subsequence.html</url>
     <content type="text"><![CDATA[334.Increasing Triplet Subsequence（递增的三元子序列）链接https://leetcode-cn.com/problems/increasing-triplet-subsequence/ 题目给定一个未排序的数组，判断这个数组中是否存在长度为 3 的递增子序列。 数学表达式如下: 如果存在这样的 i, j, k, 且满足 0 ≤ i &lt; j &lt; k ≤ n-1，使得 arr[i] &lt; arr[j] &lt; arr[k] ，返回 true ; 否则返回 false 。说明: 要求算法的时间复杂度为 O(n)，空间复杂度为 O(1) 。 示例 1: 输入: [1,2,3,4,5]输出: true示例 2: 输入: [5,4,3,2,1]输出: false 思路O（n）那就从头到尾跑一遍就行，简单易懂，设置最小的数字one，次小的数字two，遍历时记得更新这两个数，如果发现数字比two还大，那么达成目的，返回true，不然就是false。 （这题我好像也做过emmmmmm） 代码1234567891011121314151617181920public boolean increasingTriplet(int[] nums) &#123; if (nums.length &lt; 3) &#123; return false; &#125; int one = Integer.MAX_VALUE; int two = Integer.MAX_VALUE; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] &gt; two) &#123; return true; &#125; if (nums[i] &lt; one) &#123; one = nums[i]; &#125; if (nums[i] &gt; one &amp;&amp; nums[i] &lt; two) &#123; two = nums[i]; &#125; &#125; return false;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -39,7 +47,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1583 魔法照片]]></title>
-    <url>%2F2019%2F07%2F26%2F%E6%B4%9B%E8%B0%B7%20P1583%20%E9%AD%94%E6%B3%95%E7%85%A7%E7%89%87%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1583%20%E9%AD%94%E6%B3%95%E7%85%A7%E7%89%87.html</url>
     <content type="text"><![CDATA[洛谷 P1583 魔法照片链接https://www.luogu.org/problem/P1583 题目题目描述一共有n（n≤20000）个人（以1–n编号）向佳佳要照片，而佳佳只能把照片给其中的k个人。佳佳按照与他们的关系好坏的程度给每个人赋予了一个初始权值W[i]。然后将初始权值从大到小进行排序，每人就有了一个序号D[i]（取值同样是1–n）。按照这个序号对10取模的值将这些人分为10类。也就是说定义每个人的类别序号C[i]的值为(D[i]-1) mod 10+1，显然类别序号的取值为1–10。第i类的人将会额外得到E[i]的权值。你需要做的就是求出加上额外权值以后，最终的权值最大的k个人，并输出他们的编号。在排序中，如果两人的W[i]相同，编号小的优先。 输入格式第一行输入用空格隔开的两个整数，分别是n和k。 第二行给出了10个正整数，分别是E[1]到E[10]。 第三行给出了n个正整数，第i个数表示编号为i的人的权值W[i]。 输出格式只需输出一行用空格隔开的k个整数，分别表示最终的W[i]从高到低的人的编号。 输入输出样例输入 #1 10 10 1 2 3 4 5 6 7 8 9 10 2 4 6 8 10 12 14 16 18 20输出 #1 10 9 8 7 6 5 4 3 2 1思路排序，直接想到sort，每个对象多个元素，想起结构体，成了。 结构体中设置num表示初始序号，w表示权值，d表示取模后的值（不要也可以）；sort函数优先权值排序，其次序号排序，输入，排序，更新，排序，输出，行了。 （好像前几天才做过同类型的题目） 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;struct peo&#123; int num; int w; int d;&#125;p[20001];bool cmp(peo a,peo b)&#123; if(a.w!=b.w) return a.w&gt;b.w; else return a.num&lt;b.num;&#125;int main()&#123; int n,k; cin&gt;&gt;n&gt;&gt;k; int e[11]; for(int i=1;i&lt;11;i++) &#123; cin&gt;&gt;e[i]; &#125; for(int i=0;i&lt;n;i++) &#123; cin&gt;&gt;p[i].w; p[i].num=i+1; &#125; sort(p,p+n,cmp); for(int i=0;i&lt;n;i++) &#123; p[i].d = i%10+1; p[i].w += e[p[i].d]; &#125; sort(p,p+n,cmp); for(int i=0;i&lt;k;i++) &#123; cout&lt;&lt;p[i].num&lt;&lt;&quot; &quot;; &#125; &#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -47,7 +55,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 1103. Distribute Candies to People]]></title>
-    <url>%2F2019%2F07%2F25%2FLeetCode%201103.%20Distribute%20Candies%20to%20People%2F</url>
+    <url>%2FLeetCode%201103.%20Distribute%20Candies%20to%20People.html</url>
     <content type="text"><![CDATA[1103.Distribute Candies to People（分糖果||）链接https://leetcode-cn.com/problems/distribute-candies-to-people/ 题目排排坐，分糖果。 我们买了一些糖果 candies，打算把它们分给排好队的 n = num_people 个小朋友。 给第一个小朋友 1 颗糖果，第二个小朋友 2 颗，依此类推，直到给最后一个小朋友 n 颗糖果。 然后，我们再回到队伍的起点，给第一个小朋友 n + 1 颗糖果，第二个小朋友 n + 2 颗，依此类推，直到给最后一个小朋友 2 * n 颗糖果。 重复上述过程（每次都比上一次多给出一颗糖果，当到达队伍终点后再次从队伍起点开始），直到我们分完所有的糖果。注意，就算我们手中的剩下糖果数不够（不比前一次发出的糖果多），这些糖果也会全部发给当前的小朋友。 返回一个长度为 num_people、元素之和为 candies 的数组，以表示糖果的最终分发情况（即 ans[i] 表示第 i 个小朋友分到的糖果数）。 示例 1： 输入：candies = 7, num_people = 4输出：[1,2,3,1]解释：第一次，ans[0] += 1，数组变为 [1,0,0,0]。第二次，ans[1] += 2，数组变为 [1,2,0,0]。第三次，ans[2] += 3，数组变为 [1,2,3,0]。第四次，ans[3] += 1（因为此时只剩下 1 颗糖果），最终数组变为 [1,2,3,1]。示例 2： 输入：candies = 10, num_people = 3输出：[5,2,3]解释：第一次，ans[0] += 1，数组变为 [1,0,0]。第二次，ans[1] += 2，数组变为 [1,2,0]。第三次，ans[2] += 3，数组变为 [1,2,3]。第四次，ans[0] += 4，最终数组变为 [5,2,3]。 提示： 1 &lt;= candies &lt;= 10^9 1 &lt;= num_people &lt;= 1000 思路没啥思路，套一个循环，注意改变数量和及时跳出即可。如果想要更简单一点的，可以通过通项公式直接算出该轮所需糖果，直接分配也行。 代码12345678910111213141516171819202122public int[] distributeCandies(int candies, int num_people) &#123; int[] number = new int[num_people]; int num = 1; int i = 0; while (candies &gt; 0) &#123; number[i] += num; candies -= num; i++; if (i == num_people) &#123; i = 0; &#125; if (candies &gt; num + 1) &#123; num++; &#125; else &#123; number[i] += candies; break; &#125; &#125; return number; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -55,7 +63,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1093 奖学金]]></title>
-    <url>%2F2019%2F07%2F25%2F%E6%B4%9B%E8%B0%B7%20P1093%20%E5%A5%96%E5%AD%A6%E9%87%91%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1093%20%E5%A5%96%E5%AD%A6%E9%87%91.html</url>
     <content type="text"><![CDATA[洛谷 P1093 奖学金链接https://www.luogu.org/problem/P1093 题目题目描述某小学最近得到了一笔赞助，打算拿出其中一部分为学习成绩优秀的前5名学生发奖学金。期末，每个学生都有3门课的成绩:语文、数学、英语。先按总分从高到低排序，如果两个同学总分相同，再按语文成绩从高到低排序，如果两个同学总分和语文成绩都相同，那么规定学号小的同学排在前面，这样，每个学生的排序是唯一确定的。 任务：先根据输入的3门课的成绩计算总分，然后按上述规则排序，最后按排名顺序输出前五名名学生的学号和总分。注意，在前5名同学中，每个人的奖学金都不相同，因此，你必须严格按上述规则排序。例如，在某个正确答案中，如果前两行的输出数据(每行输出两个数:学号、总分)是: 7 279 5 279 这两行数据的含义是:总分最高的两个同学的学号依次是7号、5号。这两名同学的总分都是 279 (总分等于输入的语文、数学、英语三科成绩之和)，但学号为7的学生语文成绩更高一些。如果你的前两名的输出数据是: 5 279 7 279 则按输出错误处理，不能得分。 输入格式共n+1行。 第1行为一个正整数n(≤300)，表示该校参加评选的学生人数。 第2到n+1行，每行有3个用空格隔开的数字，每个数字都在0到100之间。第j行的3个数字依次表示学号为j-1的学生的语文、数学、英语的成绩。每个学生的学号按照输入顺序编号为1~n（恰好是输入数据的行号减1）。 所给的数据都是正确的，不必检验。 //感谢 黄小U饮品 修正输入格式 输出格式共5行，每行是两个用空格隔开的正整数，依次表示前5名学生的学号和总分。 输入输出样例输入 #1复制 6 90 67 80 87 66 91 78 89 91 88 99 77 67 89 64 78 89 98 输出 #1复制 6 265 4 264 3 258 2 244 1 237输入 #2 8 80 89 89 88 98 78 90 67 80 87 66 91 78 89 91 88 99 77 67 89 64 78 89 98输出 #2 8 265 2 264 6 264 1 258 5 258思路：挺不错的一道题，考虑排序优先级即可。我这里用了结构体来存放学号和成绩，借助sort和cmp设置排序，优先总分，其次语文，最后学号，最后输出前五个即可。 （这里有个坑，排序函数中要注意，学号是小的在前面，分数是大的在前面，我就因为这个错了一次） 代码：12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;struct stu&#123; int num; int c; int m; int e; int score;&#125;s[301];bool cmp(stu a,stu b)&#123; if(a.score!=b.score) &#123; return a.score&gt;b.score; &#125; else if(a.c!=b.c) &#123; return a.c&gt;b.c; &#125; else &#123; return a.num&lt;b.num; &#125;&#125;int main()&#123; int n; cin&gt;&gt;n; for(int i=0;i&lt;n;i++) &#123; s[i].num=i+1; cin&gt;&gt;s[i].c&gt;&gt;s[i].m&gt;&gt;s[i].e; s[i].score=s[i].c+s[i].m+s[i].e; &#125; sort(s,s+n,cmp); for(int i=0;i&lt;5;i++) &#123; cout&lt;&lt;s[i].num&lt;&lt;&quot; &quot;&lt;&lt;s[i].score&lt;&lt;&quot; &quot;&lt;&lt;endl; &#125; return 0;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -63,7 +71,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 38. Count and Say]]></title>
-    <url>%2F2019%2F07%2F24%2FLeetCode%2038.%20Count%20and%20Say%2F</url>
+    <url>%2FLeetCode%2038.%20Count%20and%20Say.html</url>
     <content type="text"><![CDATA[38.Count and Say（报数）链接https://leetcode-cn.com/problems/count-and-say/ 题目报数序列是一个整数序列，按照其中的整数的顺序进行报数，得到下一个数。其前五项如下： 1 11 21 1211 1112211 被读作 “one 1” (“一个一”) , 即 11。11 被读作 “two 1s” (“两个一”）, 即 21。21 被读作 “one 2”, “one 1” （”一个二” , “一个一”) , 即 1211。 给定一个正整数 n（1 ≤ n ≤ 30），输出报数序列的第 n 项。 注意：整数顺序将表示为一个字符串。 示例 1: 输入: 1 输出: &quot;1&quot; 示例 2: 输入: 4 输出: &quot;1211&quot;思路怎么说呢，一道题目很绕的简单题。思路就是每次得到的都是基于上次的字符串，第三次21，一个2一个1，第四次就是1211，第五次就是11+12+21，以此类推。找到规律之后就是简单的遍历了。 代码12345678910111213141516171819202122232425public String countAndSay(int n) &#123; String str = &quot;1&quot;; for (int i = 2; i &lt;= n; i++) &#123; StringBuilder sb = new StringBuilder(); char old = str.charAt(0); int num = 1; for (int j = 1; j &lt; str.length(); j++) &#123; char one = str.charAt(j); if (one == old) &#123; num++; &#125; else &#123; sb.append(num); sb.append(old); old = one; num = 1; &#125; &#125; sb.append(num); sb.append(old); str = sb.toString(); &#125; return str;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -71,7 +79,7 @@
   </entry>
   <entry>
     <title><![CDATA[CCF 201803-2 碰撞的小球]]></title>
-    <url>%2F2019%2F07%2F24%2FCCF%20201803-2%20%E7%A2%B0%E6%92%9E%E7%9A%84%E5%B0%8F%E7%90%83%2F</url>
+    <url>%2FCCF%20201803-2%20%E7%A2%B0%E6%92%9E%E7%9A%84%E5%B0%8F%E7%90%83.html</url>
     <content type="text"><![CDATA[CCF 201803-2 碰撞的小球题目问题描述数轴上有一条长度为L（L为偶数)的线段，左端点在原点，右端点在坐标L处。有n个不计体积的小球在线段上，开始时所有的小球都处在偶数坐标上，速度方向向右，速度大小为1单位长度每秒。当小球到达线段的端点（左端点或右端点）的时候，会立即向相反的方向移动，速度大小仍然为原来大小。当两个小球撞到一起的时候，两个小球会分别向与自己原来移动的方向相反的方向，以原来的速度大小继续移动。现在，告诉你线段的长度L，小球数量n，以及n个小球的初始位置，请你计算t秒之后，各个小球的位置。 提示因为所有小球的初始位置都为偶数，而且线段的长度为偶数，可以证明，不会有三个小球同时相撞，小球到达线段端点以及小球之间的碰撞时刻均为整数。同时也可以证明两个小球发生碰撞的位置一定是整数（但不一定是偶数）。 输入格式输入的第一行包含三个整数n, L, t，用空格分隔，分别表示小球的个数、线段长度和你需要计算t秒之后小球的位置。第二行包含n个整数a1, a2, …, an，用空格分隔，表示初始时刻n个小球的位置。 输出格式输出一行包含n个整数，用空格分隔，第i个整数代表初始时刻位于ai的小球，在t秒之后的位置。 样例输入3 10 54 6 8 样例输出7 9 9 样例说明初始时，三个小球的位置分别为4, 6, 8。一秒后，三个小球的位置分别为5, 7, 9。两秒后，第三个小球碰到墙壁，速度反向，三个小球位置分别为6, 8, 10。三秒后，第二个小球与第三个小球在位置9发生碰撞，速度反向（注意碰撞位置不一定为偶数），三个小球位置分别为7, 9, 9。四秒后，第一个小球与第二个小球在位置8发生碰撞，速度反向，第三个小球碰到墙壁，速度反向，三个小球位置分别为8, 8, 10。五秒后，三个小球的位置分别为7, 9, 9。 样例输入10 22 30 14 12 16 6 10 2 8 20 18 4样例输出6 6 8 2 4 0 4 12 10 2数据规模和约定对于所有评测用例，1 ≤ n ≤ 100，1 ≤ t ≤ 100，2 ≤ L ≤ 1000，0 &lt; ai &lt; L。L为偶数。保证所有小球的初始位置互不相同且均为偶数。 思路题目挺有意思的，借助碰撞来修改速度，按时间来运动，得到最后结果。 我建立了三个数组，place（小球当前时间点的坐标），speed（小球速度，1正向-1反向），line（线段上面是否有小球）；如果line上存在冲突，二者都反向运动；撞到端点也是，最后输出place即可。 （ccf是不是不能用memset，我连续运行错误三次，偷懒都不行）。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445#include&lt;iostream&gt;#include&lt;cstring&gt;using namespace std;int main()&#123; int place[1002]; int speed[1002]; int line[1002]; int n,l,t; cin&gt;&gt;n&gt;&gt;l&gt;&gt;t; for(int i=1;i&lt;=n;i++) &#123; cin&gt;&gt;place[i]; speed[i]=1; &#125; for(int i=0;i&lt;t;i++) &#123; for(int j=0;j&lt;=l;j++) line[j]=0; for(int j=1;j&lt;=n;j++) &#123; place[j] += speed[j]; if(place[j]==0||place[j]==l) &#123; speed[j] = (-1)*speed[j]; &#125; if(line[place[j]]==0) &#123; line[place[j]] = j; &#125; else &#123; speed[line[place[j]]] = (-1)*speed[line[place[j]]]; speed[j] = (-1)*speed[j]; &#125; &#125; &#125; for(int i=1;i&lt;=n;i++) &#123; cout&lt;&lt;place[i]&lt;&lt;&quot; &quot;; &#125;&#125;]]></content>
       <categories>
         <category>CCF</category>
@@ -79,7 +87,7 @@
   </entry>
   <entry>
     <title><![CDATA[CCF 201803-1 跳一跳]]></title>
-    <url>%2F2019%2F07%2F23%2FCCF%20201803-1%20%E8%B7%B3%E4%B8%80%E8%B7%B3%2F</url>
+    <url>%2FCCF%20201803-1%20%E8%B7%B3%E4%B8%80%E8%B7%B3.html</url>
     <content type="text"><![CDATA[CCF 201803-1 跳一跳题目问题描述近来，跳一跳这款小游戏风靡全国，受到不少玩家的喜爱。简化后的跳一跳规则如下：玩家每次从当前方块跳到下一个方块，如果没有跳到下一个方块上则游戏结束。如果跳到了方块上，但没有跳到方块的中心则获得1分；跳到方块中心时，若上一次的得分为1分或这是本局游戏的第一次跳跃则此次得分为2分，否则此次得分比上一次得分多两分（即连续跳到方块中心时，总得分将+2，+4，+6，+8…）。现在给出一个人跳一跳的全过程，请你求出他本局游戏的得分（按照题目描述的规则）。 输入格式输入包含多个数字，用空格分隔，每个数字都是1，2，0之一，1表示此次跳跃跳到了方块上但是没有跳到中心，2表示此次跳跃跳到了方块上并且跳到了方块中心，0表示此次跳跃没有跳到方块上（此时游戏结束）。 输出格式输出一个整数，为本局游戏的得分（在本题的规则下）。 样例输入1 1 2 2 2 1 1 2 2 0样例输入22数据规模和约定对于所有评测用例，输入的数字不超过30个，保证0正好出现一次且为最后一个数字。 思路正常题目，输入考虑一下变化关系，注意+2和归1即可。 代码123456789101112131415161718192021222324252627282930313233343536373839#include&lt;iostream&gt; using namespace std;int main()&#123; int sum=0; int n; int score=1; while(true) &#123; cin&gt;&gt;n; if(n==1) &#123; score=1; sum+=score; &#125; else if(n==2) &#123; if(score==1) &#123; score=2; sum+=score; &#125; else &#123; score+=2; sum+=score; &#125; &#125; else if(n==0) &#123; break; &#125; &#125; cout&lt;&lt;sum; return 0;&#125;]]></content>
       <categories>
         <category>CCF</category>
@@ -87,7 +95,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1603 斯诺登的密码]]></title>
-    <url>%2F2019%2F07%2F22%2F%E6%B4%9B%E8%B0%B7%20P1603%20%E6%96%AF%E8%AF%BA%E7%99%BB%E7%9A%84%E5%AF%86%E7%A0%81%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1603%20%E6%96%AF%E8%AF%BA%E7%99%BB%E7%9A%84%E5%AF%86%E7%A0%81.html</url>
     <content type="text"><![CDATA[洛谷 P1603 斯诺登的密码链接https://www.luogu.org/problemnew/show/P1603 题目题目背景根据斯诺登事件出的一道水题 题目描述题目描述 2013年X月X日，俄罗斯办理了斯诺登的护照，于是他混迹于一架开往委内瑞拉的飞机。但是，这件事情太不周密了，因为FBI的间谍早已获悉他的具体位置—-但这不是最重要的—-最重要的是如果要去委内瑞拉，那么就要经过古巴，而经过古巴的路在美国的掌控之中。 丧心病狂的奥巴马迫降斯诺登的飞机，搜查时却发现，斯诺登杳无踪迹。但是，在据说是斯诺登的座位上，发现了一张纸条。纸条由纯英文构成：Obama is a twofivezero.（以”.”结束输出，只有6个单词+一个句号，句子开头如没有大写亦为合法）这句话虽然有点无厘头，但是警官陈珺骛发现这是一条极其重要的线索。他在斯诺登截获的一台笔记本中找到了一个C++程序，输入这条句子后立马给出了相对应的密码。陈珺鹜高兴得晕了过去，身为警官的你把字条和程序带上了飞机，准备飞往曼哈顿国际机场，但是在飞机上检查的时候发现—-程序被粉碎了！飞机抵达华盛顿只剩5分钟，你必须在这5分钟内编写（杜撰）一个程序，免受上司的10000000000%10大板。破译密码的步骤如下： （1）找出句子中所有用英文表示的数字(≤20)，列举在下： 正规：one two three four five six seven eight nine ten eleven twelve thirteenfourteen fifteen sixteen seventeen eighteen nineteen twenty 非正规：a both another first second third （2）将这些数字平方后%100，如00,05,11,19,86,99。 （3）把这些两位数按数位排成一行，组成一个新数，如果开头为0，就去0。 （4）找出所有排列方法中最小的一个数，即为密码。 // 数据已经修正 By absi2011 如果还有问题请联系我 输入输出格式输入格式： 一个含有6个单词的句子。 输出格式： 一个整型变量（密码）。如果没有符合要求的数字出现，则输出0。 输入输出样例输入样例#1： Black Obama is two five zero .输出样例#1： 425思路好久没见到这么lan的题目了，毫无意义，拿两个字符串数组，一个存放单词，一个存放对应数字，之后循环判断一下输出条件，00不输出，0x考虑是否在开头，别的正常输出即可。（那俩数组还是我ctrl+c的） 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include &lt;iostream&gt;#include &lt;string&gt;#include &lt;algorithm&gt;using namespace std; string num[27] = &#123;&quot;one&quot;,&quot;two&quot;,&quot;three&quot;,&quot;four&quot;,&quot;five&quot;,&quot;six&quot;,&quot;seven&quot;,&quot;eight&quot;,&quot;nine&quot;,&quot;ten&quot;,&quot;eleven&quot;,&quot;twelve&quot;,&quot;thirteen&quot;,&quot;fourteen&quot;,&quot;fifteen&quot;,&quot;sixteen&quot;,&quot;seventeen&quot;,&quot;eighteen&quot;,&quot;nineteen&quot;,&quot;twenty&quot;,&quot;a&quot;,&quot;both&quot;,&quot;another&quot;,&quot;first&quot;,&quot;second&quot;,&quot;third&quot;&#125;;string sqare[27]=&#123;&quot;01&quot;,&quot;04&quot;,&quot;09&quot;,&quot;16&quot;,&quot;25&quot;,&quot;36&quot;,&quot;49&quot;,&quot;64&quot;,&quot;81&quot;,&quot;100&quot;,&quot;21&quot;,&quot;44&quot;,&quot;69&quot;,&quot;96&quot;,&quot;25&quot;,&quot;56&quot;,&quot;89&quot;,&quot;24&quot;,&quot;61&quot;,&quot;00&quot;,&quot;01&quot;,&quot;04&quot;,&quot;01&quot;,&quot;01&quot;,&quot;04&quot;,&quot;09&quot;&#125;;int main()&#123; string word[6]; string ans[6]; int len = 0; for(int i=0;i&lt;6;i++) cin&gt;&gt;word[i]; for(int i=0;i&lt;6;i++) &#123; for(int j=0;j&lt;26;j++) &#123; if(word[i]==num[j]) ans[len++]=sqare[j]; &#125; &#125; sort(ans, ans+len); if(len == 0) cout&lt;&lt;&quot;0&quot;; else &#123; for(int i=0;i&lt;len;i++) &#123; if(i==0) &#123; if(ans[i]==&quot;00&quot;) continue; else if(ans[i][0]==&apos;0&apos;) cout&lt;&lt;ans[i][1]; &#125; else if(i=0) cout&lt;&lt;ans[i]; &#125; &#125; return 0;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -95,7 +103,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 169. Majority Element]]></title>
-    <url>%2F2019%2F07%2F22%2FLeetCode%20169.%20Majority%20Element%2F</url>
+    <url>%2FLeetCode%20169.%20Majority%20Element.html</url>
     <content type="text"><![CDATA[169.Majority Element（求众数）链接https://leetcode-cn.com/problems/majority-element/ 题目给定一个大小为 n 的数组，找到其中的众数。众数是指在数组中出现次数大于 ⌊ n/2 ⌋ 的元素。 你可以假设数组是非空的，并且给定的数组总是存在众数。 示例 1: 输入: [3,2,3]输出: 3示例 2: 输入: [2,2,1,1,1,2,2]输出: 2 思路这题很有趣，多种方法都能解决。我一开始想到的是1.哈希表：数据添加后规模最大的一个就是众数。2.排序：快排或归并排序，中位数就是众数。 之后看了别人的解法，发现了一种新的方法：摩尔投票算法。摩尔投票法的基本思想很简单，在每一轮投票过程中，从数组中找出一对不同的元素，将其从数组中删除。这样不断的删除直到无法再进行投票，如果数组为空，则没有任何元素出现的次数超过该数组长度的一半。如果只存在一种元素，那么这个元素就是目标元素。 初始化 count = 1;number =nums[0];之后遍历，如果数字和number相同，count++，不同，count–，count=0时重置number和count，如果众数数量大于n/2，最后的数就是这个。 代码123456789101112131415public static int majorityElement(int[] nums) &#123; int count = 0; int number = nums[0]; for (int i = 0; i &lt; nums.length; i++) &#123; if (count == 0) &#123; number = nums[i]; count = 1; &#125; else if (number != nums[i]) &#123; count--; &#125; else &#123; count++; &#125; &#125; return number; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -103,7 +111,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 1047. Remove All Adjacent Duplicates In String]]></title>
-    <url>%2F2019%2F07%2F21%2FLeetCode%201047.%20Remove%20All%20Adjacent%20Duplicates%20In%20String%2F</url>
+    <url>%2FLeetCode%201047.%20Remove%20All%20Adjacent%20Duplicates%20In%20String.html</url>
     <content type="text"><![CDATA[1047.Remove All Adjacent Duplicates In String（删除字符串中的所有相邻重复项）链接https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/ 题目给出由小写字母组成的字符串 S，重复项删除操作会选择两个相邻且相同的字母，并删除它们。 在 S 上反复执行重复项删除操作，直到无法继续删除。 在完成所有重复项删除操作后返回最终的字符串。答案保证唯一。 示例： 输入：”abbaca”输出：”ca”解释：例如，在 “abbaca” 中，我们可以删除 “bb” 由于两字母相邻且相同，这是此时唯一可以执行删除操作的重复项。之后我们得到字符串“aaca”，其中又只有 “aa” 可以执行重复项删除操作，所以最后的字符串为 “ca”。 提示： 1 &lt;= S.length &lt;= 20000S 仅由小写英文字母组成。 思路我这里借助了栈，把字母塞进去，如果下一个和上一个相同就出栈，不然就入栈，最后借助stringbuffer转置一下，生成字符串。内存超过100%，但是时间超过30%，就很烦。 （idea改变了我的代码规范…….） 代码12345678910111213141516171819202122public static String removeDuplicates(String S) &#123; char[] ch = S.toCharArray(); Stack stack = new Stack(); int i = 0; while (i &lt; ch.length) &#123; if (stack.empty()) &#123; stack.push(ch[i]); &#125; else if (stack.peek().equals(ch[i])) &#123; stack.pop(); &#125; else &#123; stack.push(ch[i]); &#125; i++; &#125; StringBuilder sb = new StringBuilder(); while (!stack.empty()) &#123; sb.append(stack.pop()); &#125; return sb.reverse().toString();&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -111,7 +119,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 12. Integer to Roman]]></title>
-    <url>%2F2019%2F07%2F21%2FLeetCode%2012.%20Integer%20to%20Roman%2F</url>
+    <url>%2FLeetCode%2012.%20Integer%20to%20Roman.html</url>
     <content type="text"><![CDATA[12.Integer to Roman（整数转罗马数字）链接https://leetcode-cn.com/problems/integer-to-roman/ 题目罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。 字符 数值 I 1 V 5 X 10 L 50 C 100 D 500 M 1000 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。给定一个整数，将其转为罗马数字。输入确保在 1 到 3999 的范围内。 示例 1: 输入: 3 输出: &quot;III&quot; 示例 2: 输入: 4 输出: &quot;IV&quot; 示例 3: 输入: 9 输出: &quot;IX&quot; 示例 4: 输入: 58 输出: &quot;LVIII&quot; 解释: L = 50, V = 5, III = 3. 示例 5: 输入: 1994 输出: &quot;MCMXCIV&quot; 解释: M = 1000, CM = 900, XC = 90, IV = 4.思路倒也不是很麻烦，就是分类筛选，对于字符串进行添加操作，1000级和1级需要借助while循环，别的数直接用if进行一次判断即可。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859public static String intToRoman(int num) &#123; StringBuilder str = new StringBuilder(); while (num &gt;= 1000) &#123; str.append(&quot;M&quot;); num = num - 1000; &#125; if (num &gt;= 900) &#123; str.append(&quot;CM&quot;); num = num - 900; &#125; if (num &gt;= 500) &#123; str.append(&quot;D&quot;); num = num - 500; &#125; if (num &gt;= 400 &amp;&amp; num &lt; 500) &#123; str.append(&quot;CD&quot;); num = num - 400; &#125; while (num &gt;= 100) &#123; str.append(&quot;C&quot;); num = num - 100; &#125; if (num &gt;= 90) &#123; str.append(&quot;XC&quot;); num = num - 90; &#125; if (num &gt;= 50) &#123; str.append(&quot;L&quot;); num = num - 50; &#125; if (num &gt;= 40 &amp;&amp; num &lt; 50) &#123; str.append(&quot;XL&quot;); num = num - 40; &#125; while (num &gt;= 10) &#123; str.append(&quot;X&quot;); num = num - 10; &#125; if (num &gt;= 9) &#123; str.append(&quot;IX&quot;); num = num - 9; &#125; if (num &gt;= 5) &#123; str.append(&quot;V&quot;); num = num - 5; &#125; if (num &gt;= 4 &amp;&amp; num &lt; 5) &#123; str.append(&quot;IV&quot;); num = num - 4; &#125; while (num &gt;= 1) &#123; str.append(&quot;I&quot;); num = num - 1; &#125; return str.toString(); &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -119,7 +127,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1012 拼数]]></title>
-    <url>%2F2019%2F07%2F19%2F%E6%B4%9B%E8%B0%B7%20P1012%20%E6%8B%BC%E6%95%B0%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1012%20%E6%8B%BC%E6%95%B0.html</url>
     <content type="text"><![CDATA[洛谷 P1012 拼数链接https://www.luogu.org/problemnew/show/P1012 题目题目描述设有n个正整数(n≤20)，将它们联接成一排，组成一个最大的多位整数。 例如：n=3时，3个整数13,312,343联接成的最大整数为：34331213 又如：n=4时，4个整数7,13,4,246联接成的最大整数为：7424613 输入输出格式输入格式： 第一行，一个正整数n。 第二行，n个正整数。 输出格式： 一个正整数，表示最大的整数 输入输出样例输入样例#1： 3 13 312 343输出样例#1： 34331213 思路这题如果是第一次做会有点难度，但是我以前做过同类的，借助字典序来算就会简单很多，对于字典序来说1234&lt;3412，那么12和34这两个数就可以通过字典序来比较，这里设置一个比较函数compare，比较a+b和b+a的字典序，这边设置的是34在12的前面，所以要先输出（3412&gt;1234）.之后借助sort函数排序，按照顺序输出即可。 代码12345678910111213141516171819202122#include&lt;iostream&gt;#include&lt;algorithm&gt; using namespace std;bool compare(string a,string b)&#123; return a+b&gt;b+a;&#125;int main()&#123; int n; cin&gt;&gt;n; string num[n]; for(int i=0;i&lt;n;i++) cin&gt;&gt;num[i]; sort(num,num+n,compare); for(int i=0;i&lt;n;i++) cout&lt;&lt;num[i]; return 0;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -127,7 +135,7 @@
   </entry>
   <entry>
     <title><![CDATA[CCF 201809-2 买菜]]></title>
-    <url>%2F2019%2F07%2F18%2FCCF%20201809-2%20%E4%B9%B0%E8%8F%9C%2F</url>
+    <url>%2FCCF%20201809-2%20%E4%B9%B0%E8%8F%9C.html</url>
     <content type="text"><![CDATA[CCF 201809-2 买菜题目问题描述小H和小W来到了一条街上，两人分开买菜，他们买菜的过程可以描述为，去店里买一些菜然后去旁边的一个广场把菜装上车，两人都要买n种菜，所以也都要装n次车。具体的，对于小H来说有n个不相交的时间段[a1,b1],[a2,b2]…[an,bn]在装车，对于小W来说有n个不相交的时间段[c1,d1],[c2,d2]…[cn,dn]在装车。其中，一个时间段[s,t]表示的是从时刻s到时刻t这段时间，时长为t-s。由于他们是好朋友，他们都在广场上装车的时候会聊天，他们想知道他们可以聊多长时间。 输入格式输入的第一行包含一个正整数n，表示时间段的数量。接下来n行每行两个数ai，bi，描述小H的各个装车的时间段。接下来n行每行两个数ci，di，描述小W的各个装车的时间段。 输出格式输出一行，一个正整数，表示两人可以聊多长时间。 样例输入4 1 3 5 6 9 13 14 15 2 4 5 7 10 11 13 14样例输出3数据规模和约定对于所有的评测用例，1 ≤ n ≤ 2000, ai &lt; bi &lt; ai+1，ci &lt; di &lt; ci+1,对于所有的i(1 ≤ i ≤ n)有，1 ≤ai, bi, ci, di ≤ 1000000。 思路简单题，但是不知道为啥我错了几次，真让人悲伤。设定一个数组当做时间轴，初始化为0，之后如果有人装车，那么时间轴在那段时间上+1，如果二人都在那时候装车，那么那个位置的数应该是2，找到2的数量即可。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;using namespace std;int Num = 1000000;int time[1000000];int main()&#123; int n; cin&gt;&gt;n; int max=0; for(int i=0;i&lt;Num;i++) time[i]=0; for(int i=0;i&lt;n;i++) &#123; int a,b; cin&gt;&gt;a&gt;&gt;b; if(b&gt;max) max = b; for(int j=a;j&lt;b;j++) time[j]++; &#125; for(int i=0;i&lt;n;i++) &#123; int c,d; cin&gt;&gt;c&gt;&gt;d; if(d&gt;max) max = d; for(int j=c;j&lt;d;j++) time[j]++; &#125; int sum=0; for(int i = 1;i&lt;max;i++) &#123; // cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;time[i]&lt;&lt;endl; if(time[i] == 2) &#123; sum++; &#125; &#125; cout&lt;&lt;sum; return 0;&#125;]]></content>
       <categories>
         <category>CCF</category>
@@ -135,7 +143,7 @@
   </entry>
   <entry>
     <title><![CDATA[CCF 201809-1 卖菜]]></title>
-    <url>%2F2019%2F07%2F17%2FCCF%20201809-1%20%E5%8D%96%E8%8F%9C%2F</url>
+    <url>%2FCCF%20201809-1%20%E5%8D%96%E8%8F%9C.html</url>
     <content type="text"><![CDATA[CCF 201809-1 卖菜题目问题描述在一条街上有n个卖菜的商店，按1至n的顺序排成一排，这些商店都卖一种蔬菜。第一天，每个商店都自己定了一个价格。店主们希望自己的菜价和其他商店的一致，第二天，每一家商店都会根据他自己和相邻商店的价格调整自己的价格。具体的，每家商店都会将第二天的菜价设置为自己和相邻商店第一天菜价的平均值（用去尾法取整）。注意，编号为1的商店只有一个相邻的商店2，编号为n的商店只有一个相邻的商店n-1，其他编号为i的商店有两个相邻的商店i-1和i+1。给定第一天各个商店的菜价，请计算第二天每个商店的菜价。 输入格式输入的第一行包含一个整数n，表示商店的数量。第二行包含n个整数，依次表示每个商店第一天的菜价。 输出格式输出一行，包含n个正整数，依次表示每个商店第二天的菜价。 样例输入8 4 1 3 1 6 5 17 9样例输出2 2 1 3 4 9 10 13数据规模和约定对于所有评测用例，2 ≤ n ≤ 1000，第一天每个商店的菜价为不超过10000的正整数。 思路：水题，设置数组存放价格，考虑到首尾计算方式不同即可。而且c++本来除法就能去尾，输入输出，行了。 虽然大一就过了ccf，但是还是打算重新刷一遍题，就当写着玩了，会慢慢更题解和思路，但是那种文本处理题八成不会更，太麻烦了。 代码：12345678910111213141516171819202122232425#include&lt;iostream&gt;using namespace std;int main()&#123; int n; cin&gt;&gt;n; int a[n],b[n]; for(int i = 0; i &lt; n; i++) &#123; cin&gt;&gt;a[i]; &#125; b[0] = (a[0] + a[1])/2; b[n-1] = (a[n-2] + a[n-1])/2; for(int i = 1; i &lt; n-1; i++) &#123; b[i] = (a[i-1] + a[i] + a[i+1])/3; &#125; for(int i = 0; i &lt; n; i++) &#123; cout&lt;&lt;b[i]&lt;&lt;&quot; &quot;; &#125; return 0;&#125;]]></content>
       <categories>
         <category>CCF</category>
@@ -143,7 +151,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1149 火柴棒等式]]></title>
-    <url>%2F2019%2F07%2F16%2F%E6%B4%9B%E8%B0%B7%20P1149%20%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1149%20%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F.html</url>
     <content type="text"><![CDATA[洛谷 P1149 火柴棒等式链接https://www.luogu.org/problemnew/show/P1149 题目题目描述给你n根火柴棍，你可以拼出多少个形如”A+B=C”的等式？等式中的A、B、C是用火柴棍拼出的整数（若该数非零，则最高位不能是0）。用火柴棍拼数字0-9的拼法如图所示： ![](https://cdn.luogu.org/upload/pic/49.png)注意： 加号与等号各自需要两根火柴棍 如果A≠B，则A+B=C与B+A=C视为不同的等式(A,B,C&gt;=0) n根火柴棍必须全部用上 输入输出格式输入格式： 一个整数n(n&lt;=24)。 输出格式： 一个整数，能拼成的不同等式的数目。 输入输出样例输入样例#1： 14输出样例#1： 2输入样例#2： 18输出样例#2： 9说明【输入输出样例1解释】 2个等式为0+1=10+1=1和1+0=11+0=1。 【输入输出样例2解释】 9个等式为： 0+4=4 0+11=11 1+10=11 2+2=4 2+7=9 4+0=4 7+2=9 10+1=11 11+0=11 思路思路也挺清晰的，直接遍历，0-9的火车不一样，用数组记录，借助count函数寻找ABC需要的火柴，二重循环遍历找的所有合适的解。 1100：数字随手写的，因为上限只有24，只有20根可以组成数字，按照929分组，只能有四个大于1000的数：7111，1711,1171,1117，这四个数都无法得到等式，所以构成结果的ABC一定都小于1000，所以这里写1000即可。其实可以算出上限还要低一点，不过也没啥大问题，用1000就行。 （最近有点忙，所以没想啥骚操作） 代码：12345678910111213141516171819202122232425262728293031323334353637383940414243#include&lt;iostream&gt;using namespace std;int num[10] = &#123;6,2,5,5,4,5,6,3,7,6&#125;;int count(int x)&#123; if(x==0) return num[0]; int res=0; while(x) &#123; res = res + num[x%10]; x = x / 10; &#125; return res;&#125;int main()&#123; int n; int sum=0; cin&gt;&gt;n; n=n-4; if(n&lt;=8) &#123; cout&lt;&lt;&quot;0&quot;; return 0; &#125; for(int i=0;i&lt;1100;i++) &#123; for(int j=0;j&lt;1100;j++) &#123; int k = i + j; if(count(i)+count(j)+count(k)==n) sum++; &#125; &#125; cout&lt;&lt;sum&lt;&lt;endl; return 0;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -151,7 +159,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1042 乒乓球]]></title>
-    <url>%2F2019%2F07%2F15%2F%E6%B4%9B%E8%B0%B7%20P1042%20%E4%B9%92%E4%B9%93%E7%90%83%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1042%20%E4%B9%92%E4%B9%93%E7%90%83.html</url>
     <content type="text"><![CDATA[洛谷 P1042 乒乓球链接https://www.luogu.org/problemnew/show/P1042 题目题目背景国际乒联现在主席沙拉拉自从上任以来就立志于推行一系列改革，以推动乒乓球运动在全球的普及。其中1111分制改革引起了很大的争议，有一部分球员因为无法适应新规则只能选择退役。华华就是其中一位，他退役之后走上了乒乓球研究工作，意图弄明白1111分制和2121分制对选手的不同影响。在开展他的研究之前，他首先需要对他多年比赛的统计数据进行一些分析，所以需要你的帮忙。 题目描述华华通过以下方式进行分析，首先将比赛每个球的胜负列成一张表，然后分别计算在1111分制和2121分制下，双方的比赛结果（截至记录末尾）。 比如现在有这么一份记录，（其中W表示华华获得一分，L表示华华对手获得一分）： WWWWWWWWWWWWWWWWWWWWWWLW在1111分制下，此时比赛的结果是华华第一局1111比00获胜，第二局1111比00获胜，正在进行第三局，当前比分11比11。而在2121分制下，此时比赛结果是华华第一局2121比00获胜，正在进行第二局，比分22比11。如果一局比赛刚开始，则此时比分为00比00。直到分差大于或者等于22，才一局结束。 你的程序就是要对于一系列比赛信息的输入（WLWL形式），输出正确的结果。 输入输出格式输入格式： 每个输入文件包含若干行字符串，字符串有大写的WW、LL和EE组成。其中EE表示比赛信息结束，程序应该忽略E之后的所有内容。 输出格式： 输出由两部分组成，每部分有若干行，每一行对应一局比赛的比分（按比赛信息输入顺序）。其中第一部分是1111分制下的结果，第二部分是2121分制下的结果，两部分之间由一个空行分隔。 输入输出样例输入样例#1： WWWWWWWWWWWWWWWWWWWW WWLWE输出样例#1： 11:0 11:0 1:1 21:0 2:1说明每行至多25个字母，最多有2500行 思路不是很难，读取输入，统计数据，直接输出，只要记得到E结束，char范围给大一点，考虑到0:0的情况就行。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;#include&lt;cstdio&gt;using namespace std;int main()&#123; char a[2600]; int ans = 0; while(true) &#123; char c = getchar(); if(c==&apos;W&apos;||c==&apos;L&apos;) &#123; a[ans]=c; ans++; &#125; if(c==&apos;E&apos;) break; &#125; int w=0; int l=0; for(int i=0;i&lt;ans;i++) &#123; if(a[i]==&apos;W&apos;) w++; if(a[i]==&apos;L&apos;) l++; if((w&gt;=11||l&gt;=11)&amp;&amp;(abs(w-l)&gt;=2)) &#123; cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl; w=0; l=0; &#125; else if(i==ans-1) cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl; &#125; if(w==0&amp;&amp;l==0) cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl; cout&lt;&lt;endl; w=0; l=0; for(int i=0;i&lt;ans;i++) &#123; if(a[i]==&apos;W&apos;) w++; if(a[i]==&apos;L&apos;) l++; if((w&gt;=21||l&gt;=21)&amp;&amp;abs(w-l)&gt;=2) &#123; cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl; w=0; l=0; &#125; else if(i==ans-1) cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl; &#125; if(w==0&amp;&amp;l==0) cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl; return 0;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -159,7 +167,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 754. Reach a Number]]></title>
-    <url>%2F2019%2F07%2F13%2FLeetCode%20754.%20Reach%20a%20Number%2F</url>
+    <url>%2FLeetCode%20754.%20Reach%20a%20Number.html</url>
     <content type="text"><![CDATA[754.Reach a Number（到达终点数字）链接https://leetcode-cn.com/problems/reach-a-number/ 题目在一根无限长的数轴上，你站在0的位置。终点在target的位置。 每次你可以选择向左或向右移动。第 n 次移动（从 1 开始），可以走 n 步。 返回到达终点需要的最小移动次数。 示例 1: 输入: target = 3输出: 2解释:第一次移动，从 0 到 1 。第二次移动，从 1 到 3 。示例 2: 输入: target = 2输出: 3解释:第一次移动，从 0 到 1 。第二次移动，从 1 到 -1 。第三次移动，从 -1 到 2 。注意: target是在[-10^9, 10^9]范围中的非零整数。 思路emmmmmm这是一道数学题，需要找规律（一看这个数就知道不能暴力破解）。 设定目标坐标为target，已经走了n步，坐标为F（n）=（n+1）*n/2，F（n-1）&lt;sum&lt;=F（n）找规律： 如果每一步都往同方向走，最后的坐标是1+2+3+…+n=（n+1）*n/2。这样成立的话，所需步数就是n步，target=sum； 目标值与sum存在差，（sum-target）为偶数 t 。那么，我们只需要在步长为 t/2 的那步反向走就行了，所需要的步数是 n； 如果二者差距为奇数，（sum-target）为奇数k，这时候就有两种可能： n为奇数，将n拆为（n-1）和1，（n-1）为偶数，按照第一类进行，1就多走两步，一正一反就得到差值1，所需步数为n+2 n为偶数，这时候多走一步n+1，差距就为n+1+sum-target（偶数），也按照第一类进行，只需要n+1步。 代码1234567891011121314151617public static int reachNumber(int target) &#123; target = Math.abs(target); //处理负值的情况 int count = 0; int sum = 0; while (sum &lt; target) &#123; count++; sum = sum + count; &#125; if ((sum - target) % 2 != 0) &#123; if (count % 2 == 0) &#123; count = count + 1; &#125; else &#123; count = count + 2; &#125; &#125; return count;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -167,7 +175,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1068 分数线划定]]></title>
-    <url>%2F2019%2F07%2F12%2F%E6%B4%9B%E8%B0%B7%20P1068%20%E5%88%86%E6%95%B0%E7%BA%BF%E5%88%92%E5%AE%9A%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1068%20%E5%88%86%E6%95%B0%E7%BA%BF%E5%88%92%E5%AE%9A.html</url>
     <content type="text"><![CDATA[洛谷 P1068 分数线划定链接https://www.luogu.org/problemnew/show/P1068 题目题目描述世博会志愿者的选拔工作正在 A市如火如荼的进行。为了选拔最合适的人才，AA市对所有报名的选手进行了笔试，笔试分数达到面试分数线的选手方可进入面试。面试分数线根据计划录取人数的150%划定，即如果计划录取m名志愿者，则面试分数线为排名第m×150%（向下取整）名的选手的分数，而最终进入面试的选手为笔试成绩不低于面试分数线的所有选手。 现在就请你编写程序划定面试分数线，并输出所有进入面试的选手的报名号和笔试成绩。 输入输出格式输入格式： 第一行，两个整数 n,m(5 ≤ n ≤ 5000,3 ≤ m ≤n)n,m(5≤n≤5000,3≤m≤n)，中间用一个空格隔开，其中nn表示报名参加笔试的选手总数，mm表示计划录取的志愿者人数。输入数据保证 m×150%向下取整后小于等于 n 第二行到第 n+1 行，每行包括两个整数，中间用一个空格隔开，分别是选手的报名号 k(1000 ≤ k ≤9999)k(1000≤k≤9999)和该选手的笔试成绩s(1 ≤ s ≤ 100)s(1≤s≤100)。数据保证选手的报名号各不相同。 输出格式： 第一行，有22个整数，用一个空格隔开，第一个整数表示面试分数线；第二个整数为进入面试的选手的实际人数。 从第二行开始，每行包含22个整数，中间用一个空格隔开，分别表示进入面试的选手的报名号和笔试成绩，按照笔试成绩从高到低输出，如果成绩相同，则按报名号由小到大的顺序输出。 输入输出样例输入样例#1： 6 3 1000 90 3239 88 2390 95 7231 84 1005 95 1001 88输出样例#1： 88 5 1005 95 2390 95 1000 90 1001 88 3239 88 思路这道题挺不错的，思路清晰，可以用到不少方法。这里用了结构体存储数据，同时用了sort函数进行结构体的排序（有空会详解），让结构体的第一顺序是分数，第二顺序是报名号。之后只需要设置一个line作为分数线，大于等于分数线的都可以进入，根据排好的顺序输出即可。 中间的cmp函数是用于排序的，分数不同按分数排，相同按报名号排，之后一个小循环找到相同分数的，直接输出。 代码12345678910111213141516171819202122232425262728293031323334353637383940#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;struct peo&#123; int num; int score;&#125;a[9001];bool cmp(peo x,peo y)&#123; if(x.score == y.score) return (x.num &lt; y.num); else return (x.score &gt; y.score);&#125;int main()&#123; int m,n; cin&gt;&gt;n&gt;&gt;m; for(int i=0;i&lt;n;i++) &#123; cin&gt;&gt;a[i].num&gt;&gt;a[i].score; &#125; sort(a,a+n,cmp); int line = m*1.5; while(a[line-1].score==a[line].score&amp;&amp;line&lt;=n) &#123; line++; &#125; cout&lt;&lt;a[line-1].score&lt;&lt;&quot; &quot;&lt;&lt;line&lt;&lt;endl; for(int i=0;i&lt;line;i++) &#123; cout&lt;&lt;a[i].num&lt;&lt;&quot; &quot;&lt;&lt;a[i].score&lt;&lt;endl; &#125; return 0;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -175,7 +183,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 7. Reverse Integer]]></title>
-    <url>%2F2019%2F07%2F11%2FLeetCode%207.%20Reverse%20Integer%2F</url>
+    <url>%2FLeetCode%207.%20Reverse%20Integer.html</url>
     <content type="text"><![CDATA[7.Reverse Integer（整数反转）链接https://leetcode-cn.com/problems/reverse-integer/ 题目给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。 示例 1: 输入: 123输出: 321 示例 2: 输入: -123输出: -321示例 3: 输入: 120输出: 21注意: 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231, 231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。 思路简单题，大概有两种思路，一种是直接字符串翻转，怎么翻都行，甚至可以直接整个数组转换。第二种就是数字运算，余数加到上次结果的末尾，直接输出（注意看数字越界了没）。 重点就是数字越界，我这里多加了一个判断，越界归零，虽然这样我还是错了几次。。。。 代码12345678910111213141516171819public static int reverse(int x) &#123; int ans = 0; int num = Math.abs(x); int max = Integer.MAX_VALUE / 10; while (num &gt; 0) &#123; int t = num % 10; if (ans &gt; max) &#123; return 0; &#125; ans = ans * 10 + t; num = num / 10; &#125; if (x &gt; 0) &#123; return ans; &#125; else &#123; return -ans; &#125;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -183,7 +191,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 504. Base 7]]></title>
-    <url>%2F2019%2F07%2F10%2FLeetCode%20504.%20Base%207%2F</url>
+    <url>%2FLeetCode%20504.%20Base%207.html</url>
     <content type="text"><![CDATA[504.Base 7（七进制数）链接https://leetcode-cn.com/problems/base-7/ 题目给定一个整数，将其转化为7进制，并以字符串形式输出。 示例 1: 输入: 100输出: “202”示例 2: 输入: -7输出: “-10”注意: 输入范围是 [-1e7, 1e7] 。 思路没啥思路，直接除7取余，考虑一下正负号。 代码1234567891011121314151617181920public static String convertToBase7(int num) &#123; String res = &quot;&quot;; int flag = 0; if (num == 0) &#123; return &quot;0&quot;; &#125; if (num &lt; 0) &#123; flag = 1; num = -num; &#125; while (num &gt; 0) &#123; res = String.valueOf(num % 7) + res; num = num / 7; &#125; if (flag == 1) &#123; res = &quot;-&quot; + res; &#125; return res;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -191,7 +199,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1598 垂直柱状图]]></title>
-    <url>%2F2019%2F07%2F09%2F%E6%B4%9B%E8%B0%B7%20P1598%20%E5%9E%82%E7%9B%B4%E6%9F%B1%E7%8A%B6%E5%9B%BE%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1598%20%E5%9E%82%E7%9B%B4%E6%9F%B1%E7%8A%B6%E5%9B%BE.html</url>
     <content type="text"><![CDATA[洛谷 P1598 垂直柱状图链接https://www.luogu.org/problemnew/show/P1598 题目题目描述写一个程序从输入文件中去读取四行大写字母（全都是大写的，每行不超过100个字符），然后用柱状图输出每个字符在输入文件中出现的次数。严格地按照输出样例来安排你的输出格式。 输入输出格式输入格式： 四行字符，由大写字母组成，每行不超过100个字符 输出格式： 由若干行组成，前几行由空格和星号组成，最后一行则是由空格和字母组成的。在任何一行末尾不要打印不需要的多余空格。不要打印任何空行。 输入输出样例输入样例#1： THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG. THIS IS AN EXAMPLE TO TEST FOR YOUR HISTOGRAM PROGRAM. HELLO!输出样例#1： * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * A B C D E F G H I J K L M N O P Q R S T U V W X Y Z说明每行输出后面不允许出现多余的空格。 思路思路清晰，读取四行数据，检索出现次数，通过数组保存一气呵成，我这里读取输入用的是getline，我觉得会好一点。 （但是这题我debug了半天，最后才发现我少空格。。。。。。） 代码123456789101112131415161718192021222324252627282930313233343536373839#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;using namespace std;int word[27];int main()&#123; int max=0; char a[105]; for(int i=0;i&lt;4;i++) &#123; cin.getline(a,105); int n=strlen(a); for(int j=0;j&lt;n;j++) &#123; if(a[j]&gt;=&apos;A&apos;&amp;&amp;a[j]&lt;=&apos;Z&apos;) word[a[j]-&apos;A&apos;]++; &#125; &#125; for(int i=0;i&lt;26;i++) if(word[i]&gt;max) max=word[i]; for(int i=max;i&gt;=1;i--) &#123; for(int j=0;j&lt;26;j++) &#123; if(word[j]&gt;=i) cout&lt;&lt;&quot;* &quot;; else cout&lt;&lt;&quot; &quot;; &#125; cout&lt;&lt;endl; &#125; for(int i=0;i&lt;26;i++) cout&lt;&lt;(char)(&apos;A&apos;+i)&lt;&lt;&quot; &quot;; return 0;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -199,7 +207,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 153. Find Minimum in Rotated Sorted Array]]></title>
-    <url>%2F2019%2F07%2F08%2FLeetCode%20153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array%2F</url>
+    <url>%2FLeetCode%20153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array.html</url>
     <content type="text"><![CDATA[153.Find Minimum in Rotated Sorted Array（寻找旋转排序数组中的最小值）链接https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/ 题目假设按照升序排序的数组在预先未知的某个点上进行了旋转。 ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。 请找出其中最小的元素。 你可以假设数组中不存在重复元素。 示例 1: 输入: [3,4,5,1,2]输出: 1示例 2: 输入: [4,5,6,7,0,1,2]输出: 0 思路我觉得，这道题，就是个简单的找最小值，还换了层皮就很浮夸。思路最简单的方法就是从头到尾遍历，找的最小值，效率也不低。我是用的二分法，分到最后head和tail只差一位，找最小值即可。 （话说我这题用时超过了100%的用户，不过内存只超过了41%的用户，有机会可以改进吧） 代码1234567891011121314151617public static int findMin(int[] nums) &#123; int head = 0; int tail = nums.length - 1; int mid = (head + tail) / 2; while (true) &#123; if (tail - head &lt; 2) &#123; break; &#125; if (nums[mid] &lt; nums[tail]) &#123; tail = mid; &#125; else &#123; head = mid; &#125; mid = (head + tail) / 2; &#125; return Math.min(nums[head], nums[tail]); &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -207,7 +215,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1059 明明的随机数]]></title>
-    <url>%2F2019%2F07%2F08%2F%E6%B4%9B%E8%B0%B7%20P1059%20%E6%98%8E%E6%98%8E%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1059%20%E6%98%8E%E6%98%8E%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0.html</url>
     <content type="text"><![CDATA[洛谷 P1059 明明的随机数链接https://www.luogu.org/problemnew/show/P1059 题目题目描述明明想在学校中请一些同学一起做一项问卷调查，为了实验的客观性，他先用计算机生成了N个1到1000之间的随机整数(N≤100)，对于其中重复的数字，只保留一个，把其余相同的数去掉，不同的数对应着不同的学生的学号。然后再把这些数从小到大排序，按照排好的顺序去找同学做调查。请你协助明明完成”去重”与”排序”的工作。 输入输出格式输入格式：输入有两行，第1行为1个正整数，表示所生成的随机数的个数N第2行有N个用空格隔开的正整数，为所产生的随机数。 输出格式：输出也是两行，第1行为1个正整数M，表示不相同的随机数的个数。第2行为M个用空格隔开的正整数，为从小到大排好序的不相同的随机数。 输入输出样例 输入样例#1： 10 20 40 32 67 40 20 89 300 400 15 输出样例#1： 8 15 20 32 40 67 89 300 400思路这个去重就行了，思路清晰（主要是前段时间用过），建议使用set，自动去重，输出的时候借助迭代器输出。 代码12345678910111213141516171819202122#include&lt;iostream&gt;#include&lt;set&gt;using namespace std;int main()&#123; set&lt;int&gt; s; int N; cin&gt;&gt;N; for(int i=0;i&lt;N;i++) &#123; int t; cin&gt;&gt;t; s.insert(t); &#125; cout&lt;&lt;s.size()&lt;&lt;endl; set&lt;int&gt;::iterator iter=s.begin(); while(iter!=s.end())&#123; cout&lt;&lt;*iter++&lt;&lt;&apos; &apos;; &#125;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -215,7 +223,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 120. Triangle]]></title>
-    <url>%2F2019%2F07%2F06%2FLeetCode%20120.%20Triangle%2F</url>
+    <url>%2FLeetCode%20120.%20Triangle.html</url>
     <content type="text"><![CDATA[120.Triangle (三角形最小路径和)链接https://leetcode-cn.com/problems/triangle/ 题目给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。 例如，给定三角形： [[2],[3,4],[6,5,7],[4,1,8,3]]自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。 思路简单题，自顶向下或者自底向上方法都行，以第三行的5作为例子，自顶向下值有3,4能移动到它，之后也只能移动到1,8.只需要将能到达该点的两个数取最小的，加入这个数。 自顶向下： 第二行：3-&gt;3+2=5, 4-&gt;4+2=6 第三行：6-&gt;6+5-&gt;11, 5-&gt;5+min(5,6)=10, 7-&gt;7+6=13 第四行：4-&gt;4+11=15, 1-&gt;1+min(11,10)=11, 8-&gt;8+min(10,13)=18, 3-&gt;3+13=16. 最小和为11. 自底向上： 这样可以减少一些需要特殊考虑的地方，思路相同，只不过上下顺序变化，比如第三行的5，可以增加min（1,8），一直到最上层。 （这题思路简单，但是我敲的时候忘了List&lt;List&gt;要怎么用，贼尴尬） 代码12345678910public int minimumTotal(List&lt;List&lt;Integer&gt;&gt; triangle) &#123; for (int i = triangle.size() - 2; i &gt;= 0; i--) &#123; for (int j = 0; j &lt; triangle.get(i).size(); j++) &#123; int min = Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1)); triangle.get(i).set(j, triangle.get(i).get(j) + min); &#125; &#125; return triangle.get(0).get(0);&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -223,7 +231,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1047 校门外的树（待完善）]]></title>
-    <url>%2F2019%2F07%2F05%2F%E6%B4%9B%E8%B0%B7%20P1047%20%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1047%20%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89.html</url>
     <content type="text"><![CDATA[洛谷 P1047 校门外的树（待完善）链接https://www.luogu.org/problemnew/show/P1047 题目题目描述某校大门外长度为L的马路上有一排树，每两棵相邻的树之间的间隔都是1米。我们可以把马路看成一个数轴，马路的一端在数轴0的位置，另一端在LL的位置；数轴上的每个整数点，即0,1,2,…,L，都种有一棵树。 由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标都是整数，区域之间可能有重合的部分。现在要把这些区域中的树（包括区域端点处的两棵树）移走。你的任务是计算将这些树都移走后，马路上还有多少棵树。 输入输出格式输入格式： 第一行有2个整数L(1≤L≤10000)和 M(1≤M≤100)，L代表马路的长度，M代表区域的数目，L和M之间用一个空格隔开。接下来的M行每行包含2个不同的整数，用一个空格隔开，表示一个区域的起始点和终止点的坐标。 输出格式： 1个整数，表示马路上剩余的树的数目。 输入输出样例输入样例#1： 500 3 150 300 100 200 470 471输出样例#1： 298思路这题我做的方法一点艺术性没有，建立数组表示树，开始置为1，被砍了就置为0，最后统计数组的总数。数据也不是很大，所以这样也不会超时。 倒是在题解上发现了一些有趣的方法，比如线段树和差分法，这篇博客等有空了我要完善一下，增加新的方法。 代码1234567891011121314151617181920212223242526272829#include&lt;iostream&gt;#include&lt;cstring&gt;using namespace std;int main()&#123; int L,M; cin&gt;&gt;L&gt;&gt;M; int a[L+1]; for(int i=0;i&lt;=L;i++) &#123; a[i]=1; &#125; for(int i=0;i&lt;M;i++) &#123; int s,e; cin&gt;&gt;s&gt;&gt;e; for(int j=s;j&lt;=e;j++) a[j]=0; &#125; int sum = 0; for(int i=0;i&lt;=L;i++) &#123; if(a[i]==1) sum++; &#125; cout&lt;&lt;sum; return 0;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -231,7 +239,7 @@
   </entry>
   <entry>
     <title><![CDATA[C++万能头文件的内容与优缺点]]></title>
-    <url>%2F2019%2F07%2F04%2FC%2B%2B%E4%B8%87%E8%83%BD%E5%A4%B4%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9%E4%B8%8E%E4%BC%98%E7%BC%BA%E7%82%B9%2F</url>
+    <url>%2FC%2B%2B%E4%B8%87%E8%83%BD%E5%A4%B4%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9%E4%B8%8E%E4%BC%98%E7%BC%BA%E7%82%B9.html</url>
     <content type="text"><![CDATA[C++万能头文件的内容与优缺点文件内容最近发现了一个C++的头文件bits/stdc++.h，听说这是一个几乎包含了所有C++库函数的头文件，就想更深入的了解一下，下面是头文件内容 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117// C++ includes used for precompiling -*- C++ -*- // Copyright (C) 2003-2013 Free Software Foundation, Inc.//// This file is part of the GNU ISO C++ Library. This library is free// software; you can redistribute it and/or modify it under the// terms of the GNU General Public License as published by the// Free Software Foundation; either version 3, or (at your option)// any later version. // This library is distributed in the hope that it will be useful,// but WITHOUT ANY WARRANTY; without even the implied warranty of// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the// GNU General Public License for more details. // Under Section 7 of GPL version 3, you are granted additional// permissions described in the GCC Runtime Library Exception, version// 3.1, as published by the Free Software Foundation. // You should have received a copy of the GNU General Public License and// a copy of the GCC Runtime Library Exception along with this program;// see the files COPYING3 and COPYING.RUNTIME respectively. If not, see// &lt;Licenses - GNU Project - Free Software Foundation&gt;. /** @file stdc++.h * This is an implementation file for a precompiled header. */ // 17.4.1.2 Headers // C#ifndef _GLIBCXX_NO_ASSERT#include &lt;cassert&gt;#endif#include &lt;cctype&gt;#include &lt;cerrno&gt;#include &lt;cfloat&gt;#include &lt;ciso646&gt;#include &lt;climits&gt;#include &lt;clocale&gt;#include &lt;cmath&gt;#include &lt;csetjmp&gt;#include &lt;csignal&gt;#include &lt;cstdarg&gt;#include &lt;cstddef&gt;#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;cstring&gt;#include &lt;ctime&gt; #if __cplusplus &gt;= 201103L#include &lt;ccomplex&gt;#include &lt;cfenv&gt;#include &lt;cinttypes&gt;#include &lt;cstdalign&gt;#include &lt;cstdbool&gt;#include &lt;cstdint&gt;#include &lt;ctgmath&gt;#include &lt;cwchar&gt;#include &lt;cwctype&gt;#endif // C++#include &lt;algorithm&gt;#include &lt;bitset&gt;#include &lt;complex&gt;#include &lt;deque&gt;#include &lt;exception&gt;#include &lt;fstream&gt;#include &lt;functional&gt;#include &lt;iomanip&gt;#include &lt;ios&gt;#include &lt;iosfwd&gt;#include &lt;iostream&gt;#include &lt;istream&gt;#include &lt;iterator&gt;#include &lt;limits&gt;#include &lt;list&gt;#include &lt;locale&gt;#include &lt;map&gt;#include &lt;memory&gt;#include &lt;new&gt;#include &lt;numeric&gt;#include &lt;ostream&gt;#include &lt;queue&gt;#include &lt;set&gt;#include &lt;sstream&gt;#include &lt;stack&gt;#include &lt;stdexcept&gt;#include &lt;streambuf&gt;#include &lt;string&gt;#include &lt;typeinfo&gt;#include &lt;utility&gt;#include &lt;valarray&gt;#include &lt;vector&gt; #if __cplusplus &gt;= 201103L#include &lt;array&gt;#include &lt;atomic&gt;#include &lt;chrono&gt;#include &lt;condition_variable&gt;#include &lt;forward_list&gt;#include &lt;future&gt;#include &lt;initializer_list&gt;#include &lt;mutex&gt;#include &lt;random&gt;#include &lt;ratio&gt;#include &lt;regex&gt;#include &lt;scoped_allocator&gt;#include &lt;system_error&gt;#include &lt;thread&gt;#include &lt;tuple&gt;#include &lt;typeindex&gt;#include &lt;type_traits&gt;#include &lt;unordered_map&gt;#include &lt;unordered_set&gt;#endif 看了别人对于这个头文件的看法，自己也有了更深的认识，包含大量不需要的库的头文件，更适合在oj比赛中使用。如果在软件工程的开发中，我们应该减少包含，控制编译时间和代码大小。 优点 在竞赛中节约时间 减少了编写所有必要头文件的工作量 对于使用的每个函数，不用记住GNU C++的所有STL 缺点： 不属于GNU C++库的标准头文件，在部分情况下可能会失败 使用它将包含许多不必要的东西，并增加编译时间 这个头文件不是C++标准的一部分，因此是不可移植的，应该避免 编译器每次编译翻译单元时都必须实际读取和分析每个包含的头文件，应该减少这类头文件的使用 参考地址https://blog.csdn.net/qq_20240999/article/details/59111606 https://www.geeksforgeeks.org/bitsstdc-h-c/]]></content>
       <categories>
         <category>C/C++</category>
@@ -239,7 +247,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1028 数的计算]]></title>
-    <url>%2F2019%2F07%2F04%2F%E6%B4%9B%E8%B0%B7%20P1028%20%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1028%20%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97.html</url>
     <content type="text"><![CDATA[洛谷 P1028 数的计算链接https://www.luogu.org/problemnew/show/P1028 题目题目描述我们要求找出具有下列性质数的个数(包含输入的自然数nn): 先输入一个自然数nn(n \le 1000n≤1000),然后对此自然数按照如下方法进行处理: 不作任何处理; 在它的左边加上一个自然数,但该自然数不能超过原数的一半; 加上数后,继续按此规则进行处理,直到不能再加自然数为止. 输入输出格式输入格式： 1个自然数n(n≤1000) 输出格式： 1个整数，表示具有该性质数的个数。 输入输出样例输入样例#1： 6输出样例#1： 6说明满足条件的数为 6，16，26，126，36，136思路题目不难，就是有点没说清楚，也可能是我语文不好emmm。思路就是找的所以可能数的数量，寻找方法是在左侧加入一个小于自身一半的数，加上之后继续寻找，直到那个数为1无法继续添加，而且这个加的数，是上次添加的数的一半。 暴力递归一看就会超时，这种题肯定不能这么做。（如果你打算递归打表那就当我没说） 这边我就先以上限值1000，999，998作为样例。 1000的左侧可以放自身一半以下的数，就是500,499一直到1；f（1000） 999的左侧也是，不过不能放500，只能499到1；f（999） 998的左侧就是499到1，和999相同；f（998）。 综上所述，f（1000）= f（999）+f （500），f（999）= f（998），推广可以找到规律： 当n为偶数时：f（n）= f（n-1） + f（n/2）； 当n为奇数时：f（n）= f（n-1） 所以直接初始化f（0），f（1），之后计算即可。代码1234567891011121314151617181920#include&lt;iostream&gt;using namespace std;int main()&#123; int n, f[1024]; cin&gt;&gt;n; f[0] = 1; f[1] = 1; for(int i = 2; i &lt;= n; i++) &#123; if(i%2==0) f[i] = f[i/2]+f[i-1]; else f[i] = f[i-1]; &#125; cout&lt;&lt;f[n]; return 0;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -247,7 +255,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 217. Contains Duplicate]]></title>
-    <url>%2F2019%2F07%2F03%2FLeetCode%20217.%20Contains%20Duplicate%2F</url>
+    <url>%2FLeetCode%20217.%20Contains%20Duplicate.html</url>
     <content type="text"><![CDATA[217.Contains Duplicate(存在重复元素)链接 https://leetcode-cn.com/problems/contains-duplicate/ 题目给定一个整数数组，判断是否存在重复元素。 如果任何值在数组中出现至少两次，函数返回 true。如果数组中每个元素都不相同，则返回 false。 示例 1: 输入: [1,2,3,1]输出: true示例 2: 输入: [1,2,3,4]输出: false示例 3: 输入: [1,1,1,3,3,4,3,2,4,2]输出: true 思路就是想办法找到重复的数，建议用偷懒的方法减少复杂度。 1.set数据结构，直接把数组中的数装进去，查看两者长度差，得到结果。 2.快排，然后遍历比较前后两个数是否相同，得到结果。 代码1234567891011 public static boolean containsDuplicate(int[] nums) &#123; Set&lt;Integer&gt; ans = new HashSet&lt;Integer&gt;(); for (int i : nums) &#123; ans.add(i); &#125; if (ans.size() == nums.length) &#123; return false; &#125; else &#123; return true; &#125;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -255,7 +263,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 414. Third Maximum Number]]></title>
-    <url>%2F2019%2F07%2F02%2FLeetCode%20414.%20Third%20Maximum%20Number%2F</url>
+    <url>%2FLeetCode%20414.%20Third%20Maximum%20Number.html</url>
     <content type="text"><![CDATA[414.Third Maximum Number （第三大的数）链接https://leetcode-cn.com/problems/third-maximum-number/ 题目给定一个非空数组，返回此数组中第三大的数。如果不存在，则返回数组中最大的数。要求算法时间复杂度必须是O(n)。 示例 1: 输入: [3, 2, 1] 输出: 1 解释: 第三大的数是 1.示例 2: 输入: [1, 2] 输出: 2 解释: 第三大的数不存在, 所以返回最大的数 2 .示例 3: 输入: [2, 2, 3, 1] 输出: 1 解释: 注意，要求返回第三大的数，是指第三大且唯一出现的数。存在两个值为2的数，它们都排第二。 思路简单题目挖了坑，不能直接用排序函数运算，O（n）就只能遍历一遍，所以设置one，two，three表示第一大第二大第三大三个数，遍历比较即可。这里还有两个坑，第一个是存在相同数字的可能性，这个在开始时比较一下就行了。另外一个是，输入里面有-2147483648，需要考虑一下，加一个flag表示即可。遍历完成，如果数组中不相同的数大于等于3个，那么输出three，不然输出one。 代码1234567891011121314151617181920212223242526272829303132333435363738public static int thirdMax(int[] nums) &#123; if (nums.length == 1) &#123; return nums[0]; &#125; else if (nums.length == 2) &#123; return Math.max(nums[0], nums[1]); &#125; int one = Integer.MIN_VALUE; int two = Integer.MIN_VALUE; int three = Integer.MIN_VALUE; int tnum = 0; boolean flag = true; for (int i = 0; i &lt; nums.length; i++) &#123; if (flag &amp;&amp; nums[i] == Integer.MIN_VALUE) &#123; tnum++; flag = false; &#125; if (one == nums[i] || two == nums[i] || three == nums[i]) &#123; continue; &#125; tnum++; if (nums[i] &gt; one) &#123; three = two; two = one; one = nums[i]; &#125; else if (nums[i] &gt; two) &#123; three = two; two = nums[i]; &#125; else if (nums[i] &gt; three) &#123; three = nums[i]; &#125; &#125; if (tnum &gt;= 3) &#123; return three; &#125; else &#123; return one; &#125;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -263,7 +271,7 @@
   </entry>
   <entry>
     <title><![CDATA[洛谷 P1540 机器翻译]]></title>
-    <url>%2F2019%2F07%2F01%2F%E6%B4%9B%E8%B0%B7%20P1540%20%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%2F</url>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1540%20%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91.html</url>
     <content type="text"><![CDATA[洛谷 P1540 机器翻译链接https://www.luogu.org/problemnew/show/p1540 题目题目背景小晨的电脑上安装了一个机器翻译软件，他经常用这个软件来翻译英语文章。 题目描述这个翻译软件的原理很简单，它只是从头到尾，依次将每个英文单词用对应的中文含义来替换。对于每个英文单词，软件会先在内存中查找这个单词的中文含义，如果内存中有，软件就会用它进行翻译；如果内存中没有，软件就会在外存中的词典内查找，查出单词的中文含义然后翻译，并将这个单词和译义放入内存，以备后续的查找和翻译。 假设内存中有M个单元，每单元能存放一个单词和译义。每当软件将一个新单词存入内存前，如果当前内存中已存入的单词数不超过M-，软件会将新单词存入一个未使用的内存单元；若内存中已存入MM个单词，软件会清空最早进入内存的那个单词，腾出单元来，存放新单词。 假设一篇英语文章的长度为N个单词。给定这篇待译文章，翻译软件需要去外存查找多少次词典？假设在翻译开始前，内存中没有任何单词。 输入输出格式输入格式： 共2行。每行中两个数之间用一个空格隔开。 第一行为两个正整数M,N代表内存容量和文章的长度。 第二行为N个非负整数，按照文章的顺序，每个数（大小不超过1000）代表一个英文单词。文章中两个单词是同一个单词，当且仅当它们对应的非负整数相同。 输出格式： 一个整数，为软件需要查词典的次数。 输入输出样例输入样例#1： 3 7 1 2 1 5 4 4 1输出样例#1： 5 思路新建数组a存放输入，ans存放答案，队列q模拟内存和，book记录是否存在。如果单词1在内存中，就将book[1]置为true，移除内存就置为false，每次内存变化ans++，不然直接continue。 水题，用队列可以减少消耗，不过用book存放结果这个思路是别人启发的，比我之前想的查找有效率多了。 （学校开的关于ccf的活动（有空会做），就再开一个洛谷的题解，这部分主要用c++，LeetCode的还是继续用java，也会慢慢更新。暑假要开始996，不过我是不会鸽的） 代码： 123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;iostream&gt;#include&lt;queue&gt;using namespace std;int M,N;int a[1005],ans;bool book[1005];queue&lt;int&gt; q;int main()&#123; cin&gt;&gt;M&gt;&gt;N; ans=0; for(int i=0;i&lt;N;i++) cin&gt;&gt;a[i]; for(int i=0;i&lt;N;i++) &#123; if(book[a[i]]) continue; else &#123; if(q.size()&lt;M) &#123; q.push(a[i]); ans++; book[a[i]]=true; &#125; else &#123; ans++; book[a[i]]=true; book[q.front()]=false; q.push(a[i]); q.pop(); &#125; &#125; &#125; cout&lt;&lt;ans&lt;&lt;endl;&#125;]]></content>
       <categories>
         <category>洛谷</category>
@@ -271,7 +279,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 151. Reverse Words in a String]]></title>
-    <url>%2F2019%2F06%2F24%2FLeetCode%20151.%20Reverse%20Words%20in%20a%20String%2F</url>
+    <url>%2FLeetCode%20151.%20Reverse%20Words%20in%20a%20String.html</url>
     <content type="text"><![CDATA[151.Reverse Words in a String（翻转字符串里的单词）链接https://leetcode-cn.com/problems/reverse-words-in-a-string/ 题目给定一个字符串，逐个翻转字符串中的每个单词。 示例 1： 输入: “the sky is blue”输出: “blue is sky the”示例 2： 输入: “ hello world! “输出: “world! hello”解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。示例 3： 输入: “a good example”输出: “example good a”解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。 说明： 无空格字符构成一个单词。输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。 思路用已有的函数split（” “）去除空格，之后将单词加入新的字符串中，再用trim（）去除首尾空格，成了。 （期末考试基本结束，更新应该有点保障了，估计会更一些深入的东西，尽量不鸽） 代码1234567891011public static String reverseWords(String s) &#123; String[] splitStr = s.split(&quot; &quot;); StringBuffer result = new StringBuffer(&quot;&quot;); for (int i = (splitStr.length - 1); i &gt;= 0; i--) &#123; if (!splitStr[i].equals(&quot;&quot;)) &#123; result.append(splitStr[i]); result.append(&quot; &quot;); &#125; &#125; return result.toString().trim();&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -279,7 +287,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 997. Find the Town Judge]]></title>
-    <url>%2F2019%2F06%2F03%2FLeetCode%20997.%20Find%20the%20Town%20Judge%2F</url>
+    <url>%2FLeetCode%20997.%20Find%20the%20Town%20Judge.html</url>
     <content type="text"><![CDATA[997.Find the Town Judge（找到小镇的法官）链接https://leetcode-cn.com/problems/find-the-town-judge/ 题目在一个小镇里，按从 1 到 N 标记了 N 个人。传言称，这些人中有一个是小镇上的秘密法官。 如果小镇的法官真的存在，那么： 小镇的法官不相信任何人。 每个人（除了小镇法官外）都信任小镇的法官。 只有一个人同时满足属性 1 和属性 2 。 给定数组 trust，该数组由信任对 trust[i] = [a, b] 组成，表示标记为 a 的人信任标记为 b 的人。 如果小镇存在秘密法官并且可以确定他的身份，请返回该法官的标记。否则，返回 -1。 示例 1： 输入：N = 2, trust = [[1,2]] 输出：2示例 2： 输入：N = 3, trust = [[1,3],[2,3]] 输出：3示例 3： 输入：N = 3, trust = [[1,3],[2,3],[3,1]] 输出：-1示例 4： 输入：N = 3, trust = [[1,2],[2,3]] 输出：-1示例 5： 输入：N = 4, trust = [[1,3],[1,4],[2,3],[2,4],[4,3]] 输出：3提示： 1 &lt;= N &lt;= 1000 trust.length &lt;= 10000 trust[i] 是完全不同的 trust[i][0] != trust[i][1] 1 &lt;= trust[i][0], trust[i][1] &lt;= N 思路这题我觉得挺好的，问题新奇（或许吧），解法有趣（还行）。 这题应该新建一个二维数组，第一维表示小镇的人（从1到N），第二维只需要两个，第一个是相信他人的数量，第二个是被他人相信的数量。法官的要求是不相信任何人，且被其他所有人相信，那就是第二维中第一个为0，第二个为N-1，先统计数组，再遍历即可。 （最近快期末了，更新不稳定，估计到21号恢复正常） 代码123456789101112131415public int findJudge(int N, int[][] trust) &#123; int[][] people = new int[N][2]; for (int i = 0; i &lt; trust.length; i++) &#123; int out = trust[i][0]; int in = trust[i][1]; people[out - 1][0]++; people[in - 1][1]++; &#125; for (int i = 0; i &lt; N; i++) &#123; if (people[i][0] == 0 &amp;&amp; people[i][1] == N - 1) &#123; return i + 1; &#125; &#125; return -1;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -287,7 +295,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 977. Squares of a Sorted Array]]></title>
-    <url>%2F2019%2F06%2F03%2FLeetCode%20977.%20Squares%20of%20a%20Sorted%20Array%2F</url>
+    <url>%2FLeetCode%20977.%20Squares%20of%20a%20Sorted%20Array.html</url>
     <content type="text"><![CDATA[977.Squares of a Sorted Array（有序数组的平方）链接https://leetcode-cn.com/problems/squares-of-a-sorted-array/ 题目给定一个按非递减顺序排序的整数数组 A，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。 示例 1： 输入：[-4,-1,0,3,10] 输出：[0,1,9,16,100]示例 2： 输入：[-7,-3,2,3,11] 输出：[4,9,9,49,121]提示： 1 &lt;= A.length &lt;= 10000 -10000 &lt;= A[i] &lt;= 10000 A 已按非递减顺序排序。 思路非递减顺序，再加上存在负数，可以通过在两端比较：先取head和tail表示两端的位置，比较两个数的平方，平方较大者，放到新数组的靠后位置。 （真要偷懒可以直接用sort，但是这样就没啥意义了） 代码1234567891011121314151617181920public int[] sortedSquares(int[] A) &#123; int len = A.length; int head = 0; int tail = len - 1; int[] B = new int[len]; while (head &lt;= tail) &#123; len--; int i = A[head] * A[head]; int j = A[tail] * A[tail]; if (i &gt; j) &#123; B[len] = i; head++; &#125; else &#123; B[len] = j; tail--; &#125; &#125; // B = B.reverse return B;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -295,7 +303,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 559. Maximum Depth of N-ary Tree]]></title>
-    <url>%2F2019%2F06%2F03%2FLeetCode%20559.%20Maximum%20Depth%20of%20N-ary%20Tree%2F</url>
+    <url>%2FLeetCode%20559.%20Maximum%20Depth%20of%20N-ary%20Tree.html</url>
     <content type="text"><![CDATA[559.Maximum Depth of N-ary Tree（N叉树的最大深度）链接https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree/ 题目给定一个 N 叉树，找到其最大深度。 最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。 例如，给定一个 3叉树 : 我们应返回其最大深度，3。 说明: 树的深度不会超过 1000。 树的节点总不会超过 5000。 思路这题只需要遍历即可，如果结点为null，高度不变，结点存在子节点，进入子节点遍历，借助max函数比较得到最大值即可。 代码1234567891011121314151617181920212223242526class Node &#123; public int val; public List&lt;Node&gt; children; public Node() &#123; &#125; public Node(int _val, List&lt;Node&gt; _children) &#123; val = _val; children = _children; &#125;&#125;public int maxDepth(Node root) &#123; if (root == null) &#123; return 0; &#125; int max = 0; for (Node n : root.children) &#123; max = Math.max(max, maxDepth(n)); &#125; return max + 1;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -303,7 +311,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 836. Rectangle Overlap]]></title>
-    <url>%2F2019%2F06%2F03%2FLeetCode%20836.%20Rectangle%20Overlap%2F</url>
+    <url>%2FLeetCode%20836.%20Rectangle%20Overlap.html</url>
     <content type="text"><![CDATA[836.Rectangle Overlap（矩阵重叠）链接https://leetcode-cn.com/problems/rectangle-overlap/ 题目矩形以列表 [x1, y1, x2, y2] 的形式表示，其中 (x1, y1) 为左下角的坐标，(x2, y2) 是右上角的坐标。 如果相交的面积为正，则称两矩形重叠。需要明确的是，只在角或边接触的两个矩形不构成重叠。 给出两个矩形，判断它们是否重叠并返回结果。 示例 1： 输入：rec1 = [0,0,2,2], rec2 = [1,1,3,3] 输出：true示例 2： 输入：rec1 = [0,0,1,1], rec2 = [1,0,2,1] 输出：false说明： 两个矩形 rec1 和 rec2 都以含有四个整数的列表的形式给出。 矩形中的所有坐标都处于 -10^9 和 10^9 之间。 思路以矩阵一为基准，判断矩阵二是否在其中。如果判断有重叠部分的话，需要判断8中条件，所以改为判断无重叠。 rec2[0] &gt;= rec1[2] （代表矩阵二在矩阵一右侧） rec1[0] &gt;= rec2[2] （代表矩阵二在矩阵一左侧） rec2[1] &gt;= rec1[3] （代表矩阵二在矩阵一上方） rec1[1] &gt;= rec2[3]（代表矩阵二在矩阵一下方）这四个条件只要有一个满足就代表二者不重叠。 代码12345678public boolean isRectangleOverlap(int[] rec1, int[] rec2) &#123; if (rec2[0] &gt;= rec1[2] || rec1[0] &gt;= rec2[2] || rec2[1] &gt;= rec1[3] || rec1[1] &gt;= rec2[3]) &#123; return false; &#125; else &#123; return true; &#125;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -311,7 +319,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 709. To Lower Case]]></title>
-    <url>%2F2019%2F06%2F03%2FLeetCode%20709.%20To%20Lower%20Case%2F</url>
+    <url>%2FLeetCode%20709.%20To%20Lower%20Case.html</url>
     <content type="text"><![CDATA[709.To Lower Case（转换为小写字母）链接https://leetcode-cn.com/problems/to-lower-case/ 题目实现函数 ToLowerCase()，该函数接收一个字符串参数 str，并将该字符串中的大写字母转换成小写字母，之后返回新的字符串。 示例 1： 输入: &quot;Hello&quot; 输出: &quot;hello&quot;示例 2： 输入: &quot;here&quot; 输出: &quot;here&quot;示例 3： 输入: &quot;LOVELY&quot; 输出: &quot;lovely&quot;思路这题怎么说呢，直接判断，大写字母转换即可，但是已经有了轮子了，直接调用函数就行。（函数被我注释了） 代码12345678910111213public static String toLowerCase(String str) &#123; char[] c = str.toCharArray(); String s = &quot;&quot;; for (int i = 0; i &lt; str.length(); i++) &#123; if (c[i] &gt;= 65 &amp;&amp; c[i] &lt;= 90) &#123; s = s + (char) (c[i] + 32); &#125; else &#123; s = s + (char) c[i]; &#125; &#125; return s; // return str.toLowerCase();&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -319,7 +327,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 728. Self Dividing Numbers]]></title>
-    <url>%2F2019%2F06%2F03%2FLeetCode%20728.%20Self%20Dividing%20Numbers%2F</url>
+    <url>%2FLeetCode%20728.%20Self%20Dividing%20Numbers.html</url>
     <content type="text"><![CDATA[728.Self Dividing Numbers（自除数）链接https://leetcode-cn.com/problems/self-dividing-numbers/ 题目_自除数 _是指可以被它包含的每一位数除尽的数。 例如，128 是一个自除数，因为 128 % 1 == 0，128 % 2 == 0，128 % 8 == 0。 还有，自除数不允许包含 0 。 给定上边界和下边界数字，输出一个列表，列表的元素是边界（含边界）内所有的自除数。 示例 1： 输入： 上边界left = 1, 下边界right = 22 输出： [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]注意： 每个输入参数的边界满足 1 &lt;= left &lt;= right &lt;= 10000。 思路思路一样很清晰，建立一个List存放答案，在边界值中判断是否满足条件。 新建函数用于判断，函数中要给一个新变量用于进行除法，如果存在0即为false，不能整除也为false。 代码123456789101112131415161718192021public static List&lt;Integer&gt; selfDividingNumbers(int left, int right) &#123; List&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;(); for (int i = left; i &lt;= right; i++) &#123; if (isSelf(i)) &#123; result.add(i); &#125; &#125; return result;&#125;public static boolean isSelf(int number) &#123; int num = number; while (num != 0) &#123; int n = num % 10; num = num / 10; if (n == 0 || number % n != 0) &#123; return false; &#125; &#125; return true;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -327,7 +335,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 551. Student Attendance Record I]]></title>
-    <url>%2F2019%2F06%2F03%2FLeetCode%20551.%20Student%20Attendance%20Record%20I%2F</url>
+    <url>%2FLeetCode%20551.%20Student%20Attendance%20Record%20I.html</url>
     <content type="text"><![CDATA[551.Student Attendance Record I(学生出勤记录 I)链接题目给定一个字符串来代表一个学生的出勤记录，这个记录仅包含以下三个字符： ‘A’ : Absent，缺勤 ‘L’ : Late，迟到 ‘P’ : Present，到场 如果一个学生的出勤记录中不超过一个’A’(缺勤)并且不超过两个连续的’L’(迟到),那么这个学生会被奖赏。 你需要根据这个学生的出勤记录判断他是否会被奖赏。 示例 1: 输入: &quot;PPALLP&quot; 输出: True示例 2: 输入: &quot;PPALLL&quot; 输出: False思路这题思路清晰，只要判断两个条件，缺勤次数少于2，连续迟到次数少于3，可以通过遍历来记录缺勤次数，迟到次数就通过contains函数来统计，LLL就代表连续迟到三次。 代码123456789101112131415public static boolean checkRecord(String s) &#123; int num = 0; for (int i = 0; i &lt; s.length(); i++) &#123; if (s.charAt(i) == &apos;A&apos;) &#123; num++; &#125; if (num &gt;= 2) &#123; return false; &#125; &#125; if (s.contains(&quot;LLL&quot;)) &#123; return false; &#125; return true;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -335,7 +343,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 258. Add Digits]]></title>
-    <url>%2F2019%2F05%2F29%2FLeetCode%20258.%20Add%20Digits%2F</url>
+    <url>%2FLeetCode%20258.%20Add%20Digits.html</url>
     <content type="text"><![CDATA[258.Add Digits（各位相加）链接https://leetcode-cn.com/problems/add-digits/ 题目给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。 示例: 输入: 38 输出: 2 解释: 各位相加的过程为：3 + 8 = 11, 1 + 1 = 2。 由于 2 是一位数，所以返回 2。进阶:你可以不使用循环或者递归，且在 O(1) 时间复杂度内解决这个问题吗？ 思路。。。不让用循环和递归，那就只能找规律了。 假设原数为 100a + 10b +c，相加后是 a + b +c ，二者差值为 99a + 9b，可以被9整除，行了，每次减少的都是9的倍数，直接 %9即可，剩的数就是个位数。 代码1234567891011public static int[] twoSum(int[] nums, int target) &#123; Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) &#123; int number = target - nums[i]; if (map.containsKey(number)) &#123; return new int[]&#123;map.get(number), i&#125;; &#125; map.put(nums[i], i); &#125; throw new IllegalArgumentException(&quot;No two sum solution&quot;); &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -343,7 +351,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 122. Best Time to Buy and Sell Stock II]]></title>
-    <url>%2F2019%2F05%2F29%2FLeetCode%20122.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II%2F</url>
+    <url>%2FLeetCode%20122.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II.html</url>
     <content type="text"><![CDATA[122.Best Time to Buy and Sell Stock II（买卖股票的最佳时机 II）链接https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/ 题目给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。 设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。 注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。 示例 1: 输入: [7,1,5,3,6,4] 输出: 7 解释: 在第 2 天（股票价格 = 1）的时候买入，在第 3 天（股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。 随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6-3 = 3 。示例 2: 输入: [1,2,3,4,5] 输出: 4 解释: 在第 1 天（股票价格 = 1）的时候买入，在第 5 天 （股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。 注意你不能在第 1 天和第 2 天接连购买股票，之后再将它们卖出。 因为这样属于同时参与了多笔交易，你必须在再次购买前出售掉之前的股票。示例 3: 输入: [7,6,4,3,1] 输出: 0 解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。思路也是采用动态规划方式，如果当前天的价格大于之前的最小值，那么就在这天出售，利润增加这天价格和最小值的差，最小值重置为当前天。如果当前天的价格小于最小值，那么最小值置为当前天价格。如果连续增长，例如价格为1,2,3.那么思路就是：利润= （2 - 1） + （3 - 2） = 2. （话说我这个耗时有点长，有缘再优化吧） 代码12345678910public static int addDigits(int num) &#123; if (num &gt; 9) &#123; num = num % 9; if (num == 0) &#123; return 9; &#125; &#125; return num;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -351,7 +359,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 121. Best Time to Buy and Sell Stock]]></title>
-    <url>%2F2019%2F05%2F29%2FLeetCode%20121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%2F</url>
+    <url>%2FLeetCode%20121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.html</url>
     <content type="text"><![CDATA[121.Best Time to Buy and Sell Stock（买卖股票的最佳时机）链接https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/ 题目给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。 如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。 注意你不能在买入股票前卖出股票。 示例 1: 输入: [7,1,5,3,6,4] 输出: 5 解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。 注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格。示例 2: 输入: [7,6,4,3,1] 输出: 0 解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。思路老朋友了，动态规划，直接找出状态转移方程： 第 n 天的最大利润 = max（前 n-1 天的最大利润，第 n 天的价格 - 前 n-1 天的最小价格） 第 n 天的最小价格 = min （前 n-1 天的最小价格，第 n 天的价格） 然后遍历到最后一天就行了。 （话说这题有1234四个型号，这段时间我来把都写完） 代码1234567891011public static int maxProfit(int[] prices) &#123; if (prices.length &lt;= 1) &#123; return 0; &#125; int min = prices[0], max = 0; for (int i = 1; i &lt; prices.length; i++) &#123; max = Math.max(max, prices[i] - min); min = Math.min(min, prices[i]); &#125; return max; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -359,7 +367,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 389. Find the Difference]]></title>
-    <url>%2F2019%2F05%2F29%2FLeetCode%20389.%20Find%20the%20Difference%2F</url>
+    <url>%2FLeetCode%20389.%20Find%20the%20Difference.html</url>
     <content type="text"><![CDATA[389.Find the Difference（找不同）链接https://leetcode-cn.com/problems/find-the-difference/ 题目给定两个字符串 s 和 t ，它们只包含小写字母。 字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。 请找出在 t 中被添加的字母。 示例: 输入： s = &quot;abcd&quot; t = &quot;abcde&quot; 输出： e 解释： &apos;e&apos; 是那个被添加的字母。思路这题的方法挺多的，可以排序之后遍历查找，也可以哈希存储之后找到数值不同的存储位，最后还是选了统计字符串的int值的和，二者的差就是多的那个字母的int值，再次转换就行了。（此思路来自评论，真是大佬思路） 代码123456789101112131415public static char findTheDifference(String s, String t) &#123; char ch1[] = s.toCharArray(); char ch2[] = t.toCharArray(); int sum = 0; for (int i = 0; i &lt; ch1.length; i++) &#123; sum = sum + (int) ch1[i]; &#125; for (int i = 0; i &lt; ch2.length; i++) &#123; sum = sum - (int) ch2[i]; &#125; sum = Math.abs(sum); char c = (char) sum; return c;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -367,7 +375,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 899. Orderly Queue]]></title>
-    <url>%2F2019%2F05%2F28%2FLeetCode%20899.%20Orderly%20Queue%2F</url>
+    <url>%2FLeetCode%20899.%20Orderly%20Queue.html</url>
     <content type="text"><![CDATA[899.Orderly Queue(有序队列)链接https://leetcode-cn.com/problems/orderly-queue/ 题目给出了一个由小写字母组成的字符串 S。然后，我们可以进行任意次数的 移动 。 在每次移动中，我们选择前 K 个字母中的一个（从左侧开始），将其从原位置移除，并放置在字符串的末尾。 返回我们在任意次数的移动之后可以拥有的按字典顺序排列的最小字符串。 示例 1： 输入：S = &quot;cba&quot;, K = 1 输出：&quot;acb&quot; 解释： 在第一步中，我们将第一个字符（&quot;c&quot;）移动到最后，获得字符串 &quot;bac&quot;。 在第二步中，我们将第一个字符（&quot;b&quot;）移动到最后，获得最终结果 &quot;acb&quot;。示例 2： 输入：S = &quot;baaca&quot;, K = 3 输出：&quot;aaabc&quot; 解释： 在第一步中，我们将第一个字符（&quot;b&quot;）移动到最后，获得字符串 &quot;aacab&quot;。 在第二步中，我们将第三个字符（&quot;c&quot;）移动到最后，获得最终结果 &quot;aaabc&quot;。提示： 1 &lt;= K &lt;= S.length &lt;= 1000` S 只由小写字母组成。 思路这题的设定其实有点迷，当K==1时，就代表前后次序（相对位置）并没有改变，只是在开头的可以移到后端。当K！=1时，就代表可以随意组合，直接计算字典最小的序列即可。 直接分类讨论，=1时，新建S=S+S，从前往后取len位比较即可；！=1时，拆为数组，排序，组合即可。 代码12345678910111213141516171819202122public static String orderlyQueue(String S, int K) &#123; int len = S.length(); if (K == 1) &#123; String word = S; S = S + S; for (int i = 0; i &lt; len; i++) &#123; if (word.compareTo(S.substring(i, i + len)) &gt; 0) &#123; word = S.substring(i, i + len); &#125; &#125; return word; &#125; else &#123; char[] word = S.toCharArray(); Arrays.sort(word); StringBuilder sb = new StringBuilder(); for (int i = 0; i &lt; S.length(); i++) &#123; sb.append(word[i]); &#125; return sb.toString(); &#125; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -375,7 +383,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 9. Palindrome Number]]></title>
-    <url>%2F2019%2F05%2F27%2FLeetCode%209.%20Palindrome%20Number%2F</url>
+    <url>%2FLeetCode%209.%20Palindrome%20Number.html</url>
     <content type="text"><![CDATA[9.Palindrome Number（回文数）链接：https://leetcode-cn.com/problems/palindrome-number/ 题目判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 示例 1: 输入: 121 输出: true示例 2: 输入: -121 输出: false 解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。示例 3: 输入: 10 输出: false 解释: 从右向左读, 为 01 。因此它不是一个回文数。进阶: 你能不将整数转为字符串来解决这个问题吗？ 思路正常方法就是对于数进行判断，第一个和最后一个对比，一直对比到中间一个或两个，这种方法采用整数转字符串效率较高。 考虑到进阶，使用转置方法较好，但是这个可能会越界超出int的范围（我真没想到），所以参考了一波别人的思路，只转置一半的数字，就不会越界了（真是个小机灵鬼）。并且数字如果为负数，不会是回文，如果个位是0并且数不为0，也不会回文。并且最后判断的时候，考虑到了奇偶数位，减少了一步判断操作。 代码12345678910111213public static boolean isPalindrome(int x) &#123; if (x &lt; 0 || (x % 10 == 0 &amp;&amp; x != 0)) &#123; return false; &#125; int num = 0; while (x &gt; num) &#123; num = num * 10 + x % 10; x = x / 10; &#125; return x == num || x == num / 10;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -383,7 +391,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 63. Unique Paths II]]></title>
-    <url>%2F2019%2F05%2F25%2FLeetCode%2063.%20Unique%20Paths%20II%2F</url>
+    <url>%2FLeetCode%2063.%20Unique%20Paths%20II.html</url>
     <content type="text"><![CDATA[63.Unique Paths II（不同路径 II）链接https://leetcode-cn.com/problems/unique-paths-ii/ 题目一个机器人位于一个 _m x n _网格的左上角 （起始点在下图中标记为”Start” ）。 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记 为”Finish”）。 现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？ 网格中的障碍物和空位置分别用 1 和 0 来表示。 说明： m 和 _n _的值均不超过 100。 示例 1: 输入: [ [0,0,0], [0,1,0], [0,0,0] ] 输出: 2 解释: 3x3 网格的正中间有一个障碍物。 从左上角到右下角一共有 2 条不同的路径： 1. 向右 -&gt; 向右 -&gt; 向下 -&gt; 向下 2. 向下 -&gt; 向下 -&gt; 向右 -&gt; 向右思路这题和上一题相似，区别在于存在阻碍无法通过，所以不能直接求公式，那么就采用dp算法，建立一个相同大小的数组，存放到达当前格子的路径数量。如果当前格子存在阻碍，那么就始终无法到达，设置为0，如果在第一行或者第一列，如果之前无阻碍就为1（只能通过直线到达），有阻碍就为0。中间的格子也是，有阻碍就为0，没阻碍就是上方格子和左侧格子的和，最后一个格子就是所需的路径数目。 本来我是把第一行第一列提出来先进行运算的，但是这样有点浪费时间，就把这些都放在一起了，好像快了一点点。 代码12345678910111213141516171819202122public int uniquePathsWithObstacles(int[][] obstacleGrid) &#123; int m = obstacleGrid.length; int n = obstacleGrid[0].length; int[][] dp = new int[m][n]; for (int i = 0; i &lt; m; i++) &#123; for (int j = 0; j &lt; n; j++) &#123; if (obstacleGrid[i][j] == 1) &#123; dp[i][j] = 0; &#125; else if (i == 0 &amp;&amp; j == 0) &#123; dp[i][j] = 1; &#125; else if (i == 0 &amp;&amp; j != 0) &#123; dp[i][j] = dp[i][j - 1]; &#125; else if (j == 0 &amp;&amp; i != 0) &#123; dp[i][j] = dp[i - 1][j]; &#125; else &#123; dp[i][j] = dp[i - 1][j] + dp[i][j - 1]; &#125; &#125; &#125; return dp[m - 1][n - 1]; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -391,7 +399,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 62. Unique Paths]]></title>
-    <url>%2F2019%2F05%2F25%2FLeetCode%2062.%20Unique%20Paths%2F</url>
+    <url>%2FLeetCode%2062.%20Unique%20Paths.html</url>
     <content type="text"><![CDATA[62.Unique Paths（不同路径）链接https://leetcode-cn.com/problems/unique-paths/ 题目一个机器人位于一个 _m x n _网格的左上角 （起始点在下图中标记为”Start” ）。 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为”Finish”）。 问总共有多少条不同的路径？ 说明： m 和 _n _的值均不超过 100。 示例 1: 输入: m = 3, n = 2 输出: 3 解释: 从左上角开始，总共有 3 条路径可以到达右下角。 1. 向右 -&gt; 向右 -&gt; 向下 2. 向右 -&gt; 向下 -&gt; 向右 3. 向下 -&gt; 向右 -&gt; 向右思路：这题本来想偷个懒，直接计算排列组合公式的，一共要向右走n-1步，向下走m-1步，这就是一个简单的组合问题，m+n-2中任选m-1步向下，计算C（m+n-2,m-1）。但是。。。我发现这样会超出范围，所以还是用了别的方法，数组填数。 到达每个格子有两条路径，从上面下来，从左边过来，如果有x条路径可以到达上方格子，y条路径到达左侧格子，到达这个格子就有x+y条路径，直接循环，最后一个格子的数就是路径数。 C（m+n-2,m-1）直接计算会超时，所以可以考虑到优化算法（日后补上。。。咕咕咕）。 代码：12345678910111213public int uniquePaths(int m, int n) &#123; int[][] dp = new int[m][n]; for (int i = 0; i &lt; m; i++) &#123; for (int j = 0; j &lt; n; j++) &#123; if (i == 0 || j == 0) &#123; dp[i][j] = 1; &#125; else &#123; dp[i][j] = dp[i - 1][j] + dp[i][j - 1]; &#125; &#125; &#125; return dp[m - 1][n - 1];&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -399,7 +407,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 695. Max Area of Island]]></title>
-    <url>%2F2019%2F05%2F25%2FLeetCode%20695.%20Max%20Area%20of%20Island%2F</url>
+    <url>%2FLeetCode%20695.%20Max%20Area%20of%20Island.html</url>
     <content type="text"><![CDATA[695.Max Area of Island（岛屿的最大面积）链接https://leetcode-cn.com/problems/max-area-of-island/ 题目给定一个包含了一些 0 和 1的非空二维数组 grid , 一个 岛屿 是由四个方向 (水平或垂直) 的 1 (代表土地)构成的组合。你可以假设二维矩阵的四个边缘都被水包围着。 找到给定的二维数组中最大的岛屿面积。(如果没有岛屿，则返回面积为0。) 示例 1: [[0,0,1,0,0,0,0,1,0,0,0,0,0], [0,0,0,0,0,0,0,1,1,1,0,0,0], [0,1,1,0,1,0,0,0,0,0,0,0,0], [0,1,0,0,1,1,0,0,1,0,1,0,0], [0,1,0,0,1,1,0,0,1,1,1,0,0], [0,0,0,0,0,0,0,0,0,0,1,0,0], [0,0,0,0,0,0,0,1,1,1,0,0,0], [0,0,0,0,0,0,0,1,1,0,0,0,0]]对于上面这个给定矩阵应返回 6。注意答案不应该是11，因为岛屿只能包含水平或垂直的四个方向的’1’。 示例 2: [[0,0,0,0,0,0,0,0]]对于上面这个给定的矩阵, 返回 0。 注意: 给定的矩阵grid 的长度和宽度都不超过 50。 思路一看到这道题，我的第一个想法是遍历，全部跑一遍就行，之后考虑到效率问题，选择了使用dfs来进行查找，从第一个格子开始，如果是0那么就换下一个格子，是1就对那个格子进行深度优先搜索，搜索格子上下左右，如果是1就继续搜索，直到跑完全图。 （最近事有点多，等有空了打算建个算法合集方便学习，比如前段时间的动态规划） 代码12345678910111213141516171819202122232425262728public int maxAreaOfIsland(int[][] grid) &#123; int i = 0, j = 0; int m = grid.length; int n = grid[0].length; int area = 0, max = 0; for (i = 0; i &lt; m; i++) &#123; for (j = 0; j &lt; n; j++) &#123; if (grid[i][j] == 1) &#123; area = dfs(i, j, m, n, grid, 0); max = Math.max(area, max); &#125; &#125; &#125; return max; &#125; private int dfs(int i, int j, int m, int n, int[][] grid, int c_area) &#123; if (grid[i][j] == 0 || i &lt; 0 || i &gt;= m || j &lt; 0 || j &gt;= n) &#123; return c_area; &#125; grid[i][j] = 0; c_area = c_area + 1; c_area = dfs(i + 1, j, m, n, grid, c_area); c_area = dfs(i - 1, j, m, n, grid, c_area); c_area = dfs(i, j + 1, m, n, grid, c_area); c_area = dfs(i, j - 1, m, n, grid, c_area); return c_area; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -407,7 +415,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 125. Valid Palindrome]]></title>
-    <url>%2F2019%2F05%2F21%2FLeetCode%20125.%20Valid%20Palindrome%2F</url>
+    <url>%2FLeetCode%20125.%20Valid%20Palindrome.html</url>
     <content type="text"><![CDATA[125.Valid Palindrome（验证回文串）链接https://leetcode-cn.com/problems/valid-palindrome/ 题目给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。 说明：本题中，我们将空字符串定义为有效的回文串。 示例 1: 输入: &quot;A man, a plan, a canal: Panama&quot; 输出: true示例 2: 输入: &quot;race a car&quot; 输出: false思路简单的回文串判断，建立新的StringBuilder用于存放字符串中的字母和数字，之后直接借助reverse（）函数来进行转置，判断是否相同，这里需要用equals（），==判断字符串经常出问题。 代码：1234567891011121314public boolean isPalindrome(String s) &#123; if (s == null) &#123; return true; &#125; s = s.toLowerCase(); char[] word = s.toCharArray(); StringBuilder str = new StringBuilder(); for (int i = 0; i &lt; word.length; i++) &#123; if ((word[i] &gt;= &apos;0&apos; &amp;&amp; word[i] &lt;= &apos;9&apos;) || (word[i] &gt;= &apos;a&apos; &amp;&amp; word[i] &lt;= &apos;z&apos;)) &#123; str.append(word[i]); &#125; &#125; return str.toString().equals(str.reverse().toString()); &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -415,7 +423,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 112. Path Sum]]></title>
-    <url>%2F2019%2F05%2F21%2FLeetCode%20112.%20Path%20Sum%2F</url>
+    <url>%2FLeetCode%20112.%20Path%20Sum.html</url>
     <content type="text"><![CDATA[112.Path Sum（路径组合）链接https://leetcode-cn.com/problems/path-sum/ 题目给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。 说明: 叶子节点是指没有子节点的节点。 示例:给定如下二叉树，以及目标和 sum = 22， 5 / \ 4 8 / / \ 11 13 4 / \ \ 7 2 1返回 true, 因为存在目标和为 22 的根节点到叶子节点的路径 5-&gt;4-&gt;11-&gt;2。 思路简单的二叉树遍历问题，直接从根节点开始，遍历方式可以自选，递归计算，每次都把所需和减去当前节点值。 代码12345678910111213141516171819202122 public class TreeNode &#123; int val; TreeNode left; TreeNode right; TreeNode(int x) &#123; val = x; &#125;&#125;public boolean hasPathSum(TreeNode root, int sum) &#123; if (root == null) &#123; return false; &#125; if (root.left == null &amp;&amp; root.right == null) &#123; return sum == root.val; &#125; return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -423,7 +431,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 866. Prime Palindrome]]></title>
-    <url>%2F2019%2F05%2F20%2FLeetCode%20866.%20Prime%20Palindrome%2F</url>
+    <url>%2FLeetCode%20866.%20Prime%20Palindrome.html</url>
     <content type="text"><![CDATA[866.Prime Palindrome(回文素数)链接https://leetcode-cn.com/problems/prime-palindrome/ 题目求出大于或等于 N 的最小回文素数。 回顾一下，如果一个数大于 1，且其因数只有 1 和它自身，那么这个数是 素数 。 例如，2，3，5，7，11 以及 13 是素数。 回顾一下，如果一个数从左往右读与从右往左读是一样的，那么这个数是 回文数。 例如，12321 是回文数。 思路思路还是挺清晰的，从给入数字向上检索，如果既是回文数，又是素数，就直接输出，如果不满足条件，那么就增加数字，继续判断。 这里有一个小问题，就是所有偶数位的回文数，都可以被11整除，至于证明。。。。。咱也不知道，咱也不敢问，所有如果发现这个数是偶数位，那么直接进一位，首数字和尾数字全为1，继续判断。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647public static int primePalindrome(int N) &#123; if (N &lt;= 2) &#123; return 2; &#125; else if (N &lt;= 3) &#123; return 3; &#125; else if (N &lt;= 5) &#123; return 5; &#125; else if (N &lt;= 7) &#123; return 7; &#125; else if (N &lt;= 11) &#123; return 11; &#125; for (int i = N; ; ) &#123; if (isHui(i) &amp;&amp; isPrime(i)) &#123; return i; &#125; if ((i + &quot;&quot;).length() % 2 == 0) &#123; i = (int) (Math.pow(10, (i + &quot;&quot;).length()) + 1); &#125; else &#123; i++; &#125; &#125;&#125;public static boolean isPrime(int i) &#123; for (int j = 2; j &lt;= Math.sqrt(i); j++) &#123; if (i % j == 0) &#123; return false; &#125; &#125; return true;&#125;public static boolean isHui(int s) &#123; String str = s + &quot;&quot;; int len = str.length(); for (int j = 0; j &lt; len / 2; j++) &#123; if (str.charAt(j) != str.charAt(len - j - 1)) &#123; return false; &#125; &#125; return true;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -431,7 +439,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 51.N-Queens]]></title>
-    <url>%2F2019%2F05%2F20%2FLeetCode%2051.N-Queens%2F</url>
+    <url>%2FLeetCode%2051.N-Queens.html</url>
     <content type="text"><![CDATA[51.N-Queens(N皇后)链接https://leetcode-cn.com/problems/n-queens/ 题目n _皇后问题研究的是如何将 _n 个皇后放置在 n × n 的棋盘上，并且使皇后彼此之间不能相互攻击。 给定一个整数 n ，返回所有不同的 _n _皇后问题的解决方案。 每一种解法包含一个明确的 n 皇后问题的棋子放置方案，该方案中 &#39;Q&#39; 和 &#39;.&#39; 分别代表了皇后和空位。 示例: 输入: 4 输出: [ [&quot;.Q..&quot;, // 解法 1 &quot;...Q&quot;, &quot;Q...&quot;, &quot;..Q.&quot;], [&quot;..Q.&quot;, // 解法 2 &quot;Q...&quot;, &quot;...Q&quot;, &quot;.Q..&quot;] ] 解释: 4 皇后问题存在两个不同的解法。思路这题的思路和之前的N皇后II一样，都是运用回溯法，只是输出较难设置，还有一个重点，是其中存放答案的res，需要在每次计算前clear一下，要不然就无法ac。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647private static boolean col[];private static boolean line1[];private static boolean line2[];private static int answer[];private static List&lt;List&lt;String&gt;&gt; res = new LinkedList&lt;&gt;();public static List&lt;List&lt;String&gt;&gt; solveNQueens(int n) &#123; col = new boolean[n]; line1 = new boolean[2 * n - 1]; line2 = new boolean[2 * n - 1]; answer = new int[n]; res.clear(); putQueen(n, 0); return res;&#125;private static void putQueen(int n, int index) &#123; if (index == n) &#123; List&lt;String&gt; item = new ArrayList&lt;String&gt;(); for (int i = 0; i &lt; answer.length; i++) &#123; StringBuilder sb = new StringBuilder(); for (int j = 0; j &lt; answer.length; j++) &#123; if (answer[i] != j) &#123; sb.append(&apos;.&apos;); &#125; else &#123; sb.append(&apos;Q&apos;); &#125; &#125; item.add(sb.toString()); &#125; res.add(item); &#125; for (int i = 0; i &lt; n; i++) &#123; if (!col[i] &amp;&amp; !line1[i - index + n - 1] &amp;&amp; !line2[i + index]) &#123; answer[index] = i; col[i] = true; line1[i - index + n - 1] = true; line2[i + index] = true; col[i] = false; line1[i - index + n - 1] = false; line2[i + index] = false; &#125; &#125;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -439,7 +447,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 52.N-Queens II]]></title>
-    <url>%2F2019%2F05%2F19%2FLeetCode%2052.N-Queens%20II%2F</url>
+    <url>%2FLeetCode%2052.N-Queens%20II.html</url>
     <content type="text"><![CDATA[804.N-Queens II（N 皇后 II）链接：https://leetcode-cn.com/problems/n-queens-ii/ 题目n _皇后问题研究的是如何将 _n 个皇后放置在 n × n 的棋盘上，并且使皇后彼此之间不能相互攻击。 给定一个整数 n ，返回 n 皇后不同的解决方案的数量。 示例: 输入: 4 输出: 2 解释: 4 皇后问题存在如下两个不同的解法。 [ [&quot;.Q..&quot;, // 解法 1 &quot;...Q&quot;, &quot;Q...&quot;, &quot;..Q.&quot;], [&quot;..Q.&quot;, // 解法 2 &quot;Q...&quot;, &quot;...Q&quot;, &quot;.Q..&quot;] ]思路这题思路较清晰，先在第一行第一列放置皇后，之后第二行寻找可以放皇后的地方，一行一行放置，如果哪一行不能放置，那么就回溯到上一行，如果放置到了最后一行，那么就代表这种情况成立，计数加一，返回之前一步。 图解从左上角开始，line1是正对角线，line2是斜对角线，col是竖列。 代码1234567891011121314151617181920212223242526272829303132333435363738//列private static boolean col[];//正对角线 x-y+n-1private static boolean line1[];//斜对角线 x+yprivate static boolean line2[];public static int totalNQueens(int n) &#123; col = new boolean[n]; line1 = new boolean[2 * n - 1]; line2 = new boolean[2 * n - 1]; return putQueen(n, 0);&#125;private static int putQueen(int n, int index) &#123; int flag = 0; if (index == n) &#123; return 1; &#125; for (int i = 0; i &lt; n; i++) &#123; if (!col[i] &amp;&amp; !line1[i - index + n - 1] &amp;&amp; !line2[i + index]) &#123; col[i] = true; line1[i - index + n - 1] = true; line2[i + index] = true; flag = flag + putQueen(n, index + 1); col[i] = false; line1[i - index + n - 1] = false; line2[i + index] = false; &#125; &#125; return flag;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -447,7 +455,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 804. Unique Morse Code Words]]></title>
-    <url>%2F2019%2F05%2F18%2FLeetCode%20804.%20Unique%20Morse%20Code%20Words%2F</url>
+    <url>%2FLeetCode%20804.%20Unique%20Morse%20Code%20Words.html</url>
     <content type="text"><![CDATA[804.Unique Morse Code Words(唯一摩尔斯密码词)链接https://leetcode-cn.com/problems/unique-morse-code-words/ 题目国际摩尔斯密码定义一种标准编码方式，将每个字母对应于一个由一系列点和短线组成的字符串， 比如: &quot;a&quot; 对应 &quot;.-&quot;, &quot;b&quot;对应&quot;-...&quot;, &quot;c&quot; 对应 &quot;-.-.&quot;, 等等。 为了方便，所有26个英文字母对应摩尔斯密码表如下： [&quot;.-&quot;,&quot;-...&quot;,&quot;-.-.&quot;,&quot;-..&quot;,&quot;.&quot;,&quot;..-.&quot;,&quot;--.&quot;,&quot;....&quot;,&quot;..&quot;,&quot;.---&quot;,&quot;-.-&quot;,&quot;.-..&quot;,&quot;--&quot;,&quot;-.&quot;,&quot;---&quot;,&quot;.--.&quot;,&quot;--.-&quot;,&quot;.-.&quot;,&quot;...&quot;,&quot;-&quot;,&quot;..-&quot;,&quot;...-&quot;,&quot;.--&quot;,&quot;-..-&quot;,&quot;-.--&quot;,&quot;--..&quot;]给定一个单词列表，每个单词可以写成每个字母对应摩尔斯密码的组合。例如，”cab” 可以写成 “-.-..–…”，(即 “-.-.” + “-…” “.-“字符串的结合)。我们将这样一个连接过程称作单词翻译。 返回我们可以获得所有词不同单词翻译的数量。 例如: 输入: words = [&quot;gin&quot;, &quot;zen&quot;, &quot;gig&quot;, &quot;msg&quot;] 输出: 2 解释: 各单词翻译如下: &quot;gin&quot; -&gt; &quot;--...-.&quot; &quot;zen&quot; -&gt; &quot;--...-.&quot; &quot;gig&quot; -&gt; &quot;--...--.&quot; &quot;msg&quot; -&gt; &quot;--...--.&quot; 共有 2 种不同翻译, &quot;--...-.&quot; 和 &quot;--...--.&quot;.注意: 单词列表words 的长度不会超过 100。 每个单词 words[i]的长度范围为 [1, 12]。 每个单词 words[i]只包含小写字母。 思路这道题的思路比较清晰，对于每一个word，将之转换为摩斯电码，使用hashset存储，最后统计这个散列表里面的值即可。 代码123456789101112131415public static int uniqueMorseRepresentations(String[] words) &#123; String[] codes = &#123;&quot;.-&quot;, &quot;-...&quot;, &quot;-.-.&quot;, &quot;-..&quot;, &quot;.&quot;, &quot;..-.&quot;, &quot;--.&quot;, &quot;....&quot;, &quot;..&quot;, &quot;.---&quot;, &quot;-.-&quot;, &quot;.-..&quot;, &quot;--&quot;, &quot;-.&quot;, &quot;---&quot;, &quot;.--.&quot;, &quot;--.-&quot;, &quot;.-.&quot;, &quot;...&quot;, &quot;-&quot;, &quot;..-&quot;, &quot;...-&quot;, &quot;.--&quot;, &quot;-..-&quot;, &quot;-.--&quot;, &quot;--..&quot;&#125;; HashSet&lt;String&gt; hashset = new HashSet&lt;String&gt;(); for (int i = 0; i &lt; words.length; i++) &#123; String word = words[i]; StringBuilder sc = new StringBuilder(&quot;&quot;); for (int j = 0; j &lt; word.length(); j++) &#123; sc.append(codes[word.charAt(j) - 97]); &#125; hashset.add(sc.toString()); &#125; return hashset.size();&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -455,7 +463,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 712. Minimum ASCII Delete Sum for Two Strings]]></title>
-    <url>%2F2019%2F05%2F17%2FLeetCode%20712.%20Minimum%20ASCII%20Delete%20Sum%20for%20Two%20Strings%2F</url>
+    <url>%2FLeetCode%20712.%20Minimum%20ASCII%20Delete%20Sum%20for%20Two%20Strings.html</url>
     <content type="text"><![CDATA[712.Minimum ASCII Delete Sum for Two Strings（两个字符串的最小ASCII删除和） 链接https://leetcode-cn.com/problems/minimum-ascii-delete-sum-for-two-strings/ 题目给定两个字符串s1, s2，找到使两个字符串相等所需删除字符的ASCII值的最小和。 示例 1: 输入: s1 = &quot;sea&quot;, s2 = &quot;eat&quot; 输出: 231 解释: 在 &quot;sea&quot; 中删除 &quot;s&quot; 并将 &quot;s&quot; 的值(115)加入总和。 在 &quot;eat&quot; 中删除 &quot;t&quot; 并将 116 加入总和。 结束时，两个字符串相等，115 + 116 = 231 就是符合条件的最小和。注意: 0 &lt; s1.length, s2.length &lt;= 1000。所有字符串中的字符ASCII值在[97, 122]之间。 思路与前段时间的最小编辑距离相似，这题一看就觉得应该用动态规划，缺什么就定义什么，这边需求最小和，那么就设定数组step[][]，和sc1[]，sc2[]。后两个是输入字符串转换而来，减少运算时间。step[i][j]数组是用于存放s1中前i 个字母和s2中前 j 个字母的最小删除和 。 首先进行初始化，原点的值为0，之后行列就是将前n为清空所需的最小删除和，之后进行二维计算。 此时对于s1中的第 i+1 个字母，和s2中的第 j+1 个字母，进行判断： 如果二者相同，则无需变化，直接 step[ i+1 ][ j+1 ] = step[ i ][ j ] ； 二者不同，就要考虑是删除s1的新字母还是删除s2的新字母，当然，还有两种都删除， 即为 step[ i+1 ][ j+1 ] = Min(num1，num2，num3); 最后得到的step[ i ][ j ]就是最小删除和。 图解红色加大部分是e，相同，即为左上格子的值；黑色加大是不同的，三选一，找到最小值。 代码1234567891011121314151617181920212223242526272829303132public static int minimumDeleteSum(String s1, String s2) &#123; int len1 = s1.length(); int len2 = s2.length(); char[] sc1 = s1.toCharArray(); char[] sc2 = s2.toCharArray(); int[][] step = new int[len1 + 1][len2 + 1]; step[0][0] = 0; for (int i = 1; i &lt;= len1; i++) &#123; step[i][0] = step[i - 1][0] + sc1[i - 1]; &#125; for (int j = 1; j &lt;= len2; j++) &#123; step[0][j] = step[0][j - 1] + sc2[j - 1]; &#125; for (int i = 1; i &lt;= len1; i++) &#123; for (int j = 1; j &lt;= len2; j++) &#123; if (sc1[i - 1] == sc2[j - 1]) &#123; step[i][j] = step[i - 1][j - 1]; &#125; else &#123; step[i][j] = Math.min(Math.min(step[i - 1][j] + sc1[i - 1], step[i][j - 1] + sc2[j - 1]), step[i - 1][j - 1] + sc1[i - 1] + sc2[j - 1]); &#125; &#125; &#125; return step[len1][len2];&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -463,7 +471,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 1021. Remove Outermost Parentheses]]></title>
-    <url>%2F2019%2F05%2F15%2FLeetCode%201021.%20Remove%20Outermost%20Parentheses%2F</url>
+    <url>%2FLeetCode%201021.%20Remove%20Outermost%20Parentheses.html</url>
     <content type="text"><![CDATA[1021.Remove Outermost Parentheses（删除最外层的括号）链接https://leetcode-cn.com/problems/remove-outermost-parentheses/ 题目有效括号字符串为空 (&quot;&quot;)、&quot;(&quot; + A + &quot;)&quot; 或 A + B，其中 A 和 B 都是有效的括号字符串，+代表字符串的连接。例如，&quot;&quot;，&quot;()&quot;，&quot;(())()&quot; 和 &quot;(()(()))&quot; 都是有效的括号字符串。 如果有效字符串 S 非空，且不存在将其拆分为 S = A+B 的方法，我们称其为原语（primitive），其中 A 和 B都是非空有效括号字符串。 给出一个非空有效字符串 S，考虑将其进行原语化分解，使得：S = P_1 + P_2 + ... + P_k，其中 P_i是有效括号字符串原语。 对 S 进行原语化分解，删除分解中每个原语字符串的最外层括号，返回 S 。 示例 1： 输入：&quot;(()())(())&quot; 输出：&quot;()()()&quot; 解释： 输入字符串为 &quot;(()())(())&quot;，原语化分解得到 &quot;(()())&quot; + &quot;(())&quot;， 删除每个部分中的最外层括号后得到 &quot;()()&quot; + &quot;()&quot; = &quot;()()()&quot;。示例 2： 输入：&quot;(()())(())(()(()))&quot; 输出：&quot;()()()()(())&quot; 解释： 输入字符串为 &quot;(()())(())(()(()))&quot;，原语化分解得到 &quot;(()())&quot; + &quot;(())&quot; + &quot;(()(()))&quot;， 删除每隔部分中的最外层括号后得到 &quot;()()&quot; + &quot;()&quot; + &quot;()(())&quot; = &quot;()()()()(())&quot;。示例 3： 输入：&quot;()()&quot; 输出：&quot;&quot; 解释： 输入字符串为 &quot;()()&quot;，原语化分解得到 &quot;()&quot; + &quot;()&quot;， 删除每个部分中的最外层括号后得到 &quot;&quot; + &quot;&quot; = &quot;&quot;。提示： S.length &lt;= 10000 S[i] 为 &quot;(&quot; 或 &quot;)&quot; S 是一个有效括号字符串 思路这个题目以前做过的，设定一个flag位为0，对于字符串进行遍历，遇到左括号flag增加，遇到右括号flag减少，当flag重新为0即代表括号到达最外层，满足消去条件，直到检索完字符串。 （这题我本来使用的是s.charAt（），之后发现性能较差，于是改变使用StringBuilder，用字符数组解决） 代码1234567891011121314151617181920public static String removeOuterParentheses(String S) &#123; StringBuilder password = new StringBuilder(); char[] word = S.toCharArray(); int val = 0; for (int i = 0; i &lt; word.length; i++) &#123; if (word[i] == &apos;(&apos;) &#123; val++; if (val != 1) &#123; password.append(word[i]); &#125; &#125; else &#123; val--; if (val != 0) &#123; password.append(word[i]); &#125; &#125; &#125; return password.toString(); &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -471,7 +479,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 931. Minimum Falling Path Sum]]></title>
-    <url>%2F2019%2F05%2F14%2FLeetCode%20931.%20Minimum%20Falling%20Path%20Sum%2F</url>
+    <url>%2FLeetCode%20931.%20Minimum%20Falling%20Path%20Sum.html</url>
     <content type="text"><![CDATA[72.Minimum Falling Path Sum（下降路径最小和）链接https://leetcode-cn.com/problems/minimum-falling-path-sum/ 题目给定一个方形整数数组 A，我们想要得到通过 A 的 下降路径 的最小和。 下降路径可以从第一行中的任何元素开始，并从每一行中选择一个元素。在下一行选择的元素和当前行所选元素最多相隔一列。 示例： 输入：[[1,2,3],[4,5,6],[7,8,9]] 输出：12 解释： 可能的下降路径有： * [1,4,7], [1,4,8], [1,5,7], [1,5,8], [1,5,9] * [2,4,7], [2,4,8], [2,5,7], [2,5,8], [2,5,9], [2,6,8], [2,6,9] * [3,5,7], [3,5,8], [3,5,9], [3,6,8], [3,6,9]和最小的下降路径是 [1,4,7]，所以答案是 12。 思路从第二行开始，上方下落路径至多三条，左上，上，右上，如果是两侧只有两条路径。直接在上方数字中找到最小数值，加上本身数值，这就是到达该点的和最小的下降路径。 接下来一行一行向下，直到计算到最后一行，遍历最后一行，找到最小值即可。 图解红色是计算式，左上角是本来数组的值。 代码123456789101112131415161718192021public static int minFallingPathSum(int[][] A) &#123; int min = 9999; int len = A.length; for (int i = 1; i &lt; len; i++) &#123; for (int j = 0; j &lt; len; j++) &#123; if (j == 0) &#123; A[i][j] = A[i][j] + Math.min(A[i - 1][j], A[i - 1][j + 1]); &#125; else if (j == len - 1) &#123; A[i][j] = A[i][j] + Math.min(A[i - 1][j], A[i - 1][j - 1]); &#125; else &#123; A[i][j] = A[i][j] + Math.min(A[i - 1][j], Math.min(A[i - 1][j - 1], A[i - 1][j + 1])); &#125; &#125; &#125; for (int i = 0; i &lt; len; i++) &#123; if (min &gt; A[len - 1][i]) &#123; min = A[len - 1][i]; &#125; &#125; return min;&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -479,7 +487,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 1. Two Sum]]></title>
-    <url>%2F2019%2F05%2F14%2FLeetCode%201.%20Two%20Sum%2F</url>
+    <url>%2FLeetCode%201.%20Two%20Sum.html</url>
     <content type="text"><![CDATA[1.Two Sum（两数之和）链接https://leetcode-cn.com/problems/two-sum/ 题目给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例: 给定 nums = [2, 7, 11, 15], target = 9 因为 nums[0] + nums[1] = 2 + 7 = 9 所以返回 [0, 1] 思路简单的遍历即可，考虑到复杂度可以借助hashmap，只需要图的基本操作即可。 代码：代码一（时间消耗量较大）12345678910111213public static int[] twoSum(int[] nums, int target) &#123; Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) map.put(nums[i], i); for (int i = 0; i &lt; nums.length; i++) &#123; int number = target - nums[i]; if (map.containsKey(number)&amp;&amp;map.get(number)!=i) &#123; return new int[] &#123; map.get(number), i &#125;; &#125; &#125; throw new IllegalArgumentException(&quot;No two sum solution&quot;);&#125; 代码二（优化之后）123456789101112public static int[] twoSum(int[] nums, int target) &#123; Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) &#123; int number = target - nums[i]; if (map.containsKey(number)) &#123; return new int[] &#123; map.get(number), i &#125;; &#125; map.put(nums[i], i); &#125; throw new IllegalArgumentException(&quot;No two sum solution&quot;); &#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -487,7 +495,7 @@
   </entry>
   <entry>
     <title><![CDATA[LeetCode 72. Edit Distance]]></title>
-    <url>%2F2019%2F05%2F13%2FLeetCode%2072.%20Edit%20Distance%2F</url>
+    <url>%2FLeetCode%2072.%20Edit%20Distance.html</url>
     <content type="text"><![CDATA[72.Edit Distance（编辑距离）链接https://leetcode-cn.com/problems/edit-distance/ 题目给定两个单词 word1 和 word2 ，计算出将 word1 转换成 _word2 _所使用的最少操作数 。 你可以对一个单词进行如下三种操作： 插入一个字符 删除一个字符 替换一个字符 思路多次选择试图得到最优解，那么考虑动态规划。 先假设word1有len1位，word2有len2位，建立数组step，step[i][j]就代表我们要将word1前 i 位转换为word2前 j位的最少数量。 此时word1查找到第 i+1 位字母a，word2查找到第 j+1 位字母b，我们直接比较这两个字母，能得到两种情况： 1.a=b：那么就不需要操作，此时word1前 i+1 位替换为word2前 j+1 位只需要step[i][j]步 即为 step[ i+1 ][ j+1 ] = step[ i ][ j ] 2.a!=b：就要在给定的三种操作方式中选择最优解，再增加一步操作即可 即为 step[ i+1 ][ j+1 ] = Min(num1，num2，num3); 最后得到的step[ i ][ j ]就是最短编辑距离。 图解首先建立数组，将红色部分赋值，之后开始按照顺序计算，从word1转换为word2，step[ i ][ j ]就是最短编辑距离，step[ i-1][ j]就是插入，step[ i ][ j-1 ]就是删除，step[ i-1 ][ j-1]就是修改，如果不相同就从三种决策中寻找最小值加一，相同就直接添加，值等于step[ i-1 ][ j-1 ]。 例如AB-&gt;ABC（大号红色字体），B和C不同，左侧（AB-&gt;AB）0次，左上（A-&gt;AB）1次，上方(A-&gt;ABC)2次，选择三种情况最小值，再进行一步操作（左侧AB-&gt;AB-&gt;ABC），只需要1次。 或者ABDC-&gt;ABC(大号蓝色字体)，C与C相同，直接进行左上（ABD-&gt;AB-ABC）,也只需要1次。 代码12345678910111213141516171819202122232425262728293031323334public static int minDistance(String word1, String word2) &#123; int len1 = word1.length(); int len2 = word2.length(); int[][] step = new int[len1 + 1][len2 + 1]; for (int i = 0; i &lt;= len1; i++) &#123; step[i][0] = i; &#125; for (int j = 0; j &lt;= len2; j++) &#123; step[0][j] = j; &#125; for (int i = 1; i &lt;= len1; i++) &#123; char letter1 = word1.charAt(i - 1); for (int j = 1; j &lt;= len2; j++) &#123; char letter2 = word2.charAt(j - 1); if (letter1 == letter2) &#123; //若字母相同，即直接添加，不增加步数 step[i][j] = step[i - 1][j - 1]; &#125; else &#123; int ReNum = step[i - 1][j - 1] + 1; //修改 int InNum = step[i - 1][j] + 1; //插入 int DeNum = step[i][j - 1] + 1; //删除 int min = Math.min(ReNum, Math.min(InNum, DeNum)); step[i][j] = min; &#125; &#125; &#125; return step[len1][len2];&#125;]]></content>
       <categories>
         <category>LeetCode</category>
@@ -495,15 +503,15 @@
   </entry>
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
-    <url>%2F2019%2F03%2F25%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#x6e;&#100;&#x40;&#49;&#54;&#51;&#46;&#99;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#x65;&#x63;&#101;&#x69;&#118;&#x65;&#64;&#x31;&#54;&#x33;&#x2e;&#99;&#111;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#110;&#x64;&#x40;&#49;&#54;&#x33;&#x2e;&#99;&#111;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#x65;&#x63;&#x65;&#105;&#x76;&#x65;&#x40;&#49;&#x36;&#x33;&#46;&#99;&#x6f;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>
   </entry>
   <entry>
     <title><![CDATA[商品销量分析及预测系统测试心得]]></title>
-    <url>%2F2019%2F01%2F04%2F%E5%95%86%E5%93%81%E9%94%80%E9%87%8F%E5%88%86%E6%9E%90%E5%8F%8A%E9%A2%84%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95%E5%BF%83%E5%BE%97%2F</url>
+    <url>%2F%E5%95%86%E5%93%81%E9%94%80%E9%87%8F%E5%88%86%E6%9E%90%E5%8F%8A%E9%A2%84%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95%E5%BF%83%E5%BE%97.html</url>
     <content type="text"><![CDATA[商品销量分析及预测系统测试心得测试内容商品销量分析及预测系统Web登录模块与Web其他模块。 测试描述我之前的工作主要是在安卓App端，所以测试阶段就转到了Web端，希望能以用户的视角发现一些问题。 测试结果在Web登录模块，文本框会出现长度过长的问题,导致界面变形，同样的问题在忘记密码界面也有。 在Web其他模块中的TensorFlow参数修改上发现了bug，只能修改特定范围数字的文本框，可以不输入数字直接修改。 测试心得一开始进行测试的时候，只是觉得Web端有些变扭，这个是界面自适应没有做好的问题，修改预测模块参数的时候，我随手按了下空格，结果可以保存，这是数据判断的问题。 这次的测试，让我们发现了项目的很多不足，debug的过程，也让我们更加认识到了测试的重要性。所以，开发任务中需要每次迭代都带上一次测试，这样可以大大减少bug的数量。]]></content>
       <categories>
         <category>课程</category>
@@ -511,7 +519,7 @@
   </entry>
   <entry>
     <title><![CDATA[商品销量预测 第一次迭代总结]]></title>
-    <url>%2F2018%2F12%2F10%2F%E5%95%86%E5%93%81%E9%94%80%E9%87%8F%E9%A2%84%E6%B5%8B%20%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%AD%E4%BB%A3%E6%80%BB%E7%BB%93%2F</url>
+    <url>%2F%E5%95%86%E5%93%81%E9%94%80%E9%87%8F%E9%A2%84%E6%B5%8B%20%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%AD%E4%BB%A3%E6%80%BB%E7%BB%93.html</url>
     <content type="text"><![CDATA[商品销量预测 第一次迭代总结思考总结设想和目标 我们的软件要解决什么问题？是否定义得很清楚？是否对典型用户和典型场景有清晰的描述？ 问题：我们的软件从设计开始就是为了商家在线查看门店的销量情况，细化到各种种类商品的销量情况，并且能预测商品接下来的一段时间的销量情况并生成图表。 典型用户：商店的经营者以及管理者，部分供货商也可能使用。 典型场景：查看当前销售情况，预测之后的销售情况。 我们达到目标了么（原计划的功能做到了几个？ 按照原计划交付时间交付了么？ 原计划达到的用户数量达到了么? 第一次迭代的开发目标都完成了，交付时间正常，用户数量没有增长。 用户量, 用户对重要功能的接受程度和我们事先的预想一致么? 我们离目标更近了么? 用户量和预想中一致，接收程度大致相同，离目标更近了。 有什么经验教训? 如果历史重来一遍, 我们会做什么改进? 小组组员的任务分配不够合理，浪费了大量时间在模块拼装上。如果再来一次，会选择相对适合我们的项目。 计划 是否有充足的时间来做计划? 做计划的时间很长，足够充足。 团队在计划阶段是如何解决同事们对于计划的不同意见的？ 讨论，得到一个起码在当前情况下最合理的安排。 你原计划的工作是否最后都做完了? 如果有没做完的，为什么? 基本完成，但是完成的质量不够高。安卓界面设计想要达到原型设计的效果难度很大，还需要学习。 有没有发现你做了一些事后看来没必要或没多大价值的事? 过多的制定了计划，应该在编码前只指定大致计划，随编码进度进行细化。 是否每一项任务都有清楚定义和衡量的交付件? 没有，不过在编码过程中基本每天都会有备份。 是否项目的整个过程都按照计划进行，项目出了什么意外？有什么风险是当时没有估计到的，为什么没有估计到? 按照计划进行了，但是没有估计到安卓界面想要达成原型效果这么繁琐，所以界面比起原型差了不少。 在计划中有没有留下缓冲区，缓冲区有作用么? 没有，应该保留缓冲区避免项目出现问题。 将来的计划会做什么修改？（例如：缓冲区的定义，加班） 应该确保每天的编码工作量，避免最后几天熬夜。 我们学到了什么? 如果历史重来一遍, 我们会做什么改进? 团队开发合作的经验。给自己足够的编码测试时间，换一个更适合我们团队的项目。 资源 我们有足够的资源来完成各项任务么? 人力比想象的缺乏一些。 各项任务所需的时间和其他资源是如何估计的，精度如何? 时间主要是自己根据工作量大致估计，精度不是很高。 测试的时间，人力和软件/硬件资源是否足够? 对于那些不需要编程的资源 (美工设计/文案)是否低估难度? 测试时间不是很够，完成之后进行了一些测试。 人力略有不足，软件硬件资源足够。 对于美工/文案本来认为很简单，现在发现如果要做好很难。 你有没有感到你做的事情可以让别人来做（更有效率）? 界面拼装。 有什么经验教训? 如果历史重来一遍, 我们会做什么改进? 应该找到更适合做界面的人来帮忙进行界面设计的。 变更管理 每个相关的员工都及时知道了变更的消息? 基本都及时知道了消息。 我们采用了什么办法决定 “推迟”和”必须实现”的功能? 首先先要实现销量的分析预测，这是核心功能，别的美观方面和额外功能都没有这个重要。 项目的出口条件（Exit Criteria - 什么叫”做好了”）有清晰的定义么? 暂时没有。 对于可能的变更是否能制定应急计划? 起初做了准备，之后发现准备可能不够充足。 员工是否能够有效地处理意料之外的工作请求？ 能够做到。 设计/实现 设计工作在什么时候，由谁来完成的？是合适的时间，合适的人么？ 项目初期共同制定的，时间合适，人选合适。 设计工作有没有碰到模棱两可的情况，团队是如何解决的？ 有，进行讨论找到了相对合理且难度较低的解决方法。 团队是否运用单元测试（unit test），测试驱动的开发（TDD）、UML, 或者其他工具来帮助设计和实现？这些工具有效么？ 比较项目开始的 UML文档和现在的状态有什么区别？这些区别如何产生的？是否要更新 UML 文档？ 有使用，很有效果。原来的UML较为虚浮，现在修改了，比之前完整了很多。有的之前只是提了一下，现在大大细化了。 什么功能产生的Bug最多，为什么？在发布之后发现了什么重要的bug? 为什么我们在设计/开发的时候没有想到这些情况? 安卓App与服务器的信息传递。目前还没有发布。因为之前没有安卓App的开发经验。 代码复审（Code Review）是如何进行的，是否严格执行了代码规范？ 分块每个组员都进行了复审。执行了。 测试/发布 团队是否有一个测试计划？为什么没有？ 暂时没有，因为编码过程中就保留了测试。 是否进行了正式的验收测试？ 第一次迭代验收。 团队是否有测试工具来帮助测试？ 暂时没有。 团队是如何测量并跟踪软件的效能的？从软件实际运行的结果来看，这些测试工作有用么？应该有哪些改进？ 自行进行了数据的测试。有用，因为检查出来了很多bug。 在发布的过程中发现了哪些意外问题？ 尚未发布。 团队的角色，管理，合作 团队的每个角色是如何确定的，是不是人尽其才？ 自行商议，以个人意愿为主。 团队成员之间有互相帮助么？ 有。 当出现项目管理、合作方面的问题时，团队成员如何解决问题？ 查询资料，互相帮助，共同解决。 总结 你觉得团队目前的状态属于 CMM/CMMI 中的哪个档次? 属于CMMI一级，完成级。 你觉得团队目前处于 萌芽/磨合/规范/创造 阶段的哪一个阶段? 规范阶段。 你觉得团队在这个里程碑相比前一个里程碑有什么改进? 之间合作更为快捷方便，更有效率。 你觉得目前最需要改进的一个方面是什么? 界面需要进行美化。]]></content>
       <categories>
         <category>课程</category>
@@ -519,7 +527,7 @@
   </entry>
   <entry>
     <title><![CDATA[结对编程项目之队友代码分析]]></title>
-    <url>%2F2018%2F09%2F26%2F%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E9%A1%B9%E7%9B%AE%E4%B9%8B%E9%98%9F%E5%8F%8B%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%2F</url>
+    <url>%2F%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E9%A1%B9%E7%9B%AE%E4%B9%8B%E9%98%9F%E5%8F%8B%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90.html</url>
     <content type="text"><![CDATA[结对编程项目之队友代码分析阅读了队友的代码，觉得他的代码有很多值得学习的地方，也有不少可以改进的地方，虽然和我的代码用的语言不同，但是思路大同小异。 优点： 修改用户和命令较为方便：采用了字符串数组来存储账号密码和各种命令，如果需要修改，直接更改存储的元素即可。 1234 const string Userchart[3][3]=&#123;&quot;张三1 123&quot;,&quot;张三2 123&quot;,&quot;张三3 123&quot;, &quot;李四1 123&quot;,&quot;李四2 123&quot;, &quot;李四3 123&quot;, &quot;王五1 123&quot;,&quot;王五2 123&quot;,&quot;王五3 123&quot;&#125;; 可以方便改进生成文件的路径：字符数组存储路径，，如果需要对之进行修改，可以直接对之进行修改。 命名较标准比如对于括号的判断变量，用了judgebackets，让代码更加容易理解。就以其中的括号生成部分为例，一目了然。123456789101112judgebackets=rand()%3; if (judgebackets==0) &#123; //考虑同时有多个括号的情况 while (judgebackets==0&amp;&amp;((operatenumber-j)&gt;backetsnumber)) &#123; judgebackets=rand()%3; backetsnumber++; ofile&lt;&lt;&apos;(&apos;; &#125;; ofile&lt;&lt;rand()%100+1&lt;&lt;g_Operatechar[rand()%4]; &#125; 缺点 去重：可能由于时间问题，去重函数只写了一个伪代码，并未具体实现。所以我就简单说一下我自己的思路。我采用了先搜索原文件夹，按顺序打开文件，之后按行读取。我之前先是生成了一个字符串，之后一行一行搜索查重，相同的话（尽管概率较小），就重新生成，不然就写入文本，这样就可以实现去重的要求。 生成文件文件名时间较为麻烦，他是采用了一种繁琐的方法做的，虽然这样编辑较为方便，但是略显冗杂。 123456789101112131415161718192021222324252627void Creattime()//获取当前系统时间，用g_timenow来表示&#123; SYSTEMTIME sys; //利用windowsAPI获取系统时间 GetLocalTime(&amp;sys); g_timenow[0]=sys.wYear/1000+&apos;0&apos;; g_timenow[1]=(sys.wYear/100)%10+&apos;0&apos;; g_timenow[2]=(sys.wYear/10)%10+&apos;0&apos;; g_timenow[3]=sys.wYear%10+&apos;0&apos;; g_timenow[4]=&apos;-&apos;; g_timenow[5]=sys.wMonth/10+&apos;0&apos;; g_timenow[6]=sys.wMonth%10+&apos;0&apos;; g_timenow[7]=&apos;-&apos;; g_timenow[8]=sys.wDay/10+&apos;0&apos;; g_timenow[9]=sys.wDay%10+&apos;0&apos;; g_timenow[10]=&apos;-&apos;; g_timenow[11]=sys.wHour/10+&apos;0&apos;; g_timenow[12]=sys.wHour%10+&apos;0&apos;; g_timenow[13]=&apos;-&apos;; g_timenow[14]=sys.wMinute/10+&apos;0&apos;; g_timenow[15]=sys.wMinute%10+&apos;0&apos;; g_timenow[16]=&apos;-&apos;; g_timenow[17]=sys.wSecond/610+&apos;0&apos;; g_timenow[18]=sys.wSecond%10+&apos;0&apos;;&#125; 可能会生成双重括号，经常会出现在两个操作数外围同时出现两对括号，对于题目的简洁造成了影响。这里我觉得可以采用一种判断方式，如果两个前括号已经在一起，那么两个后括号就不能在一起，强制将后一个后括号向后移位，如果已经是最后一位就重新生成题目；或者如果检索到双重括号就直接重新生成。]]></content>
       <categories>
         <category>课程</category>
@@ -527,7 +535,7 @@
   </entry>
   <entry>
     <title><![CDATA[java的三种随机数生成方式]]></title>
-    <url>%2F2018%2F09%2F21%2Fjava%E7%9A%84%E4%B8%89%E7%A7%8D%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E6%96%B9%E5%BC%8F%2F</url>
+    <url>%2Fjava%E7%9A%84%E4%B8%89%E7%A7%8D%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E6%96%B9%E5%BC%8F.html</url>
     <content type="text"><![CDATA[java的三种随机数生成方式随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种： 第一种：new Random() 第二种：Math.random() 第三种：currentTimeMillis() 第一种第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(long seed)。第一个就是以当前时间为默认种子，第二个是以指定的种子值进行。产生之后，借助不同的语句产生不同类型的数。 种子就是产生随机数的第一次使用值,机制是通过一个函数,将这个种子的值转化为随机数空间中的某一个点上,并且产生的随机数均匀的散布在空间中。以后产生的随机数都与前一个随机数有关。以代码为例。 123456789public static void main(String[] args)&#123; Random r = new Random(1); for(int i=0 ; i&lt;5 ; i++) &#123; int ran1 = r.nextInt(100); System.out.println(ran1); &#125;&#125; 在我的编译器下产生的五个数均为85,88,47,13,54，如果采用Random r = new Random()，产生的随机数就不同，这就是确定种子导致的结果。 第二种而第二种方法返回的数值是[0.0,1.0）的double型数值，由于double类数的精度很高，可以在一定程度下看做随机数，借助（int）来进行类型转换就可以得到整数随机数了，代码如下。 123456public static void main(String[] args)&#123; int max=100,min=1; int ran2 = (int) (Math.random()*(max-min)+min); System.out.println(ran2);&#125; 第三种至于第三种方法虽然不常用，但是也是一种思路。方法返回从1970年1月1日0时0分0秒（这与UNIX系统有关）到现在的一个long型的毫秒数，取模之后即可得到所需范围内的随机数。 12345678public static void main(String[] args)&#123; int max=100,min=1; long randomNum = System.currentTimeMillis(); int ran3 = (int) (randomNum%(max-min)+min); System.out.println(ran3); &#125;]]></content>
       <categories>
         <category>Java</category>

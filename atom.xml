@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-01T07:21:03.313Z</updated>
+  <updated>2019-08-02T04:52:57.864Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,9 +17,32 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>洛谷 P1011 车站</title>
+    <link href="http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1011%20%E8%BD%A6%E7%AB%99.html"/>
+    <id>http://yoursite.com/洛谷 P1011 车站.html</id>
+    <published>2019-08-02T03:23:00.000Z</published>
+    <updated>2019-08-02T04:52:57.864Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="洛谷-P1011-车站"><a href="#洛谷-P1011-车站" class="headerlink" title="洛谷 P1011 车站"></a>洛谷 P1011 车站</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.org/problem/P1011" target="_blank" rel="noopener">https://www.luogu.org/problem/P1011</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>火车从始发站（称为第1站）开出，在始发站上车的人数为a，然后到达第2站，在第22站有人上、下车，但上、下车的人数相同，因此在第2站开出时（即在到达第3站之前）车上的人数保持为a人。从第3站起（包括第3站）上、下车的人数有一定规律：上车的人数都是前两站上车人数之和，而下车人数等于上一站上车人数，一直到终点站的前一站（第n-1站），都满足此规律。现给出的条件是：共有N个车站，始发站上车的人数为a，最后一站下车的人数是m（全部下车）。试问x站开出时车上的人数是多少？</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>a(≤20)，n(≤20)，m(≤2000)，和x(≤20)，</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>从x站开出时车上的人数。  </p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入 #1</p><pre><code>　　5 7 32 4</code></pre><p>输出 #1</p><pre><code>　　13</code></pre><h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><table><thead><tr><th>站序号(i)</th><th>上车(f)</th><th>下车(g)</th><th>剩余人数(k)</th></tr></thead><tbody><tr><td>1</td><td>a</td><td>0</td><td>a</td></tr><tr><td>2</td><td>t</td><td>t</td><td>a</td></tr><tr><td>3</td><td>a+t</td><td>t</td><td>2a</td></tr><tr><td>4</td><td>a+2t</td><td>a+t</td><td>2a+t</td></tr><tr><td>5</td><td>2a+3t</td><td>a+2t</td><td>3a+2t</td></tr><tr><td>6</td><td>0</td><td>3a+2t</td><td>0</td></tr></tbody></table><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>总结一下规律(中间几站)</p><pre><code>1. 每一站下车人数等于上一站上车人数2. 每一站上车人数等于前两站上车人数和</code></pre><p>我们假设第6站就全部下车，可以得到图解中的表格，归纳总结可以发现<br>(s为斐波那契数列，直接可以计算)</p><pre><code>1. g(i) = f(i-1)2. f(i) = f(i-1) + f(i-2)3. g(n) = f(n-1) + a - t = m4. f(i) = s(i-2)*a + s(i-1)*t5. k(i) = f(i) + f(1) - g(2)</code></pre><p>之后我们就能发现，我们需要的k(x) = f(x) + a - t,推导后只需要两个等式</p><pre><code>1. m - [s(n-3) + 1]*a = [s(n-2) - 1]*t2. k(x) = [s(x-2) + 1]*a + [s(x-1) - 1]*t</code></pre><p>给了我们m,a,n,我们由公式1算出t，公式2算出k(x)即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    int a,n,m,x,t;</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;n&gt;&gt;m&gt;&gt;x;</span><br><span class="line">    int s[n];</span><br><span class="line">    s[1]=1;</span><br><span class="line">s[2]=1;</span><br><span class="line">    for(int i=3;i&lt;=n;i++)</span><br><span class="line">     s[i]=s[i-1]+s[i-2];</span><br><span class="line">     </span><br><span class="line">    t=(m-(s[n-3]+1)*a)/(s[n-2]-1);</span><br><span class="line">    cout&lt;&lt;(s[x-2]+1)*a+(s[x-1]-1)*t;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;洛谷-P1011-车站&quot;&gt;&lt;a href=&quot;#洛谷-P1011-车站&quot; class=&quot;headerlink&quot; title=&quot;洛谷 P1011 车站&quot;&gt;&lt;/a&gt;洛谷 P1011 车站&lt;/h2&gt;&lt;h3 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot; class=&quot;head
+      
+    
+    </summary>
+    
+      <category term="洛谷" scheme="http://yoursite.com/categories/%E6%B4%9B%E8%B0%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>洛谷 P1307 数字反转</title>
-    <link href="http://yoursite.com/2019/08/01/%E6%B4%9B%E8%B0%B7%20P1307%20%E6%95%B0%E5%AD%97%E5%8F%8D%E8%BD%AC/"/>
-    <id>http://yoursite.com/2019/08/01/洛谷 P1307 数字反转/</id>
+    <link href="http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1307%20%E6%95%B0%E5%AD%97%E5%8F%8D%E8%BD%AC.html"/>
+    <id>http://yoursite.com/洛谷 P1307 数字反转.html</id>
     <published>2019-08-01T00:41:00.000Z</published>
     <updated>2019-08-01T07:21:03.313Z</updated>
     
@@ -41,8 +64,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2019/08/01/Hello%20World/"/>
-    <id>http://yoursite.com/2019/08/01/Hello World/</id>
+    <link href="http://yoursite.com/Hello%20World.html"/>
+    <id>http://yoursite.com/Hello World.html</id>
     <published>2019-08-01T00:00:00.000Z</published>
     <updated>2019-08-01T07:10:31.738Z</updated>
     
@@ -64,8 +87,8 @@
   
   <entry>
     <title>CCF 201712-1 最小差值</title>
-    <link href="http://yoursite.com/2019/07/30/CCF%20201712-1%20%E6%9C%80%E5%B0%8F%E5%B7%AE%E5%80%BC/"/>
-    <id>http://yoursite.com/2019/07/30/CCF 201712-1 最小差值/</id>
+    <link href="http://yoursite.com/CCF%20201712-1%20%E6%9C%80%E5%B0%8F%E5%B7%AE%E5%80%BC.html"/>
+    <id>http://yoursite.com/CCF 201712-1 最小差值.html</id>
     <published>2019-07-29T17:45:00.000Z</published>
     <updated>2019-08-01T05:18:25.479Z</updated>
     
@@ -87,8 +110,8 @@
   
   <entry>
     <title>洛谷 P1003 铺地毯</title>
-    <link href="http://yoursite.com/2019/07/29/%E6%B4%9B%E8%B0%B7%20P1003%20%E9%93%BA%E5%9C%B0%E6%AF%AF/"/>
-    <id>http://yoursite.com/2019/07/29/洛谷 P1003 铺地毯/</id>
+    <link href="http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1003%20%E9%93%BA%E5%9C%B0%E6%AF%AF.html"/>
+    <id>http://yoursite.com/洛谷 P1003 铺地毯.html</id>
     <published>2019-07-28T17:18:00.000Z</published>
     <updated>2019-08-01T03:53:16.040Z</updated>
     
@@ -110,8 +133,8 @@
   
   <entry>
     <title>LeetCode 334. Increasing Triplet Subsequence</title>
-    <link href="http://yoursite.com/2019/07/28/LeetCode%20334.%20Increasing%20Triplet%20Subsequence/"/>
-    <id>http://yoursite.com/2019/07/28/LeetCode 334. Increasing Triplet Subsequence/</id>
+    <link href="http://yoursite.com/LeetCode%20334.%20Increasing%20Triplet%20Subsequence.html"/>
+    <id>http://yoursite.com/LeetCode 334. Increasing Triplet Subsequence.html</id>
     <published>2019-07-27T18:32:00.000Z</published>
     <updated>2019-08-01T06:50:50.756Z</updated>
     
@@ -133,8 +156,8 @@
   
   <entry>
     <title>洛谷 P1583 魔法照片</title>
-    <link href="http://yoursite.com/2019/07/26/%E6%B4%9B%E8%B0%B7%20P1583%20%E9%AD%94%E6%B3%95%E7%85%A7%E7%89%87/"/>
-    <id>http://yoursite.com/2019/07/26/洛谷 P1583 魔法照片/</id>
+    <link href="http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1583%20%E9%AD%94%E6%B3%95%E7%85%A7%E7%89%87.html"/>
+    <id>http://yoursite.com/洛谷 P1583 魔法照片.html</id>
     <published>2019-07-25T17:18:00.000Z</published>
     <updated>2019-08-01T05:03:38.234Z</updated>
     
@@ -156,8 +179,8 @@
   
   <entry>
     <title>LeetCode 1103. Distribute Candies to People</title>
-    <link href="http://yoursite.com/2019/07/25/LeetCode%201103.%20Distribute%20Candies%20to%20People/"/>
-    <id>http://yoursite.com/2019/07/25/LeetCode 1103. Distribute Candies to People/</id>
+    <link href="http://yoursite.com/LeetCode%201103.%20Distribute%20Candies%20to%20People.html"/>
+    <id>http://yoursite.com/LeetCode 1103. Distribute Candies to People.html</id>
     <published>2019-07-24T18:47:00.000Z</published>
     <updated>2019-08-01T07:15:32.153Z</updated>
     
@@ -179,8 +202,8 @@
   
   <entry>
     <title>洛谷 P1093 奖学金</title>
-    <link href="http://yoursite.com/2019/07/25/%E6%B4%9B%E8%B0%B7%20P1093%20%E5%A5%96%E5%AD%A6%E9%87%91/"/>
-    <id>http://yoursite.com/2019/07/25/洛谷 P1093 奖学金/</id>
+    <link href="http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1093%20%E5%A5%96%E5%AD%A6%E9%87%91.html"/>
+    <id>http://yoursite.com/洛谷 P1093 奖学金.html</id>
     <published>2019-07-24T17:27:00.000Z</published>
     <updated>2019-08-01T04:53:29.388Z</updated>
     
@@ -202,8 +225,8 @@
   
   <entry>
     <title>LeetCode 38. Count and Say</title>
-    <link href="http://yoursite.com/2019/07/24/LeetCode%2038.%20Count%20and%20Say/"/>
-    <id>http://yoursite.com/2019/07/24/LeetCode 38. Count and Say/</id>
+    <link href="http://yoursite.com/LeetCode%2038.%20Count%20and%20Say.html"/>
+    <id>http://yoursite.com/LeetCode 38. Count and Say.html</id>
     <published>2019-07-23T18:55:00.000Z</published>
     <updated>2019-08-01T06:18:40.779Z</updated>
     
@@ -225,8 +248,8 @@
   
   <entry>
     <title>CCF 201803-2 碰撞的小球</title>
-    <link href="http://yoursite.com/2019/07/24/CCF%20201803-2%20%E7%A2%B0%E6%92%9E%E7%9A%84%E5%B0%8F%E7%90%83/"/>
-    <id>http://yoursite.com/2019/07/24/CCF 201803-2 碰撞的小球/</id>
+    <link href="http://yoursite.com/CCF%20201803-2%20%E7%A2%B0%E6%92%9E%E7%9A%84%E5%B0%8F%E7%90%83.html"/>
+    <id>http://yoursite.com/CCF 201803-2 碰撞的小球.html</id>
     <published>2019-07-23T17:53:00.000Z</published>
     <updated>2019-08-01T05:24:23.985Z</updated>
     
@@ -248,8 +271,8 @@
   
   <entry>
     <title>CCF 201803-1 跳一跳</title>
-    <link href="http://yoursite.com/2019/07/23/CCF%20201803-1%20%E8%B7%B3%E4%B8%80%E8%B7%B3/"/>
-    <id>http://yoursite.com/2019/07/23/CCF 201803-1 跳一跳/</id>
+    <link href="http://yoursite.com/CCF%20201803-1%20%E8%B7%B3%E4%B8%80%E8%B7%B3.html"/>
+    <id>http://yoursite.com/CCF 201803-1 跳一跳.html</id>
     <published>2019-07-22T19:27:00.000Z</published>
     <updated>2019-08-01T05:21:36.469Z</updated>
     
@@ -271,8 +294,8 @@
   
   <entry>
     <title>洛谷 P1603 斯诺登的密码</title>
-    <link href="http://yoursite.com/2019/07/22/%E6%B4%9B%E8%B0%B7%20P1603%20%E6%96%AF%E8%AF%BA%E7%99%BB%E7%9A%84%E5%AF%86%E7%A0%81/"/>
-    <id>http://yoursite.com/2019/07/22/洛谷 P1603 斯诺登的密码/</id>
+    <link href="http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1603%20%E6%96%AF%E8%AF%BA%E7%99%BB%E7%9A%84%E5%AF%86%E7%A0%81.html"/>
+    <id>http://yoursite.com/洛谷 P1603 斯诺登的密码.html</id>
     <published>2019-07-21T21:12:00.000Z</published>
     <updated>2019-08-01T05:03:35.658Z</updated>
     
@@ -294,8 +317,8 @@
   
   <entry>
     <title>LeetCode 169. Majority Element</title>
-    <link href="http://yoursite.com/2019/07/22/LeetCode%20169.%20Majority%20Element/"/>
-    <id>http://yoursite.com/2019/07/22/LeetCode 169. Majority Element/</id>
+    <link href="http://yoursite.com/LeetCode%20169.%20Majority%20Element.html"/>
+    <id>http://yoursite.com/LeetCode 169. Majority Element.html</id>
     <published>2019-07-21T17:47:00.000Z</published>
     <updated>2019-08-01T06:48:46.673Z</updated>
     
@@ -317,8 +340,8 @@
   
   <entry>
     <title>LeetCode 1047. Remove All Adjacent Duplicates In String</title>
-    <link href="http://yoursite.com/2019/07/21/LeetCode%201047.%20Remove%20All%20Adjacent%20Duplicates%20In%20String/"/>
-    <id>http://yoursite.com/2019/07/21/LeetCode 1047. Remove All Adjacent Duplicates In String/</id>
+    <link href="http://yoursite.com/LeetCode%201047.%20Remove%20All%20Adjacent%20Duplicates%20In%20String.html"/>
+    <id>http://yoursite.com/LeetCode 1047. Remove All Adjacent Duplicates In String.html</id>
     <published>2019-07-20T18:32:00.000Z</published>
     <updated>2019-08-01T06:07:49.595Z</updated>
     
@@ -340,8 +363,8 @@
   
   <entry>
     <title>LeetCode 12. Integer to Roman</title>
-    <link href="http://yoursite.com/2019/07/21/LeetCode%2012.%20Integer%20to%20Roman/"/>
-    <id>http://yoursite.com/2019/07/21/LeetCode 12. Integer to Roman/</id>
+    <link href="http://yoursite.com/LeetCode%2012.%20Integer%20to%20Roman.html"/>
+    <id>http://yoursite.com/LeetCode 12. Integer to Roman.html</id>
     <published>2019-07-20T17:43:00.000Z</published>
     <updated>2019-08-01T06:17:40.067Z</updated>
     
@@ -363,8 +386,8 @@
   
   <entry>
     <title>洛谷 P1012 拼数</title>
-    <link href="http://yoursite.com/2019/07/19/%E6%B4%9B%E8%B0%B7%20P1012%20%E6%8B%BC%E6%95%B0/"/>
-    <id>http://yoursite.com/2019/07/19/洛谷 P1012 拼数/</id>
+    <link href="http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1012%20%E6%8B%BC%E6%95%B0.html"/>
+    <id>http://yoursite.com/洛谷 P1012 拼数.html</id>
     <published>2019-07-18T21:52:00.000Z</published>
     <updated>2019-08-01T03:53:20.740Z</updated>
     
@@ -386,8 +409,8 @@
   
   <entry>
     <title>CCF 201809-2 买菜</title>
-    <link href="http://yoursite.com/2019/07/18/CCF%20201809-2%20%E4%B9%B0%E8%8F%9C/"/>
-    <id>http://yoursite.com/2019/07/18/CCF 201809-2 买菜/</id>
+    <link href="http://yoursite.com/CCF%20201809-2%20%E4%B9%B0%E8%8F%9C.html"/>
+    <id>http://yoursite.com/CCF 201809-2 买菜.html</id>
     <published>2019-07-17T21:20:00.000Z</published>
     <updated>2019-08-01T05:20:04.507Z</updated>
     
@@ -409,8 +432,8 @@
   
   <entry>
     <title>CCF 201809-1 卖菜</title>
-    <link href="http://yoursite.com/2019/07/17/CCF%20201809-1%20%E5%8D%96%E8%8F%9C/"/>
-    <id>http://yoursite.com/2019/07/17/CCF 201809-1 卖菜/</id>
+    <link href="http://yoursite.com/CCF%20201809-1%20%E5%8D%96%E8%8F%9C.html"/>
+    <id>http://yoursite.com/CCF 201809-1 卖菜.html</id>
     <published>2019-07-16T17:57:00.000Z</published>
     <updated>2019-08-01T05:22:59.322Z</updated>
     
@@ -432,8 +455,8 @@
   
   <entry>
     <title>洛谷 P1149 火柴棒等式</title>
-    <link href="http://yoursite.com/2019/07/16/%E6%B4%9B%E8%B0%B7%20P1149%20%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F/"/>
-    <id>http://yoursite.com/2019/07/16/洛谷 P1149 火柴棒等式/</id>
+    <link href="http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1149%20%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F.html"/>
+    <id>http://yoursite.com/洛谷 P1149 火柴棒等式.html</id>
     <published>2019-07-15T18:59:00.000Z</published>
     <updated>2019-08-01T04:53:41.924Z</updated>
     
@@ -444,29 +467,6 @@
       
       
         &lt;h2 id=&quot;洛谷-P1149-火柴棒等式&quot;&gt;&lt;a href=&quot;#洛谷-P1149-火柴棒等式&quot; class=&quot;headerlink&quot; title=&quot;洛谷 P1149 火柴棒等式&quot;&gt;&lt;/a&gt;洛谷 P1149 火柴棒等式&lt;/h2&gt;&lt;h3 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot;
-      
-    
-    </summary>
-    
-      <category term="洛谷" scheme="http://yoursite.com/categories/%E6%B4%9B%E8%B0%B7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>洛谷 P1042 乒乓球</title>
-    <link href="http://yoursite.com/2019/07/15/%E6%B4%9B%E8%B0%B7%20P1042%20%E4%B9%92%E4%B9%93%E7%90%83/"/>
-    <id>http://yoursite.com/2019/07/15/洛谷 P1042 乒乓球/</id>
-    <published>2019-07-14T17:38:00.000Z</published>
-    <updated>2019-08-01T03:53:24.804Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="洛谷-P1042-乒乓球"><a href="#洛谷-P1042-乒乓球" class="headerlink" title="洛谷 P1042 乒乓球"></a>洛谷 P1042 乒乓球</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.org/problemnew/show/P1042" target="_blank" rel="noopener">https://www.luogu.org/problemnew/show/P1042</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h4><p>国际乒联现在主席沙拉拉自从上任以来就立志于推行一系列改革，以推动乒乓球运动在全球的普及。其中1111分制改革引起了很大的争议，有一部分球员因为无法适应新规则只能选择退役。华华就是其中一位，他退役之后走上了乒乓球研究工作，意图弄明白1111分制和2121分制对选手的不同影响。在开展他的研究之前，他首先需要对他多年比赛的统计数据进行一些分析，所以需要你的帮忙。</p><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>华华通过以下方式进行分析，首先将比赛每个球的胜负列成一张表，然后分别计算在1111分制和2121分制下，双方的比赛结果（截至记录末尾）。</p><p>比如现在有这么一份记录，（其中<code>W</code>表示华华获得一分，<code>L</code>表示华华对手获得一分）：</p><pre><code>WWWWWWWWWWWWWWWWWWWWWWLW</code></pre><p>在1111分制下，此时比赛的结果是华华第一局1111比00获胜，第二局1111比00获胜，正在进行第三局，当前比分11比11。而在2121分制下，此时比赛结果是华华第一局2121比00获胜，正在进行第二局，比分22比11。如果一局比赛刚开始，则此时比分为00比00。直到分差大于或者等于22，才一局结束。</p><p>你的程序就是要对于一系列比赛信息的输入（WLWL形式），输出正确的结果。</p><h4 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h4><p>输入格式：</p><p>每个输入文件包含若干行字符串，字符串有大写的WW、LL和EE组成。其中EE表示比赛信息结束，程序应该忽略E之后的所有内容。</p><p>输出格式：</p><p>输出由两部分组成，每部分有若干行，每一行对应一局比赛的比分（按比赛信息输入顺序）。其中第一部分是1111分制下的结果，第二部分是2121分制下的结果，两部分之间由一个空行分隔。</p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入样例#1：  </p><pre><code>WWWWWWWWWWWWWWWWWWWWWWLWE</code></pre><p>输出样例#1：  </p><pre><code>11:011:01:121:02:1</code></pre><h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>每行至多25个字母，最多有2500行</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>不是很难，读取输入，统计数据，直接输出，只要记得到E结束，char范围给大一点，考虑到0:0的情况就行。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    char a[2600];</span><br><span class="line">    int ans = 0;</span><br><span class="line">    while(true)</span><br><span class="line">    &#123;</span><br><span class="line">        char c = getchar();</span><br><span class="line">        if(c==&apos;W&apos;||c==&apos;L&apos;)</span><br><span class="line">        &#123;</span><br><span class="line">            a[ans]=c;</span><br><span class="line">            ans++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(c==&apos;E&apos;)</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    int w=0;</span><br><span class="line">    int l=0;</span><br><span class="line">    for(int i=0;i&lt;ans;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(a[i]==&apos;W&apos;)</span><br><span class="line">            w++;</span><br><span class="line">        if(a[i]==&apos;L&apos;)</span><br><span class="line">            l++;</span><br><span class="line">        if((w&gt;=11||l&gt;=11)&amp;&amp;(abs(w-l)&gt;=2))</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">            w=0;</span><br><span class="line">            l=0;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(i==ans-1)</span><br><span class="line">            cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    if(w==0&amp;&amp;l==0)</span><br><span class="line">        cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">    w=0;</span><br><span class="line">    l=0;</span><br><span class="line">    for(int i=0;i&lt;ans;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(a[i]==&apos;W&apos;)</span><br><span class="line">            w++;</span><br><span class="line">        if(a[i]==&apos;L&apos;)</span><br><span class="line">            l++;</span><br><span class="line">        if((w&gt;=21||l&gt;=21)&amp;&amp;abs(w-l)&gt;=2)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">            w=0;</span><br><span class="line">            l=0;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(i==ans-1)</span><br><span class="line">            cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    if(w==0&amp;&amp;l==0)</span><br><span class="line">        cout&lt;&lt;w&lt;&lt;&quot;:&quot;&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;洛谷-P1042-乒乓球&quot;&gt;&lt;a href=&quot;#洛谷-P1042-乒乓球&quot; class=&quot;headerlink&quot; title=&quot;洛谷 P1042 乒乓球&quot;&gt;&lt;/a&gt;洛谷 P1042 乒乓球&lt;/h2&gt;&lt;h3 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot; class=&quot;
       
     
     </summary>
