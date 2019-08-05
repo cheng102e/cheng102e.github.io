@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-02T04:52:57.864Z</updated>
+  <updated>2019-08-05T01:27:47.887Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>洛谷 P1007 独木桥</title>
+    <link href="http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1007%20%E7%8B%AC%E6%9C%A8%E6%A1%A5.html"/>
+    <id>http://yoursite.com/洛谷 P1007 独木桥.html</id>
+    <published>2019-08-05T01:18:00.000Z</published>
+    <updated>2019-08-05T01:27:47.887Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="洛谷-P1007-独木桥"><a href="#洛谷-P1007-独木桥" class="headerlink" title="洛谷 P1007 独木桥"></a>洛谷 P1007 独木桥</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.org/problem/P1007" target="_blank" rel="noopener">https://www.luogu.org/problem/P1007</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h4><p>战争已经进入到紧要时间。你是运输小队长，正在率领运输部队向前线运送物资。运输任务像做题一样的无聊。你希望找些刺激，于是命令你的士兵们到前方的一座独木桥上欣赏风景，而你留在桥下欣赏士兵们。士兵们十分愤怒，因为这座独木桥十分狭窄，只能容纳1个人通过。假如有2个人相向而行在桥上相遇，那么他们2个人将无妨绕过对方，只能有1个人回头下桥，让另一个人先通过。但是，可以有多个人同时呆在同一个位置。</p><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>突然，你收到从指挥部发来的信息，敌军的轰炸机正朝着你所在的独木桥飞来！为了安全，你的部队必须撤下独木桥。独木桥的长度为L，士兵们只能呆在坐标为整数的地方。所有士兵的速度都为1，但一个士兵某一时刻来到了坐标为0或L+1的位置，他就离开了独木桥。</p><p>每个士兵都有一个初始面对的方向，他们会以匀速朝着这个方向行走，中途不会自己改变方向。但是，如果两个士兵面对面相遇，他们无法彼此通过对方，于是就分别转身，继续行走。转身不需要任何的时间。</p><p>由于先前的愤怒，你已不能控制你的士兵。甚至，你连每个士兵初始面对的方向都不知道。因此，你想要知道你的部队最少需要多少时间就可能全部撤离独木桥。另外，总部也在安排阻拦敌人的进攻，因此你还需要知道你的部队最多需要多少时间才能全部撤离独木桥。</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行：一个整数L，表示独木桥的长度。桥上的坐标为1…L</p><p>第二行：一个整数N，表示初始时留在桥上的士兵数目</p><p>第三行：有N个整数，分别表示每个士兵的初始坐标。</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>只有一行，输出2个整数，分别表示部队撤离独木桥的最小时间和最大时间。2个整数由一个空格符分开。</p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入 #1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">2</span><br><span class="line">1 3</span><br></pre></td></tr></table></figure><p>输出 #1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 4</span><br></pre></td></tr></table></figure><h4 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明/提示"></a>说明/提示</h4><p>初始时，没有两个士兵同在一个坐标。</p><p>数据范围N≤L≤5000。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目还行，思路也比较清晰，唯一需要注意的点就是，两个士兵相遇掉头和他们交错通过是一样的时间，所以只需要修改min为max即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> l,n;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;l&gt;&gt;n;</span><br><span class="line"><span class="keyword">int</span> a[n];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> mintime=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">mintime = max(mintime,min(a[i],l+<span class="number">1</span>-a[i]));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> maxtime=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">maxtime = max(maxtime,max(a[i],l+<span class="number">1</span>-a[i]));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;mintime&lt;&lt;<span class="string">" "</span>&lt;&lt;maxtime;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;洛谷-P1007-独木桥&quot;&gt;&lt;a href=&quot;#洛谷-P1007-独木桥&quot; class=&quot;headerlink&quot; title=&quot;洛谷 P1007 独木桥&quot;&gt;&lt;/a&gt;洛谷 P1007 独木桥&lt;/h2&gt;&lt;h3 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot; class=&quot;
+      
+    
+    </summary>
+    
+      <category term="洛谷" scheme="http://yoursite.com/categories/%E6%B4%9B%E8%B0%B7/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>洛谷 P1011 车站</title>
@@ -449,29 +472,6 @@
     </summary>
     
       <category term="CCF" scheme="http://yoursite.com/categories/CCF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>洛谷 P1149 火柴棒等式</title>
-    <link href="http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1149%20%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F.html"/>
-    <id>http://yoursite.com/洛谷 P1149 火柴棒等式.html</id>
-    <published>2019-07-15T18:59:00.000Z</published>
-    <updated>2019-08-01T04:53:41.924Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="洛谷-P1149-火柴棒等式"><a href="#洛谷-P1149-火柴棒等式" class="headerlink" title="洛谷 P1149 火柴棒等式"></a>洛谷 P1149 火柴棒等式</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.org/problemnew/show/P1149" target="_blank" rel="noopener">https://www.luogu.org/problemnew/show/P1149</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给你n根火柴棍，你可以拼出多少个形如”A+B=C”的等式？等式中的A、B、C是用火柴棍拼出的整数（若该数非零，则最高位不能是0）。用火柴棍拼数字0-9的拼法如图所示：</p><pre><code>![](https://cdn.luogu.org/upload/pic/49.png)</code></pre><p>注意：</p><ol><li><p>加号与等号各自需要两根火柴棍</p></li><li><p>如果A≠B，则A+B=C与B+A=C视为不同的等式(A,B,C&gt;=0)</p></li><li><p>n根火柴棍必须全部用上</p></li></ol><h4 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h4><p>输入格式：</p><p>一个整数n(n&lt;=24)。</p><p>输出格式：</p><p>一个整数，能拼成的不同等式的数目。</p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入样例#1：  </p><pre><code>　　14</code></pre><p>输出样例#1：  </p><pre><code>　　2</code></pre><p>输入样例#2：  </p><pre><code>　　18</code></pre><p>输出样例#2：  </p><pre><code>　　9</code></pre><h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>【输入输出样例1解释】</p><p>2个等式为0+1=10+1=1和1+0=11+0=1。</p><p>【输入输出样例2解释】</p><p>9个等式为：</p><pre><code>　　0+4=4　　0+11=11　　1+10=11　　2+2=4　　2+7=9　　4+0=4　　7+2=9　　10+1=11　　11+0=11  </code></pre><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>思路也挺清晰的，直接遍历，0-9的火车不一样，用数组记录，借助count函数寻找ABC需要的火柴，二重循环遍历找的所有合适的解。</p><p>1100：数字随手写的，因为上限只有24，只有20根可以组成数字，按照929分组，只能有四个大于1000的数：7111，1711,1171,1117，这四个数都无法得到等式，所以构成结果的ABC一定都小于1000，所以这里写1000即可。其实可以算出上限还要低一点，不过也没啥大问题，用1000就行。</p><p>（最近有点忙，所以没想啥骚操作）</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int num[10] = &#123;6,2,5,5,4,5,6,3,7,6&#125;;</span><br><span class="line"></span><br><span class="line">int count(int x)</span><br><span class="line">&#123;</span><br><span class="line">    if(x==0)</span><br><span class="line">        return num[0];</span><br><span class="line">    int res=0;</span><br><span class="line">    while(x)</span><br><span class="line">    &#123; </span><br><span class="line">        res = res + num[x%10]; </span><br><span class="line">        x = x / 10; </span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    int sum=0;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    n=n-4;</span><br><span class="line">    if(n&lt;=8)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;0&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;1100;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=0;j&lt;1100;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            int k = i + j;</span><br><span class="line">            if(count(i)+count(j)+count(k)==n)</span><br><span class="line">                sum++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">    cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;洛谷-P1149-火柴棒等式&quot;&gt;&lt;a href=&quot;#洛谷-P1149-火柴棒等式&quot; class=&quot;headerlink&quot; title=&quot;洛谷 P1149 火柴棒等式&quot;&gt;&lt;/a&gt;洛谷 P1149 火柴棒等式&lt;/h2&gt;&lt;h3 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot;
-      
-    
-    </summary>
-    
-      <category term="洛谷" scheme="http://yoursite.com/categories/%E6%B4%9B%E8%B0%B7/"/>
     
     
   </entry>
