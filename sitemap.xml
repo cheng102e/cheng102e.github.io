@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/%E6%B4%9B%E8%B0%B7_P1003_%E9%93%BA%E5%9C%B0%E6%AF%AF.html</loc>
+    
+    <lastmod>2019-08-06T12:40:41.782Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/CCF%20201709-1%20%E6%89%93%E9%85%B1%E6%B2%B9.html</loc>
     
     <lastmod>2019-08-06T12:18:39.967Z</lastmod>
@@ -58,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/LeetCode%20899.%20Orderly%20Queue.html</loc>
+    <loc>http://yoursite.com/LeetCode%201103.%20Distribute%20Candies%20to%20People.html</loc>
     
     <lastmod>2019-08-01T07:15:32.153Z</lastmod>
     
@@ -72,7 +79,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/LeetCode%201103.%20Distribute%20Candies%20to%20People.html</loc>
+    <loc>http://yoursite.com/LeetCode%20899.%20Orderly%20Queue.html</loc>
     
     <lastmod>2019-08-01T07:15:32.153Z</lastmod>
     
@@ -460,13 +467,6 @@
     <loc>http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1012%20%E6%8B%BC%E6%95%B0.html</loc>
     
     <lastmod>2019-08-01T03:53:20.740Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1003%20%E9%93%BA%E5%9C%B0%E6%AF%AF.html</loc>
-    
-    <lastmod>2019-08-01T03:53:16.040Z</lastmod>
     
   </url>
   
