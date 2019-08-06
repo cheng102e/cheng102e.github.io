@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/CCF%20201709-1%20%E6%89%93%E9%85%B1%E6%B2%B9.html</loc>
+    <lastmod>2019-08-06</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/Hello%20World.html</loc>
+    <lastmod>2019-08-06</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/%E6%B4%9B%E8%B0%B7%20P1007%20%E7%8B%AC%E6%9C%A8%E6%A1%A5.html</loc>
     <lastmod>2019-08-05</lastmod>
   </url>  <url>
@@ -16,16 +22,13 @@
     <loc>http://yoursite.com/LeetCode%20728.%20Self%20Dividing%20Numbers.html</loc>
     <lastmod>2019-08-01</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/LeetCode%201103.%20Distribute%20Candies%20to%20People.html</loc>
-    <lastmod>2019-08-01</lastmod>
-  </url>  <url>
     <loc>http://yoursite.com/LeetCode%20899.%20Orderly%20Queue.html</loc>
     <lastmod>2019-08-01</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/LeetCode%20804.%20Unique%20Morse%20Code%20Words.html</loc>
+    <loc>http://yoursite.com/LeetCode%201103.%20Distribute%20Candies%20to%20People.html</loc>
     <lastmod>2019-08-01</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/Hello%20World.html</loc>
+    <loc>http://yoursite.com/LeetCode%20804.%20Unique%20Morse%20Code%20Words.html</loc>
     <lastmod>2019-08-01</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/LeetCode%201021.%20Remove%20Outermost%20Parentheses.html</loc>
