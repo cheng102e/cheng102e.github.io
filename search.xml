@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CCF 2016-12-2 工资计算]]></title>
+    <url>%2FCCF%202016-12-2%20%E5%B7%A5%E8%B5%84%E8%AE%A1%E7%AE%97.html</url>
+    <content type="text"><![CDATA[CCF 2016-12-1 工资计算题目问题描述 小明的公司每个月给小明发工资，而小明拿到的工资为交完个人所得税之后的工资。假设他一个月的税前工资（扣除五险一金后、未扣税前的工资）为S元，则他应交的个人所得税按如下公式计算： 1） 个人所得税起征点为3500元，若S不超过3500，则不交税，3500元以上的部分才计算个人所得税，令A=S-3500元； 2） A中不超过1500元的部分，税率3%； 3） A中超过1500元未超过4500元的部分，税率10%； 4） A中超过4500元未超过9000元的部分，税率20%； 5） A中超过9000元未超过35000元的部分，税率25%； 6） A中超过35000元未超过55000元的部分，税率30%； 7） A中超过55000元未超过80000元的部分，税率35%； 8） A中超过80000元的部分，税率45%； 例如，如果小明的税前工资为10000元，则A=10000-3500=6500元，其中不超过1500元部分应缴税1500×3%=45元，超过1500元不超过4500元部分应缴税(4500-1500)×10%=300元，超过4500元部分应缴税(6500-4500)×20%=400元。总共缴税745元，税后所得为9255元。 已知小明这个月税后所得为T元，请问他的税前工资S是多少元。 输入格式 输入的第一行包含一个整数T，表示小明的税后所得。所有评测数据保证小明的税前工资为一个整百的数。 输出格式 输出一个整数S，表示小明的税前工资。 样例输入9255样例输出110000 评测用例规模与约定 对于所有评测用例，1 ≤ T ≤ 100000。 思路也是一两年前做的了，直接用了之前的代码，将数字关系全部列出来，直接输出，思路应该很清晰，不过代码不咋地。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include&lt;iostream&gt;using namespace std;int main()&#123; int s,n,i=34,j,k=1,sum,t; cin&gt;&gt;n; s=n-3500; if(s&lt;=0) cout&lt;&lt;n; else &#123; if(s&lt;=1500-45) &#123; t=s; t=t*100/97; sum=3500+t; &#125; else if(s&lt;=4500-300-45) &#123; t=(s+45-1500)*100/90; sum=3500+1500+t; &#125; else if(s&lt;=9000-900-300-45) &#123; t=(s+45+300-4500)*100/80; sum=3500+4500+t; &#125; else if(s&lt;=35000-6500-900-300-45) &#123; t=(s+45+300+900-9000)*100/75; sum=3500+9000+t; &#125; else if(s&lt;=55000-6000-6500-900-300-45) &#123; t=(s+45+300+900+6500-35000)*100/70; sum=3500+35000+t; &#125; else if(s&lt;=80000-8750-6000-6500-900-300-45) &#123; t=(s+45+300+900+6500+6000-55000)*100/65; sum=3500+55000+t; &#125; else &#123; t=(s+45+300+900+6500+6000+8750-80000)*100/55; sum=3500+80000+t; &#125; cout&lt;&lt;sum; &#125;&#125;]]></content>
+      <categories>
+        <category>CCF</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[CCF 2016-12-1 中间数]]></title>
+    <url>%2FCCF%202016-12-1%20%E4%B8%AD%E9%97%B4%E6%95%B0.html</url>
+    <content type="text"><![CDATA[CCF 2016-12-1 中间数题目问题描述 在一个整数序列a1, a2, …, an中，如果存在某个数，大于它的整数数量等于小于它的整数数量，则称其为中间数。在一个序列中，可能存在多个下标不相同的中间数，这些中间数的值是相同的。 给定一个整数序列，请找出这个整数序列的中间数的值。 输入格式 输入的第一行包含了一个整数n，表示整数序列中数的个数。 第二行包含n个正整数，依次表示a1, a2, …, an。 输出格式 如果约定序列的中间数存在，则输出中间数的值，否则输出-1表示不存在中间数。 样例输入6 2 6 5 6 3 5样例输出15 样例说明 比5小的数有2个，比5大的数也有2个。 评测用例规模与约定 对于所有评测用例，1 ≤ n ≤ 1000，1 ≤ ai ≤ 1000。 思路水题，先排序，找到中位数，之后查看左右的相同数字，找到left和right，输出结果即可。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;int main()&#123; int n, mid, left, right; int num[1010]; cin&gt;&gt;n; for(int i=0; i&lt;n; i++) cin&gt;&gt;num[i]; sort(num, num+n); mid = n/2; left = mid; right = n - mid - 1; for(int i=mid-1; i&gt;=0; i--) &#123; if(num[i] == num[mid]) &#123; left--; &#125; else &#123; break; &#125; &#125; for(int i=mid+1; i&lt;n; i++) &#123; if(num[i] == num[mid]) &#123; right--; &#125; else &#123; break; &#125; &#125; if(left == right) &#123; cout&lt;&lt;num[mid]; &#125; else &#123; cout&lt;&lt;"-1"; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>CCF</category>
+      </categories>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1348%20Couple%20number.html</url>
+    <content type="text"><![CDATA[title: 洛谷 P1348 Couple number date: 2019-08-21 08:11:00 tags: categories: 洛谷 -– 洛谷 P1348 Couple number链接https://www.luogu.org/problem/P1348 题目题目描述任何一个整数N都能表示成另外两个整数a和b的平方差吗？如果能，那么这个数N就叫做Couple number。你的工作就是判断一个数N是不是Couple number。 输入格式仅一行，两个长整型范围内的整数n1和n2，之间用1个空格隔开。 输出格式输出在n1到n2范围内有多少个Couple number。 注意：包括n1和n2两个数，且n1&lt;n2，n2 - n1 &lt;= 10 000 000。 输入输出样例输入 #1 11 10 输出 #1 17 思路现在这些都是数学题了咋的，这也是一道代码很简单，但是要考虑的数学题。 平方差就是（a+b）*（a-b），左右两部分奇偶性相同，所以结果可能为奇数或者为4的倍数，循环判断即可。 （存在负数情况，所以判断奇数不能用余数为1，要用余数不为0） 代码12345678910111213141516171819#include&lt;iostream&gt; using namespace std;int main()&#123; long long n,m; cin&gt;&gt;n&gt;&gt;m; int num=0; for(long long i=n;i&lt;=m;i++) &#123; if(i%4==0||i%2!=0) &#123; num++; &#125; &#125; cout&lt;&lt;num; return 0;&#125;]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[P1244 青蛙过河]]></title>
+    <url>%2F%E6%B4%9B%E8%B0%B7%20P1244%20%E9%9D%92%E8%9B%99%E8%BF%87%E6%B2%B3.html</url>
+    <content type="text"><![CDATA[洛谷 P1244 青蛙过河链接https://www.luogu.org/problem/P1244 题目题目描述有一条河，左边一个石墩(A区)上有编号为1，2，3，4，…，n的n只青蛙，河中有k个荷叶(C区)，还有h个石墩(D区)，右边有一个石墩(B区)，如下图所示。n只青蛙要过河(从左岸石墩A到右岸石墩B)，规则为： (1)石墩上可以承受任意多只青蛙，荷叶只能承受一只青蛙(不论大小)； (2)青蛙可以：A→B(表示可以从A跳到B，下同)，A→C，A→D，C→B，D→B，D→C，C→D； (3)当一个石墩上有多只青蛙时，则上面的青蛙只能跳到比它大1号的青蛙上面。 你的任务是对于给出的h，k，计算并输出最多能有多少只青蛙可以根据以上规则顺利过河? 输入格式两个整数h,k 输出格式一个整数，表示最多能有多少只青蛙可以根据以上规则顺利过河。 输入输出样例输入 #1 12 3 输出 #1 116 思路这道题超出了我的想象。。。。。我没怎么看懂，之后看了别人的博客才搞明白，按道理说用动态规划，但是化简之后的式子就是直接h，k组成的，如果没有石墩，那么只有k+1个，每有一个石墩，数量就增加为（k+1）*2^h，就是每多一个石墩就多了一次周转的机会，然后输出结果就行了。 代码1234567891011121314151617#include&lt;iostream&gt;using namespace std;int main()&#123; int h,k; cin&gt;&gt;h&gt;&gt;k; long long num=k+1; for(int i=0;i&lt;h;i++) &#123; num=num*2; &#125; cout&lt;&lt;num; return 0;&#125;]]></content>
+      <categories>
+        <category>洛谷</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[洛谷 P1908 逆序对]]></title>
     <url>%2F%E6%B4%9B%E8%B0%B7%20P1908%20%E9%80%86%E5%BA%8F%E5%AF%B9.html</url>
     <content type="text"><![CDATA[洛谷 P1908 逆序对链接https://www.luogu.org/problem/P1908 题目题目描述猫猫TOM和小老鼠JERRY最近又较量上了，但是毕竟都是成年人，他们已经不喜欢再玩那种你追我赶的游戏，现在他们喜欢玩统计。最近，TOM老猫查阅到一个人类称之为“逆序对”的东西，这东西是这样定义的：对于给定的一段正整数序列，逆序对就是序列中ai&gt;aj且i&lt;j的有序对。知道这概念后，他们就比赛谁先算出给定的一段正整数序列中逆序对的数目。Update:数据已加强。 输入格式第一行，一个数n，表示序列中有n个数。 第二行n个数，表示给定的序列。序列中每个数字不超过10^9 输出格式给定序列中逆序对的数目。 输入输出样例输入 #1 1265 4 2 6 3 1 输出 #1 111 说明/提示对于25%的数据，0n≤2500 对于50%的数据，n≤4×10^4。 对于所有数据，n≤5×10^5 请使用较快的输入输出 应该不会n方过50万吧 by chen_zhe 思路这题。。。难倒是不难，但是我没注意数据范围，re三次。 寻找逆序对的话，排序就行，这里的数据量肯定不能冒泡，所以归并（方便统计数量），归并排序的算法不是很难，以后我会补个排序算法集合（鸽德），这里只需要注意两点，一点是sum每次增加mid-left+1，这个1可能会漏；第二点是数据范围，数组要50w的，答案要long long。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include&lt;iostream&gt;using namespace std;int n,now[500010],next[500010];long long sum=0;void merge(int l,int r)&#123; if(l==r) return; int mid=(l+r)/2; merge(l,mid); merge(mid+1,r); int left=l,right=mid+1,count=l; while(left&lt;=mid&amp;&amp;right&lt;=r) &#123; if(now[left]&lt;=now[right]) &#123; next[count]=now[left]; left++; count++; &#125; else &#123; next[count]=now[right]; count++; right++; sum+=mid-left+1; &#125; &#125; while(left&lt;=mid) &#123; next[count]=now[left]; count++; left++; &#125; while(right&lt;=r) &#123; next[count]=now[right]; right++; count++; &#125; for(int i=l;i&lt;=r;i++) &#123; now[i]=next[i]; &#125;&#125;int main()&#123; cin&gt;&gt;n; for(int i=0;i&lt;n;i++) &#123; cin&gt;&gt;now[i]; &#125; merge(0,n-1); cout&lt;&lt;sum; return 0;&#125;]]></content>
@@ -584,7 +613,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#x6e;&#x64;&#x40;&#49;&#54;&#x33;&#x2e;&#x63;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#x65;&#99;&#x65;&#x69;&#x76;&#101;&#64;&#x31;&#54;&#x33;&#46;&#99;&#111;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#x65;&#110;&#100;&#x40;&#49;&#54;&#51;&#x2e;&#99;&#111;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#101;&#x63;&#101;&#105;&#118;&#x65;&#64;&#49;&#54;&#x33;&#x2e;&#99;&#x6f;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>
