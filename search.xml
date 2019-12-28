@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 70. Climbing Stairs]]></title>
+    <url>%2FLeetCode%2070.%20Climbing%20Stairs.html</url>
+    <content type="text"><![CDATA[70. Climbing Stairs（两数之和）链接https://leetcode-cn.com/problems/climbing-stairs 题目假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 注意：给定 n 是一个正整数。 示例 1： 输入： 2 输出： 2 解释： 有两种方法可以爬到楼顶。 1. 1 阶 + 1 阶 2. 2 阶示例 2： 输入： 3 输出： 3 解释： 有三种方法可以爬到楼顶。 1. 1 阶 + 1 阶 + 1 阶 2. 1 阶 + 2 阶 3. 2 阶 + 1 阶思路算是一个递归方法，如果只有一阶那么只有一种方法，二阶有两种方法。递归方程 f(n)=f(n-1)+f(n-2) 代码：1234567891011121314public int climbStairs(int n) &#123; if (n &lt; 3) &#123; return n; &#125; int f1 = 1; int f2 = 2; int fn = 0; for (int i = 3; i &lt;= n; i++) &#123; fn = f1 + f2; f1 = f2; f2 = fn; &#125; return fn;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 628. Maximum Product of Three Numbers]]></title>
+    <url>%2FLeetCode%20628.%20Maximum%20Product%20of%20Three%20Numbers.html</url>
+    <content type="text"><![CDATA[628. Maximum Product of Three Numbers（三个数的最大乘积）链接https://leetcode-cn.com/problems/maximum-product-of-three-numbers/submissions 题目给定一个整型数组，在数组中找出由三个数组成的最大乘积，并输出这个乘积。 示例 1: 输入: [1,2,3] 输出: 6示例 2: 输入: [1,2,3,4] 输出: 24注意: 给定的整型数组长度范围是[3,104]，数组中所有的元素范围是[-1000, 1000]。输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。 思路简单题，分析一下思路，要求乘积的最大值，那么限定一下范围，只能是三个最大正数相乘，或者两个最小负数相乘再乘最大正数，负负得正。这里采用sort直接排序，偷了个懒，之后算出两种最大值比较输出即可。 代码1234567public static int maximumProduct(int[] nums) &#123; Arrays.sort(nums); int max1 = nums[0] * nums[1] * nums[nums.length - 1]; int max2 = nums[nums.length - 3] * nums[nums.length - 2] * nums[nums.length - 1]; return Math.max(max1, max2);&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 13. Roman to Integer]]></title>
     <url>%2FLeetCode%2013.%20Roman%20to%20Integer.html</url>
     <content type="text"><![CDATA[13. Roman to Integer（罗马数字转整数）链接https://leetcode-cn.com/problems/roman-to-integer/ 题目罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。 字符 数值 I 1 V 5 X 10 L 50 C 100 D 500 M 1000例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。 示例 1: 输入: &quot;III&quot; 输出: 3示例 2: 输入: &quot;IV&quot; 输出: 4示例 3: 输入: &quot;IX&quot; 输出: 9示例 4: 输入: &quot;LVIII&quot; 输出: 58 解释: L = 50, V= 5, III = 3.示例 5: 输入: &quot;MCMXCIV&quot; 输出: 1994 解释: M = 1000, CM = 900, XC = 90, IV = 4.思路这题比起之前的整数转罗马数字麻烦了很多，整数转罗马只需要考虑去除差即可，现在需要反向转换，首先可以先从头到尾把全部转化为整数，之后如果发现IV等的组合，就减去两倍的I，别的几个同理，得到正确答案。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152public static int romanToInt(String s) &#123; int len = s.length(); int num = 0; for (int i = 0; i &lt; len; i++) &#123; switch (s.charAt(i)) &#123; case &apos;I&apos;: num += 1; break; case &apos;V&apos;: num += 5; break; case &apos;X&apos;: num += 10; break; case &apos;L&apos;: num += 50; break; case &apos;C&apos;: num += 100; break; case &apos;D&apos;: num += 500; break; case &apos;M&apos;: num += 1000; break; default: System.out.println(&quot;default&quot;); break; &#125; if (i != 0) &#123; if (s.charAt(i - 1) == &apos;I&apos;) &#123; if (s.charAt(i) == &apos;V&apos; || s.charAt(i) == &apos;X&apos;) &#123; num -= 2; &#125; &#125; if (s.charAt(i - 1) == &apos;X&apos;) &#123; if (s.charAt(i) == &apos;L&apos; || s.charAt(i) == &apos;C&apos;) &#123; num -= 20; &#125; &#125; if (s.charAt(i - 1) == &apos;C&apos;) &#123; if (s.charAt(i) == &apos;D&apos; || s.charAt(i) == &apos;M&apos;) &#123; num -= 200; &#125; &#125; &#125; &#125; return num; &#125;]]></content>
@@ -688,7 +704,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#x6e;&#x64;&#x40;&#x31;&#54;&#x33;&#x2e;&#x63;&#x6f;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#x63;&#101;&#x69;&#118;&#x65;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#x65;&#110;&#x64;&#x40;&#x31;&#54;&#51;&#46;&#x63;&#x6f;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#x63;&#x65;&#x69;&#x76;&#x65;&#64;&#49;&#54;&#x33;&#46;&#x63;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>
