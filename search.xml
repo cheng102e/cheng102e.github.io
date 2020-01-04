@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 231. Power of Two]]></title>
+    <url>%2FLeetCode%20231.%20Power%20of%20Two.html</url>
+    <content type="text"><![CDATA[231. Power of Two（2的幂）链接https://leetcode-cn.com/problems/power-of-two 题目给定一个整数，编写一个函数来判断它是否是 2 的幂次方。 示例 1: 输入: 1 输出: true 解释: 20 = 1示例 2: 输入: 16 输出: true 解释: 24 = 16示例 3: 输入: 218 输出: false 思路位运算，算是做之前不知道咋做，做了后就熟了的题目，代码也都简单，有两个式子。先得知，若为二的幂，转换为二进制之后只有一位数字是1，别的数字都是0. (n &gt; 0) &amp;&amp; ((n &amp; -n) == n)负数补码的存放是取反加一，假设为8，整数为1000，负数-8，为0111+0001=1000(取反加一)，二者&amp;运算，结果为1000，还是8. (n &gt; 0) &amp;&amp; ((n &amp; (n - 1)) == 0)同样用8举例，n-1=7为0111，二者&amp;运算，结果为0. 两个式子的运算耗时差距也不是很大，看能想起来哪个吧，主要就是记得二进制是特殊的，适合位运算就行。 代码1234public static boolean isPowerOfTwo(int n) &#123; return (n &gt; 0) &amp;&amp; ((n &amp; -n) == n); // return (n &gt; 0) &amp;&amp; ((n &amp; (n - 1)) == 0); &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 263. Ugly Number]]></title>
+    <url>%2FLeetCode%20263.%20Ugly%20Number.html</url>
+    <content type="text"><![CDATA[263. Ugly Number（丑数）链接https://leetcode-cn.com/problems/ugly-number 题目编写一个程序判断给定的数是否为丑数。 丑数就是只包含质因数 2, 3, 5 的正整数。 示例 1: 输入: 6 输出: true 解释: 6 = 2 × 3示例 2: 输入: 8 输出: true 解释: 8 = 2 × 2 × 2示例 3: 输入: 14 输出: false 解释: 14 不是丑数，因为它包含了另外一个质因数 7。说明： 1 是丑数。 输入不会超过 32 位有符号整数的范围: [−231, 231 − 1]。 思路简单的定义题，整除方法，特殊值1，直接if判断1，while判断整除，最后输出结果。 代码12345678910111213141516public static boolean isUgly(int num) &#123; if (num &lt; 1) &#123; return false; &#125; while (num % 5 == 0) &#123; num = num / 5; &#125; while (num % 3 == 0) &#123; num = num / 3; &#125; while (num % 2 == 0) &#123; num = num / 2; &#125; return num == 1; &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 136. Single Number]]></title>
+    <url>%2FLeetCode%20136.%20Single%20Number.html</url>
+    <content type="text"><![CDATA[136. Single Number（只出现一次的数字）链接https://leetcode-cn.com/problems/single-number 题目给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。 说明： 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？ 示例 1: 输入: [2,2,1]输出: 1示例 2: 输入: [4,1,2,1,2]输出: 4 思路这题思路有点强的，我本来打算遍历加哈希来检测，之后发现了，这题可以用位运算（我从来没有想过这个问题）。异或计算，如果二者相同则结果为0，不同的话结果为1，再加上异或自带的交换律，最后结果就是0异或单一数，就是要找的数字。 代码1234567public static int singleNumber(int[] nums) &#123; int n = 0; for (int i = 0; i &lt; nums.length; i++) &#123; n = n ^ nums[i]; &#125; return n; &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 69. Sqrt(x)]]></title>
     <url>%2FLeetCode%2066.%20Plus%20One.html</url>
     <content type="text"><![CDATA[69. Sqrt(x)（x 的平方根）链接https://leetcode-cn.com/problems/sqrtx 题目实现 int sqrt(int x) 函数。 计算并返回 x 的平方根，其中 x 是非负整数。 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。 示例 1: 输入: 4输出: 2示例 2: 输入: 8输出: 2说明: 8 的平方根是 2.82842…, 由于返回类型是整数，小数部分将被舍去。 思路平方根的求法，要么用牛顿迭代法，要么二分法，（遍历也行，但是会超时），设1，x一个开始一个结束，二分法找答案，需要注意的是要采用x/mid&gt;mid,不然会超出范围。2020的第一篇，又是热爱学习的一年。 代码1234567891011121314151617public static int mySqrt(int x) &#123; if (x == 1 || x == 0) &#123; return x; &#125; int start = 0; int end = x ; while (end - start &gt;= 1) &#123; int mid = (start + end) / 2; if (x / mid &gt; mid) &#123; start = mid; &#125; else &#123; end = mid; &#125; &#125; return start; &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 66. Plus One]]></title>
+    <url>%2FLeetCode%2069.%20Sqrt(x).html</url>
+    <content type="text"><![CDATA[66. Plus One（加一）链接https://leetcode-cn.com/problems/plus-one 题目给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。 最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。 你可以假设除了整数 0 之外，这个整数不会以零开头。 示例 1: 输入: [1,2,3] 输出: [1,2,4] 解释: 输入数组表示数字 123。示例 2: 输入: [4,3,2,1] 输出: [4,3,2,2] 解释: 输入数组表示数字 4321。 思路不是很难的题目，只需要注意，给的数组是表示数字的，那么就从后往前加一，如果进位就考虑前一位，不然跳出。如果第一位产生进位，就需要一个新数组，来存放新的第一位。 代码1234567891011121314151617181920212223242526public static int[] plusOne(int[] digits) &#123; if (digits.length == 0) &#123; return null; &#125; int len = digits.length; digits[len - 1] += 1; for (int i = len - 1; i &gt; 0; i--) &#123; if (digits[i] &gt;= 10) &#123; digits[i] -= 10; digits[i - 1] += 1; &#125; &#125; if (digits[0] == 10) &#123; int[] newdigits = new int[len + 1]; newdigits[0] = 1; digits[0] -= 10; for (int i = 0; i &lt; len; i++) &#123; newdigits[i + 1] = digits[i]; &#125; return newdigits; &#125; return digits; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
@@ -712,7 +750,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#x65;&#110;&#100;&#x40;&#x31;&#x36;&#x33;&#46;&#99;&#111;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#x65;&#99;&#x65;&#105;&#118;&#x65;&#64;&#49;&#54;&#51;&#46;&#x63;&#x6f;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#101;&#x6e;&#100;&#64;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#101;&#99;&#x65;&#105;&#118;&#101;&#64;&#49;&#x36;&#x33;&#46;&#99;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>

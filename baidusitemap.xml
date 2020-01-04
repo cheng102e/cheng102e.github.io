@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://cheng102e.github.io/LeetCode%20231.%20Power%20of%20Two.html</loc>
+    <lastmod>2020-01-04</lastmod>
+  </url>  <url>
+    <loc>https://cheng102e.github.io/LeetCode%20112.%20Path%20Sum.html</loc>
+    <lastmod>2020-01-04</lastmod>
+  </url>  <url>
+    <loc>https://cheng102e.github.io/LeetCode%20263.%20Ugly%20Number.html</loc>
+    <lastmod>2020-01-04</lastmod>
+  </url>  <url>
+    <loc>https://cheng102e.github.io/LeetCode%20258.%20Add%20Digits.html</loc>
+    <lastmod>2020-01-04</lastmod>
+  </url>  <url>
+    <loc>https://cheng102e.github.io/LeetCode%20136.%20Single%20Number.html</loc>
+    <lastmod>2020-01-04</lastmod>
+  </url>  <url>
+    <loc>https://cheng102e.github.io/LeetCode%2069.%20Sqrt(x).html</loc>
+    <lastmod>2020-01-04</lastmod>
+  </url>  <url>
     <loc>https://cheng102e.github.io/LeetCode%2066.%20Plus%20One.html</loc>
     <lastmod>2020-01-01</lastmod>
   </url>  <url>
@@ -163,9 +181,6 @@
     <loc>https://cheng102e.github.io/LeetCode%20334.%20Increasing%20Triplet%20Subsequence.html</loc>
     <lastmod>2019-08-01</lastmod>
   </url>  <url>
-    <loc>https://cheng102e.github.io/LeetCode%20258.%20Add%20Digits.html</loc>
-    <lastmod>2019-08-01</lastmod>
-  </url>  <url>
     <loc>https://cheng102e.github.io/LeetCode%20217.%20Contains%20Duplicate.html</loc>
     <lastmod>2019-08-01</lastmod>
   </url>  <url>
@@ -188,9 +203,6 @@
     <lastmod>2019-08-01</lastmod>
   </url>  <url>
     <loc>https://cheng102e.github.io/LeetCode%20120.%20Triangle.html</loc>
-    <lastmod>2019-08-01</lastmod>
-  </url>  <url>
-    <loc>https://cheng102e.github.io/LeetCode%20112.%20Path%20Sum.html</loc>
     <lastmod>2019-08-01</lastmod>
   </url>  <url>
     <loc>https://cheng102e.github.io/LeetCode%2072.%20Edit%20Distance.html</loc>

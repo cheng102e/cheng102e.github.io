@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cheng102e.github.io/"/>
-  <updated>2020-01-01T03:42:43.707Z</updated>
+  <updated>2020-01-04T06:51:18.881Z</updated>
   <id>https://cheng102e.github.io/</id>
   
   <author>
@@ -15,6 +15,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 231. Power of Two</title>
+    <link href="https://cheng102e.github.io/LeetCode%20231.%20Power%20of%20Two.html"/>
+    <id>https://cheng102e.github.io/LeetCode 231. Power of Two.html</id>
+    <published>2020-01-04T06:34:00.000Z</published>
+    <updated>2020-01-04T06:51:18.881Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="231-Power-of-Two（2的幂）"><a href="#231-Power-of-Two（2的幂）" class="headerlink" title="231. Power of Two（2的幂）"></a>231. Power of Two（2的幂）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/power-of-two" target="_blank" rel="noopener">https://leetcode-cn.com/problems/power-of-two</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个整数，编写一个函数来判断它是否是 2 的幂次方。</p><p>示例 1:</p><p>  输入: 1<br>  输出: true<br>  解释: 20 = 1<br>示例 2:</p><p>  输入: 16<br>  输出: true<br>  解释: 24 = 16<br>示例 3:</p><p>  输入: 218<br>  输出: false</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>位运算，算是做之前不知道咋做，做了后就熟了的题目，代码也都简单，有两个式子。<br>先得知，若为二的幂，转换为二进制之后只有一位数字是1，别的数字都是0.</p><ol><li><p>(n &gt; 0) &amp;&amp; ((n &amp; -n) == n)<br>负数补码的存放是取反加一，假设为8，整数为1000，负数-8，为0111+0001=1000(取反加一)，二者&amp;运算，结果为1000，还是8.</p></li><li><p>(n &gt; 0) &amp;&amp; ((n &amp; (n - 1)) == 0)<br>同样用8举例，n-1=7为0111，二者&amp;运算，结果为0.</p></li></ol><p>两个式子的运算耗时差距也不是很大，看能想起来哪个吧，主要就是记得二进制是特殊的，适合位运算就行。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isPowerOfTwo(int n) &#123;</span><br><span class="line">    return (n &gt; 0) &amp;&amp; ((n &amp; -n) == n);</span><br><span class="line">  //  return (n &gt; 0) &amp;&amp; ((n &amp; (n - 1)) == 0);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;231-Power-of-Two（2的幂）&quot;&gt;&lt;a href=&quot;#231-Power-of-Two（2的幂）&quot; class=&quot;headerlink&quot; title=&quot;231. Power of Two（2的幂）&quot;&gt;&lt;/a&gt;231. Power of Two（2的幂）
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="位运算" scheme="https://cheng102e.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 263. Ugly Number</title>
+    <link href="https://cheng102e.github.io/LeetCode%20263.%20Ugly%20Number.html"/>
+    <id>https://cheng102e.github.io/LeetCode 263. Ugly Number.html</id>
+    <published>2020-01-04T06:14:00.000Z</published>
+    <updated>2020-01-04T06:16:31.309Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="263-Ugly-Number（丑数）"><a href="#263-Ugly-Number（丑数）" class="headerlink" title="263. Ugly Number（丑数）"></a>263. Ugly Number（丑数）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/ugly-number" target="_blank" rel="noopener">https://leetcode-cn.com/problems/ugly-number</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>编写一个程序判断给定的数是否为丑数。</p><p>丑数就是只包含质因数 2, 3, 5 的正整数。</p><p>示例 1:</p><p>  输入: 6<br>  输出: true<br>  解释: 6 = 2 × 3<br>示例 2:</p><p>  输入: 8<br>  输出: true<br>  解释: 8 = 2 × 2 × 2<br>示例 3:</p><p>  输入: 14<br>  输出: false<br>  解释: 14 不是丑数，因为它包含了另外一个质因数 7。<br>说明：</p><p>  1 是丑数。<br>  输入不会超过 32 位有符号整数的范围: [−231,  231 − 1]。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>简单的定义题，整除方法，特殊值1，直接if判断1，while判断整除，最后输出结果。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isUgly(int num) &#123;</span><br><span class="line">    if (num &lt; 1) &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">    while (num % 5 == 0) &#123;</span><br><span class="line">      num = num / 5;</span><br><span class="line">    &#125;</span><br><span class="line">    while (num % 3 == 0) &#123;</span><br><span class="line">      num = num / 3;</span><br><span class="line">    &#125;</span><br><span class="line">    while (num % 2 == 0) &#123;</span><br><span class="line">      num = num / 2;</span><br><span class="line">    &#125;</span><br><span class="line">    return num == 1;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;263-Ugly-Number（丑数）&quot;&gt;&lt;a href=&quot;#263-Ugly-Number（丑数）&quot; class=&quot;headerlink&quot; title=&quot;263. Ugly Number（丑数）&quot;&gt;&lt;/a&gt;263. Ugly Number（丑数）&lt;/h2&gt;&lt;h3
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 136. Single Number</title>
+    <link href="https://cheng102e.github.io/LeetCode%20136.%20Single%20Number.html"/>
+    <id>https://cheng102e.github.io/LeetCode 136. Single Number.html</id>
+    <published>2020-01-04T02:22:00.000Z</published>
+    <updated>2020-01-04T03:59:24.852Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="136-Single-Number（只出现一次的数字）"><a href="#136-Single-Number（只出现一次的数字）" class="headerlink" title="136. Single Number（只出现一次的数字）"></a>136. Single Number（只出现一次的数字）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/single-number" target="_blank" rel="noopener">https://leetcode-cn.com/problems/single-number</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p><p>说明：</p><p>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</p><p>示例 1:</p><p>输入: [2,2,1]<br>输出: 1<br>示例 2:</p><p>输入: [4,1,2,1,2]<br>输出: 4</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题思路有点强的，我本来打算遍历加哈希来检测，之后发现了，这题可以用位运算（我从来没有想过这个问题）。<br>异或计算，如果二者相同则结果为0，不同的话结果为1，再加上异或自带的交换律，最后结果就是0异或单一数，就是要找的数字。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static int singleNumber(int[] nums) &#123;</span><br><span class="line">    int n = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      n = n ^ nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return n;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;136-Single-Number（只出现一次的数字）&quot;&gt;&lt;a href=&quot;#136-Single-Number（只出现一次的数字）&quot; class=&quot;headerlink&quot; title=&quot;136. Single Number（只出现一次的数字）&quot;&gt;&lt;/a&gt;136.
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="位运算" scheme="https://cheng102e.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 69. Sqrt(x)</title>
@@ -30,6 +103,29 @@
       
       
         &lt;h2 id=&quot;69-Sqrt-x-（x-的平方根）&quot;&gt;&lt;a href=&quot;#69-Sqrt-x-（x-的平方根）&quot; class=&quot;headerlink&quot; title=&quot;69. Sqrt(x)（x 的平方根）&quot;&gt;&lt;/a&gt;69. Sqrt(x)（x 的平方根）&lt;/h2&gt;&lt;h3 id=
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 66. Plus One</title>
+    <link href="https://cheng102e.github.io/LeetCode%2069.%20Sqrt(x).html"/>
+    <id>https://cheng102e.github.io/LeetCode 69. Sqrt(x).html</id>
+    <published>2019-12-29T13:22:00.000Z</published>
+    <updated>2020-01-04T02:19:22.856Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="66-Plus-One（加一）"><a href="#66-Plus-One（加一）" class="headerlink" title="66. Plus One（加一）"></a>66. Plus One（加一）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p><p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p><p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p><p>示例 1:</p><p>  输入: [1,2,3]<br>  输出: [1,2,4]<br>  解释: 输入数组表示数字 123。<br>示例 2:</p><p>  输入: [4,3,2,1]<br>  输出: [4,3,2,2]<br>  解释: 输入数组表示数字 4321。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>不是很难的题目，只需要注意，给的数组是表示数字的，那么就从后往前加一，如果进位就考虑前一位，不然跳出。<br>如果第一位产生进位，就需要一个新数组，来存放新的第一位。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static int[] plusOne(int[] digits) &#123;</span><br><span class="line">    if (digits.length == 0) &#123;</span><br><span class="line">      return null;</span><br><span class="line">    &#125;</span><br><span class="line">    int len = digits.length;</span><br><span class="line">    digits[len - 1] += 1;</span><br><span class="line">    for (int i = len - 1; i &gt; 0; i--) &#123;</span><br><span class="line">      if (digits[i] &gt;= 10) &#123;</span><br><span class="line">        digits[i] -= 10;</span><br><span class="line">        digits[i - 1] += 1;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    if (digits[0] == 10) &#123;</span><br><span class="line">      int[] newdigits = new int[len + 1];</span><br><span class="line">      newdigits[0] = 1;</span><br><span class="line">      digits[0] -= 10;</span><br><span class="line">      for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        newdigits[i + 1] = digits[i];</span><br><span class="line">      &#125;</span><br><span class="line">      return newdigits;</span><br><span class="line">    &#125;</span><br><span class="line">    return digits;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;66-Plus-One（加一）&quot;&gt;&lt;a href=&quot;#66-Plus-One（加一）&quot; class=&quot;headerlink&quot; title=&quot;66. Plus One（加一）&quot;&gt;&lt;/a&gt;66. Plus One（加一）&lt;/h2&gt;&lt;h3 id=&quot;链接&quot;&gt;&lt;a href
       
     
     </summary>
@@ -380,98 +476,6 @@
     </summary>
     
       <category term="洛谷" scheme="https://cheng102e.github.io/categories/%E6%B4%9B%E8%B0%B7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>洛谷 P1908 逆序对</title>
-    <link href="https://cheng102e.github.io/%E6%B4%9B%E8%B0%B7%20P1908%20%E9%80%86%E5%BA%8F%E5%AF%B9.html"/>
-    <id>https://cheng102e.github.io/洛谷 P1908 逆序对.html</id>
-    <published>2019-08-16T04:28:00.000Z</published>
-    <updated>2019-08-16T04:02:05.624Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="洛谷-P1908-逆序对"><a href="#洛谷-P1908-逆序对" class="headerlink" title="洛谷 P1908 逆序对"></a>洛谷 P1908 逆序对</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.org/problem/P1908" target="_blank" rel="noopener">https://www.luogu.org/problem/P1908</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>猫猫TOM和小老鼠JERRY最近又较量上了，但是毕竟都是成年人，他们已经不喜欢再玩那种你追我赶的游戏，现在他们喜欢玩统计。最近，TOM老猫查阅到一个人类称之为“逆序对”的东西，这东西是这样定义的：对于给定的一段正整数序列，逆序对就是序列中ai&gt;aj且i&lt;j的有序对。知道这概念后，他们就比赛谁先算出给定的一段正整数序列中逆序对的数目。<br><strong>Update:数据已加强。</strong></p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行，一个数n，表示序列中有n个数。</p><p>第二行n个数，表示给定的序列。序列中每个数字不超过10^9</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>给定序列中逆序对的数目。</p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入 #1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">5 4 2 6 3 1</span><br></pre></td></tr></table></figure><p>输出 #1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11</span><br></pre></td></tr></table></figure><h4 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明/提示"></a>说明/提示</h4><p>对于25%的数据，0<em>n</em>≤2500</p><p>对于50%的数据，<em>n</em>≤4×10^4。</p><p>对于所有数据，<em>n</em>≤5×10^5</p><p>请使用较快的输入输出</p><p>应该不会n方过50万吧 by chen_zhe</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题。。。难倒是不难，但是我没注意数据范围，re三次。</p><p>寻找逆序对的话，排序就行，这里的数据量肯定不能冒泡，所以归并（方便统计数量），归并排序的算法不是很难，以后我会补个排序算法集合（鸽德），这里只需要注意两点，一点是sum每次增加mid-left+1，这个1可能会漏；第二点是数据范围，数组要50w的，答案要long long。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,now[<span class="number">500010</span>],next[<span class="number">500010</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(l==r)</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line"><span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">merge(l,mid);</span><br><span class="line">merge(mid+<span class="number">1</span>,r);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> left=l,right=mid+<span class="number">1</span>,count=l;</span><br><span class="line"><span class="keyword">while</span>(left&lt;=mid&amp;&amp;right&lt;=r)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(now[left]&lt;=now[right])</span><br><span class="line">&#123;</span><br><span class="line">next[count]=now[left];</span><br><span class="line">left++;</span><br><span class="line">count++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">next[count]=now[right];</span><br><span class="line">count++;</span><br><span class="line">right++;</span><br><span class="line">sum+=mid-left+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(left&lt;=mid) </span><br><span class="line">&#123;</span><br><span class="line">next[count]=now[left];</span><br><span class="line">count++;</span><br><span class="line">left++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(right&lt;=r) </span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">next[count]=now[right];</span><br><span class="line">right++;</span><br><span class="line">count++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)</span><br><span class="line">&#123;</span><br><span class="line">now[i]=next[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;now[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">merge(<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;sum;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;洛谷-P1908-逆序对&quot;&gt;&lt;a href=&quot;#洛谷-P1908-逆序对&quot; class=&quot;headerlink&quot; title=&quot;洛谷 P1908 逆序对&quot;&gt;&lt;/a&gt;洛谷 P1908 逆序对&lt;/h2&gt;&lt;h3 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot; class=&quot;
-      
-    
-    </summary>
-    
-      <category term="洛谷" scheme="https://cheng102e.github.io/categories/%E6%B4%9B%E8%B0%B7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>洛谷 P1192 台阶问题</title>
-    <link href="https://cheng102e.github.io/%E6%B4%9B%E8%B0%B7%20P1192%20%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98.html"/>
-    <id>https://cheng102e.github.io/洛谷 P1192 台阶问题.html</id>
-    <published>2019-08-15T00:38:00.000Z</published>
-    <updated>2019-08-15T00:52:53.797Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="洛谷-P1192-台阶问题"><a href="#洛谷-P1192-台阶问题" class="headerlink" title="洛谷 P1192 台阶问题"></a>洛谷 P1192 台阶问题</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.org/problem/P1092" target="_blank" rel="noopener">https://www.luogu.org/problem/P1092</a></p><br><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>有<em>N</em>级的台阶，你一开始在底部，每次可以向上迈最多<em>K</em>级台阶（最少1级），问到达第<em>N</em>级台阶有多少种不同方式。</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>两个正整数N，K。</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>一个正整数，为不同方式数，由于答案可能很大，你需要输出ans  mod 100003后的结果。</p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入 #1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5 2</span><br></pre></td></tr></table></figure><p>输出 #1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8</span><br></pre></td></tr></table></figure><h4 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明/提示"></a>说明/提示</h4><p>对于20%的数据,有<em>N</em>≤10,<em>K</em>≤3;</p><p>对于40%的数据，有<em>N</em>≤1000;</p><p>对于100%的数据，有N<em>≤100000,</em>K*≤100。</p><br><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算法以前是见过的，但是学名我忘了emmmm，不知道算不算动态规划。</p><p>假设要到第3个台阶，最大可以走三阶，我们可以0-1-2-3，也可以0-1-3,0-2-3,0-3，一共有四种方法，第一步到的就是123其中之一：</p><ol><li>如果到1，再到3的方法和0-2的方法一样（2种），之后再走一步</li><li>到2，再到3和0-1的方法一样（1种）</li><li>直接到3，和0-0一样（1种）</li></ol><p>就可以得到</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f[i] += f[i-j]</span><br></pre></td></tr></table></figure><p>这个式子，之后放到代码中组合，最后得到的f[n]就是我们需要的答案。</p><br><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">100001</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">f[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=k;j++) </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(i&gt;=j)</span><br><span class="line">&#123;</span><br><span class="line">f[i] += f[i-j];</span><br><span class="line">f[i] = f[i]%<span class="number">100003</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;f[n];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;洛谷-P1192-台阶问题&quot;&gt;&lt;a href=&quot;#洛谷-P1192-台阶问题&quot; class=&quot;headerlink&quot; title=&quot;洛谷 P1192 台阶问题&quot;&gt;&lt;/a&gt;洛谷 P1192 台阶问题&lt;/h2&gt;&lt;h3 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot; cla
-      
-    
-    </summary>
-    
-      <category term="洛谷" scheme="https://cheng102e.github.io/categories/%E6%B4%9B%E8%B0%B7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>洛谷 P1029 最大公约数和最小公倍数问题</title>
-    <link href="https://cheng102e.github.io/%E6%B4%9B%E8%B0%B7%20P1029%20%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98.html"/>
-    <id>https://cheng102e.github.io/洛谷 P1029 最大公约数和最小公倍数问题.html</id>
-    <published>2019-08-14T00:45:00.000Z</published>
-    <updated>2019-08-14T00:57:07.566Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="洛谷-P1029-最大公约数和最小公倍数问题"><a href="#洛谷-P1029-最大公约数和最小公倍数问题" class="headerlink" title="洛谷 P1029 最大公约数和最小公倍数问题"></a>洛谷 P1029 最大公约数和最小公倍数问题</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.org/problem/P1029" target="_blank" rel="noopener">https://www.luogu.org/problem/P1029</a></p><br><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入2个正整数x<em>0,</em>y<em>0(2≤</em>x<em>0&lt;100000,2≤</em>y*0&lt;=1000000),求出满足下列条件的P,Q的个数</p><p>条件:</p><ol><li><em>P</em>,<em>Q</em>是正整数</li><li>要求P<em>,</em>Q*以x0为最大公约数,以y0为最小公倍数.</li></ol><p>试求:满足条件的所有可能的2个正整数的个数.</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>2个正整数x<em>0,</em>y*0</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>1个数，表示求出满足条件的P<em>,</em>Q的个数</p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入 #1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 60</span><br></pre></td></tr></table></figure><p>输出 #1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure><h4 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明/提示"></a>说明/提示</h4><p><em>P</em>,<em>Q</em>有4种</p><p>1、3,60<br>2、15,12<br>3、12,15<br>4、60,3</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目就是输入x，y，一为最小公约数，一为最大公倍数，求存在的pq对数。</p><p>p=x*k1,q=x*k2,y=x*k1*k2,k1k2互质，这就是总结之后的关系，x*y=p*q,将基于这个公式和辗转相除法来计算。</p><p>输入xy，寻找pq乘积为xy的对，之后判断这对pq的最大公约数是不是x，是的话结果就加二（一正一反）。最后，考虑到x=y,比如3,3，若如此，结果加一。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(b!=<span class="number">0</span>)</span><br><span class="line"><span class="keyword">return</span> gcd(b,a%b);</span><br><span class="line"><span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> x,y;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line"><span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i*i&lt;x*y;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>((x*y)%i==<span class="number">0</span> &amp;&amp; gcd(i,(x*y)/i)==x)</span><br><span class="line">sum++;</span><br><span class="line">&#125;</span><br><span class="line">sum = sum*<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(x==y)</span><br><span class="line">sum++;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;sum;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;洛谷-P1029-最大公约数和最小公倍数问题&quot;&gt;&lt;a href=&quot;#洛谷-P1029-最大公约数和最小公倍数问题&quot; class=&quot;headerlink&quot; title=&quot;洛谷 P1029 最大公约数和最小公倍数问题&quot;&gt;&lt;/a&gt;洛谷 P1029 最大公约数和最小公倍数
-      
-    
-    </summary>
-    
-      <category term="洛谷" scheme="https://cheng102e.github.io/categories/%E6%B4%9B%E8%B0%B7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>CCF 2017-03-2 学生排队</title>
-    <link href="https://cheng102e.github.io/CCF%202017-03-2%20%E5%AD%A6%E7%94%9F%E6%8E%92%E9%98%9F.html"/>
-    <id>https://cheng102e.github.io/CCF 2017-03-2 学生排队.html</id>
-    <published>2019-08-13T03:15:00.000Z</published>
-    <updated>2019-08-13T03:20:39.289Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="CCF-2017-03-2-学生排队"><a href="#CCF-2017-03-2-学生排队" class="headerlink" title="CCF 2017-03-2 学生排队"></a>CCF 2017-03-2 学生排队</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>　　　体育老师小明要将自己班上的学生按顺序排队。他首先让学生按学号从小到大的顺序排成一排，学号小的排在前面，然后进行多次调整。一次调整小明可能让一位同学出队，向前或者向后移动一段距离后再插入队列。<br>　　例如，下面给出了一组移动的例子，例子中学生的人数为8人。<br>　　0）初始队列中学生的学号依次为1, 2, 3, 4, 5, 6, 7, 8；<br>　　1）第一次调整，命令为“3号同学向后移动2”，表示3号同学出队，向后移动2名同学的距离，再插入到队列中，新队列中学生的学号依次为1, 2, 4, 5, 3, 6, 7, 8；<br>　　2）第二次调整，命令为“8号同学向前移动3”，表示8号同学出队，向前移动3名同学的距离，再插入到队列中，新队列中学生的学号依次为1, 2, 4, 5, 8, 3, 6, 7；<br>　　3）第三次调整，命令为“3号同学向前移动2”，表示3号同学出队，向前移动2名同学的距离，再插入到队列中，新队列中学生的学号依次为1, 2, 4, 3, 5, 8, 6, 7。<br>　　小明记录了所有调整的过程，请问，最终从前向后所有学生的学号依次是多少？<br>　　请特别注意，上述移动过程中所涉及的号码指的是学号，而不是在队伍中的位置。在向后移动时，移动的距离不超过对应同学后面的人数，如果向后移动的距离正好等于对应同学后面的人数则该同学会移动到队列的最后面。在向前移动时，移动的距离不超过对应同学前面的人数，如果向前移动的距离正好等于对应同学前面的人数则该同学会移动到队列的最前面。</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>　　　输入的第一行包含一个整数<em>n</em>，表示学生的数量，学生的学号由1到<em>n</em>编号。<br>　　第二行包含一个整数<em>m</em>，表示调整的次数。<br>　　接下来m行，每行两个整数p, q，如果q为正，表示学号为p的同学向后移动q，如果q为负，表示学号为p的同学向前移动-q。</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>　　输出一行，包含n个整数，相邻两个整数之间由一个空格分隔，表示最终从前向后所有学生的学号。</p><h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">3</span><br><span class="line">3 2</span><br><span class="line">8 -3</span><br><span class="line">3 -2</span><br></pre></td></tr></table></figure><h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 4 3 5 8 6 7</span><br></pre></td></tr></table></figure><h4 id="评测用例规模与约定"><a href="#评测用例规模与约定" class="headerlink" title="评测用例规模与约定"></a>评测用例规模与约定</h4><p>　　对于所有评测用例，1 ≤ <em>n</em> ≤ 1000，1 ≤ <em>m</em> ≤ 1000，所有移动均合法。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>也是简单的数字操作题，代码我是大一还是大二敲的，就直接放上来了。用数组存储学生，之后输入，找到该学生的位置，之后数组位移一下即可。用结构体可能会方便一点，但是这个计算量没必要。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> n,i,k,q,w,j,t,x,s;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line"><span class="keyword">int</span> a[n+<span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">a[i]=i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=k;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;q&gt;&gt;w;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(a[j]==q)</span><br><span class="line">t=j;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(w&gt;<span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">x=a[t];</span><br><span class="line"><span class="keyword">for</span>(s=t;s&lt;t+w;s++)</span><br><span class="line">a[s]=a[s+<span class="number">1</span>];</span><br><span class="line">a[t+w]=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">x=a[t];</span><br><span class="line"><span class="keyword">for</span>(s=t;s&gt;t+w;s--)</span><br><span class="line">a[s]=a[s<span class="number">-1</span>];</span><br><span class="line">a[t+w]=x;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a[i];</span><br><span class="line"><span class="keyword">if</span>(i!=n)</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;CCF-2017-03-2-学生排队&quot;&gt;&lt;a href=&quot;#CCF-2017-03-2-学生排队&quot; class=&quot;headerlink&quot; title=&quot;CCF 2017-03-2 学生排队&quot;&gt;&lt;/a&gt;CCF 2017-03-2 学生排队&lt;/h2&gt;&lt;h3 id=&quot;题
-      
-    
-    </summary>
-    
-      <category term="CCF" scheme="https://cheng102e.github.io/categories/CCF/"/>
     
     
   </entry>
