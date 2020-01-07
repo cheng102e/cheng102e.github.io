@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 100. Same Tree]]></title>
+    <url>%2FLeetCode%20100.%20Same%20Tree.html</url>
+    <content type="text"><![CDATA[100. Same Tree（相同的树）链接https://leetcode-cn.com/problems/same-tree 题目给定两个二叉树，编写一个函数来检验它们是否相同。 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。 示例 1: 输入: 1 1 / \ / 2 3 2 3 [1,2,3], [1,2,3] 输出: true示例 2: 输入: 1 1 / 2 2 [1,2], [1,null,2] 输出: false示例 3: 输入: 1 1 / \ / 2 1 1 2 [1,2,1], [1,1,2] 输出: false 思路遍历呗，先查看是否为空，都为空相同，之后同时比较左结点和右结点，没啥了。 代码123456789101112131415161718192021222324public class TreeNode &#123; int val; TreeNode left; TreeNode right; TreeNode(int x) &#123; val = x; &#125;&#125;public static boolean isSameTree(TreeNode p, TreeNode q) &#123; if (p == null &amp;&amp; q == null) &#123; return true; &#125; if (p != null &amp;&amp; q != null &amp;&amp; p.val == q.val) &#123; return isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right); &#125; else &#123; return false; &#125;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 264. Ugly Number II]]></title>
+    <url>%2FLeetCode%20264.%20Ugly%20Number%20II.html</url>
+    <content type="text"><![CDATA[264. Ugly Number II（丑数 II）链接https://leetcode-cn.com/problems/ugly-number-ii 题目编写一个程序，找出第 n 个丑数。 丑数就是只包含质因数 2, 3, 5 的正整数。 示例: 输入: n = 10 输出: 12 解释: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数。说明: 1 是丑数。 n 不超过1690。 思路比上一题带劲，本来打算打表打个卡的，结果发现了一个三指针法，效果很好。任意丑数都是比这个数小的丑数乘以2，3，5其中之一得到的，要求按照顺序排列，那么就从之前的数中找到未被使用过的数乘一下，然后比较，就可以得到新的数了。首先初始位为1，设三个指针值n2,n3,n5,初始设为0.之后开始循环，每次循环都找到235未乘过的数字乘一下，然后取最小值为新的丑数。之后，若n2n3n5使用过了，那么指针位+1，下次乘下一个数字，如果都可以，那就都加。把数字记录下来最后输出即可。 代码1234567891011121314151617181920public static int nthUglyNumber(int n) &#123; int[] ans = new int[n]; int n2 = 0, n3 = 0, n5 = 0; ans[0] = 1; for (int i = 1; i &lt; n; i++) &#123; int min = Math.min(ans[n2] * 2, Math.min(ans[n3] * 3, ans[n5] * 5)); ans[i] = min; if (min == ans[n2]*2) &#123; n2++; &#125; if (min == ans[n3]*3) &#123; n3++; &#125; if (min == ans[n5]*5) &#123; n5++; &#125; &#125; return ans[n-1]; &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 231. Power of Two]]></title>
     <url>%2FLeetCode%20231.%20Power%20of%20Two.html</url>
     <content type="text"><![CDATA[231. Power of Two（2的幂）链接https://leetcode-cn.com/problems/power-of-two 题目给定一个整数，编写一个函数来判断它是否是 2 的幂次方。 示例 1: 输入: 1 输出: true 解释: 20 = 1示例 2: 输入: 16 输出: true 解释: 24 = 16示例 3: 输入: 218 输出: false 思路位运算，算是做之前不知道咋做，做了后就熟了的题目，代码也都简单，有两个式子。先得知，若为二的幂，转换为二进制之后只有一位数字是1，别的数字都是0. (n &gt; 0) &amp;&amp; ((n &amp; -n) == n)负数补码的存放是取反加一，假设为8，整数为1000，负数-8，为0111+0001=1000(取反加一)，二者&amp;运算，结果为1000，还是8. (n &gt; 0) &amp;&amp; ((n &amp; (n - 1)) == 0)同样用8举例，n-1=7为0111，二者&amp;运算，结果为0. 两个式子的运算耗时差距也不是很大，看能想起来哪个吧，主要就是记得二进制是特殊的，适合位运算就行。 代码1234public static boolean isPowerOfTwo(int n) &#123; return (n &gt; 0) &amp;&amp; ((n &amp; -n) == n); // return (n &gt; 0) &amp;&amp; ((n &amp; (n - 1)) == 0); &#125;]]></content>
@@ -750,7 +769,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#101;&#x6e;&#100;&#64;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#101;&#99;&#x65;&#105;&#118;&#101;&#64;&#49;&#x36;&#x33;&#46;&#99;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#101;&#110;&#100;&#64;&#x31;&#x36;&#51;&#46;&#x63;&#x6f;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#101;&#99;&#101;&#x69;&#118;&#x65;&#64;&#49;&#54;&#51;&#46;&#x63;&#111;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>
