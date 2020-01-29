@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Windows下MySQL的安装与配置]]></title>
+    <url>%2FWindows%E4%B8%8BMySQL%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE.html</url>
+    <content type="text"><![CDATA[Windows下MySQL的安装与配置由于某些特殊原因，电脑上的mysql出了些问题，所以我就打算卸载重装一下，顺便记录一下流程。 一、官网下载直接进入官网下载，下载地址https://dev.mysql.com/downloads/mysql/下载第一个即可。（点击下面的No thanks，just start my download）下载完成之后找个位置解压。 二、安装流程1.环境变量计算机中找到环境变量设置，增加环境变量，在path中增加 2.新建文件在解压目录中新建data文件夹，和一个my.ini文件my.ini文件可以用txt改后缀，内容如下（只写了基础，有需要可以自行添加） [mysqld] # mysql根目录 basedir = D:\mysql-5.7.29-winx64 # 放所有数据库的data目录 datadir = D:\mysql-5.7.29-winx64\data3.初始化这部分需要三条指令，先以管理员身份打开cmd，之后依次输入，初始化，安装，启动。 mysqld --initialize --user=mysql --console mysqld –install mysql net start mysql输入第一条指令后会生成随机密码，记得先保存，之后更改，毕竟这个贼难记。 三、配置修改这里也没什么太多的，就把之前的初始密码修改下，有两种方法，一种是借助navicat等工具修改，一种是命令行修改，我采用的是命令行。 1.登录输入登录命令 mysql -uroot -p前面指root用户，后面指password密码，记得u和root是连在一起的，然后输入密码登录。直接输入指令 set password for root@localhost = password(&apos;123456&apos;);将密码修改为123456，这里只是做例子，最好不要用这种密码2333333.修改成功，可以开始使用了。]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>工具安装</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 58. Length of Last Word]]></title>
     <url>%2FLeetCode%2058.%20Length%20of%20Last%20Word.html</url>
     <content type="text"><![CDATA[58. Length of Last Word（最后一个单词的长度）链接https://leetcode-cn.com/problems/length-of-last-word 题目给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。 如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。 如果不存在最后一个单词，请返回 0 。 说明：一个单词是指仅由字母组成、不包含任何空格的 最大子字符串。 示例: 输入: “Hello World” 输出: 5 思路字符串题，只要注意到几处细节就不难。我是从最后一位开始的，若最后一位为空格，则提前，提前到非空处，之后再按位查找，直到找到空格或者到字符串的开头为止。在按位查找的过程中增加一个num用于计数，最后输出num即可。 代码123456789101112131415161718public static int lengthOfLastWord(String s) &#123; if (s.length() &lt; 1) &#123; return 0; &#125; int end = s.length() - 1; while (end &gt;= 0 &amp;&amp; s.charAt(end) == &apos; &apos;) &#123; end--; &#125; if (end &lt; 0) &#123; return 0; &#125; int num = 0; while (end &gt;= 0 &amp;&amp; s.charAt(end) != &apos; &apos;) &#123; end--; num++; &#125; return num; &#125;]]></content>
@@ -793,7 +804,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#x65;&#x6e;&#100;&#x40;&#49;&#54;&#51;&#x2e;&#x63;&#111;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#99;&#x65;&#105;&#x76;&#x65;&#64;&#x31;&#x36;&#x33;&#x2e;&#x63;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#x65;&#110;&#100;&#x40;&#x31;&#x36;&#x33;&#x2e;&#x63;&#111;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#99;&#101;&#x69;&#x76;&#101;&#64;&#49;&#54;&#x33;&#46;&#99;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>

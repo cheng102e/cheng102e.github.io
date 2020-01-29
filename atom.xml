@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cheng102e.github.io/"/>
-  <updated>2020-01-28T07:14:01.256Z</updated>
+  <updated>2020-01-29T08:07:09.761Z</updated>
   <id>https://cheng102e.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows下MySQL的安装与配置</title>
+    <link href="https://cheng102e.github.io/Windows%E4%B8%8BMySQL%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE.html"/>
+    <id>https://cheng102e.github.io/Windows下MySQL的安装与配置.html</id>
+    <published>2020-01-29T05:13:00.000Z</published>
+    <updated>2020-01-29T08:07:09.761Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Windows下MySQL的安装与配置"><a href="#Windows下MySQL的安装与配置" class="headerlink" title="Windows下MySQL的安装与配置"></a>Windows下MySQL的安装与配置</h2><p>由于某些特殊原因，电脑上的mysql出了些问题，所以我就打算卸载重装一下，顺便记录一下流程。</p><h3 id="一、官网下载"><a href="#一、官网下载" class="headerlink" title="一、官网下载"></a>一、官网下载</h3><p>直接进入官网下载，下载地址<br><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a><br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129132319045-720046442.png" alt><br>下载第一个即可。<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129135519941-1521318186.png" alt><br>（点击下面的No thanks，just start my download）<br>下载完成之后找个位置解压。<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129152848470-797821314.png" alt></p><h3 id="二、安装流程"><a href="#二、安装流程" class="headerlink" title="二、安装流程"></a>二、安装流程</h3><h4 id="1-环境变量"><a href="#1-环境变量" class="headerlink" title="1.环境变量"></a>1.环境变量</h4><p><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129153132234-1469297161.png" alt><br>计算机中找到环境变量设置，增加环境变量，在path中增加<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129153333582-1845480771.png" alt></p><h4 id="2-新建文件"><a href="#2-新建文件" class="headerlink" title="2.新建文件"></a>2.新建文件</h4><p>在解压目录中新建data文件夹，和一个my.ini文件<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129153537506-398752680.png" alt><br>my.ini文件可以用txt改后缀，内容如下（只写了基础，有需要可以自行添加）</p><pre><code>[mysqld]# mysql根目录basedir = D:\mysql-5.7.29-winx64# 放所有数据库的data目录datadir = D:\mysql-5.7.29-winx64\data</code></pre><h4 id="3-初始化"><a href="#3-初始化" class="headerlink" title="3.初始化"></a>3.初始化</h4><p>这部分需要三条指令，先以管理员身份打开cmd，之后依次输入，初始化，安装，启动。</p><pre><code>mysqld --initialize --user=mysql --consolemysqld –install mysqlnet start mysql</code></pre><p>输入第一条指令后会生成随机密码，记得先保存，之后更改，毕竟这个贼难记。</p><p><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129154607378-1914546088.png" alt></p><h3 id="三、配置修改"><a href="#三、配置修改" class="headerlink" title="三、配置修改"></a>三、配置修改</h3><p>这里也没什么太多的，就把之前的初始密码修改下，有两种方法，一种是借助navicat等工具修改，一种是命令行修改，我采用的是命令行。</p><h4 id="1-登录"><a href="#1-登录" class="headerlink" title="1.登录"></a>1.登录</h4><p>输入登录命令</p><pre><code>mysql -uroot -p</code></pre><p>前面指root用户，后面指password密码，记得u和root是连在一起的，然后输入密码登录。<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129155433095-613026665.png" alt><br>直接输入指令</p><pre><code>set password for root@localhost = password(&apos;123456&apos;);</code></pre><p>将密码修改为123456，这里只是做例子，最好不要用这种密码2333333.<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129155836238-1490075615.png" alt><br>修改成功，可以开始使用了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Windows下MySQL的安装与配置&quot;&gt;&lt;a href=&quot;#Windows下MySQL的安装与配置&quot; class=&quot;headerlink&quot; title=&quot;Windows下MySQL的安装与配置&quot;&gt;&lt;/a&gt;Windows下MySQL的安装与配置&lt;/h2&gt;&lt;p&gt;由于
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://cheng102e.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="工具安装" scheme="https://cheng102e.github.io/tags/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 58. Length of Last Word</title>
@@ -450,29 +475,6 @@
       
       
         &lt;h2 id=&quot;CCF-2016-09-2-火车购票&quot;&gt;&lt;a href=&quot;#CCF-2016-09-2-火车购票&quot; class=&quot;headerlink&quot; title=&quot;CCF 2016-09-2 火车购票&quot;&gt;&lt;/a&gt;CCF 2016-09-2 火车购票&lt;/h2&gt;&lt;h3 id=&quot;题
-      
-    
-    </summary>
-    
-      <category term="CCF" scheme="https://cheng102e.github.io/categories/CCF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>CCF 2016-09-1 最大波动</title>
-    <link href="https://cheng102e.github.io/CCF%202016-09-1%20%E6%9C%80%E5%A4%A7%E6%B3%A2%E5%8A%A8.html"/>
-    <id>https://cheng102e.github.io/CCF 2016-09-1 最大波动.html</id>
-    <published>2019-08-27T01:28:00.000Z</published>
-    <updated>2019-09-02T03:14:03.032Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="CCF-2016-09-1-最大波动"><a href="#CCF-2016-09-1-最大波动" class="headerlink" title="CCF 2016-09-1 最大波动"></a>CCF 2016-09-1 最大波动</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>　　　小明正在利用股票的波动程度来研究股票。小明拿到了一只股票每天收盘时的价格，他想知道，这只股票连续几天的最大波动值是多少，即在这几天中某天收盘价格与前一天收盘价格之差的绝对值最大是多少。</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>　　输入的第一行包含了一个整数<em>n</em>，表示小明拿到的收盘价格的连续天数。<br>　　第二行包含<em>n</em>个正整数，依次表示每天的收盘价格。</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>　输出一个整数，表示这只股票这<em>n</em>天中的最大波动值。</p><h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><pre><code>62 5 5 7 3 5</code></pre><h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure><h4 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h4><p>　　第四天和第五天之间的波动最大，波动值为|3-7|=4。</p><h4 id="评测用例规模与约定"><a href="#评测用例规模与约定" class="headerlink" title="评测用例规模与约定"></a>评测用例规模与约定</h4><p>　　对于所有评测用例，2 ≤ <em>n</em> ≤ 1000。股票每一天的价格为1到10000之间的整数。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>水题，循环一遍找最大值即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> n,i,k,max=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="keyword">int</span> a[n];</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">k=<span class="built_in">abs</span>(a[i]-a[i<span class="number">-1</span>]);</span><br><span class="line"><span class="keyword">if</span>(k&gt;max)</span><br><span class="line">&#123;</span><br><span class="line">max=k;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;max;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;CCF-2016-09-1-最大波动&quot;&gt;&lt;a href=&quot;#CCF-2016-09-1-最大波动&quot; class=&quot;headerlink&quot; title=&quot;CCF 2016-09-1 最大波动&quot;&gt;&lt;/a&gt;CCF 2016-09-1 最大波动&lt;/h2&gt;&lt;h3 id=&quot;题
       
     
     </summary>
