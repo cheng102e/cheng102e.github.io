@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 67. Add Binary]]></title>
+    <url>%2FLeetCode%2067.%20Add%20Binary.html</url>
+    <content type="text"><![CDATA[67. Add Binary（二进制求和）链接https://leetcode-cn.com/problems/add-binary 题目给定两个二进制字符串，返回他们的和（用二进制表示）。 输入为非空字符串且只包含数字 1 和 0。 示例 1: 输入: a = “11”, b = “1” 输出: “100”示例 2: 输入: a = “1010”, b = “1011” 输出: “10101” 思路做起来比想象中麻烦不少，很多小细节需要注意。这里我直接用了一个StringBuilder来存储答案。从后往前计算，num用于保存进位。若ab该位都存在，则二者加num为计算结果，num只有四种情况0123，01无进位，写入。23有进位，-2后写入，进位则置num为1否则为0，然后参与下一步运算。如果ab都计算完了，num为1，则再产生进位，细节问题较多。 代码12345678910111213141516171819202122232425262728 public static String addBinary(String a, String b) &#123; StringBuilder ans = new StringBuilder(); int len1 = a.length() - 1; int len2 = b.length() - 1; int num = 0; while (len1 &gt;= 0 || len2 &gt;= 0) &#123; if (len1 &gt;= 0) &#123; num += a.charAt(len1) - &apos;0&apos;; len1--; &#125; if (len2 &gt;= 0) &#123; num += b.charAt(len2) - &apos;0&apos;; len2--; &#125; if (num &lt; 2) &#123; ans.insert(0, num); num = 0; &#125; else &#123; ans.insert(0, num - 2); num = 1; &#125; &#125; if (num == 1) &#123; ans.insert(0, 1); &#125; return ans.toString();&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 167. Two Sum II - Input array is sorted]]></title>
+    <url>%2FLeetCode%20167.%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted.html</url>
+    <content type="text"><![CDATA[167. Two Sum II - Input array is sorted（两数之和 II - 输入有序数组）链接https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted 题目给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。 说明: 返回的下标值（index1 和 index2）不是从零开始的。你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。 示例: 输入: numbers = [2, 7, 11, 15], target = 9 输出: [1,2] 解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。 思路这道题我是直接双指针做的，由于是升序数组，且前一个一定小于后一个，就可以用两边向中间逼近的方法，若二者和小于答案，则前数向后一位，大于答案，后数向前一位，最后返回数组。 代码12345678910111213141516public static int[] twoSum(int[] numbers, int target) &#123; int start = 0; int end = numbers.length - 1; while (numbers[start] + numbers[end] != target) &#123; if (numbers[start] + numbers[end] &lt; target) &#123; start++; &#125; else &#123; end--; &#125; &#125; int[] res = new int[2]; res[0] = start + 1; res[1] = end + 1; return res;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 189. Rotate Array]]></title>
+    <url>%2FLeetCode%20189.%20Rotate%20Array.html</url>
+    <content type="text"><![CDATA[189. Rotate Array（旋转数组）链接https://leetcode-cn.com/problems/rotate-array 题目给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。 示例 1: 输入: [1,2,3,4,5,6,7] 和 k = 3 输出: [5,6,7,1,2,3,4] 解释: 向右旋转 1 步: [7,1,2,3,4,5,6] 向右旋转 2 步: [6,7,1,2,3,4,5] 向右旋转 3 步: [5,6,7,1,2,3,4]示例 2: 输入: [-1,-100,3,99] 和 k = 2 输出: [3,99,-1,-100] 解释: 向右旋转 1 步: [99,-1,-100,3] 向右旋转 2 步: [3,99,-1,-100]说明: 尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。要求使用空间复杂度为 O(1) 的 原地 算法。 思路题目思路清晰，但是考虑到复杂度，就麻烦了不少。我选择的方法是以前在书上看到的，三次转置，第一次全体转置，第二次转置前k个，第三次转置剩余部分。以例子1解释，1234567，转置全部之后是7654321.转置前三个，再转置后四个，就是5671234，符合条件。由于所有数都转置了两次，所有对于前半部分和后半部分，相对位置是不变的，最开始直接倒序再转置k个，然后就是所需的k个在最前方。 代码1234567891011121314151617public static void reverse(int[] nums, int start, int end) &#123; while (start &lt; end) &#123; int temp = nums[start]; nums[start] = nums[end]; nums[end] = temp; start++; end--; &#125;&#125;public static void rotate(int[] nums, int k) &#123; int len = nums.length; k = k % len; reverse(nums, 0, len - 1); reverse(nums, 0, k - 1); reverse(nums, k, len - 1);&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 965. Univalued Binary Tree]]></title>
     <url>%2FLeetCode%20965.%20Univalued%20Binary%20Tree.html</url>
     <content type="text"><![CDATA[965. Univalued Binary Tree（单值二叉树）链接https://leetcode-cn.com/problems/univalued-binary-tree 题目如果二叉树每个节点都具有相同的值，那么该二叉树就是单值二叉树。 只有给定的树是单值二叉树时，才返回 true；否则返回 false。 示例 1： 输入：[1,1,1,1,1,null,1] 输出：true示例 2： 输入：[2,2,2,5,2] 输出：false 提示： 给定树的节点数范围是 [1, 100]。每个节点的值都是整数，范围为 [0, 99] 。 思路题目不难，方法多种，我是选择直接对于每个结点进行一次判断，最后得到结果。也可以直接遍历，把所有的值存放到一个set当中，若set长度为1则成立。 代码123456789101112131415161718192021222324public class TreeNode &#123; int val; TreeNode left; TreeNode right; TreeNode(int x) &#123; val = x; &#125; &#125; public static boolean isUnivalTree(TreeNode root) &#123; if (root == null) &#123; return true; &#125; if (root.left != null &amp;&amp; root.left.val != root.val) &#123; return false; &#125; if (root.right != null &amp;&amp; root.right.val != root.val) &#123; return false; &#125; return isUnivalTree(root.left) &amp;&amp; isUnivalTree(root.right); &#125;]]></content>
@@ -837,7 +861,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#110;&#100;&#64;&#x31;&#x36;&#51;&#46;&#99;&#111;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#x65;&#x63;&#x65;&#x69;&#x76;&#101;&#x40;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#x65;&#x6e;&#x64;&#x40;&#49;&#54;&#51;&#x2e;&#99;&#111;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#x65;&#99;&#101;&#105;&#x76;&#101;&#x40;&#49;&#54;&#x33;&#46;&#x63;&#x6f;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>
