@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cheng102e.github.io/"/>
-  <updated>2020-02-02T02:19:40.866Z</updated>
+  <updated>2020-02-02T13:17:58.111Z</updated>
   <id>https://cheng102e.github.io/</id>
   
   <author>
@@ -17,11 +17,103 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>LeetCode 27. Remove Element</title>
+    <link href="https://cheng102e.github.io/LeetCode%2027.%20Remove%20Element.html"/>
+    <id>https://cheng102e.github.io/LeetCode 27. Remove Element.html</id>
+    <published>2020-02-02T12:00:00.000Z</published>
+    <updated>2020-02-02T13:17:58.111Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="27-Remove-Element（移除元素）"><a href="#27-Remove-Element（移除元素）" class="headerlink" title="27. Remove Element（移除元素）"></a>27. Remove Element（移除元素）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/remove-element" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-element</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。</p><p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p><p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p><p>示例 1:</p><p>  给定 nums = [3,2,2,3], val = 3,</p><p>  函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p><p>  给定 nums = [0,1,2,2,3,0,4,2], val = 2,</p><p>  函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</p><p>  注意这五个元素可为任意顺序。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>说明:</p><p>  为什么返回数值是整数，但输出的答案是数组呢?</p><p>  请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p><p>  你可以想象内部操作如下:</p><p>  // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>  int len = removeElement(nums, val);</p><p>  // 在函数里修改输入数组对于调用者是可见的。<br>  // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>  for (int i = 0; i &lt; len; i++) {<br>      print(nums[i]);<br>  }</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。<br>新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int removeElement(int[] nums, int val) &#123;</span><br><span class="line">    int index = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      if (nums[i] != val) &#123;</span><br><span class="line">        nums[index]=nums[i];</span><br><span class="line">        index++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return index;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;27-Remove-Element（移除元素）&quot;&gt;&lt;a href=&quot;#27-Remove-Element（移除元素）&quot; class=&quot;headerlink&quot; title=&quot;27. Remove Element（移除元素）&quot;&gt;&lt;/a&gt;27. Remove Eleme
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 796. Rotate String</title>
+    <link href="https://cheng102e.github.io/LeetCode%20796.%20Rotate%20String.html"/>
+    <id>https://cheng102e.github.io/LeetCode 796. Rotate String.html</id>
+    <published>2020-02-02T12:00:00.000Z</published>
+    <updated>2020-02-02T13:18:03.675Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="796-Rotate-String（旋转字符串）"><a href="#796-Rotate-String（旋转字符串）" class="headerlink" title="796. Rotate String（旋转字符串）"></a>796. Rotate String（旋转字符串）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/rotate-string" target="_blank" rel="noopener">https://leetcode-cn.com/problems/rotate-string</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定两个字符串, A 和 B。</p><p>A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。</p><p>示例 1:<br>  输入: A = ‘abcde’, B = ‘cdeab’<br>  输出: true</p><p>示例 2:<br>  输入: A = ‘abcde’, B = ‘abced’<br>  输出: false<br>注意：</p><p>A 和 B 长度不超过 100。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static boolean rotateString(String A, String B) &#123;</span><br><span class="line">    if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;796-Rotate-String（旋转字符串）&quot;&gt;&lt;a href=&quot;#796-Rotate-String（旋转字符串）&quot; class=&quot;headerlink&quot; title=&quot;796. Rotate String（旋转字符串）&quot;&gt;&lt;/a&gt;796. Rotate S
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 26. Remove Duplicates from Sorted Array</title>
+    <link href="https://cheng102e.github.io/LeetCode%2026.%20Remove%20Duplicates%20from%20Sorted%20Array.html"/>
+    <id>https://cheng102e.github.io/LeetCode 26. Remove Duplicates from Sorted Array.html</id>
+    <published>2020-02-02T11:59:00.000Z</published>
+    <updated>2020-02-02T13:19:22.945Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="26-Remove-Duplicates-from-Sorted-Array（删除排序数组中的重复项）"><a href="#26-Remove-Duplicates-from-Sorted-Array（删除排序数组中的重复项）" class="headerlink" title="26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）"></a>26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p><p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p><p>示例 1:</p><p>  给定数组 nums = [1,1,2], </p><p>  函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p><p>  你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p><p>  给定 nums = [0,0,1,1,1,2,2,3,3,4],</p><p>  函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>说明:</p><p>  为什么返回数值是整数，但输出的答案是数组呢?</p><p>  请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p><p>  你可以想象内部操作如下:</p><p>  // nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝<br>  int len = removeDuplicates(nums);</p><p>  // 在函数里修改输入数组对于调用者是可见的。<br>  // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>  for (int i = 0; i &lt; len; i++) {<br>      print(nums[i]);<br>  }</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法。<br>新建一个index，然后遍历数组，如果发现二者相同就跳过，不同的话，就在index的下一位更换，这里要注意index的变化顺序，最后输出index+1即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int removeDuplicates(int[] nums) &#123;</span><br><span class="line">  int index = 0;</span><br><span class="line">  for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">    if (nums[i] != nums[index]) &#123;</span><br><span class="line">      index++;</span><br><span class="line">      nums[index] = nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return index+1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;26-Remove-Duplicates-from-Sorted-Array（删除排序数组中的重复项）&quot;&gt;&lt;a href=&quot;#26-Remove-Duplicates-from-Sorted-Array（删除排序数组中的重复项）&quot; class=&quot;headerlin
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 704. Binary Search</title>
+    <link href="https://cheng102e.github.io/LeetCode%20704.%20Binary%20Search.html"/>
+    <id>https://cheng102e.github.io/LeetCode 704. Binary Search.html</id>
+    <published>2020-02-02T10:00:00.000Z</published>
+    <updated>2020-02-02T10:41:38.095Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="704-Binary-Search（二分查找）"><a href="#704-Binary-Search（二分查找）" class="headerlink" title="704. Binary Search（二分查找）"></a>704. Binary Search（二分查找）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。</p><p>示例 1:</p><p>  输入: nums = [-1,0,3,5,9,12], target = 9<br>  输出: 4<br>解释: 9 出现在 nums 中并且下标为 4<br>示例 2:</p><p>  输入: nums = [-1,0,3,5,9,12], target = 2<br>  输出: -1<br>解释: 2 不存在 nums 中因此返回 -1</p><p>提示：</p><p>  你可以假设 nums 中的所有元素是不重复的。<br>  n 将在 [1, 10000]之间。<br>  nums 的每个元素都将在 [-9999, 9999]之间。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>标准的二分查找，升序数组，找到返回下标，未找到就返回-1.<br>首先如果长度为0，直接返回-11，之后确定左端右端，然后借助while循环进行，注意这里我用的是&lt;=判断，然后循环，如果得到答案返回下标，不然直接输出-1.</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static int search(int[] nums, int target) &#123;</span><br><span class="line">  if (nums.length == 0) &#123;</span><br><span class="line">    return -1;</span><br><span class="line">  &#125;</span><br><span class="line">  int left = 0;</span><br><span class="line">  int right = nums.length - 1;</span><br><span class="line"></span><br><span class="line">  while (left &lt;= right) &#123;</span><br><span class="line">    int mid = (left + right) / 2;</span><br><span class="line">    if (nums[mid] == target) &#123;</span><br><span class="line">      return mid;</span><br><span class="line">    &#125; else if (nums[mid] &lt; target) &#123;</span><br><span class="line">      left = mid + 1;</span><br><span class="line">    &#125; else if (nums[mid] &gt; target) &#123;</span><br><span class="line">      right = mid - 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;704-Binary-Search（二分查找）&quot;&gt;&lt;a href=&quot;#704-Binary-Search（二分查找）&quot; class=&quot;headerlink&quot; title=&quot;704. Binary Search（二分查找）&quot;&gt;&lt;/a&gt;704. Binary Sear
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>LeetCode 961. N-Repeated Element in Size 2N Array</title>
     <link href="https://cheng102e.github.io/LeetCode%20961.%20N-Repeated%20Element%20in%20Size%202N%20Array.html"/>
     <id>https://cheng102e.github.io/LeetCode 961. N-Repeated Element in Size 2N Array.html</id>
     <published>2020-02-02T02:00:00.000Z</published>
-    <updated>2020-02-02T02:19:40.866Z</updated>
+    <updated>2020-02-02T09:24:22.594Z</updated>
     
     <content type="html"><![CDATA[<h2 id="961-N-Repeated-Element-in-Size-2N-Array（重复-N-次的元素）"><a href="#961-N-Repeated-Element-in-Size-2N-Array（重复-N-次的元素）" class="headerlink" title="961. N-Repeated Element in Size 2N Array（重复 N 次的元素）"></a>961. N-Repeated Element in Size 2N Array（重复 N 次的元素）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>在大小为 2N 的数组 A 中有 N+1 个不同的元素，其中有一个元素重复了 N 次。</p><p>返回重复了 N 次的那个元素。</p><p>示例 1：</p><p>  输入：[1,2,3,3]<br>  输出：3<br>示例 2：</p><p>  输入：[2,1,2,5,3,2]<br>  输出：2<br>示例 3：</p><p>  输入：[5,1,5,2,5,3,5,4]<br>  输出：5</p><p>提示：</p><p>  4 &lt;= A.length &lt;= 10000<br>  0 &lt;= A[i] &lt; 10000<br>  A.length 为偶数</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这道题不是很难，就是想找到那个出现次数为N的数字，一共只有2N个数字，如果分布的最开的话，是每个数字之间都插一个数字，这样可以证明一定存在连续的三个数字，使那一个数字出现两次及以上。<br>所以只要从头到尾检查一下，若三个数字中出现两个相同数字，该数字即为所求解，不然就是最后一个数字。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static int repeatedNTimes(int[] A) &#123;</span><br><span class="line">  int len = A.length;</span><br><span class="line">  for (int i = 0; i &lt; len - 2; i++) &#123;</span><br><span class="line">    if (A[i] == A[i + 1] || A[i] == A[i + 2]) &#123;</span><br><span class="line">      return A[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return A[len - 1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -387,100 +479,6 @@
       
       
         &lt;h2 id=&quot;263-Ugly-Number（丑数）&quot;&gt;&lt;a href=&quot;#263-Ugly-Number（丑数）&quot; class=&quot;headerlink&quot; title=&quot;263. Ugly Number（丑数）&quot;&gt;&lt;/a&gt;263. Ugly Number（丑数）&lt;/h2&gt;&lt;h3
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 136. Single Number</title>
-    <link href="https://cheng102e.github.io/LeetCode%20136.%20Single%20Number.html"/>
-    <id>https://cheng102e.github.io/LeetCode 136. Single Number.html</id>
-    <published>2020-01-04T02:22:00.000Z</published>
-    <updated>2020-01-04T03:59:24.852Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="136-Single-Number（只出现一次的数字）"><a href="#136-Single-Number（只出现一次的数字）" class="headerlink" title="136. Single Number（只出现一次的数字）"></a>136. Single Number（只出现一次的数字）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/single-number" target="_blank" rel="noopener">https://leetcode-cn.com/problems/single-number</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p><p>说明：</p><p>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</p><p>示例 1:</p><p>输入: [2,2,1]<br>输出: 1<br>示例 2:</p><p>输入: [4,1,2,1,2]<br>输出: 4</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题思路有点强的，我本来打算遍历加哈希来检测，之后发现了，这题可以用位运算（我从来没有想过这个问题）。<br>异或计算，如果二者相同则结果为0，不同的话结果为1，再加上异或自带的交换律，最后结果就是0异或单一数，就是要找的数字。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static int singleNumber(int[] nums) &#123;</span><br><span class="line">    int n = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      n = n ^ nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return n;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;136-Single-Number（只出现一次的数字）&quot;&gt;&lt;a href=&quot;#136-Single-Number（只出现一次的数字）&quot; class=&quot;headerlink&quot; title=&quot;136. Single Number（只出现一次的数字）&quot;&gt;&lt;/a&gt;136.
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="位运算" scheme="https://cheng102e.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 69. Sqrt(x)</title>
-    <link href="https://cheng102e.github.io/LeetCode%2066.%20Plus%20One.html"/>
-    <id>https://cheng102e.github.io/LeetCode 66. Plus One.html</id>
-    <published>2020-01-01T03:22:00.000Z</published>
-    <updated>2020-01-01T03:42:43.707Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="69-Sqrt-x-（x-的平方根）"><a href="#69-Sqrt-x-（x-的平方根）" class="headerlink" title="69. Sqrt(x)（x 的平方根）"></a>69. Sqrt(x)（x 的平方根）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/sqrtx" target="_blank" rel="noopener">https://leetcode-cn.com/problems/sqrtx</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>实现 int sqrt(int x) 函数。</p><p>计算并返回 x 的平方根，其中 x 是非负整数。</p><p>由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。</p><p>示例 1:</p><p>输入: 4<br>输出: 2<br>示例 2:</p><p>输入: 8<br>输出: 2<br>说明: 8 的平方根是 2.82842…,<br>     由于返回类型是整数，小数部分将被舍去。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>平方根的求法，要么用牛顿迭代法，要么二分法，（遍历也行，但是会超时），设1，x一个开始一个结束，二分法找答案，需要注意的是要采用x/mid&gt;mid,不然会超出范围。<br>2020的第一篇，又是热爱学习的一年。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static int mySqrt(int x) &#123;</span><br><span class="line">    if (x == 1 || x == 0) &#123;</span><br><span class="line">      return x;</span><br><span class="line">    &#125;</span><br><span class="line">    int start = 0;</span><br><span class="line">    int end = x ;</span><br><span class="line">    while (end - start &gt;= 1) &#123;</span><br><span class="line">      int mid = (start + end) / 2;</span><br><span class="line"></span><br><span class="line">      if (x / mid &gt; mid) &#123;</span><br><span class="line">        start = mid;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        end = mid;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return start;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;69-Sqrt-x-（x-的平方根）&quot;&gt;&lt;a href=&quot;#69-Sqrt-x-（x-的平方根）&quot; class=&quot;headerlink&quot; title=&quot;69. Sqrt(x)（x 的平方根）&quot;&gt;&lt;/a&gt;69. Sqrt(x)（x 的平方根）&lt;/h2&gt;&lt;h3 id=
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 66. Plus One</title>
-    <link href="https://cheng102e.github.io/LeetCode%2069.%20Sqrt(x).html"/>
-    <id>https://cheng102e.github.io/LeetCode 69. Sqrt(x).html</id>
-    <published>2019-12-29T13:22:00.000Z</published>
-    <updated>2020-01-04T02:19:22.856Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="66-Plus-One（加一）"><a href="#66-Plus-One（加一）" class="headerlink" title="66. Plus One（加一）"></a>66. Plus One（加一）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/plus-one" target="_blank" rel="noopener">https://leetcode-cn.com/problems/plus-one</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p><p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p><p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p><p>示例 1:</p><p>  输入: [1,2,3]<br>  输出: [1,2,4]<br>  解释: 输入数组表示数字 123。<br>示例 2:</p><p>  输入: [4,3,2,1]<br>  输出: [4,3,2,2]<br>  解释: 输入数组表示数字 4321。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>不是很难的题目，只需要注意，给的数组是表示数字的，那么就从后往前加一，如果进位就考虑前一位，不然跳出。<br>如果第一位产生进位，就需要一个新数组，来存放新的第一位。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static int[] plusOne(int[] digits) &#123;</span><br><span class="line">    if (digits.length == 0) &#123;</span><br><span class="line">      return null;</span><br><span class="line">    &#125;</span><br><span class="line">    int len = digits.length;</span><br><span class="line">    digits[len - 1] += 1;</span><br><span class="line">    for (int i = len - 1; i &gt; 0; i--) &#123;</span><br><span class="line">      if (digits[i] &gt;= 10) &#123;</span><br><span class="line">        digits[i] -= 10;</span><br><span class="line">        digits[i - 1] += 1;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    if (digits[0] == 10) &#123;</span><br><span class="line">      int[] newdigits = new int[len + 1];</span><br><span class="line">      newdigits[0] = 1;</span><br><span class="line">      digits[0] -= 10;</span><br><span class="line">      for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        newdigits[i + 1] = digits[i];</span><br><span class="line">      &#125;</span><br><span class="line">      return newdigits;</span><br><span class="line">    &#125;</span><br><span class="line">    return digits;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;66-Plus-One（加一）&quot;&gt;&lt;a href=&quot;#66-Plus-One（加一）&quot; class=&quot;headerlink&quot; title=&quot;66. Plus One（加一）&quot;&gt;&lt;/a&gt;66. Plus One（加一）&lt;/h2&gt;&lt;h3 id=&quot;链接&quot;&gt;&lt;a href
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 70. Climbing Stairs</title>
-    <link href="https://cheng102e.github.io/LeetCode%2070.%20Climbing%20Stairs.html"/>
-    <id>https://cheng102e.github.io/LeetCode 70. Climbing Stairs.html</id>
-    <published>2019-12-28T11:08:00.000Z</published>
-    <updated>2019-12-29T13:22:06.794Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="70-Climbing-Stairs（两数之和）"><a href="#70-Climbing-Stairs（两数之和）" class="headerlink" title="70. Climbing Stairs（两数之和）"></a>70. Climbing Stairs（两数之和）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/climbing-stairs" target="_blank" rel="noopener">https://leetcode-cn.com/problems/climbing-stairs</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</p><p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p><p>注意：给定 n 是一个正整数。</p><p>示例 1：</p><pre><code>输入： 2输出： 2解释： 有两种方法可以爬到楼顶。1.  1 阶 + 1 阶2.  2 阶</code></pre><p>示例 2：</p><pre><code>输入： 3输出： 3解释： 有三种方法可以爬到楼顶。1.  1 阶 + 1 阶 + 1 阶2.  1 阶 + 2 阶3.  2 阶 + 1 阶</code></pre><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算是一个递归方法，如果只有一阶那么只有一种方法，二阶有两种方法。<br>递归方程<br>    f(n)=f(n-1)+f(n-2)</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public int climbStairs(int n) &#123;</span><br><span class="line">  if (n &lt; 3) &#123;</span><br><span class="line">    return n;</span><br><span class="line">  &#125;</span><br><span class="line">  int f1 = 1;</span><br><span class="line">  int f2 = 2;</span><br><span class="line">  int fn = 0;</span><br><span class="line">  for (int i = 3; i &lt;= n; i++) &#123;</span><br><span class="line">    fn = f1 + f2;</span><br><span class="line">    f1 = f2;</span><br><span class="line">    f2 = fn;</span><br><span class="line">  &#125;</span><br><span class="line">  return fn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;70-Climbing-Stairs（两数之和）&quot;&gt;&lt;a href=&quot;#70-Climbing-Stairs（两数之和）&quot; class=&quot;headerlink&quot; title=&quot;70. Climbing Stairs（两数之和）&quot;&gt;&lt;/a&gt;70. Climbing 
       
     
     </summary>

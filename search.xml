@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 796. Rotate String]]></title>
+    <url>%2FLeetCode%20796.%20Rotate%20String.html</url>
+    <content type="text"><![CDATA[796. Rotate String（旋转字符串）链接https://leetcode-cn.com/problems/rotate-string 题目给定两个字符串, A 和 B。 A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。 示例 1: 输入: A = ‘abcde’, B = ‘cdeab’ 输出: true 示例 2: 输入: A = ‘abcde’, B = ‘abced’ 输出: false注意： A 和 B 长度不超过 100。 思路题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。 代码1234567public static boolean rotateString(String A, String B) &#123; if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123; return true; &#125; else &#123; return false; &#125; &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 27. Remove Element]]></title>
+    <url>%2FLeetCode%2027.%20Remove%20Element.html</url>
+    <content type="text"><![CDATA[27. Remove Element（移除元素）链接https://leetcode-cn.com/problems/remove-element 题目给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 示例 1: 给定 nums = [3,2,2,3], val = 3, 函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。 你不需要考虑数组中超出新长度后面的元素。示例 2: 给定 nums = [0,1,2,2,3,0,4,2], val = 2, 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。 注意这五个元素可为任意顺序。 你不需要考虑数组中超出新长度后面的元素。说明: 为什么返回数值是整数，但输出的答案是数组呢? 请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 你可以想象内部操作如下: // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝 int len = removeElement(nums, val); // 在函数里修改输入数组对于调用者是可见的。 // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。 for (int i = 0; i &lt; len; i++) { print(nums[i]); } 思路题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。 代码12345678910public static int removeElement(int[] nums, int val) &#123; int index = 0; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] != val) &#123; nums[index]=nums[i]; index++; &#125; &#125; return index; &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 26. Remove Duplicates from Sorted Array]]></title>
+    <url>%2FLeetCode%2026.%20Remove%20Duplicates%20from%20Sorted%20Array.html</url>
+    <content type="text"><![CDATA[26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）链接https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array 题目给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 示例 1: 给定数组 nums = [1,1,2], 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 你不需要考虑数组中超出新长度后面的元素。示例 2: 给定 nums = [0,0,1,1,1,2,2,3,3,4], 函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。 你不需要考虑数组中超出新长度后面的元素。说明: 为什么返回数值是整数，但输出的答案是数组呢? 请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 你可以想象内部操作如下: // nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝 int len = removeDuplicates(nums); // 在函数里修改输入数组对于调用者是可见的。 // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。 for (int i = 0; i &lt; len; i++) { print(nums[i]); } 思路题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法。新建一个index，然后遍历数组，如果发现二者相同就跳过，不同的话，就在index的下一位更换，这里要注意index的变化顺序，最后输出index+1即可。 代码12345678910public static int removeDuplicates(int[] nums) &#123; int index = 0; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] != nums[index]) &#123; index++; nums[index] = nums[i]; &#125; &#125; return index+1;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 704. Binary Search]]></title>
+    <url>%2FLeetCode%20704.%20Binary%20Search.html</url>
+    <content type="text"><![CDATA[704. Binary Search（二分查找）链接https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array 题目给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。 示例 1: 输入: nums = [-1,0,3,5,9,12], target = 9 输出: 4解释: 9 出现在 nums 中并且下标为 4示例 2: 输入: nums = [-1,0,3,5,9,12], target = 2 输出: -1解释: 2 不存在 nums 中因此返回 -1 提示： 你可以假设 nums 中的所有元素是不重复的。 n 将在 [1, 10000]之间。 nums 的每个元素都将在 [-9999, 9999]之间。 思路标准的二分查找，升序数组，找到返回下标，未找到就返回-1.首先如果长度为0，直接返回-11，之后确定左端右端，然后借助while循环进行，注意这里我用的是&lt;=判断，然后循环，如果得到答案返回下标，不然直接输出-1. 代码12345678910111213141516171819public static int search(int[] nums, int target) &#123; if (nums.length == 0) &#123; return -1; &#125; int left = 0; int right = nums.length - 1; while (left &lt;= right) &#123; int mid = (left + right) / 2; if (nums[mid] == target) &#123; return mid; &#125; else if (nums[mid] &lt; target) &#123; left = mid + 1; &#125; else if (nums[mid] &gt; target) &#123; right = mid - 1; &#125; &#125; return -1;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 961. N-Repeated Element in Size 2N Array]]></title>
     <url>%2FLeetCode%20961.%20N-Repeated%20Element%20in%20Size%202N%20Array.html</url>
     <content type="text"><![CDATA[961. N-Repeated Element in Size 2N Array（重复 N 次的元素）链接https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array 题目在大小为 2N 的数组 A 中有 N+1 个不同的元素，其中有一个元素重复了 N 次。 返回重复了 N 次的那个元素。 示例 1： 输入：[1,2,3,3] 输出：3示例 2： 输入：[2,1,2,5,3,2] 输出：2示例 3： 输入：[5,1,5,2,5,3,5,4] 输出：5 提示： 4 &lt;= A.length &lt;= 10000 0 &lt;= A[i] &lt; 10000 A.length 为偶数 思路这道题不是很难，就是想找到那个出现次数为N的数字，一共只有2N个数字，如果分布的最开的话，是每个数字之间都插一个数字，这样可以证明一定存在连续的三个数字，使那一个数字出现两次及以上。所以只要从头到尾检查一下，若三个数字中出现两个相同数字，该数字即为所求解，不然就是最后一个数字。 代码123456789public static int repeatedNTimes(int[] A) &#123; int len = A.length; for (int i = 0; i &lt; len - 2; i++) &#123; if (A[i] == A[i + 1] || A[i] == A[i + 2]) &#123; return A[i]; &#125; &#125; return A[len - 1];&#125;]]></content>
@@ -877,7 +909,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#x6e;&#x64;&#x40;&#49;&#x36;&#51;&#46;&#x63;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#99;&#x65;&#105;&#118;&#x65;&#64;&#x31;&#54;&#51;&#46;&#99;&#111;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#x6e;&#100;&#x40;&#49;&#54;&#51;&#x2e;&#x63;&#111;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#x65;&#99;&#x65;&#105;&#118;&#101;&#64;&#49;&#x36;&#51;&#46;&#99;&#x6f;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>

@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://cheng102e.github.io/LeetCode%2026.%20Remove%20Duplicates%20from%20Sorted%20Array.html</loc>
+    
+    <lastmod>2020-02-02T13:19:22.945Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://cheng102e.github.io/LeetCode%20796.%20Rotate%20String.html</loc>
+    
+    <lastmod>2020-02-02T13:18:03.675Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://cheng102e.github.io/LeetCode%2027.%20Remove%20Element.html</loc>
+    
+    <lastmod>2020-02-02T13:17:58.111Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://cheng102e.github.io/LeetCode%20704.%20Binary%20Search.html</loc>
+    
+    <lastmod>2020-02-02T10:41:38.095Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://cheng102e.github.io/LeetCode%20961.%20N-Repeated%20Element%20in%20Size%202N%20Array.html</loc>
     
-    <lastmod>2020-02-02T02:19:40.866Z</lastmod>
+    <lastmod>2020-02-02T09:24:22.594Z</lastmod>
     
   </url>
   
