@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cheng102e.github.io/"/>
-  <updated>2020-02-02T13:17:58.111Z</updated>
+  <updated>2020-02-03T12:19:33.858Z</updated>
   <id>https://cheng102e.github.io/</id>
   
   <author>
@@ -17,25 +17,96 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>LeetCode 27. Remove Element</title>
-    <link href="https://cheng102e.github.io/LeetCode%2027.%20Remove%20Element.html"/>
-    <id>https://cheng102e.github.io/LeetCode 27. Remove Element.html</id>
-    <published>2020-02-02T12:00:00.000Z</published>
-    <updated>2020-02-02T13:17:58.111Z</updated>
+    <title>LeetCode 374. Guess Number Higher or Lower</title>
+    <link href="https://cheng102e.github.io/LeetCode%20374.%20Guess%20Number%20Higher%20or%20Lower.html"/>
+    <id>https://cheng102e.github.io/LeetCode 374. Guess Number Higher or Lower.html</id>
+    <published>2020-02-03T12:19:00.000Z</published>
+    <updated>2020-02-03T12:19:33.858Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="27-Remove-Element（移除元素）"><a href="#27-Remove-Element（移除元素）" class="headerlink" title="27. Remove Element（移除元素）"></a>27. Remove Element（移除元素）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/remove-element" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-element</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。</p><p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p><p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p><p>示例 1:</p><p>  给定 nums = [3,2,2,3], val = 3,</p><p>  函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p><p>  给定 nums = [0,1,2,2,3,0,4,2], val = 2,</p><p>  函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</p><p>  注意这五个元素可为任意顺序。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>说明:</p><p>  为什么返回数值是整数，但输出的答案是数组呢?</p><p>  请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p><p>  你可以想象内部操作如下:</p><p>  // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>  int len = removeElement(nums, val);</p><p>  // 在函数里修改输入数组对于调用者是可见的。<br>  // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>  for (int i = 0; i &lt; len; i++) {<br>      print(nums[i]);<br>  }</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。<br>新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int removeElement(int[] nums, int val) &#123;</span><br><span class="line">    int index = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      if (nums[i] != val) &#123;</span><br><span class="line">        nums[index]=nums[i];</span><br><span class="line">        index++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return index;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="374-Guess-Number-Higher-or-Lower（猜数字大小）"><a href="#374-Guess-Number-Higher-or-Lower（猜数字大小）" class="headerlink" title="374. Guess Number Higher or Lower（猜数字大小）"></a>374. Guess Number Higher or Lower（猜数字大小）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/guess-number-higher-or-lower" target="_blank" rel="noopener">https://leetcode-cn.com/problems/guess-number-higher-or-lower</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>我们正在玩一个猜数字游戏。 游戏规则如下：<br>我从 1 到 n 选择一个数字。 你需要猜我选择了哪个数字。<br>每次你猜错了，我会告诉你这个数字是大了还是小了。<br>你调用一个预先定义好的接口 guess(int num)，它会返回 3 个可能的结果（-1，1 或 0）：</p><p>-1 : 我的数字比较小<br> 1 : 我的数字比较大<br> 0 : 恭喜！你猜对了！<br>示例 :</p><p>  输入: n = 10, pick = 6<br>  输出: 6</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这个也是二分查找，只不过又换了一种问法。<br>这里只需要注意到leftright的更新与guess函数的返回值即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static int guessNumber(int n) &#123;</span><br><span class="line">  int left = 1;</span><br><span class="line">  int right = n;</span><br><span class="line"></span><br><span class="line">  while (left &lt;= right) &#123;</span><br><span class="line">    int mid = left + (right - left) / 2;</span><br><span class="line">    if (guess(mid) == 0) &#123;</span><br><span class="line">      return mid;</span><br><span class="line">    &#125; else if (guess(mid) == 1) &#123;</span><br><span class="line">      left = mid + 1;</span><br><span class="line">    &#125; else if (guess(mid) == -1) &#123;</span><br><span class="line">      right = mid - 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;27-Remove-Element（移除元素）&quot;&gt;&lt;a href=&quot;#27-Remove-Element（移除元素）&quot; class=&quot;headerlink&quot; title=&quot;27. Remove Element（移除元素）&quot;&gt;&lt;/a&gt;27. Remove Eleme
+        &lt;h2 id=&quot;374-Guess-Number-Higher-or-Lower（猜数字大小）&quot;&gt;&lt;a href=&quot;#374-Guess-Number-Higher-or-Lower（猜数字大小）&quot; class=&quot;headerlink&quot; title=&quot;374. Guess Num
       
     
     </summary>
     
       <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 278. First Bad Version</title>
+    <link href="https://cheng102e.github.io/LeetCode%20278.%20First%20Bad%20Version.html"/>
+    <id>https://cheng102e.github.io/LeetCode 278. First Bad Version.html</id>
+    <published>2020-02-03T12:09:00.000Z</published>
+    <updated>2020-02-03T12:21:24.017Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="278-First-Bad-Version（第一个错误的版本）"><a href="#278-First-Bad-Version（第一个错误的版本）" class="headerlink" title="278. First Bad Version（第一个错误的版本）"></a>278. First Bad Version（第一个错误的版本）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/first-bad-version" target="_blank" rel="noopener">https://leetcode-cn.com/problems/first-bad-version</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>你是产品经理，目前正在带领一个团队开发新的产品。不幸的是，你的产品的最新版本没有通过质量检测。由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有版本都是错的。</p><p>假设你有 n 个版本 [1, 2, …, n]，你想找出导致之后所有版本出错的第一个错误的版本。</p><p>你可以通过调用 bool isBadVersion(version) 接口来判断版本号 version 是否在单元测试中出错。实现一个函数来查找第一个错误的版本。你应该尽量减少对调用 API 的次数。</p><p>示例:</p><p>  给定 n = 5，并且 version = 4 是第一个错误的版本。</p><p>  调用 isBadVersion(3) -&gt; false<br>  调用 isBadVersion(5) -&gt; true<br>  调用 isBadVersion(4) -&gt; true</p><p>  所以，4 是第一个错误的版本。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这个也是二分查找，问题相对来说不是很大，只需要注意几个细节即可，返回值为true表示版本错误，同时注意left和right的顺序，并且mid取值的时候要注意到不能溢出，最后返回left即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  public static int firstBadVersion(int n) &#123;</span><br><span class="line">  int left = 1;</span><br><span class="line">  int right = n;</span><br><span class="line"></span><br><span class="line">  while (left &lt;= right) &#123;</span><br><span class="line">    int mid = left + (right - left) / 2;</span><br><span class="line">    if (isBadVersion(mid) == true) &#123;</span><br><span class="line">      right = mid - 1;</span><br><span class="line">    &#125; else if (isBadVersion(mid) == false) &#123;</span><br><span class="line">      left = mid + 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;278-First-Bad-Version（第一个错误的版本）&quot;&gt;&lt;a href=&quot;#278-First-Bad-Version（第一个错误的版本）&quot; class=&quot;headerlink&quot; title=&quot;278. First Bad Version（第一个错误的版
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 35. Search Insert Position</title>
+    <link href="https://cheng102e.github.io/LeetCode%2035.%20Search%20Insert%20Position.html"/>
+    <id>https://cheng102e.github.io/LeetCode 35. Search Insert Position.html</id>
+    <published>2020-02-03T05:09:00.000Z</published>
+    <updated>2020-02-03T05:45:28.010Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="35-Search-Insert-Position（二分查找）"><a href="#35-Search-Insert-Position（二分查找）" class="headerlink" title="35. Search Insert Position（二分查找）"></a>35. Search Insert Position（二分查找）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/search-insert-position" target="_blank" rel="noopener">https://leetcode-cn.com/problems/search-insert-position</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p><p>你可以假设数组中无重复元素。</p><p>示例 1:</p><p>  输入: [1,3,5,6], 5<br>  输出: 2<br>示例 2:</p><p>  输入: [1,3,5,6], 2<br>  输出: 1<br>示例 3:</p><p>  输入: [1,3,5,6], 7<br>  输出: 4<br>示例 4:</p><p>  输入: [1,3,5,6], 0<br>  输出: 0</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>二分查找加了一些别的东西，升序数组，找到返回下标，未找到就返回可以加入的位置.<br>代码和正常的二分查找相同，需要注意的是，最后一个返回的应该是left，因为在最后一次循环中，left=right，然后left++，这个位置，就是应该存放的位置。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  public static int searchInsert(int[] nums, int target) &#123;</span><br><span class="line">  if (nums.length == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  int left = 0;</span><br><span class="line">  int right = nums.length - 1;</span><br><span class="line"></span><br><span class="line">  while (left &lt;= right) &#123;</span><br><span class="line">    int mid = left + (right - left) / 2;</span><br><span class="line">    if (nums[mid] == target) &#123;</span><br><span class="line">      return mid;</span><br><span class="line">    &#125; else if (nums[mid] &lt; target) &#123;</span><br><span class="line">      left = mid + 1;</span><br><span class="line">    &#125; else if (nums[mid] &gt; target) &#123;</span><br><span class="line">      right = mid - 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;35-Search-Insert-Position（二分查找）&quot;&gt;&lt;a href=&quot;#35-Search-Insert-Position（二分查找）&quot; class=&quot;headerlink&quot; title=&quot;35. Search Insert Position（二分查
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>查找算法-二分查找</title>
+    <link href="https://cheng102e.github.io/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html"/>
+    <id>https://cheng102e.github.io/查找算法-二分查找.html</id>
+    <published>2020-02-03T05:00:00.000Z</published>
+    <updated>2020-02-03T05:07:12.171Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="查找算法-二分查找"><a href="#查找算法-二分查找" class="headerlink" title="查找算法-二分查找"></a>查找算法-二分查找</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>二分查找也称折半查找（Binary Search），它是一种效率较高的查找方法。但是，折半查找要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列。</p><h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>首先，假设表中元素是按升序排列，将表中间位置记录的关键字与查找关键字比较，如果两者相等，则查找成功；否则利用中间位置记录将表分成前、后两个子表，如果中间位置记录的关键字大于查找关键字，则进一步查找前一子表，否则进一步查找后一子表。重复以上过程，直到找到满足条件的记录，使查找成功，或直到子表不存在为止，此时查找不成功。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>设置两个标签，一个为left一个为right，分别表示左侧与右侧，常见初始值为0，length-1.<br>之后进行while循环，这里注意，判断条件选择left&lt;=right，这里当然可以改变，但是最好是熟练之后再进行改变。<br>循环中定义mid = (left + right) / 2，其实更好的是left+（right-left）/2；这样避免越界。<br>若找到了所需要的值，直接返回，找不到的话，就先判断nums[mid]与目标值的大小关系，重新确立leftright，进行下一步运算。</p><h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>O(log2n)</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static int search(int[] nums, int target) &#123;</span><br><span class="line">  if (nums.length == 0) &#123;</span><br><span class="line">    return -1;</span><br><span class="line">  &#125;</span><br><span class="line">  int left = 0;</span><br><span class="line">  int right = nums.length - 1;</span><br><span class="line"></span><br><span class="line">  while (left &lt;= right) &#123;</span><br><span class="line">    int mid = (left + right) / 2;</span><br><span class="line">    if (nums[mid] == target) &#123;</span><br><span class="line">      return mid;</span><br><span class="line">    &#125; else if (nums[mid] &lt; target) &#123;</span><br><span class="line">      left = mid + 1;</span><br><span class="line">    &#125; else if (nums[mid] &gt; target) &#123;</span><br><span class="line">      right = mid - 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;查找算法-二分查找&quot;&gt;&lt;a href=&quot;#查找算法-二分查找&quot; class=&quot;headerlink&quot; title=&quot;查找算法-二分查找&quot;&gt;&lt;/a&gt;查找算法-二分查找&lt;/h2&gt;&lt;h3 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; 
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://cheng102e.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="二分查找" scheme="https://cheng102e.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
   </entry>
   
@@ -53,6 +124,29 @@
       
       
         &lt;h2 id=&quot;796-Rotate-String（旋转字符串）&quot;&gt;&lt;a href=&quot;#796-Rotate-String（旋转字符串）&quot; class=&quot;headerlink&quot; title=&quot;796. Rotate String（旋转字符串）&quot;&gt;&lt;/a&gt;796. Rotate S
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 27. Remove Element</title>
+    <link href="https://cheng102e.github.io/LeetCode%2027.%20Remove%20Element.html"/>
+    <id>https://cheng102e.github.io/LeetCode 27. Remove Element.html</id>
+    <published>2020-02-02T12:00:00.000Z</published>
+    <updated>2020-02-02T13:17:58.111Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="27-Remove-Element（移除元素）"><a href="#27-Remove-Element（移除元素）" class="headerlink" title="27. Remove Element（移除元素）"></a>27. Remove Element（移除元素）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/remove-element" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-element</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。</p><p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p><p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p><p>示例 1:</p><p>  给定 nums = [3,2,2,3], val = 3,</p><p>  函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p><p>  给定 nums = [0,1,2,2,3,0,4,2], val = 2,</p><p>  函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</p><p>  注意这五个元素可为任意顺序。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>说明:</p><p>  为什么返回数值是整数，但输出的答案是数组呢?</p><p>  请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p><p>  你可以想象内部操作如下:</p><p>  // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>  int len = removeElement(nums, val);</p><p>  // 在函数里修改输入数组对于调用者是可见的。<br>  // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>  for (int i = 0; i &lt; len; i++) {<br>      print(nums[i]);<br>  }</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。<br>新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int removeElement(int[] nums, int val) &#123;</span><br><span class="line">    int index = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      if (nums[i] != val) &#123;</span><br><span class="line">        nums[index]=nums[i];</span><br><span class="line">        index++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return index;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;27-Remove-Element（移除元素）&quot;&gt;&lt;a href=&quot;#27-Remove-Element（移除元素）&quot; class=&quot;headerlink&quot; title=&quot;27. Remove Element（移除元素）&quot;&gt;&lt;/a&gt;27. Remove Eleme
       
     
     </summary>
@@ -383,102 +477,6 @@
       
       
         &lt;h2 id=&quot;283-Move-Zeroes（移动零）&quot;&gt;&lt;a href=&quot;#283-Move-Zeroes（移动零）&quot; class=&quot;headerlink&quot; title=&quot;283. Move Zeroes（移动零）&quot;&gt;&lt;/a&gt;283. Move Zeroes（移动零）&lt;/h2
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 100. Same Tree</title>
-    <link href="https://cheng102e.github.io/LeetCode%20100.%20Same%20Tree.html"/>
-    <id>https://cheng102e.github.io/LeetCode 100. Same Tree.html</id>
-    <published>2020-01-07T13:01:00.000Z</published>
-    <updated>2020-01-07T14:10:43.550Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="100-Same-Tree（相同的树）"><a href="#100-Same-Tree（相同的树）" class="headerlink" title="100. Same Tree（相同的树）"></a>100. Same Tree（相同的树）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/same-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/same-tree</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定两个二叉树，编写一个函数来检验它们是否相同。</p><p>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p><p>示例 1:</p><p>  输入:       1         1<br>            / \       / <br>          2   3     2   3</p><pre><code>[1,2,3],   [1,2,3]</code></pre><p>  输出: true<br>示例 2:</p><p>  输入:      1          1<br>            /           <br>          2             2</p><pre><code>[1,2],     [1,null,2]</code></pre><p>  输出: false<br>示例 3:</p><p>  输入:       1         1<br>            / \       / <br>          2   1     1   2</p><pre><code>[1,2,1],   [1,1,2]</code></pre><p>  输出: false</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>遍历呗，先查看是否为空，都为空相同，之后同时比较左结点和右结点，没啥了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  TreeNode left;</span><br><span class="line">  TreeNode right;</span><br><span class="line"></span><br><span class="line">  TreeNode(int x) &#123;</span><br><span class="line">    val = x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static boolean isSameTree(TreeNode p, TreeNode q) &#123;</span><br><span class="line">  if (p == null &amp;&amp; q == null) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (p != null &amp;&amp; q != null &amp;&amp; p.val == q.val) &#123;</span><br><span class="line">    return isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line"></span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;100-Same-Tree（相同的树）&quot;&gt;&lt;a href=&quot;#100-Same-Tree（相同的树）&quot; class=&quot;headerlink&quot; title=&quot;100. Same Tree（相同的树）&quot;&gt;&lt;/a&gt;100. Same Tree（相同的树）&lt;/h2&gt;&lt;h3
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="树" scheme="https://cheng102e.github.io/tags/%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 264. Ugly Number II</title>
-    <link href="https://cheng102e.github.io/LeetCode%20264.%20Ugly%20Number%20II.html"/>
-    <id>https://cheng102e.github.io/LeetCode 264. Ugly Number II.html</id>
-    <published>2020-01-05T03:01:00.000Z</published>
-    <updated>2020-01-07T14:10:46.603Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="264-Ugly-Number-II（丑数-II）"><a href="#264-Ugly-Number-II（丑数-II）" class="headerlink" title="264. Ugly Number II（丑数 II）"></a>264. Ugly Number II（丑数 II）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/ugly-number-ii" target="_blank" rel="noopener">https://leetcode-cn.com/problems/ugly-number-ii</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>编写一个程序，找出第 n 个丑数。</p><p>丑数就是只包含质因数 2, 3, 5 的正整数。</p><p>示例:</p><p>  输入: n = 10<br>  输出: 12<br>  解释: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数。<br>说明:  </p><p>  1 是丑数。<br>  n 不超过1690。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>比上一题带劲，本来打算打表打个卡的，结果发现了一个三指针法，效果很好。<br>任意丑数都是比这个数小的丑数乘以2，3，5其中之一得到的，要求按照顺序排列，那么就从之前的数中找到未被使用过的数乘一下，然后比较，就可以得到新的数了。<br>首先初始位为1，设三个指针值n2,n3,n5,初始设为0.之后开始循环，每次循环都找到235未乘过的数字乘一下，然后取最小值为新的丑数。之后，若n2n3n5使用过了，那么指针位+1，下次乘下一个数字，如果都可以，那就都加。把数字记录下来最后输出即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public static int nthUglyNumber(int n) &#123;</span><br><span class="line">    int[] ans = new int[n];</span><br><span class="line">    int n2 = 0, n3 = 0, n5 = 0;</span><br><span class="line">    ans[0] = 1;</span><br><span class="line">    for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">      int min = Math.min(ans[n2] * 2, Math.min(ans[n3] * 3, ans[n5] * 5));</span><br><span class="line">      ans[i] = min;</span><br><span class="line">      if (min == ans[n2]*2) &#123;</span><br><span class="line">        n2++;</span><br><span class="line">      &#125;</span><br><span class="line">      if (min == ans[n3]*3) &#123;</span><br><span class="line">        n3++;</span><br><span class="line">      &#125;</span><br><span class="line">      if (min == ans[n5]*5) &#123;</span><br><span class="line">        n5++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return ans[n-1];</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;264-Ugly-Number-II（丑数-II）&quot;&gt;&lt;a href=&quot;#264-Ugly-Number-II（丑数-II）&quot; class=&quot;headerlink&quot; title=&quot;264. Ugly Number II（丑数 II）&quot;&gt;&lt;/a&gt;264. Ugly 
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 231. Power of Two</title>
-    <link href="https://cheng102e.github.io/LeetCode%20231.%20Power%20of%20Two.html"/>
-    <id>https://cheng102e.github.io/LeetCode 231. Power of Two.html</id>
-    <published>2020-01-04T06:34:00.000Z</published>
-    <updated>2020-01-04T06:51:18.881Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="231-Power-of-Two（2的幂）"><a href="#231-Power-of-Two（2的幂）" class="headerlink" title="231. Power of Two（2的幂）"></a>231. Power of Two（2的幂）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/power-of-two" target="_blank" rel="noopener">https://leetcode-cn.com/problems/power-of-two</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个整数，编写一个函数来判断它是否是 2 的幂次方。</p><p>示例 1:</p><p>  输入: 1<br>  输出: true<br>  解释: 20 = 1<br>示例 2:</p><p>  输入: 16<br>  输出: true<br>  解释: 24 = 16<br>示例 3:</p><p>  输入: 218<br>  输出: false</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>位运算，算是做之前不知道咋做，做了后就熟了的题目，代码也都简单，有两个式子。<br>先得知，若为二的幂，转换为二进制之后只有一位数字是1，别的数字都是0.</p><ol><li><p>(n &gt; 0) &amp;&amp; ((n &amp; -n) == n)<br>负数补码的存放是取反加一，假设为8，整数为1000，负数-8，为0111+0001=1000(取反加一)，二者&amp;运算，结果为1000，还是8.</p></li><li><p>(n &gt; 0) &amp;&amp; ((n &amp; (n - 1)) == 0)<br>同样用8举例，n-1=7为0111，二者&amp;运算，结果为0.</p></li></ol><p>两个式子的运算耗时差距也不是很大，看能想起来哪个吧，主要就是记得二进制是特殊的，适合位运算就行。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isPowerOfTwo(int n) &#123;</span><br><span class="line">    return (n &gt; 0) &amp;&amp; ((n &amp; -n) == n);</span><br><span class="line">  //  return (n &gt; 0) &amp;&amp; ((n &amp; (n - 1)) == 0);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;231-Power-of-Two（2的幂）&quot;&gt;&lt;a href=&quot;#231-Power-of-Two（2的幂）&quot; class=&quot;headerlink&quot; title=&quot;231. Power of Two（2的幂）&quot;&gt;&lt;/a&gt;231. Power of Two（2的幂）
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="位运算" scheme="https://cheng102e.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 263. Ugly Number</title>
-    <link href="https://cheng102e.github.io/LeetCode%20263.%20Ugly%20Number.html"/>
-    <id>https://cheng102e.github.io/LeetCode 263. Ugly Number.html</id>
-    <published>2020-01-04T06:14:00.000Z</published>
-    <updated>2020-01-04T06:16:31.309Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="263-Ugly-Number（丑数）"><a href="#263-Ugly-Number（丑数）" class="headerlink" title="263. Ugly Number（丑数）"></a>263. Ugly Number（丑数）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/ugly-number" target="_blank" rel="noopener">https://leetcode-cn.com/problems/ugly-number</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>编写一个程序判断给定的数是否为丑数。</p><p>丑数就是只包含质因数 2, 3, 5 的正整数。</p><p>示例 1:</p><p>  输入: 6<br>  输出: true<br>  解释: 6 = 2 × 3<br>示例 2:</p><p>  输入: 8<br>  输出: true<br>  解释: 8 = 2 × 2 × 2<br>示例 3:</p><p>  输入: 14<br>  输出: false<br>  解释: 14 不是丑数，因为它包含了另外一个质因数 7。<br>说明：</p><p>  1 是丑数。<br>  输入不会超过 32 位有符号整数的范围: [−231,  231 − 1]。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>简单的定义题，整除方法，特殊值1，直接if判断1，while判断整除，最后输出结果。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isUgly(int num) &#123;</span><br><span class="line">    if (num &lt; 1) &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">    while (num % 5 == 0) &#123;</span><br><span class="line">      num = num / 5;</span><br><span class="line">    &#125;</span><br><span class="line">    while (num % 3 == 0) &#123;</span><br><span class="line">      num = num / 3;</span><br><span class="line">    &#125;</span><br><span class="line">    while (num % 2 == 0) &#123;</span><br><span class="line">      num = num / 2;</span><br><span class="line">    &#125;</span><br><span class="line">    return num == 1;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;263-Ugly-Number（丑数）&quot;&gt;&lt;a href=&quot;#263-Ugly-Number（丑数）&quot; class=&quot;headerlink&quot; title=&quot;263. Ugly Number（丑数）&quot;&gt;&lt;/a&gt;263. Ugly Number（丑数）&lt;/h2&gt;&lt;h3
       
     
     </summary>

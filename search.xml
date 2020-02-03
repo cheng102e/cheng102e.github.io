@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 374. Guess Number Higher or Lower]]></title>
+    <url>%2FLeetCode%20374.%20Guess%20Number%20Higher%20or%20Lower.html</url>
+    <content type="text"><![CDATA[374. Guess Number Higher or Lower（猜数字大小）链接https://leetcode-cn.com/problems/guess-number-higher-or-lower 题目我们正在玩一个猜数字游戏。 游戏规则如下：我从 1 到 n 选择一个数字。 你需要猜我选择了哪个数字。每次你猜错了，我会告诉你这个数字是大了还是小了。你调用一个预先定义好的接口 guess(int num)，它会返回 3 个可能的结果（-1，1 或 0）： -1 : 我的数字比较小 1 : 我的数字比较大 0 : 恭喜！你猜对了！示例 : 输入: n = 10, pick = 6 输出: 6 思路这个也是二分查找，只不过又换了一种问法。这里只需要注意到leftright的更新与guess函数的返回值即可。 代码12345678910111213141516public static int guessNumber(int n) &#123; int left = 1; int right = n; while (left &lt;= right) &#123; int mid = left + (right - left) / 2; if (guess(mid) == 0) &#123; return mid; &#125; else if (guess(mid) == 1) &#123; left = mid + 1; &#125; else if (guess(mid) == -1) &#123; right = mid - 1; &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 278. First Bad Version]]></title>
+    <url>%2FLeetCode%20278.%20First%20Bad%20Version.html</url>
+    <content type="text"><![CDATA[278. First Bad Version（第一个错误的版本）链接https://leetcode-cn.com/problems/first-bad-version 题目你是产品经理，目前正在带领一个团队开发新的产品。不幸的是，你的产品的最新版本没有通过质量检测。由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有版本都是错的。 假设你有 n 个版本 [1, 2, …, n]，你想找出导致之后所有版本出错的第一个错误的版本。 你可以通过调用 bool isBadVersion(version) 接口来判断版本号 version 是否在单元测试中出错。实现一个函数来查找第一个错误的版本。你应该尽量减少对调用 API 的次数。 示例: 给定 n = 5，并且 version = 4 是第一个错误的版本。 调用 isBadVersion(3) -&gt; false 调用 isBadVersion(5) -&gt; true 调用 isBadVersion(4) -&gt; true 所以，4 是第一个错误的版本。 思路这个也是二分查找，问题相对来说不是很大，只需要注意几个细节即可，返回值为true表示版本错误，同时注意left和right的顺序，并且mid取值的时候要注意到不能溢出，最后返回left即可。 代码1234567891011121314 public static int firstBadVersion(int n) &#123; int left = 1; int right = n; while (left &lt;= right) &#123; int mid = left + (right - left) / 2; if (isBadVersion(mid) == true) &#123; right = mid - 1; &#125; else if (isBadVersion(mid) == false) &#123; left = mid + 1; &#125; &#125; return left;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 35. Search Insert Position]]></title>
+    <url>%2FLeetCode%2035.%20Search%20Insert%20Position.html</url>
+    <content type="text"><![CDATA[35. Search Insert Position（二分查找）链接https://leetcode-cn.com/problems/search-insert-position 题目给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 你可以假设数组中无重复元素。 示例 1: 输入: [1,3,5,6], 5 输出: 2示例 2: 输入: [1,3,5,6], 2 输出: 1示例 3: 输入: [1,3,5,6], 7 输出: 4示例 4: 输入: [1,3,5,6], 0 输出: 0 思路二分查找加了一些别的东西，升序数组，找到返回下标，未找到就返回可以加入的位置.代码和正常的二分查找相同，需要注意的是，最后一个返回的应该是left，因为在最后一次循环中，left=right，然后left++，这个位置，就是应该存放的位置。 代码12345678910111213141516171819 public static int searchInsert(int[] nums, int target) &#123; if (nums.length == 0) &#123; return 0; &#125; int left = 0; int right = nums.length - 1; while (left &lt;= right) &#123; int mid = left + (right - left) / 2; if (nums[mid] == target) &#123; return mid; &#125; else if (nums[mid] &lt; target) &#123; left = mid + 1; &#125; else if (nums[mid] &gt; target) &#123; right = mid - 1; &#125; &#125; return left;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[查找算法-二分查找]]></title>
+    <url>%2F%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html</url>
+    <content type="text"><![CDATA[查找算法-二分查找标题二分查找也称折半查找（Binary Search），它是一种效率较高的查找方法。但是，折半查找要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列。 过程首先，假设表中元素是按升序排列，将表中间位置记录的关键字与查找关键字比较，如果两者相等，则查找成功；否则利用中间位置记录将表分成前、后两个子表，如果中间位置记录的关键字大于查找关键字，则进一步查找前一子表，否则进一步查找后一子表。重复以上过程，直到找到满足条件的记录，使查找成功，或直到子表不存在为止，此时查找不成功。 思路设置两个标签，一个为left一个为right，分别表示左侧与右侧，常见初始值为0，length-1.之后进行while循环，这里注意，判断条件选择left&lt;=right，这里当然可以改变，但是最好是熟练之后再进行改变。循环中定义mid = (left + right) / 2，其实更好的是left+（right-left）/2；这样避免越界。若找到了所需要的值，直接返回，找不到的话，就先判断nums[mid]与目标值的大小关系，重新确立leftright，进行下一步运算。 复杂度O(log2n) 代码12345678910111213141516171819public static int search(int[] nums, int target) &#123; if (nums.length == 0) &#123; return -1; &#125; int left = 0; int right = nums.length - 1; while (left &lt;= right) &#123; int mid = (left + right) / 2; if (nums[mid] == target) &#123; return mid; &#125; else if (nums[mid] &lt; target) &#123; left = mid + 1; &#125; else if (nums[mid] &gt; target) &#123; right = mid - 1; &#125; &#125; return -1;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>二分查找</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 796. Rotate String]]></title>
     <url>%2FLeetCode%20796.%20Rotate%20String.html</url>
     <content type="text"><![CDATA[796. Rotate String（旋转字符串）链接https://leetcode-cn.com/problems/rotate-string 题目给定两个字符串, A 和 B。 A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。 示例 1: 输入: A = ‘abcde’, B = ‘cdeab’ 输出: true 示例 2: 输入: A = ‘abcde’, B = ‘abced’ 输出: false注意： A 和 B 长度不超过 100。 思路题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。 代码1234567public static boolean rotateString(String A, String B) &#123; if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123; return true; &#125; else &#123; return false; &#125; &#125;]]></content>
@@ -909,7 +944,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#x6e;&#100;&#x40;&#49;&#54;&#51;&#x2e;&#x63;&#111;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#x65;&#99;&#x65;&#105;&#118;&#101;&#64;&#49;&#x36;&#51;&#46;&#99;&#x6f;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#101;&#x6e;&#x64;&#x40;&#x31;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#101;&#99;&#x65;&#105;&#118;&#x65;&#64;&#49;&#x36;&#x33;&#46;&#x63;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>
