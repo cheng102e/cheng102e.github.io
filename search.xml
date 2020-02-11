@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 20. Valid Parentheses]]></title>
+    <url>%2FLeetCode%2020.%20Valid%20Parentheses.html</url>
+    <content type="text"><![CDATA[20. Valid Parentheses（有效的括号）链接https://leetcode-cn.com/problems/valid-parentheses 题目给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。 有效字符串需满足： 左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。注意空字符串可被认为是有效字符串。 示例 1: 输入: “()” 输出: true示例 2: 输入: “()[]{}” 输出: true示例 3: 输入: “(]” 输出: false示例 4: 输入: “([)]” 输出: false示例 5: 输入: “{[]}” 输出: true 思路判断括号嘛，我用了最基础的解法，借助栈一个一个找，如果为左括号则入栈，若为右括号且栈顶为对应左括号则出栈，不然直接返回false，一直到遍历结束，如果栈为空就返回true。效率虽然不是很高但是思路很清晰。 代码123456789101112131415161718192021222324252627public boolean isValid(String s) &#123; Stack&lt;Character&gt; stack = new Stack&lt;Character&gt;(); for (char c : s.toCharArray()) &#123; if (c == &apos;)&apos; &amp;&amp; !stack.isEmpty()) &#123; if (stack.peek() == &apos;(&apos;) &#123; stack.pop(); &#125; else &#123; return false; &#125; &#125; else if (c == &apos;]&apos; &amp;&amp; !stack.isEmpty()) &#123; if (stack.peek() == &apos;[&apos;) &#123; stack.pop(); &#125; else &#123; return false; &#125; &#125; else if (c == &apos;&#125;&apos; &amp;&amp; !stack.isEmpty()) &#123; if (stack.peek() == &apos;&#123;&apos;) &#123; stack.pop(); &#125; else &#123; return false; &#125; &#125; else &#123; stack.push(c); &#125; &#125; return stack.isEmpty();&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>栈与队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 53. Maximum Subarray]]></title>
+    <url>%2FLeetCode%2053.%20Maximum%20Subarray.html</url>
+    <content type="text"><![CDATA[53. Maximum Subarray（最大子序和）链接https://leetcode-cn.com/problems/maximum-subarray 题目给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 示例: 输入: [-2,1,-3,4,-1,2,1,-5,4], 输出: 6 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。进阶: 如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。 思路没尝试分治法，那个有点麻烦，等做到别的分治时候再做。这边有动态规划的思想在里面，从头到尾遍历，如果和小于0，那么直接无视，重新开始，和大于0，就加上之前的和。每次都保留当前最大的和，直到输出。 代码12345678910111213public static int maxSubArray(int[] nums) &#123; int ans = nums[0]; int sum = 0; for (int num : nums) &#123; if (sum &gt;= 0) &#123; sum += num; &#125; else &#123; sum = num; &#125; ans = Math.max(sum, ans); &#125; return ans; &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 448. Find All Numbers Disappeared in an Array]]></title>
+    <url>%2FLeetCode%20448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array.html</url>
+    <content type="text"><![CDATA[448. Find All Numbers Disappeared in an Array（找到所有数组中消失的数字）链接https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array 题目给定一个范围在 1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。 示例: 输入: [4,3,2,7,8,2,3,1] 输出: [5,6] 思路这题的题意很简单，就是要找到缺失的数字，但是思路很巧妙，对于每个数字，都设置一个位置，就像例子一样，第一个数字为4，就将第四个数字设置为-7，一遍循环之后，数组就成为[-4,-3,-2,-7,8,2,-3,-1],然后第二次遍历，如果数字为正，就代表数组中不存在这个数，记录到答案中即可，这里要注意数组从0开始，而数字从1开始。 代码1234567891011121314 public static List&lt;Integer&gt; findDisappearedNumbers(int[] nums) &#123; for(int i=0;i&lt;nums.length;i++)&#123; int temp = Math.abs(nums[i]); nums[temp-1]=-Math.abs(nums[temp-1]); &#125; List&lt;Integer&gt;ans = new ArrayList(nums.length); for(int i=0;i&lt;nums.length;i++) &#123; if(nums[i]&gt;0)&#123; ans.add(i+1); &#125; &#125; return ans;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 461. Hamming Distance]]></title>
+    <url>%2FLeetCode%20461.%20Hamming%20Distance.html</url>
+    <content type="text"><![CDATA[461. Hamming Distance（汉明距离）链接https://leetcode-cn.com/problems/hamming-distance 题目两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。 给出两个整数 x 和 y，计算它们之间的汉明距离。 注意：0 ≤ x, y &lt; 231. 示例: 输入: x = 1, y = 4 输出: 2 解释: 1 (0 0 0 1) 4 (0 1 0 0) ↑ ↑ 上面的箭头指出了对应二进制位不同的位置。 思路这题的名词也就是转换一下，需要我们找到二进制位的不同，这时候异或最简单，直接找到不同位，然后可以按位寻找，也可以直接和1进行与运算，然后右移。 代码1234567891011 public static int hammingDistance(int x, int y) &#123; int xor = x ^ y; int num = 0; while (xor != 0) &#123; if ((xor &amp; 1) == 1) &#123; num++; &#125; xor = xor &gt;&gt; 1; &#125; return num;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 976. Largest Perimeter Triangle]]></title>
+    <url>%2FLeetCode%20976.%20Largest%20Perimeter%20Triangle.html</url>
+    <content type="text"><![CDATA[976. Largest Perimeter Triangle（三角形的最大周长）链接https://leetcode-cn.com/problems/largest-perimeter-triangle 题目给定由一些正数（代表长度）组成的数组 A，返回由其中三个长度组成的、面积不为零的三角形的最大周长。 如果不能形成任何面积不为零的三角形，返回 0。 示例 1： 输入：[2,1,2] 输出：5示例 2： 输入：[1,2,1] 输出：0示例 3： 输入：[3,2,3,4] 输出：10示例 4： 输入：[3,6,2,3] 输出：8 提示： 3 &lt;= A.length &lt;= 10000 1 &lt;= A[i] &lt;= 10^6 思路这题偷了个懒，直接用了自带的sort函数，之后就是一共从后向前的循环，每三个为一组，若该组可以构成三角形，返回长度，不然跳出。这里还有一个数学问题，为什么是连续的三个而不是中断的三个，这里假设有四个数字abcd，升序排列，先判断bcd，在判断abc，因为如果b+c&lt;d，无法构成,那么a+c&lt;b+c更无法构成了。 代码123456789public static int largestPerimeter(int[] A) &#123; Arrays.sort(A); for (int i = A.length - 1; i &gt; 1; i--) &#123; if (A[i] &lt; A[i - 1] + A[i - 2]) &#123; return A[i] + A[i - 1] + A[i - 2]; &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 1295. Find Numbers with Even Number of Digits]]></title>
+    <url>%2FLeetCode%201295.%20Find%20Numbers%20with%20Even%20Number%20of%20Digits.html</url>
+    <content type="text"><![CDATA[1295. Find Numbers with Even Number of Digits（统计位数为偶数的数字）链接https://leetcode-cn.com/problems/find-numbers-with-even-number-of-digits 题目给你一个整数数组 nums，请你返回其中位数为 偶数 的数字的个数。 示例 1： 输入：nums = [12,345,2,6,7896] 输出：2 解释： 12 是 2 位数字（位数为偶数） 345 是 3 位数字（位数为奇数） 2 是 1 位数字（位数为奇数） 6 是 1 位数字 位数为奇数） 7896 是 4 位数字（位数为偶数） 因此只有 12 和 7896 是位数为偶数的数字示例 2： 输入：nums = [555,901,482,1771] 输出：1 解释： 只有 1771 是位数为偶数的数字。 思路emmm我也不知道算是什么题目，从头到尾判断一下就行了，对于数字的范围判断一下，其实也可以转字符串判断长度，不过没必要。 代码123456789public static int findNumbers(int[] nums) &#123; int count = 0; for (int num : nums) &#123; if ((10 &lt;= num &amp;&amp; num &lt;= 99) || (1000 &lt;= num &amp;&amp; num &lt;= 9999) || num == 100000) &#123; count++; &#125; &#125; return count;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 374. Guess Number Higher or Lower]]></title>
     <url>%2FLeetCode%20374.%20Guess%20Number%20Higher%20or%20Lower.html</url>
     <content type="text"><![CDATA[374. Guess Number Higher or Lower（猜数字大小）链接https://leetcode-cn.com/problems/guess-number-higher-or-lower 题目我们正在玩一个猜数字游戏。 游戏规则如下：我从 1 到 n 选择一个数字。 你需要猜我选择了哪个数字。每次你猜错了，我会告诉你这个数字是大了还是小了。你调用一个预先定义好的接口 guess(int num)，它会返回 3 个可能的结果（-1，1 或 0）： -1 : 我的数字比较小 1 : 我的数字比较大 0 : 恭喜！你猜对了！示例 : 输入: n = 10, pick = 6 输出: 6 思路这个也是二分查找，只不过又换了一种问法。这里只需要注意到leftright的更新与guess函数的返回值即可。 代码12345678910111213141516public static int guessNumber(int n) &#123; int left = 1; int right = n; while (left &lt;= right) &#123; int mid = left + (right - left) / 2; if (guess(mid) == 0) &#123; return mid; &#125; else if (guess(mid) == 1) &#123; left = mid + 1; &#125; else if (guess(mid) == -1) &#123; right = mid - 1; &#125; &#125; return 0;&#125;]]></content>
@@ -36,17 +90,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 796. Rotate String]]></title>
-    <url>%2FLeetCode%20796.%20Rotate%20String.html</url>
-    <content type="text"><![CDATA[796. Rotate String（旋转字符串）链接https://leetcode-cn.com/problems/rotate-string 题目给定两个字符串, A 和 B。 A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。 示例 1: 输入: A = ‘abcde’, B = ‘cdeab’ 输出: true 示例 2: 输入: A = ‘abcde’, B = ‘abced’ 输出: false注意： A 和 B 长度不超过 100。 思路题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。 代码1234567public static boolean rotateString(String A, String B) &#123; if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123; return true; &#125; else &#123; return false; &#125; &#125;]]></content>
+    <title><![CDATA[LeetCode 27. Remove Element]]></title>
+    <url>%2FLeetCode%2027.%20Remove%20Element.html</url>
+    <content type="text"><![CDATA[27. Remove Element（移除元素）链接https://leetcode-cn.com/problems/remove-element 题目给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 示例 1: 给定 nums = [3,2,2,3], val = 3, 函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。 你不需要考虑数组中超出新长度后面的元素。示例 2: 给定 nums = [0,1,2,2,3,0,4,2], val = 2, 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。 注意这五个元素可为任意顺序。 你不需要考虑数组中超出新长度后面的元素。说明: 为什么返回数值是整数，但输出的答案是数组呢? 请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 你可以想象内部操作如下: // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝 int len = removeElement(nums, val); // 在函数里修改输入数组对于调用者是可见的。 // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。 for (int i = 0; i &lt; len; i++) { print(nums[i]); } 思路题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。 代码12345678910public static int removeElement(int[] nums, int val) &#123; int index = 0; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] != val) &#123; nums[index]=nums[i]; index++; &#125; &#125; return index; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 27. Remove Element]]></title>
-    <url>%2FLeetCode%2027.%20Remove%20Element.html</url>
-    <content type="text"><![CDATA[27. Remove Element（移除元素）链接https://leetcode-cn.com/problems/remove-element 题目给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 示例 1: 给定 nums = [3,2,2,3], val = 3, 函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。 你不需要考虑数组中超出新长度后面的元素。示例 2: 给定 nums = [0,1,2,2,3,0,4,2], val = 2, 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。 注意这五个元素可为任意顺序。 你不需要考虑数组中超出新长度后面的元素。说明: 为什么返回数值是整数，但输出的答案是数组呢? 请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 你可以想象内部操作如下: // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝 int len = removeElement(nums, val); // 在函数里修改输入数组对于调用者是可见的。 // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。 for (int i = 0; i &lt; len; i++) { print(nums[i]); } 思路题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。 代码12345678910public static int removeElement(int[] nums, int val) &#123; int index = 0; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] != val) &#123; nums[index]=nums[i]; index++; &#125; &#125; return index; &#125;]]></content>
+    <title><![CDATA[LeetCode 796. Rotate String]]></title>
+    <url>%2FLeetCode%20796.%20Rotate%20String.html</url>
+    <content type="text"><![CDATA[796. Rotate String（旋转字符串）链接https://leetcode-cn.com/problems/rotate-string 题目给定两个字符串, A 和 B。 A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。 示例 1: 输入: A = ‘abcde’, B = ‘cdeab’ 输出: true 示例 2: 输入: A = ‘abcde’, B = ‘abced’ 输出: false注意： A 和 B 长度不超过 100。 思路题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。 代码1234567public static boolean rotateString(String A, String B) &#123; if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123; return true; &#125; else &#123; return false; &#125; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
@@ -944,7 +998,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#101;&#x6e;&#x64;&#x40;&#x31;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#101;&#99;&#x65;&#105;&#118;&#x65;&#64;&#49;&#x36;&#x33;&#46;&#x63;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#x6e;&#100;&#64;&#49;&#x36;&#x33;&#46;&#99;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#x65;&#x63;&#x65;&#105;&#118;&#101;&#64;&#x31;&#54;&#51;&#46;&#x63;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>

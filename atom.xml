@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cheng102e.github.io/"/>
-  <updated>2020-02-03T12:19:33.858Z</updated>
+  <updated>2020-02-11T14:50:36.798Z</updated>
   <id>https://cheng102e.github.io/</id>
   
   <author>
@@ -15,6 +15,148 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 20. Valid Parentheses</title>
+    <link href="https://cheng102e.github.io/LeetCode%2020.%20Valid%20Parentheses.html"/>
+    <id>https://cheng102e.github.io/LeetCode 20. Valid Parentheses.html</id>
+    <published>2020-02-11T14:20:00.000Z</published>
+    <updated>2020-02-11T14:50:36.798Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="20-Valid-Parentheses（有效的括号）"><a href="#20-Valid-Parentheses（有效的括号）" class="headerlink" title="20. Valid Parentheses（有效的括号）"></a>20. Valid Parentheses（有效的括号）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/valid-parentheses" target="_blank" rel="noopener">https://leetcode-cn.com/problems/valid-parentheses</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p><p>有效字符串需满足：</p><p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p><p>示例 1:</p><p>  输入: “()”<br>  输出: true<br>示例 2:</p><p>  输入: “()[]{}”<br>  输出: true<br>示例 3:</p><p>  输入: “(]”<br>  输出: false<br>示例 4:</p><p>  输入: “([)]”<br>  输出: false<br>示例 5:</p><p>  输入: “{[]}”<br>  输出: true</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>判断括号嘛，我用了最基础的解法，借助栈一个一个找，如果为左括号则入栈，若为右括号且栈顶为对应左括号则出栈，不然直接返回false，一直到遍历结束，如果栈为空就返回true。效率虽然不是很高但是思路很清晰。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public boolean isValid(String s) &#123;</span><br><span class="line">  Stack&lt;Character&gt; stack = new Stack&lt;Character&gt;();</span><br><span class="line">  for (char c : s.toCharArray()) &#123;</span><br><span class="line">    if (c == &apos;)&apos; &amp;&amp; !stack.isEmpty()) &#123;</span><br><span class="line">      if (stack.peek() == &apos;(&apos;) &#123;</span><br><span class="line">        stack.pop();</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else if (c == &apos;]&apos; &amp;&amp; !stack.isEmpty()) &#123;</span><br><span class="line">      if (stack.peek() == &apos;[&apos;) &#123;</span><br><span class="line">        stack.pop();</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else if (c == &apos;&#125;&apos; &amp;&amp; !stack.isEmpty()) &#123;</span><br><span class="line">      if (stack.peek() == &apos;&#123;&apos;) &#123;</span><br><span class="line">        stack.pop();</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      stack.push(c);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return stack.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;20-Valid-Parentheses（有效的括号）&quot;&gt;&lt;a href=&quot;#20-Valid-Parentheses（有效的括号）&quot; class=&quot;headerlink&quot; title=&quot;20. Valid Parentheses（有效的括号）&quot;&gt;&lt;/a&gt;20. 
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="栈与队列" scheme="https://cheng102e.github.io/tags/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 53. Maximum Subarray</title>
+    <link href="https://cheng102e.github.io/LeetCode%2053.%20Maximum%20Subarray.html"/>
+    <id>https://cheng102e.github.io/LeetCode 53. Maximum Subarray.html</id>
+    <published>2020-02-11T13:50:00.000Z</published>
+    <updated>2020-02-11T14:05:34.502Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="53-Maximum-Subarray（最大子序和）"><a href="#53-Maximum-Subarray（最大子序和）" class="headerlink" title="53. Maximum Subarray（最大子序和）"></a>53. Maximum Subarray（最大子序和）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/maximum-subarray" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-subarray</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p><p>示例:</p><p>  输入: [-2,1,-3,4,-1,2,1,-5,4],<br>  输出: 6<br>  解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。<br>进阶:</p><p>  如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>没尝试分治法，那个有点麻烦，等做到别的分治时候再做。<br>这边有动态规划的思想在里面，从头到尾遍历，如果和小于0，那么直接无视，重新开始，和大于0，就加上之前的和。每次都保留当前最大的和，直到输出。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static int maxSubArray(int[] nums) &#123;</span><br><span class="line">    int ans = nums[0];</span><br><span class="line">    int sum = 0;</span><br><span class="line">    for (int num : nums) &#123;</span><br><span class="line">      if (sum &gt;= 0) &#123;</span><br><span class="line">        sum += num;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        sum = num;</span><br><span class="line">      &#125;</span><br><span class="line">      ans = Math.max(sum, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;53-Maximum-Subarray（最大子序和）&quot;&gt;&lt;a href=&quot;#53-Maximum-Subarray（最大子序和）&quot; class=&quot;headerlink&quot; title=&quot;53. Maximum Subarray（最大子序和）&quot;&gt;&lt;/a&gt;53. Max
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 448. Find All Numbers Disappeared in an Array</title>
+    <link href="https://cheng102e.github.io/LeetCode%20448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array.html"/>
+    <id>https://cheng102e.github.io/LeetCode 448. Find All Numbers Disappeared in an Array.html</id>
+    <published>2020-02-11T11:50:00.000Z</published>
+    <updated>2020-02-11T12:11:42.542Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="448-Find-All-Numbers-Disappeared-in-an-Array（找到所有数组中消失的数字）"><a href="#448-Find-All-Numbers-Disappeared-in-an-Array（找到所有数组中消失的数字）" class="headerlink" title="448. Find All Numbers Disappeared in an Array（找到所有数组中消失的数字）"></a>448. Find All Numbers Disappeared in an Array（找到所有数组中消失的数字）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个范围在  1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。</p><p>找到所有在 [1, n] 范围之间没有出现在数组中的数字。</p><p>您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。</p><p>示例:</p><p>  输入:<br>  [4,3,2,7,8,2,3,1]</p><p>  输出:<br>  [5,6]</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题的题意很简单，就是要找到缺失的数字，但是思路很巧妙，对于每个数字，都设置一个位置，就像例子一样，第一个数字为4，就将第四个数字设置为-7，一遍循环之后，数组就成为[-4,-3,-2,-7,8,2,-3,-1],然后第二次遍历，如果数字为正，就代表数组中不存在这个数，记录到答案中即可，这里要注意数组从0开始，而数字从1开始。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  public static List&lt;Integer&gt; findDisappearedNumbers(int[] nums) &#123;</span><br><span class="line">  for(int i=0;i&lt;nums.length;i++)&#123;</span><br><span class="line">    int temp = Math.abs(nums[i]);</span><br><span class="line">    nums[temp-1]=-Math.abs(nums[temp-1]);</span><br><span class="line">  &#125;</span><br><span class="line">  List&lt;Integer&gt;ans = new ArrayList(nums.length);</span><br><span class="line">  for(int i=0;i&lt;nums.length;i++)</span><br><span class="line">  &#123;</span><br><span class="line">    if(nums[i]&gt;0)&#123;</span><br><span class="line">      ans.add(i+1);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;448-Find-All-Numbers-Disappeared-in-an-Array（找到所有数组中消失的数字）&quot;&gt;&lt;a href=&quot;#448-Find-All-Numbers-Disappeared-in-an-Array（找到所有数组中消失的数字）&quot; cl
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 461. Hamming Distance</title>
+    <link href="https://cheng102e.github.io/LeetCode%20461.%20Hamming%20Distance.html"/>
+    <id>https://cheng102e.github.io/LeetCode 461. Hamming Distance.html</id>
+    <published>2020-02-11T11:50:00.000Z</published>
+    <updated>2020-02-11T12:23:43.648Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="461-Hamming-Distance（汉明距离）"><a href="#461-Hamming-Distance（汉明距离）" class="headerlink" title="461. Hamming Distance（汉明距离）"></a>461. Hamming Distance（汉明距离）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/hamming-distance" target="_blank" rel="noopener">https://leetcode-cn.com/problems/hamming-distance</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。</p><p>给出两个整数 x 和 y，计算它们之间的汉明距离。</p><p>注意：<br>0 ≤ x, y &lt; 231.</p><p>示例:</p><p>  输入: x = 1, y = 4</p><p>  输出: 2</p><p>  解释:<br>  1   (0 0 0 1)<br>  4   (0 1 0 0)<br>        ↑   ↑</p><p>上面的箭头指出了对应二进制位不同的位置。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题的名词也就是转换一下，需要我们找到二进制位的不同，这时候异或最简单，直接找到不同位，然后可以按位寻找，也可以直接和1进行与运算，然后右移。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  public static int hammingDistance(int x, int y) &#123;</span><br><span class="line">  int xor = x ^ y;</span><br><span class="line">  int num = 0;</span><br><span class="line">  while (xor != 0) &#123;</span><br><span class="line">    if ((xor &amp; 1) == 1) &#123;</span><br><span class="line">      num++;</span><br><span class="line">    &#125;</span><br><span class="line">    xor = xor &gt;&gt; 1;</span><br><span class="line">  &#125;</span><br><span class="line">  return num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;461-Hamming-Distance（汉明距离）&quot;&gt;&lt;a href=&quot;#461-Hamming-Distance（汉明距离）&quot; class=&quot;headerlink&quot; title=&quot;461. Hamming Distance（汉明距离）&quot;&gt;&lt;/a&gt;461. Ha
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="位运算" scheme="https://cheng102e.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 976. Largest Perimeter Triangle</title>
+    <link href="https://cheng102e.github.io/LeetCode%20976.%20Largest%20Perimeter%20Triangle.html"/>
+    <id>https://cheng102e.github.io/LeetCode 976. Largest Perimeter Triangle.html</id>
+    <published>2020-02-05T03:11:00.000Z</published>
+    <updated>2020-02-05T03:17:12.207Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="976-Largest-Perimeter-Triangle（三角形的最大周长）"><a href="#976-Largest-Perimeter-Triangle（三角形的最大周长）" class="headerlink" title="976. Largest Perimeter Triangle（三角形的最大周长）"></a>976. Largest Perimeter Triangle（三角形的最大周长）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/largest-perimeter-triangle" target="_blank" rel="noopener">https://leetcode-cn.com/problems/largest-perimeter-triangle</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定由一些正数（代表长度）组成的数组 A，返回由其中三个长度组成的、面积不为零的三角形的最大周长。</p><p>如果不能形成任何面积不为零的三角形，返回 0。</p><p>示例 1：</p><p>  输入：[2,1,2]<br>  输出：5<br>示例 2：</p><p>  输入：[1,2,1]<br>  输出：0<br>示例 3：</p><p>  输入：[3,2,3,4]<br>  输出：10<br>示例 4：</p><p>  输入：[3,6,2,3]<br>  输出：8</p><p>提示：</p><p>  3 &lt;= A.length &lt;= 10000<br>  1 &lt;= A[i] &lt;= 10^6</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题偷了个懒，直接用了自带的sort函数，之后就是一共从后向前的循环，每三个为一组，若该组可以构成三角形，返回长度，不然跳出。<br>这里还有一个数学问题，为什么是连续的三个而不是中断的三个，这里假设有四个数字abcd，升序排列，先判断bcd，在判断abc，因为如果b+c&lt;d，无法构成,那么a+c&lt;b+c更无法构成了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static int largestPerimeter(int[] A) &#123;</span><br><span class="line">  Arrays.sort(A);</span><br><span class="line">  for (int i = A.length - 1; i &gt; 1; i--) &#123;</span><br><span class="line">    if (A[i] &lt; A[i - 1] + A[i - 2]) &#123;</span><br><span class="line">      return A[i] + A[i - 1] + A[i - 2];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;976-Largest-Perimeter-Triangle（三角形的最大周长）&quot;&gt;&lt;a href=&quot;#976-Largest-Perimeter-Triangle（三角形的最大周长）&quot; class=&quot;headerlink&quot; title=&quot;976. Largest
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 1295. Find Numbers with Even Number of Digits</title>
+    <link href="https://cheng102e.github.io/LeetCode%201295.%20Find%20Numbers%20with%20Even%20Number%20of%20Digits.html"/>
+    <id>https://cheng102e.github.io/LeetCode 1295. Find Numbers with Even Number of Digits.html</id>
+    <published>2020-02-04T03:29:00.000Z</published>
+    <updated>2020-02-04T03:31:22.527Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1295-Find-Numbers-with-Even-Number-of-Digits（统计位数为偶数的数字）"><a href="#1295-Find-Numbers-with-Even-Number-of-Digits（统计位数为偶数的数字）" class="headerlink" title="1295. Find Numbers with Even Number of Digits（统计位数为偶数的数字）"></a>1295. Find Numbers with Even Number of Digits（统计位数为偶数的数字）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/find-numbers-with-even-number-of-digits" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-numbers-with-even-number-of-digits</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给你一个整数数组 nums，请你返回其中位数为 偶数 的数字的个数。</p><p>示例 1：</p><p>  输入：nums = [12,345,2,6,7896]<br>  输出：2<br>  解释：<br>  12 是 2 位数字（位数为偶数）<br>  345 是 3 位数字（位数为奇数）<br>  2 是 1 位数字（位数为奇数）<br>  6 是 1 位数字 位数为奇数）<br>  7896 是 4 位数字（位数为偶数）<br>  因此只有 12 和 7896 是位数为偶数的数字<br>示例 2：</p><p>  输入：nums = [555,901,482,1771]<br>  输出：1<br>  解释：<br>  只有 1771 是位数为偶数的数字。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>emmm我也不知道算是什么题目，从头到尾判断一下就行了，对于数字的范围判断一下，其实也可以转字符串判断长度，不过没必要。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static int findNumbers(int[] nums) &#123;</span><br><span class="line">  int count = 0;</span><br><span class="line">  for (int num : nums) &#123;</span><br><span class="line">    if ((10 &lt;= num &amp;&amp; num &lt;= 99) || (1000 &lt;= num &amp;&amp; num &lt;= 9999) || num == 100000) &#123;</span><br><span class="line">      count++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1295-Find-Numbers-with-Even-Number-of-Digits（统计位数为偶数的数字）&quot;&gt;&lt;a href=&quot;#1295-Find-Numbers-with-Even-Number-of-Digits（统计位数为偶数的数字）&quot; class=
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>LeetCode 374. Guess Number Higher or Lower</title>
@@ -44,7 +186,7 @@
     <link href="https://cheng102e.github.io/LeetCode%20278.%20First%20Bad%20Version.html"/>
     <id>https://cheng102e.github.io/LeetCode 278. First Bad Version.html</id>
     <published>2020-02-03T12:09:00.000Z</published>
-    <updated>2020-02-03T12:21:24.017Z</updated>
+    <updated>2020-02-03T12:21:46.112Z</updated>
     
     <content type="html"><![CDATA[<h2 id="278-First-Bad-Version（第一个错误的版本）"><a href="#278-First-Bad-Version（第一个错误的版本）" class="headerlink" title="278. First Bad Version（第一个错误的版本）"></a>278. First Bad Version（第一个错误的版本）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/first-bad-version" target="_blank" rel="noopener">https://leetcode-cn.com/problems/first-bad-version</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>你是产品经理，目前正在带领一个团队开发新的产品。不幸的是，你的产品的最新版本没有通过质量检测。由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有版本都是错的。</p><p>假设你有 n 个版本 [1, 2, …, n]，你想找出导致之后所有版本出错的第一个错误的版本。</p><p>你可以通过调用 bool isBadVersion(version) 接口来判断版本号 version 是否在单元测试中出错。实现一个函数来查找第一个错误的版本。你应该尽量减少对调用 API 的次数。</p><p>示例:</p><p>  给定 n = 5，并且 version = 4 是第一个错误的版本。</p><p>  调用 isBadVersion(3) -&gt; false<br>  调用 isBadVersion(5) -&gt; true<br>  调用 isBadVersion(4) -&gt; true</p><p>  所以，4 是第一个错误的版本。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这个也是二分查找，问题相对来说不是很大，只需要注意几个细节即可，返回值为true表示版本错误，同时注意left和right的顺序，并且mid取值的时候要注意到不能溢出，最后返回left即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  public static int firstBadVersion(int n) &#123;</span><br><span class="line">  int left = 1;</span><br><span class="line">  int right = n;</span><br><span class="line"></span><br><span class="line">  while (left &lt;= right) &#123;</span><br><span class="line">    int mid = left + (right - left) / 2;</span><br><span class="line">    if (isBadVersion(mid) == true) &#123;</span><br><span class="line">      right = mid - 1;</span><br><span class="line">    &#125; else if (isBadVersion(mid) == false) &#123;</span><br><span class="line">      left = mid + 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -111,29 +253,6 @@
   </entry>
   
   <entry>
-    <title>LeetCode 796. Rotate String</title>
-    <link href="https://cheng102e.github.io/LeetCode%20796.%20Rotate%20String.html"/>
-    <id>https://cheng102e.github.io/LeetCode 796. Rotate String.html</id>
-    <published>2020-02-02T12:00:00.000Z</published>
-    <updated>2020-02-02T13:18:03.675Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="796-Rotate-String（旋转字符串）"><a href="#796-Rotate-String（旋转字符串）" class="headerlink" title="796. Rotate String（旋转字符串）"></a>796. Rotate String（旋转字符串）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/rotate-string" target="_blank" rel="noopener">https://leetcode-cn.com/problems/rotate-string</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定两个字符串, A 和 B。</p><p>A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。</p><p>示例 1:<br>  输入: A = ‘abcde’, B = ‘cdeab’<br>  输出: true</p><p>示例 2:<br>  输入: A = ‘abcde’, B = ‘abced’<br>  输出: false<br>注意：</p><p>A 和 B 长度不超过 100。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static boolean rotateString(String A, String B) &#123;</span><br><span class="line">    if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;796-Rotate-String（旋转字符串）&quot;&gt;&lt;a href=&quot;#796-Rotate-String（旋转字符串）&quot; class=&quot;headerlink&quot; title=&quot;796. Rotate String（旋转字符串）&quot;&gt;&lt;/a&gt;796. Rotate S
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>LeetCode 27. Remove Element</title>
     <link href="https://cheng102e.github.io/LeetCode%2027.%20Remove%20Element.html"/>
     <id>https://cheng102e.github.io/LeetCode 27. Remove Element.html</id>
@@ -147,6 +266,29 @@
       
       
         &lt;h2 id=&quot;27-Remove-Element（移除元素）&quot;&gt;&lt;a href=&quot;#27-Remove-Element（移除元素）&quot; class=&quot;headerlink&quot; title=&quot;27. Remove Element（移除元素）&quot;&gt;&lt;/a&gt;27. Remove Eleme
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 796. Rotate String</title>
+    <link href="https://cheng102e.github.io/LeetCode%20796.%20Rotate%20String.html"/>
+    <id>https://cheng102e.github.io/LeetCode 796. Rotate String.html</id>
+    <published>2020-02-02T12:00:00.000Z</published>
+    <updated>2020-02-02T13:18:03.675Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="796-Rotate-String（旋转字符串）"><a href="#796-Rotate-String（旋转字符串）" class="headerlink" title="796. Rotate String（旋转字符串）"></a>796. Rotate String（旋转字符串）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/rotate-string" target="_blank" rel="noopener">https://leetcode-cn.com/problems/rotate-string</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定两个字符串, A 和 B。</p><p>A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。</p><p>示例 1:<br>  输入: A = ‘abcde’, B = ‘cdeab’<br>  输出: true</p><p>示例 2:<br>  输入: A = ‘abcde’, B = ‘abced’<br>  输出: false<br>注意：</p><p>A 和 B 长度不超过 100。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static boolean rotateString(String A, String B) &#123;</span><br><span class="line">    if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;796-Rotate-String（旋转字符串）&quot;&gt;&lt;a href=&quot;#796-Rotate-String（旋转字符串）&quot; class=&quot;headerlink&quot; title=&quot;796. Rotate String（旋转字符串）&quot;&gt;&lt;/a&gt;796. Rotate S
       
     
     </summary>
@@ -339,150 +481,6 @@
     
     
       <category term="树" scheme="https://cheng102e.github.io/tags/%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 111. Minimum Depth of Binary Tree</title>
-    <link href="https://cheng102e.github.io/LeetCode%20111.%20Minimum%20Depth%20of%20Binary%20Tree.html"/>
-    <id>https://cheng102e.github.io/LeetCode 111. Minimum Depth of Binary Tree.html</id>
-    <published>2020-01-30T11:30:00.000Z</published>
-    <updated>2020-01-30T11:42:04.445Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="111-Minimum-Depth-of-Binary-Tree（二叉树的最小深度）"><a href="#111-Minimum-Depth-of-Binary-Tree（二叉树的最小深度）" class="headerlink" title="111. Minimum Depth of Binary Tree（二叉树的最小深度）"></a>111. Minimum Depth of Binary Tree（二叉树的最小深度）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个二叉树，找出其最小深度。</p><p>最小深度是从根节点到最近叶子节点的最短路径上的节点数量。</p><p>说明: 叶子节点是指没有子节点的节点。</p><p>示例:</p><p>给定二叉树 [3,9,20,null,null,15,7],</p><pre><code>3</code></pre><p>   / <br>  9  20<br>    /  <br>   15   7<br>返回它的最小深度  2.</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>二叉树的问题，不过比起最大深度麻烦了不少。<br>首先还是空节点直接返回0；<br>如果左右两个子节点有一个为空，最大深度分别为a和b，那么空的那个就应该等于0，返回另外一个深度+0+1；<br>如果两个都不为空节点，那么返回二者中的较小值+1.<br>（这题我本来的代码对于[1,2]的结果为1，是错误的，之后参考了题解，才发现我对于题目的理解出了问题）</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  TreeNode left;</span><br><span class="line">  TreeNode right;</span><br><span class="line"></span><br><span class="line">  TreeNode(int x) &#123;</span><br><span class="line">    val = x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static int minDepth(TreeNode root) &#123;</span><br><span class="line">  if (root == null) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if (root.left == null &amp;&amp; root.right == null) &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  if (root.left == null || root.right == null) &#123;</span><br><span class="line">    return minDepth(root.right) + minDepth(root.left) + 1;</span><br><span class="line">  &#125;</span><br><span class="line">  return 1 + Math.min(minDepth(root.left), minDepth(root.right));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;111-Minimum-Depth-of-Binary-Tree（二叉树的最小深度）&quot;&gt;&lt;a href=&quot;#111-Minimum-Depth-of-Binary-Tree（二叉树的最小深度）&quot; class=&quot;headerlink&quot; title=&quot;111. Min
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="树" scheme="https://cheng102e.github.io/tags/%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 104. Maximum Depth of Binary Tree</title>
-    <link href="https://cheng102e.github.io/LeetCode%20104.%20Maximum%20Depth%20of%20Binary%20Tree.html"/>
-    <id>https://cheng102e.github.io/LeetCode 104. Maximum Depth of Binary Tree.html</id>
-    <published>2020-01-30T11:18:00.000Z</published>
-    <updated>2020-01-30T11:42:03.316Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="104-Maximum-Depth-of-Binary-Tree（二叉树的最大深度）"><a href="#104-Maximum-Depth-of-Binary-Tree（二叉树的最大深度）" class="headerlink" title="104. Maximum Depth of Binary Tree（二叉树的最大深度）"></a>104. Maximum Depth of Binary Tree（二叉树的最大深度）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-depth-of-binary-tree</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个二叉树，找出其最大深度。</p><p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p><p>说明: 叶子节点是指没有子节点的节点。</p><p>示例：<br>给定二叉树 [3,9,20,null,null,15,7]，</p><pre><code>3</code></pre><p>   / <br>  9  20<br>    /  <br>   15   7<br>返回它的最大深度 3 。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>基础题，有多种方法，我选择的是简单的递归，若根为空，那么返回0，不然返回左右子树最大深度加一，然后就没了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  TreeNode left;</span><br><span class="line">  TreeNode right;</span><br><span class="line"></span><br><span class="line">  TreeNode(int x) &#123;</span><br><span class="line">    val = x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static int maxDepth(TreeNode root) &#123;</span><br><span class="line">  if (root == null) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;104-Maximum-Depth-of-Binary-Tree（二叉树的最大深度）&quot;&gt;&lt;a href=&quot;#104-Maximum-Depth-of-Binary-Tree（二叉树的最大深度）&quot; class=&quot;headerlink&quot; title=&quot;104. Max
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="树" scheme="https://cheng102e.github.io/tags/%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows下MySQL的安装与配置</title>
-    <link href="https://cheng102e.github.io/Windows%E4%B8%8BMySQL%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE.html"/>
-    <id>https://cheng102e.github.io/Windows下MySQL的安装与配置.html</id>
-    <published>2020-01-29T05:13:00.000Z</published>
-    <updated>2020-01-29T08:07:09.761Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Windows下MySQL的安装与配置"><a href="#Windows下MySQL的安装与配置" class="headerlink" title="Windows下MySQL的安装与配置"></a>Windows下MySQL的安装与配置</h2><p>由于某些特殊原因，电脑上的mysql出了些问题，所以我就打算卸载重装一下，顺便记录一下流程。</p><h3 id="一、官网下载"><a href="#一、官网下载" class="headerlink" title="一、官网下载"></a>一、官网下载</h3><p>直接进入官网下载，下载地址<br><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a><br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129132319045-720046442.png" alt><br>下载第一个即可。<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129135519941-1521318186.png" alt><br>（点击下面的No thanks，just start my download）<br>下载完成之后找个位置解压。<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129152848470-797821314.png" alt></p><h3 id="二、安装流程"><a href="#二、安装流程" class="headerlink" title="二、安装流程"></a>二、安装流程</h3><h4 id="1-环境变量"><a href="#1-环境变量" class="headerlink" title="1.环境变量"></a>1.环境变量</h4><p><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129153132234-1469297161.png" alt><br>计算机中找到环境变量设置，增加环境变量，在path中增加<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129153333582-1845480771.png" alt></p><h4 id="2-新建文件"><a href="#2-新建文件" class="headerlink" title="2.新建文件"></a>2.新建文件</h4><p>在解压目录中新建data文件夹，和一个my.ini文件<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129153537506-398752680.png" alt><br>my.ini文件可以用txt改后缀，内容如下（只写了基础，有需要可以自行添加）</p><pre><code>[mysqld]# mysql根目录basedir = D:\mysql-5.7.29-winx64# 放所有数据库的data目录datadir = D:\mysql-5.7.29-winx64\data</code></pre><h4 id="3-初始化"><a href="#3-初始化" class="headerlink" title="3.初始化"></a>3.初始化</h4><p>这部分需要三条指令，先以管理员身份打开cmd，之后依次输入，初始化，安装，启动。</p><pre><code>mysqld --initialize --user=mysql --consolemysqld –install mysqlnet start mysql</code></pre><p>输入第一条指令后会生成随机密码，记得先保存，之后更改，毕竟这个贼难记。</p><p><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129154607378-1914546088.png" alt></p><h3 id="三、配置修改"><a href="#三、配置修改" class="headerlink" title="三、配置修改"></a>三、配置修改</h3><p>这里也没什么太多的，就把之前的初始密码修改下，有两种方法，一种是借助navicat等工具修改，一种是命令行修改，我采用的是命令行。</p><h4 id="1-登录"><a href="#1-登录" class="headerlink" title="1.登录"></a>1.登录</h4><p>输入登录命令</p><pre><code>mysql -uroot -p</code></pre><p>前面指root用户，后面指password密码，记得u和root是连在一起的，然后输入密码登录。<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129155433095-613026665.png" alt><br>直接输入指令</p><pre><code>set password for root@localhost = password(&apos;123456&apos;);</code></pre><p>将密码修改为123456，这里只是做例子，最好不要用这种密码2333333.<br><img src="https://img2018.cnblogs.com/blog/1493464/202001/1493464-20200129155836238-1490075615.png" alt><br>修改成功，可以开始使用了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Windows下MySQL的安装与配置&quot;&gt;&lt;a href=&quot;#Windows下MySQL的安装与配置&quot; class=&quot;headerlink&quot; title=&quot;Windows下MySQL的安装与配置&quot;&gt;&lt;/a&gt;Windows下MySQL的安装与配置&lt;/h2&gt;&lt;p&gt;由于
-      
-    
-    </summary>
-    
-      <category term="数据库" scheme="https://cheng102e.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="工具安装" scheme="https://cheng102e.github.io/tags/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 58. Length of Last Word</title>
-    <link href="https://cheng102e.github.io/LeetCode%2058.%20Length%20of%20Last%20Word.html"/>
-    <id>https://cheng102e.github.io/LeetCode 58. Length of Last Word.html</id>
-    <published>2020-01-28T07:08:00.000Z</published>
-    <updated>2020-01-28T07:14:01.256Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="58-Length-of-Last-Word（最后一个单词的长度）"><a href="#58-Length-of-Last-Word（最后一个单词的长度）" class="headerlink" title="58. Length of Last Word（最后一个单词的长度）"></a>58. Length of Last Word（最后一个单词的长度）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/length-of-last-word" target="_blank" rel="noopener">https://leetcode-cn.com/problems/length-of-last-word</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。</p><p>如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。</p><p>如果不存在最后一个单词，请返回 0 。</p><p>说明：一个单词是指仅由字母组成、不包含任何空格的 最大子字符串。</p><p>示例:</p><p>  输入: “Hello World”<br>  输出: 5</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>字符串题，只要注意到几处细节就不难。<br>我是从最后一位开始的，若最后一位为空格，则提前，提前到非空处，之后再按位查找，直到找到空格或者到字符串的开头为止。在按位查找的过程中增加一个num用于计数，最后输出num即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static int lengthOfLastWord(String s) &#123;</span><br><span class="line">    if (s.length() &lt; 1) &#123;</span><br><span class="line">      return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int end = s.length() - 1;</span><br><span class="line">    while (end &gt;= 0 &amp;&amp; s.charAt(end) == &apos; &apos;) &#123;</span><br><span class="line">      end--;</span><br><span class="line">    &#125;</span><br><span class="line">    if (end &lt; 0) &#123;</span><br><span class="line">      return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int num = 0;</span><br><span class="line">    while (end &gt;= 0 &amp;&amp; s.charAt(end) != &apos; &apos;) &#123;</span><br><span class="line">      end--;</span><br><span class="line">      num++;</span><br><span class="line">    &#125;</span><br><span class="line">    return num;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;58-Length-of-Last-Word（最后一个单词的长度）&quot;&gt;&lt;a href=&quot;#58-Length-of-Last-Word（最后一个单词的长度）&quot; class=&quot;headerlink&quot; title=&quot;58. Length of Last Word（最后
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 41. First Missing Positive</title>
-    <link href="https://cheng102e.github.io/LeetCode%2041.%20First%20Missing%20Positive.html"/>
-    <id>https://cheng102e.github.io/LeetCode 41. First Missing Positive.html</id>
-    <published>2020-01-10T13:14:00.000Z</published>
-    <updated>2020-01-28T07:05:17.399Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="41-First-Missing-Positive（缺失的第一个正数）"><a href="#41-First-Missing-Positive（缺失的第一个正数）" class="headerlink" title="41. First Missing Positive（缺失的第一个正数）"></a>41. First Missing Positive（缺失的第一个正数）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/first-missing-positive" target="_blank" rel="noopener">https://leetcode-cn.com/problems/first-missing-positive</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个未排序的整数数组，找出其中没有出现的最小的正整数。</p><p>示例 1:</p><p>  输入: [1,2,0]<br>  输出: 3<br>示例 2:</p><p>  输入: [3,4,-1,1]<br>  输出: 2<br>示例 3:</p><p>  输入: [7,8,9,11,12]<br>  输出: 1<br>说明:</p><p>  你的算法的时间复杂度应为O(n)，并且只能使用常数级别的空间。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>比较难的一类数组题目，对于复杂度和空间都有要求，结果就需要多考虑很多东西。<br>首先先设置长度为len，那么优先考虑为1-len范围的数字，每次优先把这些数字放在应该放的位置上swap(nums, i, nums[i] - 1)，之后对于数组进行遍历，如果该位置上的数字不符合条件，那么直接返回该位置应该有的数（数组号+1），如果遍历完了，那么就应该是数组长度+1.</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">private static void swap(int nums[], int a, int b) &#123;</span><br><span class="line">    int c = nums[a];</span><br><span class="line">    nums[a] = nums[b];</span><br><span class="line">    nums[b] = c;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public static int firstMissingPositive(int[] nums) &#123;</span><br><span class="line">    if (nums == null || nums.length == 0) &#123;</span><br><span class="line">      return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      while (nums[i] &gt; 0 &amp;&amp; nums[i] &lt; nums.length &amp;&amp; nums[i] != nums[nums[i] - 1]) &#123;</span><br><span class="line">        swap(nums, i, nums[i] - 1);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      if (nums[i] != i + 1) &#123;</span><br><span class="line">        return i + 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return nums.length + 1;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;41-First-Missing-Positive（缺失的第一个正数）&quot;&gt;&lt;a href=&quot;#41-First-Missing-Positive（缺失的第一个正数）&quot; class=&quot;headerlink&quot; title=&quot;41. First Missing Posi
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 283. Move Zeroes</title>
-    <link href="https://cheng102e.github.io/LeetCode%20283.%20Move%20Zeroes.html"/>
-    <id>https://cheng102e.github.io/LeetCode 283. Move Zeroes.html</id>
-    <published>2020-01-08T14:14:00.000Z</published>
-    <updated>2020-01-08T14:37:13.464Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="283-Move-Zeroes（移动零）"><a href="#283-Move-Zeroes（移动零）" class="headerlink" title="283. Move Zeroes（移动零）"></a>283. Move Zeroes（移动零）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/move-zeroes" target="_blank" rel="noopener">https://leetcode-cn.com/problems/move-zeroes</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。</p><p>示例:</p><p>  输入: [0,1,0,3,12]<br>  输出: [1,3,12,0,0]<br>说明:</p><p>必须在原数组上操作，不能拷贝额外的数组。<br>尽量减少操作次数。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>数组操作题，只要思路清晰，难度并不是很大。设置index作为标签，从数组头部开始遍历，index用于标记新数组最后不为0的数字，若不为0，就放入index中，index+1，直到结尾，然后把后面的数字置为0即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static void moveZeroes(int[] nums) &#123;</span><br><span class="line">    int index = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      if (nums[i] != 0) &#123;</span><br><span class="line">        nums[index] = nums[i];</span><br><span class="line">        index++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    for (; index &lt; nums.length; index++) &#123;</span><br><span class="line">      nums[index] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;283-Move-Zeroes（移动零）&quot;&gt;&lt;a href=&quot;#283-Move-Zeroes（移动零）&quot; class=&quot;headerlink&quot; title=&quot;283. Move Zeroes（移动零）&quot;&gt;&lt;/a&gt;283. Move Zeroes（移动零）&lt;/h2
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
     
   </entry>
   
