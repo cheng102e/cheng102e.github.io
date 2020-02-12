@@ -20,14 +20,6 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 448. Find All Numbers Disappeared in an Array]]></title>
-    <url>%2FLeetCode%20448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array.html</url>
-    <content type="text"><![CDATA[448. Find All Numbers Disappeared in an Array（找到所有数组中消失的数字）链接https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array 题目给定一个范围在 1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。 示例: 输入: [4,3,2,7,8,2,3,1] 输出: [5,6] 思路这题的题意很简单，就是要找到缺失的数字，但是思路很巧妙，对于每个数字，都设置一个位置，就像例子一样，第一个数字为4，就将第四个数字设置为-7，一遍循环之后，数组就成为[-4,-3,-2,-7,8,2,-3,-1],然后第二次遍历，如果数字为正，就代表数组中不存在这个数，记录到答案中即可，这里要注意数组从0开始，而数字从1开始。 代码1234567891011121314 public static List&lt;Integer&gt; findDisappearedNumbers(int[] nums) &#123; for(int i=0;i&lt;nums.length;i++)&#123; int temp = Math.abs(nums[i]); nums[temp-1]=-Math.abs(nums[temp-1]); &#125; List&lt;Integer&gt;ans = new ArrayList(nums.length); for(int i=0;i&lt;nums.length;i++) &#123; if(nums[i]&gt;0)&#123; ans.add(i+1); &#125; &#125; return ans;&#125;]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[LeetCode 461. Hamming Distance]]></title>
     <url>%2FLeetCode%20461.%20Hamming%20Distance.html</url>
     <content type="text"><![CDATA[461. Hamming Distance（汉明距离）链接https://leetcode-cn.com/problems/hamming-distance 题目两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。 给出两个整数 x 和 y，计算它们之间的汉明距离。 注意：0 ≤ x, y &lt; 231. 示例: 输入: x = 1, y = 4 输出: 2 解释: 1 (0 0 0 1) 4 (0 1 0 0) ↑ ↑ 上面的箭头指出了对应二进制位不同的位置。 思路这题的名词也就是转换一下，需要我们找到二进制位的不同，这时候异或最简单，直接找到不同位，然后可以按位寻找，也可以直接和1进行与运算，然后右移。 代码1234567891011 public static int hammingDistance(int x, int y) &#123; int xor = x ^ y; int num = 0; while (xor != 0) &#123; if ((xor &amp; 1) == 1) &#123; num++; &#125; xor = xor &gt;&gt; 1; &#125; return num;&#125;]]></content>
@@ -37,6 +29,14 @@
       <tags>
         <tag>位运算</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 448. Find All Numbers Disappeared in an Array]]></title>
+    <url>%2FLeetCode%20448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array.html</url>
+    <content type="text"><![CDATA[448. Find All Numbers Disappeared in an Array（找到所有数组中消失的数字）链接https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array 题目给定一个范围在 1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。 示例: 输入: [4,3,2,7,8,2,3,1] 输出: [5,6] 思路这题的题意很简单，就是要找到缺失的数字，但是思路很巧妙，对于每个数字，都设置一个位置，就像例子一样，第一个数字为4，就将第四个数字设置为-7，一遍循环之后，数组就成为[-4,-3,-2,-7,8,2,-3,-1],然后第二次遍历，如果数字为正，就代表数组中不存在这个数，记录到答案中即可，这里要注意数组从0开始，而数字从1开始。 代码1234567891011121314 public static List&lt;Integer&gt; findDisappearedNumbers(int[] nums) &#123; for(int i=0;i&lt;nums.length;i++)&#123; int temp = Math.abs(nums[i]); nums[temp-1]=-Math.abs(nums[temp-1]); &#125; List&lt;Integer&gt;ans = new ArrayList(nums.length); for(int i=0;i&lt;nums.length;i++) &#123; if(nums[i]&gt;0)&#123; ans.add(i+1); &#125; &#125; return ans;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[LeetCode 976. Largest Perimeter Triangle]]></title>
@@ -998,7 +998,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#x6e;&#100;&#64;&#49;&#x36;&#x33;&#46;&#99;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#x65;&#x63;&#x65;&#105;&#118;&#101;&#64;&#x31;&#54;&#51;&#46;&#x63;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#x6e;&#x64;&#64;&#49;&#x36;&#51;&#x2e;&#x63;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#x63;&#x65;&#x69;&#x76;&#x65;&#x40;&#49;&#54;&#51;&#46;&#x63;&#111;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>
