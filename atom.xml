@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cheng102e.github.io/"/>
-  <updated>2020-02-12T02:26:37.590Z</updated>
+  <updated>2020-02-14T14:44:02.856Z</updated>
   <id>https://cheng102e.github.io/</id>
   
   <author>
@@ -15,6 +15,75 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 88. Merge Sorted Array</title>
+    <link href="https://cheng102e.github.io/LeetCode%2088.%20Merge%20Sorted%20Array.html"/>
+    <id>https://cheng102e.github.io/LeetCode 88. Merge Sorted Array.html</id>
+    <published>2020-02-14T14:50:00.000Z</published>
+    <updated>2020-02-14T14:44:02.856Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="88-Merge-Sorted-Array（合并两个有序数组）"><a href="#88-Merge-Sorted-Array（合并两个有序数组）" class="headerlink" title="88. Merge Sorted Array（合并两个有序数组）"></a>88. Merge Sorted Array（合并两个有序数组）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/merge-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-sorted-array</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。</p><p>说明:</p><p>初始化 nums1 和 nums2 的元素数量分别为 m 和 n。<br>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。<br>示例:</p><p>  输入:<br>  nums1 = [1,2,3,0,0,0], m = 3<br>  nums2 = [2,5,6],       n = 3</p><p>  输出: [1,2,2,3,5,6]</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一道数组题目，解法多种。<br>可以直接合并再排序，也可以两个数组开头慢慢遍历，倒是官方给了一种很cool的题解，直接从数组后方开始。<br>三指针，两个指针指向两个数组最后的数字，一个指针指向数组1的末尾，比较之后将数字放到数组1的末尾，不需要额外空间，最后将数组2未使用的数字（如果存在的话）放到数组1的前面即可。<br>（这题我去年好像做过，还没做出来233333）</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public static void merge(int[] nums1, int m, int[] nums2, int n) &#123;</span><br><span class="line">  int index = m + n - 1;</span><br><span class="line">  int m1 = m - 1;</span><br><span class="line">  int n1 = n - 1;</span><br><span class="line">  while (m1 &gt;= 0 &amp;&amp; n1 &gt;= 0) &#123;</span><br><span class="line">    if (nums1[m1] &lt; nums2[n1]) &#123;</span><br><span class="line">      nums1[index] = nums2[n1];</span><br><span class="line">      n1--;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      nums1[index] = nums1[m1];</span><br><span class="line">      m1--;</span><br><span class="line">    &#125;</span><br><span class="line">    index--;</span><br><span class="line">  &#125;</span><br><span class="line">  while (n1 &gt;= 0) &#123;</span><br><span class="line">    nums1[index] = nums2[n1];</span><br><span class="line">    n1--;</span><br><span class="line">    index--;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;88-Merge-Sorted-Array（合并两个有序数组）&quot;&gt;&lt;a href=&quot;#88-Merge-Sorted-Array（合并两个有序数组）&quot; class=&quot;headerlink&quot; title=&quot;88. Merge Sorted Array（合并两个有序数
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 75. Sort Colors</title>
+    <link href="https://cheng102e.github.io/LeetCode%2075.%20Sort%20Colors.html"/>
+    <id>https://cheng102e.github.io/LeetCode 75. Sort Colors.html</id>
+    <published>2020-02-14T12:50:00.000Z</published>
+    <updated>2020-02-14T12:48:27.587Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="75-Sort-Colors（颜色分类）"><a href="#75-Sort-Colors（颜色分类）" class="headerlink" title="75. Sort Colors（颜色分类）"></a>75. Sort Colors（颜色分类）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/sort-colors" target="_blank" rel="noopener">https://leetcode-cn.com/problems/sort-colors</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p><p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p><p>注意:<br>不能使用代码库中的排序函数来解决这道题。</p><p>示例:</p><p>  输入: [2,0,2,1,1,0]<br>  输出: [0,0,1,1,2,2]<br>进阶：</p><p>  一个直观的解决方案是使用计数排序的两趟扫描算法。<br>  首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。<br>  你能想出一个仅使用常数空间的一趟扫描算法吗？</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一道数组题目，解法多种。<br>说不让用代码库中的排序函数，那自己写一个应该不算违规吧23333.<br>只有三种数字，012，那么可以遍历统计每个数字的数量，之后直接更改。<br>也可以用三指针法，index012，一共三个变量，index0和1初始值是0，index2初始值是nums.length-1.遍历使用index1，发现那个数字为0，就和index0的数交换，为2就和index2的数交换，这里要注意，index2换过来的数还需要再判断一下。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  public static void swap(int[] nums, int i, int j) &#123;</span><br><span class="line">  int temp = nums[i];</span><br><span class="line">  nums[i] = nums[j];</span><br><span class="line">  nums[j] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void sortColors(int[] nums) &#123;</span><br><span class="line">  int index0 = 0, index1 = 0, index2 = nums.length - 1;</span><br><span class="line">  while (index1 &lt;= index2) &#123;</span><br><span class="line">    if (nums[index1] == 0) &#123;</span><br><span class="line">      swap(nums, index1, index0);</span><br><span class="line">      index0++;</span><br><span class="line">      index1++;</span><br><span class="line">    &#125; else if (nums[index1] == 2) &#123;</span><br><span class="line">      swap(nums, index1, index2);</span><br><span class="line">      index2--;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      index1++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;75-Sort-Colors（颜色分类）&quot;&gt;&lt;a href=&quot;#75-Sort-Colors（颜色分类）&quot; class=&quot;headerlink&quot; title=&quot;75. Sort Colors（颜色分类）&quot;&gt;&lt;/a&gt;75. Sort Colors（颜色分类）&lt;/h2
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 581. Shortest Unsorted Continuous Subarray</title>
+    <link href="https://cheng102e.github.io/LeetCode%20581.%20Shortest%20Unsorted%20Continuous%20Subarray.html"/>
+    <id>https://cheng102e.github.io/LeetCode 581. Shortest Unsorted Continuous Subarray.html</id>
+    <published>2020-02-12T03:13:00.000Z</published>
+    <updated>2020-02-12T03:20:18.132Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="581-Shortest-Unsorted-Continuous-Subarray（最短无序连续子数组）"><a href="#581-Shortest-Unsorted-Continuous-Subarray（最短无序连续子数组）" class="headerlink" title="581. Shortest Unsorted Continuous Subarray（最短无序连续子数组）"></a>581. Shortest Unsorted Continuous Subarray（最短无序连续子数组）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray" target="_blank" rel="noopener">https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。</p><p>你找到的子数组应是最短的，请输出它的长度。</p><p>示例 1:</p><p>  输入: [2, 6, 4, 8, 10, 9, 15]<br>  输出: 5<br>  解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。<br>说明 :</p><p>输入的数组长度范围在 [1, 10,000]。<br>输入的数组可能包含重复元素 ，所以升序的意思是&lt;=。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题方法多种，可以排序之后对比，也可以用别的方法。<br>首先遍历，由前往后由后往前，分别确定两个边界。前向后时寻找右边界，每个数字判断是否小于前方最大值，若小于，就代表这个数需要排序，若大于，就代表这个数可以放在当前位置，若最后全为升序排列那就不用排序，后向前同理。<br>以输入示范，首先max为2，之后往后遍历，6&gt;2,max=6,4&lt;6,需要排序，一直往后，right=5，15大于前方所有数字，无需排序。反向遍历，2小于后方所有数，left=1，5-1+1=5.</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public int findUnsortedSubarray(int[] nums) &#123;</span><br><span class="line">  int len = nums.length;</span><br><span class="line">  int max = nums[0];</span><br><span class="line">  int min = nums[len - 1];</span><br><span class="line">  int left = 0, right = -1;</span><br><span class="line">  for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    if (max &gt; nums[i]) &#123;</span><br><span class="line">      right = i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      max = nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = len - 1; i &gt; -1; i--) &#123;</span><br><span class="line">    if (min &lt; nums[i]) &#123;</span><br><span class="line">      left = i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      min = nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return right - left + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;581-Shortest-Unsorted-Continuous-Subarray（最短无序连续子数组）&quot;&gt;&lt;a href=&quot;#581-Shortest-Unsorted-Continuous-Subarray（最短无序连续子数组）&quot; class=&quot;headerl
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>LeetCode 20. Valid Parentheses</title>
@@ -65,6 +134,31 @@
   </entry>
   
   <entry>
+    <title>LeetCode 461. Hamming Distance</title>
+    <link href="https://cheng102e.github.io/LeetCode%20461.%20Hamming%20Distance.html"/>
+    <id>https://cheng102e.github.io/LeetCode 461. Hamming Distance.html</id>
+    <published>2020-02-11T11:50:00.000Z</published>
+    <updated>2020-02-12T12:20:05.146Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="461-Hamming-Distance（汉明距离）"><a href="#461-Hamming-Distance（汉明距离）" class="headerlink" title="461. Hamming Distance（汉明距离）"></a>461. Hamming Distance（汉明距离）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/hamming-distance" target="_blank" rel="noopener">https://leetcode-cn.com/problems/hamming-distance</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。</p><p>给出两个整数 x 和 y，计算它们之间的汉明距离。</p><p>注意：<br>0 ≤ x, y &lt; 231.</p><p>示例:</p><p>  输入: x = 1, y = 4</p><p>  输出: 2</p><p>  解释:<br>  1   (0 0 0 1)<br>  4   (0 1 0 0)<br>        ↑   ↑</p><p>上面的箭头指出了对应二进制位不同的位置。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题的名词也就是转换一下，需要我们找到二进制位的不同，这时候异或最简单，直接找到不同位，然后可以按位寻找，也可以直接和1进行与运算，然后右移。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  public static int hammingDistance(int x, int y) &#123;</span><br><span class="line">  int xor = x ^ y;</span><br><span class="line">  int num = 0;</span><br><span class="line">  while (xor != 0) &#123;</span><br><span class="line">    if ((xor &amp; 1) == 1) &#123;</span><br><span class="line">      num++;</span><br><span class="line">    &#125;</span><br><span class="line">    xor = xor &gt;&gt; 1;</span><br><span class="line">  &#125;</span><br><span class="line">  return num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;461-Hamming-Distance（汉明距离）&quot;&gt;&lt;a href=&quot;#461-Hamming-Distance（汉明距离）&quot; class=&quot;headerlink&quot; title=&quot;461. Hamming Distance（汉明距离）&quot;&gt;&lt;/a&gt;461. Ha
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="位运算" scheme="https://cheng102e.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LeetCode 448. Find All Numbers Disappeared in an Array</title>
     <link href="https://cheng102e.github.io/LeetCode%20448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array.html"/>
     <id>https://cheng102e.github.io/LeetCode 448. Find All Numbers Disappeared in an Array.html</id>
@@ -84,31 +178,6 @@
     
       <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 461. Hamming Distance</title>
-    <link href="https://cheng102e.github.io/LeetCode%20461.%20Hamming%20Distance.html"/>
-    <id>https://cheng102e.github.io/LeetCode 461. Hamming Distance.html</id>
-    <published>2020-02-11T11:50:00.000Z</published>
-    <updated>2020-02-12T02:26:38.807Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="461-Hamming-Distance（汉明距离）"><a href="#461-Hamming-Distance（汉明距离）" class="headerlink" title="461. Hamming Distance（汉明距离）"></a>461. Hamming Distance（汉明距离）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/hamming-distance" target="_blank" rel="noopener">https://leetcode-cn.com/problems/hamming-distance</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。</p><p>给出两个整数 x 和 y，计算它们之间的汉明距离。</p><p>注意：<br>0 ≤ x, y &lt; 231.</p><p>示例:</p><p>  输入: x = 1, y = 4</p><p>  输出: 2</p><p>  解释:<br>  1   (0 0 0 1)<br>  4   (0 1 0 0)<br>        ↑   ↑</p><p>上面的箭头指出了对应二进制位不同的位置。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题的名词也就是转换一下，需要我们找到二进制位的不同，这时候异或最简单，直接找到不同位，然后可以按位寻找，也可以直接和1进行与运算，然后右移。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  public static int hammingDistance(int x, int y) &#123;</span><br><span class="line">  int xor = x ^ y;</span><br><span class="line">  int num = 0;</span><br><span class="line">  while (xor != 0) &#123;</span><br><span class="line">    if ((xor &amp; 1) == 1) &#123;</span><br><span class="line">      num++;</span><br><span class="line">    &#125;</span><br><span class="line">    xor = xor &gt;&gt; 1;</span><br><span class="line">  &#125;</span><br><span class="line">  return num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;461-Hamming-Distance（汉明距离）&quot;&gt;&lt;a href=&quot;#461-Hamming-Distance（汉明距离）&quot; class=&quot;headerlink&quot; title=&quot;461. Hamming Distance（汉明距离）&quot;&gt;&lt;/a&gt;461. Ha
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="位运算" scheme="https://cheng102e.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
   </entry>
   
@@ -232,7 +301,7 @@
     <link href="https://cheng102e.github.io/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html"/>
     <id>https://cheng102e.github.io/查找算法-二分查找.html</id>
     <published>2020-02-03T05:00:00.000Z</published>
-    <updated>2020-02-03T05:07:12.171Z</updated>
+    <updated>2020-02-12T12:00:03.261Z</updated>
     
     <content type="html"><![CDATA[<h2 id="查找算法-二分查找"><a href="#查找算法-二分查找" class="headerlink" title="查找算法-二分查找"></a>查找算法-二分查找</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>二分查找也称折半查找（Binary Search），它是一种效率较高的查找方法。但是，折半查找要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列。</p><h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>首先，假设表中元素是按升序排列，将表中间位置记录的关键字与查找关键字比较，如果两者相等，则查找成功；否则利用中间位置记录将表分成前、后两个子表，如果中间位置记录的关键字大于查找关键字，则进一步查找前一子表，否则进一步查找后一子表。重复以上过程，直到找到满足条件的记录，使查找成功，或直到子表不存在为止，此时查找不成功。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>设置两个标签，一个为left一个为right，分别表示左侧与右侧，常见初始值为0，length-1.<br>之后进行while循环，这里注意，判断条件选择left&lt;=right，这里当然可以改变，但是最好是熟练之后再进行改变。<br>循环中定义mid = (left + right) / 2，其实更好的是left+（right-left）/2；这样避免越界。<br>若找到了所需要的值，直接返回，找不到的话，就先判断nums[mid]与目标值的大小关系，重新确立leftright，进行下一步运算。</p><h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>O(log2n)</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static int search(int[] nums, int target) &#123;</span><br><span class="line">  if (nums.length == 0) &#123;</span><br><span class="line">    return -1;</span><br><span class="line">  &#125;</span><br><span class="line">  int left = 0;</span><br><span class="line">  int right = nums.length - 1;</span><br><span class="line"></span><br><span class="line">  while (left &lt;= right) &#123;</span><br><span class="line">    int mid = (left + right) / 2;</span><br><span class="line">    if (nums[mid] == target) &#123;</span><br><span class="line">      return mid;</span><br><span class="line">    &#125; else if (nums[mid] &lt; target) &#123;</span><br><span class="line">      left = mid + 1;</span><br><span class="line">    &#125; else if (nums[mid] &gt; target) &#123;</span><br><span class="line">      right = mid - 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -253,29 +322,6 @@
   </entry>
   
   <entry>
-    <title>LeetCode 27. Remove Element</title>
-    <link href="https://cheng102e.github.io/LeetCode%2027.%20Remove%20Element.html"/>
-    <id>https://cheng102e.github.io/LeetCode 27. Remove Element.html</id>
-    <published>2020-02-02T12:00:00.000Z</published>
-    <updated>2020-02-02T13:17:58.111Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="27-Remove-Element（移除元素）"><a href="#27-Remove-Element（移除元素）" class="headerlink" title="27. Remove Element（移除元素）"></a>27. Remove Element（移除元素）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/remove-element" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-element</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。</p><p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p><p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p><p>示例 1:</p><p>  给定 nums = [3,2,2,3], val = 3,</p><p>  函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p><p>  给定 nums = [0,1,2,2,3,0,4,2], val = 2,</p><p>  函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</p><p>  注意这五个元素可为任意顺序。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>说明:</p><p>  为什么返回数值是整数，但输出的答案是数组呢?</p><p>  请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p><p>  你可以想象内部操作如下:</p><p>  // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>  int len = removeElement(nums, val);</p><p>  // 在函数里修改输入数组对于调用者是可见的。<br>  // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>  for (int i = 0; i &lt; len; i++) {<br>      print(nums[i]);<br>  }</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。<br>新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int removeElement(int[] nums, int val) &#123;</span><br><span class="line">    int index = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      if (nums[i] != val) &#123;</span><br><span class="line">        nums[index]=nums[i];</span><br><span class="line">        index++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return index;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;27-Remove-Element（移除元素）&quot;&gt;&lt;a href=&quot;#27-Remove-Element（移除元素）&quot; class=&quot;headerlink&quot; title=&quot;27. Remove Element（移除元素）&quot;&gt;&lt;/a&gt;27. Remove Eleme
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>LeetCode 796. Rotate String</title>
     <link href="https://cheng102e.github.io/LeetCode%20796.%20Rotate%20String.html"/>
     <id>https://cheng102e.github.io/LeetCode 796. Rotate String.html</id>
@@ -289,6 +335,29 @@
       
       
         &lt;h2 id=&quot;796-Rotate-String（旋转字符串）&quot;&gt;&lt;a href=&quot;#796-Rotate-String（旋转字符串）&quot; class=&quot;headerlink&quot; title=&quot;796. Rotate String（旋转字符串）&quot;&gt;&lt;/a&gt;796. Rotate S
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 27. Remove Element</title>
+    <link href="https://cheng102e.github.io/LeetCode%2027.%20Remove%20Element.html"/>
+    <id>https://cheng102e.github.io/LeetCode 27. Remove Element.html</id>
+    <published>2020-02-02T12:00:00.000Z</published>
+    <updated>2020-02-02T13:17:58.111Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="27-Remove-Element（移除元素）"><a href="#27-Remove-Element（移除元素）" class="headerlink" title="27. Remove Element（移除元素）"></a>27. Remove Element（移除元素）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/remove-element" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-element</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。</p><p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p><p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p><p>示例 1:</p><p>  给定 nums = [3,2,2,3], val = 3,</p><p>  函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p><p>  给定 nums = [0,1,2,2,3,0,4,2], val = 2,</p><p>  函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</p><p>  注意这五个元素可为任意顺序。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>说明:</p><p>  为什么返回数值是整数，但输出的答案是数组呢?</p><p>  请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p><p>  你可以想象内部操作如下:</p><p>  // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>  int len = removeElement(nums, val);</p><p>  // 在函数里修改输入数组对于调用者是可见的。<br>  // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>  for (int i = 0; i &lt; len; i++) {<br>      print(nums[i]);<br>  }</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。<br>新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int removeElement(int[] nums, int val) &#123;</span><br><span class="line">    int index = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      if (nums[i] != val) &#123;</span><br><span class="line">        nums[index]=nums[i];</span><br><span class="line">        index++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return index;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;27-Remove-Element（移除元素）&quot;&gt;&lt;a href=&quot;#27-Remove-Element（移除元素）&quot; class=&quot;headerlink&quot; title=&quot;27. Remove Element（移除元素）&quot;&gt;&lt;/a&gt;27. Remove Eleme
       
     
     </summary>
@@ -410,77 +479,6 @@
     
       <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 167. Two Sum II - Input array is sorted</title>
-    <link href="https://cheng102e.github.io/LeetCode%20167.%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted.html"/>
-    <id>https://cheng102e.github.io/LeetCode 167. Two Sum II - Input array is sorted.html</id>
-    <published>2020-01-31T04:40:00.000Z</published>
-    <updated>2020-01-31T04:47:34.241Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="167-Two-Sum-II-Input-array-is-sorted（两数之和-II-输入有序数组）"><a href="#167-Two-Sum-II-Input-array-is-sorted（两数之和-II-输入有序数组）" class="headerlink" title="167. Two Sum II - Input array is sorted（两数之和 II - 输入有序数组）"></a>167. Two Sum II - Input array is sorted（两数之和 II - 输入有序数组）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p><p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p><p>说明:</p><p>返回的下标值（index1 和 index2）不是从零开始的。<br>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</p><p>示例:</p><p>  输入: numbers = [2, 7, 11, 15], target = 9<br>  输出: [1,2]<br>  解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这道题我是直接双指针做的，由于是升序数组，且前一个一定小于后一个，就可以用两边向中间逼近的方法，若二者和小于答案，则前数向后一位，大于答案，后数向前一位，最后返回数组。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static int[] twoSum(int[] numbers, int target) &#123;</span><br><span class="line">  int start = 0;</span><br><span class="line">  int end = numbers.length - 1;</span><br><span class="line">  while (numbers[start] + numbers[end] != target) &#123;</span><br><span class="line"></span><br><span class="line">    if (numbers[start] + numbers[end] &lt; target) &#123;</span><br><span class="line">      start++;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      end--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  int[] res = new int[2];</span><br><span class="line">  res[0] = start + 1;</span><br><span class="line">  res[1] = end + 1;</span><br><span class="line">  return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;167-Two-Sum-II-Input-array-is-sorted（两数之和-II-输入有序数组）&quot;&gt;&lt;a href=&quot;#167-Two-Sum-II-Input-array-is-sorted（两数之和-II-输入有序数组）&quot; class=&quot;headerl
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 189. Rotate Array</title>
-    <link href="https://cheng102e.github.io/LeetCode%20189.%20Rotate%20Array.html"/>
-    <id>https://cheng102e.github.io/LeetCode 189. Rotate Array.html</id>
-    <published>2020-01-31T04:30:00.000Z</published>
-    <updated>2020-01-31T04:40:20.502Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="189-Rotate-Array（旋转数组）"><a href="#189-Rotate-Array（旋转数组）" class="headerlink" title="189. Rotate Array（旋转数组）"></a>189. Rotate Array（旋转数组）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/rotate-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/rotate-array</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。</p><p>示例 1:</p><p>  输入: [1,2,3,4,5,6,7] 和 k = 3<br>  输出: [5,6,7,1,2,3,4]<br>  解释:<br>  向右旋转 1 步: [7,1,2,3,4,5,6]<br>  向右旋转 2 步: [6,7,1,2,3,4,5]<br>  向右旋转 3 步: [5,6,7,1,2,3,4]<br>示例 2:</p><p>  输入: [-1,-100,3,99] 和 k = 2<br>  输出: [3,99,-1,-100]<br>  解释:<br>  向右旋转 1 步: [99,-1,-100,3]<br>  向右旋转 2 步: [3,99,-1,-100]<br>说明:</p><p>尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。<br>要求使用空间复杂度为 O(1) 的 原地 算法。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目思路清晰，但是考虑到复杂度，就麻烦了不少。<br>我选择的方法是以前在书上看到的，三次转置，第一次全体转置，第二次转置前k个，第三次转置剩余部分。<br>以例子1解释，1234567，转置全部之后是7654321.转置前三个，再转置后四个，就是5671234，符合条件。<br>由于所有数都转置了两次，所有对于前半部分和后半部分，相对位置是不变的，最开始直接倒序再转置k个，然后就是所需的k个在最前方。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static void reverse(int[] nums, int start, int end) &#123;</span><br><span class="line">  while (start &lt; end) &#123;</span><br><span class="line">    int temp = nums[start];</span><br><span class="line">    nums[start] = nums[end];</span><br><span class="line">    nums[end] = temp;</span><br><span class="line">    start++;</span><br><span class="line">    end--;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void rotate(int[] nums, int k) &#123;</span><br><span class="line">  int len = nums.length;</span><br><span class="line">  k = k % len;</span><br><span class="line">  reverse(nums, 0, len - 1);</span><br><span class="line">  reverse(nums, 0, k - 1);</span><br><span class="line">  reverse(nums, k, len - 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;189-Rotate-Array（旋转数组）&quot;&gt;&lt;a href=&quot;#189-Rotate-Array（旋转数组）&quot; class=&quot;headerlink&quot; title=&quot;189. Rotate Array（旋转数组）&quot;&gt;&lt;/a&gt;189. Rotate Array（旋
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 965. Univalued Binary Tree</title>
-    <link href="https://cheng102e.github.io/LeetCode%20965.%20Univalued%20Binary%20Tree.html"/>
-    <id>https://cheng102e.github.io/LeetCode 965. Univalued Binary Tree.html</id>
-    <published>2020-01-30T11:38:00.000Z</published>
-    <updated>2020-01-30T11:42:01.900Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="965-Univalued-Binary-Tree（单值二叉树）"><a href="#965-Univalued-Binary-Tree（单值二叉树）" class="headerlink" title="965. Univalued Binary Tree（单值二叉树）"></a>965. Univalued Binary Tree（单值二叉树）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/univalued-binary-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/univalued-binary-tree</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>如果二叉树每个节点都具有相同的值，那么该二叉树就是单值二叉树。</p><p>只有给定的树是单值二叉树时，才返回 true；否则返回 false。</p><p>示例 1：</p><p>  输入：[1,1,1,1,1,null,1]<br>  输出：true<br>示例 2：</p><p>  输入：[2,2,2,5,2]<br>  输出：false</p><p>提示：</p><p>给定树的节点数范围是 [1, 100]。<br>每个节点的值都是整数，范围为 [0, 99] 。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目不难，方法多种，我是选择直接对于每个结点进行一次判断，最后得到结果。也可以直接遍历，把所有的值存放到一个set当中，若set长度为1则成立。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">    int val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line"></span><br><span class="line">    TreeNode(int x) &#123;</span><br><span class="line">      val = x;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  public static boolean isUnivalTree(TreeNode root) &#123;</span><br><span class="line">    if (root == null) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    if (root.left != null &amp;&amp; root.left.val != root.val) &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">    if (root.right != null &amp;&amp; root.right.val != root.val) &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">    return isUnivalTree(root.left) &amp;&amp; isUnivalTree(root.right);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;965-Univalued-Binary-Tree（单值二叉树）&quot;&gt;&lt;a href=&quot;#965-Univalued-Binary-Tree（单值二叉树）&quot; class=&quot;headerlink&quot; title=&quot;965. Univalued Binary Tree（单
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="树" scheme="https://cheng102e.github.io/tags/%E6%A0%91/"/>
     
   </entry>
   

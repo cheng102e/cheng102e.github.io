@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 88. Merge Sorted Array]]></title>
+    <url>%2FLeetCode%2088.%20Merge%20Sorted%20Array.html</url>
+    <content type="text"><![CDATA[88. Merge Sorted Array（合并两个有序数组）链接https://leetcode-cn.com/problems/merge-sorted-array 题目给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。 说明: 初始化 nums1 和 nums2 的元素数量分别为 m 和 n。你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。示例: 输入: nums1 = [1,2,3,0,0,0], m = 3 nums2 = [2,5,6], n = 3 输出: [1,2,2,3,5,6] 思路一道数组题目，解法多种。可以直接合并再排序，也可以两个数组开头慢慢遍历，倒是官方给了一种很cool的题解，直接从数组后方开始。三指针，两个指针指向两个数组最后的数字，一个指针指向数组1的末尾，比较之后将数字放到数组1的末尾，不需要额外空间，最后将数组2未使用的数字（如果存在的话）放到数组1的前面即可。（这题我去年好像做过，还没做出来233333） 代码1234567891011121314151617181920public static void merge(int[] nums1, int m, int[] nums2, int n) &#123; int index = m + n - 1; int m1 = m - 1; int n1 = n - 1; while (m1 &gt;= 0 &amp;&amp; n1 &gt;= 0) &#123; if (nums1[m1] &lt; nums2[n1]) &#123; nums1[index] = nums2[n1]; n1--; &#125; else &#123; nums1[index] = nums1[m1]; m1--; &#125; index--; &#125; while (n1 &gt;= 0) &#123; nums1[index] = nums2[n1]; n1--; index--; &#125;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 75. Sort Colors]]></title>
+    <url>%2FLeetCode%2075.%20Sort%20Colors.html</url>
+    <content type="text"><![CDATA[75. Sort Colors（颜色分类）链接https://leetcode-cn.com/problems/sort-colors 题目给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。 此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。 注意:不能使用代码库中的排序函数来解决这道题。 示例: 输入: [2,0,2,1,1,0] 输出: [0,0,1,1,2,2]进阶： 一个直观的解决方案是使用计数排序的两趟扫描算法。 首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。 你能想出一个仅使用常数空间的一趟扫描算法吗？ 思路一道数组题目，解法多种。说不让用代码库中的排序函数，那自己写一个应该不算违规吧23333.只有三种数字，012，那么可以遍历统计每个数字的数量，之后直接更改。也可以用三指针法，index012，一共三个变量，index0和1初始值是0，index2初始值是nums.length-1.遍历使用index1，发现那个数字为0，就和index0的数交换，为2就和index2的数交换，这里要注意，index2换过来的数还需要再判断一下。 代码123456789101112131415161718192021 public static void swap(int[] nums, int i, int j) &#123; int temp = nums[i]; nums[i] = nums[j]; nums[j] = temp;&#125;public void sortColors(int[] nums) &#123; int index0 = 0, index1 = 0, index2 = nums.length - 1; while (index1 &lt;= index2) &#123; if (nums[index1] == 0) &#123; swap(nums, index1, index0); index0++; index1++; &#125; else if (nums[index1] == 2) &#123; swap(nums, index1, index2); index2--; &#125; else &#123; index1++; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 581. Shortest Unsorted Continuous Subarray]]></title>
+    <url>%2FLeetCode%20581.%20Shortest%20Unsorted%20Continuous%20Subarray.html</url>
+    <content type="text"><![CDATA[581. Shortest Unsorted Continuous Subarray（最短无序连续子数组）链接https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray 题目给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。 你找到的子数组应是最短的，请输出它的长度。 示例 1: 输入: [2, 6, 4, 8, 10, 9, 15] 输出: 5 解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。说明 : 输入的数组长度范围在 [1, 10,000]。输入的数组可能包含重复元素 ，所以升序的意思是&lt;=。 思路这题方法多种，可以排序之后对比，也可以用别的方法。首先遍历，由前往后由后往前，分别确定两个边界。前向后时寻找右边界，每个数字判断是否小于前方最大值，若小于，就代表这个数需要排序，若大于，就代表这个数可以放在当前位置，若最后全为升序排列那就不用排序，后向前同理。以输入示范，首先max为2，之后往后遍历，6&gt;2,max=6,4&lt;6,需要排序，一直往后，right=5，15大于前方所有数字，无需排序。反向遍历，2小于后方所有数，left=1，5-1+1=5. 代码123456789101112131415161718192021public int findUnsortedSubarray(int[] nums) &#123; int len = nums.length; int max = nums[0]; int min = nums[len - 1]; int left = 0, right = -1; for (int i = 0; i &lt; len; i++) &#123; if (max &gt; nums[i]) &#123; right = i; &#125; else &#123; max = nums[i]; &#125; &#125; for (int i = len - 1; i &gt; -1; i--) &#123; if (min &lt; nums[i]) &#123; left = i; &#125; else &#123; min = nums[i]; &#125; &#125; return right - left + 1;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 20. Valid Parentheses]]></title>
     <url>%2FLeetCode%2020.%20Valid%20Parentheses.html</url>
     <content type="text"><![CDATA[20. Valid Parentheses（有效的括号）链接https://leetcode-cn.com/problems/valid-parentheses 题目给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。 有效字符串需满足： 左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。注意空字符串可被认为是有效字符串。 示例 1: 输入: “()” 输出: true示例 2: 输入: “()[]{}” 输出: true示例 3: 输入: “(]” 输出: false示例 4: 输入: “([)]” 输出: false示例 5: 输入: “{[]}” 输出: true 思路判断括号嘛，我用了最基础的解法，借助栈一个一个找，如果为左括号则入栈，若为右括号且栈顶为对应左括号则出栈，不然直接返回false，一直到遍历结束，如果栈为空就返回true。效率虽然不是很高但是思路很清晰。 代码123456789101112131415161718192021222324252627public boolean isValid(String s) &#123; Stack&lt;Character&gt; stack = new Stack&lt;Character&gt;(); for (char c : s.toCharArray()) &#123; if (c == &apos;)&apos; &amp;&amp; !stack.isEmpty()) &#123; if (stack.peek() == &apos;(&apos;) &#123; stack.pop(); &#125; else &#123; return false; &#125; &#125; else if (c == &apos;]&apos; &amp;&amp; !stack.isEmpty()) &#123; if (stack.peek() == &apos;[&apos;) &#123; stack.pop(); &#125; else &#123; return false; &#125; &#125; else if (c == &apos;&#125;&apos; &amp;&amp; !stack.isEmpty()) &#123; if (stack.peek() == &apos;&#123;&apos;) &#123; stack.pop(); &#125; else &#123; return false; &#125; &#125; else &#123; stack.push(c); &#125; &#125; return stack.isEmpty();&#125;]]></content>
@@ -90,17 +114,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 27. Remove Element]]></title>
-    <url>%2FLeetCode%2027.%20Remove%20Element.html</url>
-    <content type="text"><![CDATA[27. Remove Element（移除元素）链接https://leetcode-cn.com/problems/remove-element 题目给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 示例 1: 给定 nums = [3,2,2,3], val = 3, 函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。 你不需要考虑数组中超出新长度后面的元素。示例 2: 给定 nums = [0,1,2,2,3,0,4,2], val = 2, 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。 注意这五个元素可为任意顺序。 你不需要考虑数组中超出新长度后面的元素。说明: 为什么返回数值是整数，但输出的答案是数组呢? 请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 你可以想象内部操作如下: // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝 int len = removeElement(nums, val); // 在函数里修改输入数组对于调用者是可见的。 // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。 for (int i = 0; i &lt; len; i++) { print(nums[i]); } 思路题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。 代码12345678910public static int removeElement(int[] nums, int val) &#123; int index = 0; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] != val) &#123; nums[index]=nums[i]; index++; &#125; &#125; return index; &#125;]]></content>
+    <title><![CDATA[LeetCode 796. Rotate String]]></title>
+    <url>%2FLeetCode%20796.%20Rotate%20String.html</url>
+    <content type="text"><![CDATA[796. Rotate String（旋转字符串）链接https://leetcode-cn.com/problems/rotate-string 题目给定两个字符串, A 和 B。 A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。 示例 1: 输入: A = ‘abcde’, B = ‘cdeab’ 输出: true 示例 2: 输入: A = ‘abcde’, B = ‘abced’ 输出: false注意： A 和 B 长度不超过 100。 思路题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。 代码1234567public static boolean rotateString(String A, String B) &#123; if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123; return true; &#125; else &#123; return false; &#125; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 796. Rotate String]]></title>
-    <url>%2FLeetCode%20796.%20Rotate%20String.html</url>
-    <content type="text"><![CDATA[796. Rotate String（旋转字符串）链接https://leetcode-cn.com/problems/rotate-string 题目给定两个字符串, A 和 B。 A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。 示例 1: 输入: A = ‘abcde’, B = ‘cdeab’ 输出: true 示例 2: 输入: A = ‘abcde’, B = ‘abced’ 输出: false注意： A 和 B 长度不超过 100。 思路题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。 代码1234567public static boolean rotateString(String A, String B) &#123; if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123; return true; &#125; else &#123; return false; &#125; &#125;]]></content>
+    <title><![CDATA[LeetCode 27. Remove Element]]></title>
+    <url>%2FLeetCode%2027.%20Remove%20Element.html</url>
+    <content type="text"><![CDATA[27. Remove Element（移除元素）链接https://leetcode-cn.com/problems/remove-element 题目给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 示例 1: 给定 nums = [3,2,2,3], val = 3, 函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。 你不需要考虑数组中超出新长度后面的元素。示例 2: 给定 nums = [0,1,2,2,3,0,4,2], val = 2, 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。 注意这五个元素可为任意顺序。 你不需要考虑数组中超出新长度后面的元素。说明: 为什么返回数值是整数，但输出的答案是数组呢? 请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 你可以想象内部操作如下: // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝 int len = removeElement(nums, val); // 在函数里修改输入数组对于调用者是可见的。 // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。 for (int i = 0; i &lt; len; i++) { print(nums[i]); } 思路题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。 代码12345678910public static int removeElement(int[] nums, int val) &#123; int index = 0; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] != val) &#123; nums[index]=nums[i]; index++; &#125; &#125; return index; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
@@ -998,7 +1022,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#x6e;&#x64;&#64;&#49;&#x36;&#51;&#x2e;&#x63;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#x63;&#x65;&#x69;&#x76;&#x65;&#x40;&#49;&#54;&#51;&#46;&#x63;&#111;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#101;&#x6e;&#100;&#x40;&#x31;&#x36;&#51;&#46;&#99;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#101;&#x63;&#x65;&#x69;&#118;&#101;&#64;&#49;&#54;&#51;&#x2e;&#x63;&#111;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>
