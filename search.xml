@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 11. Container With Most Water]]></title>
+    <url>%2FLeetCode%2011.%20Container%20With%20Most%20Water.html</url>
+    <content type="text"><![CDATA[11. Container With Most Water（反转字符串中的元音字母）链接https://leetcode-cn.com/problems/container-with-most-water 题目给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 说明：你不能倾斜容器，且 n 的值至少为 2。图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。 示例: 输入: [1,8,6,2,5,4,8,3,7] 输出: 49 思路这题思路也很清晰，就是要求最大值，方法不少，首先就是最简单的穷举，把所有可能值都算出来，也可以采用动态规划的思想，找到最合适的方法。面积取决于两个值，左右距离，和两边的较小值，当两边距离不等的时候，将较小值更换可能获得更大的面积，思路就是这样，一直选择较小的往内移动，直到两边相遇。 代码12345678910111213public int maxArea(int[] height) &#123; int left = 0, right = height.length - 1; int max = 0; while (left &lt; right) &#123; max = Math.max(max, (right - left) * Math.min(height[left], height[right])); if (height[left] &lt; height[right]) &#123; left++; &#125; else &#123; right--; &#125; &#125; return max;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 345. Reverse Vowels of a String]]></title>
+    <url>%2FLeetCode%20345.%20Reverse%20Vowels%20of%20a%20String.html</url>
+    <content type="text"><![CDATA[345. Reverse Vowels of a String（反转字符串中的元音字母）链接https://leetcode-cn.com/problems/reverse-vowels-of-a-string 题目编写一个函数，以字符串作为输入，反转该字符串中的元音字母。 示例 1: 输入: “hello” 输出: “holle”示例 2: 输入: “leetcode” 输出: “leotcede”说明:元音字母不包含字母”y”。 思路也是双指针，不过要注意大小写都可以，所以额外增加了一个判断函数判断是否需要反转，别的和344题基本相同。 代码12345678910111213141516171819202122232425public static boolean find(char c) &#123; return !(c == &apos;a&apos; || c == &apos;o&apos; || c == &apos;e&apos; || c == &apos;i&apos; || c == &apos;u&apos; || c == &apos;A&apos; || c == &apos;O&apos; || c == &apos;E&apos; || c == &apos;I&apos; || c == &apos;U&apos;);&#125;public static String reverseVowels(String s) &#123; char[] arr = s.toCharArray(); int left = 0, right = arr.length - 1; while (left &lt; right) &#123; while (left &lt; arr.length &amp;&amp; find(arr[left])) &#123; left++; &#125; while (right &gt;= 0 &amp;&amp; find(arr[right])) &#123; right--; &#125; if (left &gt;= right) &#123; break; &#125; char temp = arr[right]; arr[right--] = arr[left]; arr[left++] = temp; &#125; String result = new String(arr); return result;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 215. Kth Largest Element in an Array]]></title>
+    <url>%2FLeetCode%20215.%20Kth%20Largest%20Element%20in%20an%20Array.html</url>
+    <content type="text"><![CDATA[215. Kth Largest Element in an Array（数组中的第K个最大元素）链接https://leetcode-cn.com/problems/kth-largest-element-in-an-array 题目在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例 1: 输入: [3,2,1,5,6,4] 和 k = 2 输出: 5示例 2: 输入: [3,2,3,1,2,4,5,5,6] 和 k = 4 输出: 4说明: 你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。 思路一道数组题目，解法多种。最简单的就是直接排序，然后找到那个数，直接完成，就是效率相对较低。这里用的是优先队列建堆，最小堆，小的数字在堆顶，然后一个一个往里面加数字，每当堆的规模大于k，就去除最小的数字（堆顶），数字处理完之后的堆顶就是所需数字。 代码1234567891011public static int findKthLargest(int[] nums, int k) &#123; PriorityQueue&lt;Integer&gt; heap = new PriorityQueue&lt;Integer&gt;((n1, n2) -&gt; n1 - n2); for (int n : nums) &#123; heap.add(n); if (heap.size() &gt; k) &#123; heap.poll(); &#125; &#125; return heap.poll();&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 344. Reverse String]]></title>
+    <url>%2FLeetCode%20344.%20Reverse%20String.html</url>
+    <content type="text"><![CDATA[344. Reverse String（反转字符串）链接https://leetcode-cn.com/problems/reverse-string 题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。 不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。 你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。 示例 1： 输入：[“h”,”e”,”l”,”l”,”o”] 输出：[“o”,”l”,”l”,”e”,”h”]示例 2： 输入：[“H”,”a”,”n”,”n”,”a”,”h”] 输出：[“h”,”a”,”n”,”n”,”a”,”H”] 思路就硬转呗，双指针，一头一尾直接转换位置，当指针相遇就结束。 代码12345678910public void reverseString(char[] s) &#123; int left = 0, right = s.length - 1; while (left &lt; right) &#123; char temp = s[left]; s[left] = s[right]; s[right] = temp; left++; right--; &#125; &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 88. Merge Sorted Array]]></title>
     <url>%2FLeetCode%2088.%20Merge%20Sorted%20Array.html</url>
     <content type="text"><![CDATA[88. Merge Sorted Array（合并两个有序数组）链接https://leetcode-cn.com/problems/merge-sorted-array 题目给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。 说明: 初始化 nums1 和 nums2 的元素数量分别为 m 和 n。你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。示例: 输入: nums1 = [1,2,3,0,0,0], m = 3 nums2 = [2,5,6], n = 3 输出: [1,2,2,3,5,6] 思路一道数组题目，解法多种。可以直接合并再排序，也可以两个数组开头慢慢遍历，倒是官方给了一种很cool的题解，直接从数组后方开始。三指针，两个指针指向两个数组最后的数字，一个指针指向数组1的末尾，比较之后将数字放到数组1的末尾，不需要额外空间，最后将数组2未使用的数字（如果存在的话）放到数组1的前面即可。（这题我去年好像做过，还没做出来233333） 代码1234567891011121314151617181920public static void merge(int[] nums1, int m, int[] nums2, int n) &#123; int index = m + n - 1; int m1 = m - 1; int n1 = n - 1; while (m1 &gt;= 0 &amp;&amp; n1 &gt;= 0) &#123; if (nums1[m1] &lt; nums2[n1]) &#123; nums1[index] = nums2[n1]; n1--; &#125; else &#123; nums1[index] = nums1[m1]; m1--; &#125; index--; &#125; while (n1 &gt;= 0) &#123; nums1[index] = nums2[n1]; n1--; index--; &#125;&#125;]]></content>
@@ -114,17 +146,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 796. Rotate String]]></title>
-    <url>%2FLeetCode%20796.%20Rotate%20String.html</url>
-    <content type="text"><![CDATA[796. Rotate String（旋转字符串）链接https://leetcode-cn.com/problems/rotate-string 题目给定两个字符串, A 和 B。 A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。 示例 1: 输入: A = ‘abcde’, B = ‘cdeab’ 输出: true 示例 2: 输入: A = ‘abcde’, B = ‘abced’ 输出: false注意： A 和 B 长度不超过 100。 思路题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。 代码1234567public static boolean rotateString(String A, String B) &#123; if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123; return true; &#125; else &#123; return false; &#125; &#125;]]></content>
+    <title><![CDATA[LeetCode 27. Remove Element]]></title>
+    <url>%2FLeetCode%2027.%20Remove%20Element.html</url>
+    <content type="text"><![CDATA[27. Remove Element（移除元素）链接https://leetcode-cn.com/problems/remove-element 题目给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 示例 1: 给定 nums = [3,2,2,3], val = 3, 函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。 你不需要考虑数组中超出新长度后面的元素。示例 2: 给定 nums = [0,1,2,2,3,0,4,2], val = 2, 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。 注意这五个元素可为任意顺序。 你不需要考虑数组中超出新长度后面的元素。说明: 为什么返回数值是整数，但输出的答案是数组呢? 请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 你可以想象内部操作如下: // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝 int len = removeElement(nums, val); // 在函数里修改输入数组对于调用者是可见的。 // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。 for (int i = 0; i &lt; len; i++) { print(nums[i]); } 思路题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。 代码12345678910public static int removeElement(int[] nums, int val) &#123; int index = 0; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] != val) &#123; nums[index]=nums[i]; index++; &#125; &#125; return index; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 27. Remove Element]]></title>
-    <url>%2FLeetCode%2027.%20Remove%20Element.html</url>
-    <content type="text"><![CDATA[27. Remove Element（移除元素）链接https://leetcode-cn.com/problems/remove-element 题目给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 示例 1: 给定 nums = [3,2,2,3], val = 3, 函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。 你不需要考虑数组中超出新长度后面的元素。示例 2: 给定 nums = [0,1,2,2,3,0,4,2], val = 2, 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。 注意这五个元素可为任意顺序。 你不需要考虑数组中超出新长度后面的元素。说明: 为什么返回数值是整数，但输出的答案是数组呢? 请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。 你可以想象内部操作如下: // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝 int len = removeElement(nums, val); // 在函数里修改输入数组对于调用者是可见的。 // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。 for (int i = 0; i &lt; len; i++) { print(nums[i]); } 思路题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。 代码12345678910public static int removeElement(int[] nums, int val) &#123; int index = 0; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] != val) &#123; nums[index]=nums[i]; index++; &#125; &#125; return index; &#125;]]></content>
+    <title><![CDATA[LeetCode 796. Rotate String]]></title>
+    <url>%2FLeetCode%20796.%20Rotate%20String.html</url>
+    <content type="text"><![CDATA[796. Rotate String（旋转字符串）链接https://leetcode-cn.com/problems/rotate-string 题目给定两个字符串, A 和 B。 A 的旋转操作就是将 A 最左边的字符移动到最右边。 例如, 若 A = ‘abcde’，在移动一次之后结果就是’bcdea’ 。如果在若干次旋转操作之后，A 能变成B，那么返回True。 示例 1: 输入: A = ‘abcde’, B = ‘cdeab’ 输出: true 示例 2: 输入: A = ‘abcde’, B = ‘abced’ 输出: false注意： A 和 B 长度不超过 100。 思路题目不是很难，但是好的思路可以大大减少所需时间。这里的思路是借鉴的，首先确保AB的长度相同，然后建立A+A，如果这里面包含B的话，就满足条件，因为A+A中随便截取等长的串都可能满足B的条件。 代码1234567public static boolean rotateString(String A, String B) &#123; if (A.length() == B.length() &amp;&amp; ((A + A).contains(B))) &#123; return true; &#125; else &#123; return false; &#125; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
@@ -1022,7 +1054,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#101;&#x6e;&#100;&#x40;&#x31;&#x36;&#51;&#46;&#99;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#101;&#x63;&#x65;&#x69;&#118;&#101;&#64;&#49;&#54;&#51;&#x2e;&#x63;&#111;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#110;&#100;&#64;&#49;&#54;&#51;&#x2e;&#x63;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#99;&#x65;&#105;&#118;&#101;&#64;&#x31;&#x36;&#x33;&#x2e;&#99;&#111;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>
