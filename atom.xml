@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cheng102e.github.io/"/>
-  <updated>2020-02-16T06:36:45.461Z</updated>
+  <updated>2020-02-17T12:55:06.074Z</updated>
   <id>https://cheng102e.github.io/</id>
   
   <author>
@@ -17,11 +17,61 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>LeetCode 209. Minimum Size Subarray Sum</title>
+    <link href="https://cheng102e.github.io/LeetCode%20209.%20Minimum%20Size%20Subarray%20Sum.html"/>
+    <id>https://cheng102e.github.io/LeetCode 209. Minimum Size Subarray Sum.html</id>
+    <published>2020-02-17T12:30:00.000Z</published>
+    <updated>2020-02-17T12:55:06.074Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="209-Minimum-Size-Subarray-Sum（无重复字符的最长子串）"><a href="#209-Minimum-Size-Subarray-Sum（无重复字符的最长子串）" class="headerlink" title="209. Minimum Size Subarray Sum（无重复字符的最长子串）"></a>209. Minimum Size Subarray Sum（无重复字符的最长子串）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/minimum-size-subarray-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/minimum-size-subarray-sum</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的连续子数组。如果不存在符合条件的连续子数组，返回 0。</p><p>示例: </p><p>  输入: s = 7, nums = [2,3,1,2,4,3]<br>  输出: 2<br>  解释: 子数组 [4,3] 是该条件下的长度最小的连续子数组。<br>进阶:</p><p>如果你已经完成了O(n) 时间复杂度的解法, 请尝试 O(n log n) 时间复杂度的解法。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>滑动窗口的题目，不过这里是数字，相对简单一点。<br>这里设置了两个指针，left就代表左侧，right代表右侧，如果和大于s，就更新min并且减去最左侧；如果小于s，就增加最右侧，最后输出min。这里有一个坑，就是有可能不存在，所以最后要对于min进行一个判断。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int minSubArrayLen(int s, int[] nums) &#123;</span><br><span class="line">  int len = nums.length;</span><br><span class="line">  int sum = 0;</span><br><span class="line">  int min = Integer.MAX_VALUE;</span><br><span class="line">  int left = 0;</span><br><span class="line">  for (int right = 0; right &lt; len; right++) &#123;</span><br><span class="line">    sum += nums[right];</span><br><span class="line">    while (sum &gt;= s) &#123;</span><br><span class="line">      min = Math.min(min, right - left + 1);</span><br><span class="line">      sum -= nums[left];</span><br><span class="line">      left++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if(min== Integer.MAX_VALUE)&#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;209-Minimum-Size-Subarray-Sum（无重复字符的最长子串）&quot;&gt;&lt;a href=&quot;#209-Minimum-Size-Subarray-Sum（无重复字符的最长子串）&quot; class=&quot;headerlink&quot; title=&quot;209. Minim
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="滑动窗口" scheme="https://cheng102e.github.io/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 3. Longest Substring Without Repeating Characters</title>
+    <link href="https://cheng102e.github.io/LeetCode%203.%20Longest%20Substring%20Without%20Repeating%20Characters.html"/>
+    <id>https://cheng102e.github.io/LeetCode 3. Longest Substring Without Repeating Characters.html</id>
+    <published>2020-02-17T12:20:00.000Z</published>
+    <updated>2020-02-17T12:55:07.980Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="3-Longest-Substring-Without-Repeating-Characters（无重复字符的最长子串）"><a href="#3-Longest-Substring-Without-Repeating-Characters（无重复字符的最长子串）" class="headerlink" title="3. Longest Substring Without Repeating Characters（无重复字符的最长子串）"></a>3. Longest Substring Without Repeating Characters（无重复字符的最长子串）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-substring-without-repeating-characters</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p><p>示例 1:</p><p>  输入: “abcabcbb”<br>  输出: 3<br>  解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。<br>示例 2:</p><p>  输入: “bbbbb”<br>  输出: 1<br>  解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。<br>示例 3:</p><p>  输入: “pwwkew”<br>  输出: 3<br>  解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>滑动窗口的题目，做出来不是很难，但是要优化就很麻烦。<br>这里设置了两个指针，同时借助了hashmap来去重。循环比较每一个字符，如果字符不存在就加入，如果存在了，就看在left左还是右，左侧无需在意，右侧更新，最后输出max即可。<br>（这里没有和left比较，而是直接取了较大值，left就代表当前字符串左侧，right代表当前字符串右侧）</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static int lengthOfLongestSubstring(String s) &#123;</span><br><span class="line">  int len = s.length();</span><br><span class="line">  if (len == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  HashMap&lt;Character, Integer&gt; map = new HashMap&lt;Character, Integer&gt;();</span><br><span class="line">  int max = 0;</span><br><span class="line">  int left = 0;</span><br><span class="line">  for (int right = 0; right &lt; len; right++) &#123;</span><br><span class="line">    if (map.containsKey(s.charAt(right))) &#123;</span><br><span class="line">      left = Math.max(left, map.get(s.charAt(right)) + 1);</span><br><span class="line">    &#125;</span><br><span class="line">    map.put(s.charAt(right), right);</span><br><span class="line">    max = Math.max(max, right - left + 1);</span><br><span class="line">  &#125;</span><br><span class="line">  return max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;3-Longest-Substring-Without-Repeating-Characters（无重复字符的最长子串）&quot;&gt;&lt;a href=&quot;#3-Longest-Substring-Without-Repeating-Characters（无重复字符的最长子串）
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="滑动窗口" scheme="https://cheng102e.github.io/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LeetCode 11. Container With Most Water</title>
     <link href="https://cheng102e.github.io/LeetCode%2011.%20Container%20With%20Most%20Water.html"/>
     <id>https://cheng102e.github.io/LeetCode 11. Container With Most Water.html</id>
     <published>2020-02-16T06:50:00.000Z</published>
-    <updated>2020-02-16T06:36:45.461Z</updated>
+    <updated>2020-02-17T12:55:08.908Z</updated>
     
     <content type="html"><![CDATA[<h2 id="11-Container-With-Most-Water（反转字符串中的元音字母）"><a href="#11-Container-With-Most-Water（反转字符串中的元音字母）" class="headerlink" title="11. Container With Most Water（反转字符串中的元音字母）"></a>11. Container With Most Water（反转字符串中的元音字母）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/container-with-most-water" target="_blank" rel="noopener">https://leetcode-cn.com/problems/container-with-most-water</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p><p>说明：你不能倾斜容器，且 n 的值至少为 2。<br><img src="https://img2018.cnblogs.com/blog/1493464/202002/1493464-20200216143541248-1914702232.png" alt><br>图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。</p><p>示例:</p><p>  输入: [1,8,6,2,5,4,8,3,7]<br>  输出: 49</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题思路也很清晰，就是要求最大值，方法不少，首先就是最简单的穷举，把所有可能值都算出来，也可以采用动态规划的思想，找到最合适的方法。<br>面积取决于两个值，左右距离，和两边的较小值，当两边距离不等的时候，将较小值更换可能获得更大的面积，思路就是这样，一直选择较小的往内移动，直到两边相遇。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int maxArea(int[] height) &#123;</span><br><span class="line">  int left = 0, right = height.length - 1;</span><br><span class="line">  int max = 0;</span><br><span class="line">  while (left &lt; right) &#123;</span><br><span class="line">    max = Math.max(max, (right - left) * Math.min(height[left], height[right]));</span><br><span class="line">    if (height[left] &lt; height[right]) &#123;</span><br><span class="line">      left++;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      right--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -63,29 +113,6 @@
   </entry>
   
   <entry>
-    <title>LeetCode 344. Reverse String</title>
-    <link href="https://cheng102e.github.io/LeetCode%20344.%20Reverse%20String.html"/>
-    <id>https://cheng102e.github.io/LeetCode 344. Reverse String.html</id>
-    <published>2020-02-16T04:50:00.000Z</published>
-    <updated>2020-02-16T05:11:03.783Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="344-Reverse-String（反转字符串）"><a href="#344-Reverse-String（反转字符串）" class="headerlink" title="344. Reverse String（反转字符串）"></a>344. Reverse String（反转字符串）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/reverse-string" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-string</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。</p><p>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</p><p>你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。</p><p>示例 1：</p><p>  输入：[“h”,”e”,”l”,”l”,”o”]<br>  输出：[“o”,”l”,”l”,”e”,”h”]<br>示例 2：</p><p>  输入：[“H”,”a”,”n”,”n”,”a”,”h”]<br>  输出：[“h”,”a”,”n”,”n”,”a”,”H”]</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>就硬转呗，双指针，一头一尾直接转换位置，当指针相遇就结束。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void reverseString(char[] s) &#123;</span><br><span class="line">    int left = 0, right = s.length - 1;</span><br><span class="line">    while (left &lt; right) &#123;</span><br><span class="line">      char temp = s[left];</span><br><span class="line">      s[left] = s[right];</span><br><span class="line">      s[right] = temp;</span><br><span class="line">      left++;</span><br><span class="line">      right--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;344-Reverse-String（反转字符串）&quot;&gt;&lt;a href=&quot;#344-Reverse-String（反转字符串）&quot; class=&quot;headerlink&quot; title=&quot;344. Reverse String（反转字符串）&quot;&gt;&lt;/a&gt;344. Rever
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>LeetCode 215. Kth Largest Element in an Array</title>
     <link href="https://cheng102e.github.io/LeetCode%20215.%20Kth%20Largest%20Element%20in%20an%20Array.html"/>
     <id>https://cheng102e.github.io/LeetCode 215. Kth Largest Element in an Array.html</id>
@@ -99,6 +126,29 @@
       
       
         &lt;h2 id=&quot;215-Kth-Largest-Element-in-an-Array（数组中的第K个最大元素）&quot;&gt;&lt;a href=&quot;#215-Kth-Largest-Element-in-an-Array（数组中的第K个最大元素）&quot; class=&quot;headerlink&quot; tit
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 344. Reverse String</title>
+    <link href="https://cheng102e.github.io/LeetCode%20344.%20Reverse%20String.html"/>
+    <id>https://cheng102e.github.io/LeetCode 344. Reverse String.html</id>
+    <published>2020-02-16T04:50:00.000Z</published>
+    <updated>2020-02-16T05:11:03.783Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="344-Reverse-String（反转字符串）"><a href="#344-Reverse-String（反转字符串）" class="headerlink" title="344. Reverse String（反转字符串）"></a>344. Reverse String（反转字符串）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/reverse-string" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-string</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。</p><p>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</p><p>你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。</p><p>示例 1：</p><p>  输入：[“h”,”e”,”l”,”l”,”o”]<br>  输出：[“o”,”l”,”l”,”e”,”h”]<br>示例 2：</p><p>  输入：[“H”,”a”,”n”,”n”,”a”,”h”]<br>  输出：[“h”,”a”,”n”,”n”,”a”,”H”]</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>就硬转呗，双指针，一头一尾直接转换位置，当指针相遇就结束。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void reverseString(char[] s) &#123;</span><br><span class="line">    int left = 0, right = s.length - 1;</span><br><span class="line">    while (left &lt; right) &#123;</span><br><span class="line">      char temp = s[left];</span><br><span class="line">      s[left] = s[right];</span><br><span class="line">      s[right] = temp;</span><br><span class="line">      left++;</span><br><span class="line">      right--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;344-Reverse-String（反转字符串）&quot;&gt;&lt;a href=&quot;#344-Reverse-String（反转字符串）&quot; class=&quot;headerlink&quot; title=&quot;344. Reverse String（反转字符串）&quot;&gt;&lt;/a&gt;344. Rever
       
     
     </summary>
@@ -414,29 +464,6 @@
   </entry>
   
   <entry>
-    <title>LeetCode 27. Remove Element</title>
-    <link href="https://cheng102e.github.io/LeetCode%2027.%20Remove%20Element.html"/>
-    <id>https://cheng102e.github.io/LeetCode 27. Remove Element.html</id>
-    <published>2020-02-02T12:00:00.000Z</published>
-    <updated>2020-02-02T13:17:58.111Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="27-Remove-Element（移除元素）"><a href="#27-Remove-Element（移除元素）" class="headerlink" title="27. Remove Element（移除元素）"></a>27. Remove Element（移除元素）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/remove-element" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-element</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。</p><p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p><p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p><p>示例 1:</p><p>  给定 nums = [3,2,2,3], val = 3,</p><p>  函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p><p>  给定 nums = [0,1,2,2,3,0,4,2], val = 2,</p><p>  函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</p><p>  注意这五个元素可为任意顺序。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>说明:</p><p>  为什么返回数值是整数，但输出的答案是数组呢?</p><p>  请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p><p>  你可以想象内部操作如下:</p><p>  // nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>  int len = removeElement(nums, val);</p><p>  // 在函数里修改输入数组对于调用者是可见的。<br>  // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>  for (int i = 0; i &lt; len; i++) {<br>      print(nums[i]);<br>  }</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法，和前一题思路相同。<br>新建一个index，然后遍历数组，如果发现和val不相同，就存储进来，相同就无视，最后输出index即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int removeElement(int[] nums, int val) &#123;</span><br><span class="line">    int index = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">      if (nums[i] != val) &#123;</span><br><span class="line">        nums[index]=nums[i];</span><br><span class="line">        index++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return index;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;27-Remove-Element（移除元素）&quot;&gt;&lt;a href=&quot;#27-Remove-Element（移除元素）&quot; class=&quot;headerlink&quot; title=&quot;27. Remove Element（移除元素）&quot;&gt;&lt;/a&gt;27. Remove Eleme
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>LeetCode 796. Rotate String</title>
     <link href="https://cheng102e.github.io/LeetCode%20796.%20Rotate%20String.html"/>
     <id>https://cheng102e.github.io/LeetCode 796. Rotate String.html</id>
@@ -450,29 +477,6 @@
       
       
         &lt;h2 id=&quot;796-Rotate-String（旋转字符串）&quot;&gt;&lt;a href=&quot;#796-Rotate-String（旋转字符串）&quot; class=&quot;headerlink&quot; title=&quot;796. Rotate String（旋转字符串）&quot;&gt;&lt;/a&gt;796. Rotate S
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 26. Remove Duplicates from Sorted Array</title>
-    <link href="https://cheng102e.github.io/LeetCode%2026.%20Remove%20Duplicates%20from%20Sorted%20Array.html"/>
-    <id>https://cheng102e.github.io/LeetCode 26. Remove Duplicates from Sorted Array.html</id>
-    <published>2020-02-02T11:59:00.000Z</published>
-    <updated>2020-02-02T13:19:22.945Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="26-Remove-Duplicates-from-Sorted-Array（删除排序数组中的重复项）"><a href="#26-Remove-Duplicates-from-Sorted-Array（删除排序数组中的重复项）" class="headerlink" title="26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）"></a>26. Remove Duplicates from Sorted Array（删除排序数组中的重复项）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p><p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p><p>示例 1:</p><p>  给定数组 nums = [1,1,2], </p><p>  函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p><p>  你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p><p>  给定 nums = [0,0,1,1,1,2,2,3,3,4],</p><p>  函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p><p>  你不需要考虑数组中超出新长度后面的元素。<br>说明:</p><p>  为什么返回数值是整数，但输出的答案是数组呢?</p><p>  请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p><p>  你可以想象内部操作如下:</p><p>  // nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝<br>  int len = removeDuplicates(nums);</p><p>  // 在函数里修改输入数组对于调用者是可见的。<br>  // 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>  for (int i = 0; i &lt; len; i++) {<br>      print(nums[i]);<br>  }</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目内容清晰，但是要求要用原地算法，不给额外空间，所以直接用双指针法。<br>新建一个index，然后遍历数组，如果发现二者相同就跳过，不同的话，就在index的下一位更换，这里要注意index的变化顺序，最后输出index+1即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int removeDuplicates(int[] nums) &#123;</span><br><span class="line">  int index = 0;</span><br><span class="line">  for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">    if (nums[i] != nums[index]) &#123;</span><br><span class="line">      index++;</span><br><span class="line">      nums[index] = nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return index+1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;26-Remove-Duplicates-from-Sorted-Array（删除排序数组中的重复项）&quot;&gt;&lt;a href=&quot;#26-Remove-Duplicates-from-Sorted-Array（删除排序数组中的重复项）&quot; class=&quot;headerlin
       
     
     </summary>
