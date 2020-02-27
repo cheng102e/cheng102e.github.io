@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cheng102e.github.io/"/>
-  <updated>2020-02-25T14:33:16.866Z</updated>
+  <updated>2020-02-27T10:25:15.855Z</updated>
   <id>https://cheng102e.github.io/</id>
   
   <author>
@@ -15,6 +15,384 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 213. House Robber II</title>
+    <link href="https://cheng102e.github.io/LeetCode%20213.%20House%20Robber%20II.html"/>
+    <id>https://cheng102e.github.io/LeetCode 213. House Robber II.html</id>
+    <published>2020-02-27T10:23:00.000Z</published>
+    <updated>2020-02-27T10:25:15.855Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="213-House-Robber-II（打家劫舍-II）"><a href="#213-House-Robber-II（打家劫舍-II）" class="headerlink" title="213. House Robber II（打家劫舍 II）"></a>213. House Robber II（打家劫舍 II）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/house-robber-ii" target="_blank" rel="noopener">https://leetcode-cn.com/problems/house-robber-ii</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</p><p>给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。</p><p>示例 1:</p><p>输入: [2,3,2]<br>输出: 3<br>解释: 你不能先偷窃 1 号房屋（金额 = 2），然后偷窃 3 号房屋（金额 = 2）, 因为他们是相邻的。<br>示例 2:</p><p>输入: [1,2,3,1]<br>输出: 4<br>解释: 你可以先偷窃 1 号房屋（金额 = 1），然后偷窃 3 号房屋（金额 = 3）。<br>     偷窃到的最高金额 = 1 + 3 = 4 。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>动态规划，对于第三间之后的房子，有拿或者不拿两种选择，如果选择拿，那么前一间房子就不能拿，这样可以得到状态转移方程dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i])，还要考虑到一点就是，第一个和最后一个不能都拿，可以考虑设两个方程，第一个是1到n-1，第二个是2到n，选最大值即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public int rob(int[] nums) &#123;</span><br><span class="line">  int[] dp_0 = new int[nums.length];</span><br><span class="line">  int[] dp_1 = new int[nums.length];</span><br><span class="line">  if (nums.length == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if (nums.length == 1) &#123;</span><br><span class="line">    return nums[0];</span><br><span class="line">  &#125;</span><br><span class="line">  if (nums.length == 2) &#123;</span><br><span class="line">    return Math.max(nums[0], nums[1]);</span><br><span class="line">  &#125;</span><br><span class="line">  dp_0[0] = nums[0];</span><br><span class="line">  dp_0[1] = Math.max(nums[0], nums[1]);</span><br><span class="line">  for (int i = 2; i &lt; nums.length - 1; i++) &#123;</span><br><span class="line">    dp_0[i] = Math.max(dp_0[i - 1], dp_0[i - 2] + nums[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  dp_1[1] = nums[1];</span><br><span class="line">  dp_1[2] = Math.max(nums[1], nums[2]);</span><br><span class="line">  for (int i = 3; i &lt; nums.length; i++) &#123;</span><br><span class="line">    dp_1[i] = Math.max(dp_1[i - 1], dp_1[i - 2] + nums[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  return Math.max(dp_0[nums.length - 2], dp_1[nums.length - 1]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;213-House-Robber-II（打家劫舍-II）&quot;&gt;&lt;a href=&quot;#213-House-Robber-II（打家劫舍-II）&quot; class=&quot;headerlink&quot; title=&quot;213. House Robber II（打家劫舍 II）&quot;&gt;&lt;/a&gt;2
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="动态规划" scheme="https://cheng102e.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 198. House Robber</title>
+    <link href="https://cheng102e.github.io/LeetCode%20198.%20House%20Robber.html"/>
+    <id>https://cheng102e.github.io/LeetCode 198. House Robber.html</id>
+    <published>2020-02-27T09:55:00.000Z</published>
+    <updated>2020-02-27T10:04:30.019Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="198-House-Robber（打家劫舍）"><a href="#198-House-Robber（打家劫舍）" class="headerlink" title="198. House Robber（打家劫舍）"></a>198. House Robber（打家劫舍）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/house-robber" target="_blank" rel="noopener">https://leetcode-cn.com/problems/house-robber</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</p><p>给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。</p><p>示例 1:</p><p>  输入: [1,2,3,1]<br>  输出: 4<br>  解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。<br>       偷窃到的最高金额 = 1 + 3 = 4 。<br>示例 2:</p><p>  输入: [2,7,9,3,1]<br>  输出: 12<br>  解释: 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。<br>       偷窃到的最高金额 = 2 + 9 + 1 = 12 。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>标准的动态规划题目，对于第三间之后的房子，有拿或者不拿两种选择，如果选择拿，那么前一间房子就不能拿，这样可以得到状态转移方程dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i])，之后循环得到答案即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public int rob(int[] nums) &#123;</span><br><span class="line">  int[] dp = new int[nums.length];</span><br><span class="line">  if (nums.length == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if (nums.length == 1) &#123;</span><br><span class="line">    return nums[0];</span><br><span class="line">  &#125;</span><br><span class="line">  dp[0] = nums[0];</span><br><span class="line">  dp[1] = Math.max(nums[0], nums[1]);</span><br><span class="line">  for (int i = 2; i &lt; nums.length; i++) &#123;</span><br><span class="line">    dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  return dp[nums.length - 1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;198-House-Robber（打家劫舍）&quot;&gt;&lt;a href=&quot;#198-House-Robber（打家劫舍）&quot; class=&quot;headerlink&quot; title=&quot;198. House Robber（打家劫舍）&quot;&gt;&lt;/a&gt;198. House Robber（打
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="动态规划" scheme="https://cheng102e.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 303. Range Sum Query - Immutable</title>
+    <link href="https://cheng102e.github.io/LeetCode%20303.%20Range%20Sum%20Query%20-%20Immutable.html"/>
+    <id>https://cheng102e.github.io/LeetCode 303. Range Sum Query - Immutable.html</id>
+    <published>2020-02-27T09:33:00.000Z</published>
+    <updated>2020-02-27T09:29:01.402Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="303-Range-Sum-Query-Immutable（区域和检索-数组不可变）"><a href="#303-Range-Sum-Query-Immutable（区域和检索-数组不可变）" class="headerlink" title="303. Range Sum Query - Immutable（区域和检索 - 数组不可变）"></a>303. Range Sum Query - Immutable（区域和检索 - 数组不可变）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/range-sum-query-immutable" target="_blank" rel="noopener">https://leetcode-cn.com/problems/range-sum-query-immutable</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。</p><p>示例：</p><p>  给定 nums = [-2, 0, 3, -5, 2, -1]，求和函数为 sumRange()</p><p>  sumRange(0, 2) -&gt; 1<br>  sumRange(2, 5) -&gt; -1<br>  sumRange(0, 5) -&gt; -3<br>说明:</p><p>你可以假设数组不可变。<br>会多次调用 sumRange 方法。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>由于需要多次调用，建议面向答案编程，先建立一个sum数组，存放从开头到这个数的和，若要(i,j)那么就用sum[j]-sum[i-1]即可。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">private int[] sum;</span><br><span class="line"></span><br><span class="line">public void NumArray(int[] nums) &#123;</span><br><span class="line">  if(nums.length==0)</span><br><span class="line">  &#123;</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line">  sum = new int[nums.length];</span><br><span class="line">  sum[0] = nums[0];</span><br><span class="line">  for (int i = 1; i &lt; nums.length; i++) &#123;</span><br><span class="line">    sum[i] += sum[i - 1] + nums[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int sumRange(int i, int j) &#123;</span><br><span class="line">  if (i == 0) &#123;</span><br><span class="line">    return sum[j];</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return sum[j] - sum[i - 1];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;303-Range-Sum-Query-Immutable（区域和检索-数组不可变）&quot;&gt;&lt;a href=&quot;#303-Range-Sum-Query-Immutable（区域和检索-数组不可变）&quot; class=&quot;headerlink&quot; title=&quot;303. Ran
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>动态规划</title>
+    <link href="https://cheng102e.github.io/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html"/>
+    <id>https://cheng102e.github.io/算法-动态规划.html</id>
+    <published>2020-02-27T05:00:00.000Z</published>
+    <updated>2020-02-27T08:41:16.793Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>分治法：将问题划分为不相交的子问题,递归的求解子问题,在将它们的解组合起来,求出原问题的解。</p><p>动态规划：通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。</p><p>动态规划和递归的最大的区别，就是在碰到重叠子问题时，是否只需要计算一次。</p><h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ol><li>拆分子问题，把整体问题拆成可以用递推或是递归实现的小问题，在某一状态下最佳选择是什么</li><li>定义问题和状态之间的关系，寻找到状态转移方程</li><li>进行编码</li></ol><h3 id="例题-LeetCode746"><a href="#例题-LeetCode746" class="headerlink" title="例题(LeetCode746)"></a>例题(LeetCode746)</h3><p>数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值 cost<a href="索引从0开始">i</a>。</p><p>每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。</p><p>您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。</p><p>示例 1:</p><pre><code>输入: cost = [10, 15, 20]输出: 15解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。</code></pre><p>示例 2:</p><pre><code>输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]输出: 6解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。</code></pre><p>注意：</p><p>cost 的长度将会在 [2, 1000]。<br>每一个 cost[i] 将会是一个Integer类型，范围为 [0, 999]。</p><h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>上升到某级(i)有两种方法，从i-1级上一步，从i-2级上两步，那么就可以知道状态转移方程了<br>dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i]，顺着这个思路从3开始，最后再输出一下就行。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public int minCostClimbingStairs(int[] cost) &#123;</span><br><span class="line">  int len = cost.length;</span><br><span class="line">  int dp[] = new int[len + 1];</span><br><span class="line"></span><br><span class="line">  dp[0] = cost[0];</span><br><span class="line">  dp[1] = cost[1];</span><br><span class="line">  for (int i = 2; i &lt; len; i++) &#123;</span><br><span class="line">    dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i];</span><br><span class="line">  &#125;</span><br><span class="line">  return Math.min(dp[len - 1], dp[len - 2]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;动态规划&quot;&gt;&lt;a href=&quot;#动态规划&quot; class=&quot;headerlink&quot; title=&quot;动态规划&quot;&gt;&lt;/a&gt;动态规划&lt;/h2&gt;&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://cheng102e.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="动态规划" scheme="https://cheng102e.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 746. Min Cost Climbing Stairs</title>
+    <link href="https://cheng102e.github.io/LeetCode%20746.%20Min%20Cost%20Climbing%20Stairs.html"/>
+    <id>https://cheng102e.github.io/LeetCode 746. Min Cost Climbing Stairs.html</id>
+    <published>2020-02-27T04:33:00.000Z</published>
+    <updated>2020-02-27T09:27:09.133Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="746-Min-Cost-Climbing-Stairs-（使用最小花费爬楼梯）"><a href="#746-Min-Cost-Climbing-Stairs-（使用最小花费爬楼梯）" class="headerlink" title="746. Min Cost Climbing Stairs （使用最小花费爬楼梯）"></a>746. Min Cost Climbing Stairs （使用最小花费爬楼梯）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/min-cost-climbing-stairs" target="_blank" rel="noopener">https://leetcode-cn.com/problems/min-cost-climbing-stairs</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值 cost<a href="索引从0开始">i</a>。</p><p>每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。</p><p>您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。</p><p>示例 1:</p><pre><code>输入: cost = [10, 15, 20]输出: 15解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。</code></pre><p>示例 2:</p><pre><code>输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]输出: 6解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。</code></pre><p>注意：</p><p>cost 的长度将会在 [2, 1000]。<br>每一个 cost[i] 将会是一个Integer类型，范围为 [0, 999]。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>动态规划题目，上升到某级(i)有两种方法，从i-1级上一步，从i-2级上两步，那么就可以知道状态转移方程了<br>dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i]，顺着这个思路从3开始，最后再输出一下就行。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public int minCostClimbingStairs(int[] cost) &#123;</span><br><span class="line">  int len = cost.length;</span><br><span class="line">  int dp[] = new int[len + 1];</span><br><span class="line"></span><br><span class="line">  dp[0] = cost[0];</span><br><span class="line">  dp[1] = cost[1];</span><br><span class="line">  for (int i = 2; i &lt; len; i++) &#123;</span><br><span class="line">    dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i];</span><br><span class="line">  &#125;</span><br><span class="line">  return Math.min(dp[len - 1], dp[len - 2]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;746-Min-Cost-Climbing-Stairs-（使用最小花费爬楼梯）&quot;&gt;&lt;a href=&quot;#746-Min-Cost-Climbing-Stairs-（使用最小花费爬楼梯）&quot; class=&quot;headerlink&quot; title=&quot;746. Min Cos
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="动态规划" scheme="https://cheng102e.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 12.数值的整数次方</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2012.%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.html"/>
+    <id>https://cheng102e.github.io/剑指offer 12.数值的整数次方.html</id>
+    <published>2020-02-26T14:17:00.000Z</published>
+    <updated>2020-02-27T14:07:53.054Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="12-数值的整数次方"><a href="#12-数值的整数次方" class="headerlink" title="12.数值的整数次方"></a>12.数值的整数次方</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p><p>保证base和exponent不同时为0</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>问题也不是很大，如果不是要求效率就可以直接分类讨论，一个循环解决，要求效率的话就要用快速幂，我没用快速幂，就分类讨论了一下，最后输出结果。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public double Power(double base, int exponent) &#123;</span><br><span class="line">  if (exponent == 0) &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  if (base == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  double ans = 1;</span><br><span class="line">  boolean flag = false;</span><br><span class="line">  if (exponent &gt; 0) &#123;</span><br><span class="line">    flag = true;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    flag = false;</span><br><span class="line">    exponent = -exponent;</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = 1; i &lt;= exponent; i++) &#123;</span><br><span class="line">    ans = ans * base;</span><br><span class="line">  &#125;</span><br><span class="line">  if (!flag) &#123;</span><br><span class="line">    ans = 1.0 / ans;</span><br><span class="line">  &#125;</span><br><span class="line">  return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;12-数值的整数次方&quot;&gt;&lt;a href=&quot;#12-数值的整数次方&quot; class=&quot;headerlink&quot; title=&quot;12.数值的整数次方&quot;&gt;&lt;/a&gt;12.数值的整数次方&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 11.二进制中1的个数</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2011.%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0.html"/>
+    <id>https://cheng102e.github.io/剑指offer 11.二进制中1的个数.html</id>
+    <published>2020-02-26T10:17:00.000Z</published>
+    <updated>2020-02-26T10:34:36.308Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="11-二进制中1的个数"><a href="#11-二进制中1的个数" class="headerlink" title="11.二进制中1的个数"></a>11.二进制中1的个数</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>对我来说蛮难的，虽然解法有多种吧。<br>一开始想的就是直接转二进制字符串遍历，简单，但是这题本意应该是位运算，这方面我不是很熟。<br>把一个整数减去1，再和原整数做与运算，会把该整数最右边一个1变成0。那么一个整数的二进制表示中有多少个1，就可以进行多少次这样的操作。这句话是书上的，每次运算都把一个1变成0，当成为0的时候运算的次数就是1的数量。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public int NumberOf1(int n) &#123;</span><br><span class="line">  int count = 0;</span><br><span class="line"></span><br><span class="line">  while (n != 0) &#123;</span><br><span class="line">    count++;</span><br><span class="line">    n = (n - 1) &amp; n;</span><br><span class="line">  &#125;</span><br><span class="line">  return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;11-二进制中1的个数&quot;&gt;&lt;a href=&quot;#11-二进制中1的个数&quot; class=&quot;headerlink&quot; title=&quot;11.二进制中1的个数&quot;&gt;&lt;/a&gt;11.二进制中1的个数&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;head
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="位运算" scheme="https://cheng102e.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 9.变态跳台阶</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%209.%E5%8F%98%E6%80%81%E8%B7%B3%E5%8F%B0%E9%98%B6.html"/>
+    <id>https://cheng102e.github.io/剑指offer 9.变态跳台阶.html</id>
+    <published>2020-02-26T08:17:00.000Z</published>
+    <updated>2020-02-26T08:22:49.119Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="9-变态跳台阶"><a href="#9-变态跳台阶" class="headerlink" title="9.变态跳台阶"></a>9.变态跳台阶</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>与上题相似，假设要到3级，那么可以从0，1，2级直接到三级，那么f3=f1+f2+1，f2=f1+1，f3=4，找规律。<br>也可以换一种思路，不限制长度，那就是每一级都可以跳，只有选择跳和不跳，那么就是2^(n-1)，结果一样。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public static int JumpFloor(int target) &#123;</span><br><span class="line">  if (target &lt;= 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if(target==1)</span><br><span class="line">  &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  if (target==2)</span><br><span class="line">  &#123;</span><br><span class="line">    return 2;</span><br><span class="line">  &#125;</span><br><span class="line">  int f[] = new int[target + 1];</span><br><span class="line">  f[1] = 1;</span><br><span class="line">  f[2] = 2;</span><br><span class="line">  for (int i = 3; i &lt;= target; i++) &#123;</span><br><span class="line">    f[i] = f[i - 1] + f[i - 2];</span><br><span class="line">  &#125;</span><br><span class="line">  return f[target];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;9-变态跳台阶&quot;&gt;&lt;a href=&quot;#9-变态跳台阶&quot; class=&quot;headerlink&quot; title=&quot;9.变态跳台阶&quot;&gt;&lt;/a&gt;9.变态跳台阶&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 10.矩形覆盖</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2010.%E7%9F%A9%E5%BD%A2%E8%A6%86%E7%9B%96.html"/>
+    <id>https://cheng102e.github.io/剑指offer 10.矩形覆盖.html</id>
+    <published>2020-02-26T08:17:00.000Z</published>
+    <updated>2020-02-26T09:42:49.156Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="10-矩形覆盖"><a href="#10-矩形覆盖" class="headerlink" title="10.矩形覆盖"></a>10.矩形覆盖</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>我们可以用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？</p><p>比如n=3时，2*3的矩形块有3种覆盖方法：</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>还是斐波那契数列，2<em>2的矩阵有两种方法填装，3\</em>2的就是3种方法，n*2的就是n-1和n-2的方法的和</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public static int JumpFloor(int target) &#123;</span><br><span class="line">  if (target &lt;= 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if(target==1)</span><br><span class="line">  &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  if (target==2)</span><br><span class="line">  &#123;</span><br><span class="line">    return 2;</span><br><span class="line">  &#125;</span><br><span class="line">  int f[] = new int[target + 1];</span><br><span class="line">  f[1] = 1;</span><br><span class="line">  f[2] = 2;</span><br><span class="line">  for (int i = 3; i &lt;= target; i++) &#123;</span><br><span class="line">    f[i] = f[i - 1] + f[i - 2];</span><br><span class="line">  &#125;</span><br><span class="line">  return f[target];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;10-矩形覆盖&quot;&gt;&lt;a href=&quot;#10-矩形覆盖&quot; class=&quot;headerlink&quot; title=&quot;10.矩形覆盖&quot;&gt;&lt;/a&gt;10.矩形覆盖&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 7.斐波那契数列</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%207.%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97.html"/>
+    <id>https://cheng102e.github.io/剑指offer 7.斐波那契数列.html</id>
+    <published>2020-02-26T07:54:00.000Z</published>
+    <updated>2020-02-26T07:56:16.154Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="7-斐波那契数列"><a href="#7-斐波那契数列" class="headerlink" title="7.斐波那契数列"></a>7.斐波那契数列</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。<br>n&lt;=39</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这就是看下效率的，建议采用迭代，递归的耗时太长了，还有别的方法，比如公式法，比如面向答案编程的打表法。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static  int Fibonacci(int n) &#123;</span><br><span class="line">  int a0 = 0;</span><br><span class="line">  int a1 = 1;</span><br><span class="line">  int a2 = 0;</span><br><span class="line">  if (n == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if (n == 1) &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">    a2 = a0 + a1;</span><br><span class="line">    a0 = a1;</span><br><span class="line">    a1 = a2;</span><br><span class="line">  &#125;</span><br><span class="line">  return a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;7-斐波那契数列&quot;&gt;&lt;a href=&quot;#7-斐波那契数列&quot; class=&quot;headerlink&quot; title=&quot;7.斐波那契数列&quot;&gt;&lt;/a&gt;7.斐波那契数列&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; titl
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 8.跳台阶</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%208.%E8%B7%B3%E5%8F%B0%E9%98%B6.html"/>
+    <id>https://cheng102e.github.io/剑指offer 8.跳台阶.html</id>
+    <published>2020-02-26T07:54:00.000Z</published>
+    <updated>2020-02-26T08:08:44.793Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="8-跳台阶"><a href="#8-跳台阶" class="headerlink" title="8.跳台阶"></a>8.跳台阶</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>和斐波那契算是一道题，只要转换一下得到f[i] = f[i - 1] + f[i - 2]即可，因为到达该级可以在前一级一步上来，在前两级两步上来。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public static int JumpFloor(int target) &#123;</span><br><span class="line">  if (target &lt;= 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if(target==1)</span><br><span class="line">  &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  if (target==2)</span><br><span class="line">  &#123;</span><br><span class="line">    return 2;</span><br><span class="line">  &#125;</span><br><span class="line">  int f[] = new int[target + 1];</span><br><span class="line">  f[1] = 1;</span><br><span class="line">  f[2] = 2;</span><br><span class="line">  for (int i = 3; i &lt;= target; i++) &#123;</span><br><span class="line">    f[i] = f[i - 1] + f[i - 2];</span><br><span class="line">  &#125;</span><br><span class="line">  return f[target];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;8-跳台阶&quot;&gt;&lt;a href=&quot;#8-跳台阶&quot; class=&quot;headerlink&quot; title=&quot;8.跳台阶&quot;&gt;&lt;/a&gt;8.跳台阶&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 6.旋转数组的最小数字</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%206.%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97.html"/>
+    <id>https://cheng102e.github.io/剑指offer 6.旋转数组的最小数字.html</id>
+    <published>2020-02-26T07:35:00.000Z</published>
+    <updated>2020-02-26T07:46:25.238Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="6-旋转数组的最小数字"><a href="#6-旋转数组的最小数字" class="headerlink" title="6.旋转数组的最小数字"></a>6.旋转数组的最小数字</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。<br>输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。<br>例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。<br>NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目有个坑的地方，就是这里是非递减排序，所以可能相同。<br>直接找就是O(n)，但是这题显然是让人进行二分查找的，所以采用二分查找的格式。<br>与正常二分查找不同，如果左侧等于右侧，就只能一个一个找，到那时候直接用个循环就可以了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public int minNumberInRotateArray(int[] array) &#123;</span><br><span class="line">  if (array.length == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  int left = 0;</span><br><span class="line">  int right = array.length - 1;</span><br><span class="line"></span><br><span class="line">  while (array[left] &gt;= array[right]) &#123;</span><br><span class="line">    int mid = (left + right) / 2;</span><br><span class="line">    if (array[mid] &gt; array[right]) &#123;</span><br><span class="line">      left = mid + 1;</span><br><span class="line">    &#125; else if (array[mid] == array[right]) &#123;</span><br><span class="line">      right--;</span><br><span class="line">    &#125; else if (array[mid] &lt; array[right]) &#123;</span><br><span class="line">      right = mid;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array[left];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;6-旋转数组的最小数字&quot;&gt;&lt;a href=&quot;#6-旋转数组的最小数字&quot; class=&quot;headerlink&quot; title=&quot;6.旋转数组的最小数字&quot;&gt;&lt;/a&gt;6.旋转数组的最小数字&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;head
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 5.用两个栈实现队列</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%205.%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97.html"/>
+    <id>https://cheng102e.github.io/剑指offer 5.用两个栈实现队列.html</id>
+    <published>2020-02-26T07:10:00.000Z</published>
+    <updated>2020-02-26T07:13:45.201Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="5-用两个栈实现队列"><a href="#5-用两个栈实现队列" class="headerlink" title="5.用两个栈实现队列"></a>5.用两个栈实现队列</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>栈是先进后出，队列是先进先出，两个栈，那么负负得正，就可以得到先进先出。<br>入栈就直接使用第一个栈，栈内关系有序，出栈时，若第二个栈为空，就将第一个栈转移到第二个栈，先进第一个栈后出第一个栈后进第二个栈，先出第一个栈，方向调过来了。若第二个栈不为空，那就输出第二个栈的顶端，顺序一样的。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;Integer&gt; stack1 = new Stack&lt;Integer&gt;();</span><br><span class="line">Stack&lt;Integer&gt; stack2 = new Stack&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">public void push(int node) &#123;</span><br><span class="line">  stack1.push(node);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int pop() &#123;</span><br><span class="line">  if (stack2.empty()) &#123;</span><br><span class="line">    while (!stack1.empty()) &#123;</span><br><span class="line">      int temp = stack1.pop();</span><br><span class="line">      stack2.push(temp);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  int temp = stack2.peek();</span><br><span class="line">  stack2.pop();</span><br><span class="line">  return temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;5-用两个栈实现队列&quot;&gt;&lt;a href=&quot;#5-用两个栈实现队列&quot; class=&quot;headerlink&quot; title=&quot;5.用两个栈实现队列&quot;&gt;&lt;/a&gt;5.用两个栈实现队列&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 4.重建二叉树</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%204.%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91.html"/>
+    <id>https://cheng102e.github.io/剑指offer 4.重建二叉树.html</id>
+    <published>2020-02-26T06:56:00.000Z</published>
+    <updated>2020-02-26T07:11:16.607Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="4-重建二叉树"><a href="#4-重建二叉树" class="headerlink" title="4.重建二叉树"></a>4.重建二叉树</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这就和二叉树的性质相关了，由前序和中序可以确定一棵树，前序的第一个就是树的根，然后中序找到这个根，在前面的就是左子树，在后面的就是右子树。然后就先不管别的，直接深挖，左子树的前序和中序都有那就能得到左子树的根节点，一层一层，如果长度为0就不存在，为null。<br>这里函数的输入是两个数组，递归的输入还是两个数组，所以截取数组计算，不然可以用索引值，效果一样。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public TreeNode reConstructBinaryTree(int[] pre, int[] in) &#123;</span><br><span class="line">  if (pre.length == 0 || in.length == 0) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  TreeNode root = new TreeNode(pre[0]);</span><br><span class="line">  for (int i = 0; i &lt; in.length; i++) &#123;</span><br><span class="line">    if (pre[0] == in[i]) &#123;</span><br><span class="line">      root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, 1, i + 1),</span><br><span class="line">          Arrays.copyOfRange(in, 0, i));</span><br><span class="line">      root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, i + 1, pre.length),</span><br><span class="line">          Arrays.copyOfRange(in, i + 1, in.length));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;4-重建二叉树&quot;&gt;&lt;a href=&quot;#4-重建二叉树&quot; class=&quot;headerlink&quot; title=&quot;4.重建二叉树&quot;&gt;&lt;/a&gt;4.重建二叉树&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构-图</title>
+    <link href="https://cheng102e.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE.html"/>
+    <id>https://cheng102e.github.io/数据结构-图.html</id>
+    <published>2020-02-26T03:42:00.000Z</published>
+    <updated>2020-02-26T03:47:47.562Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数据结构-图"><a href="#数据结构-图" class="headerlink" title="数据结构-图"></a>数据结构-图</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>图是一些顶点的集合，这些顶点通过一些边想连接，顶点用圈表示，边通过线表示，是一个多对多的数据结构。<br>可以拆分，就是点集V和边集E的集合。</p><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>边可以是有方向的，只能单向前进，也可能是双向的，可以来回运动，也有的边带有权重，模拟为长度什么的物理量。</p><h3 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h3><ol><li>邻接表<br>每一个顶点会存储一个从该节点开始的链表，比如说A可以到BC，那么就是A-&gt;B-&gt;C。</li><li>邻接矩阵<br>用一个矩阵来存储，假设A能到B且距离为5，那么m[0][1]=5.</li></ol><h3 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h3><ol><li>有向图：边是有方向的图</li><li>无向图：边没有方向，正反都可</li><li>简单图：不存在重复边，顶点不能直接到自身</li><li>完全图：任意两点都存在边(有向的话要有两条方向相反的边)</li><li>子图：点集和边集都是原图的子集，且构成图</li><li>顶点的度：以该顶点为一个端点的边的数目</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;数据结构-图&quot;&gt;&lt;a href=&quot;#数据结构-图&quot; class=&quot;headerlink&quot; title=&quot;数据结构-图&quot;&gt;&lt;/a&gt;数据结构-图&lt;/h2&gt;&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="数据结构" scheme="https://cheng102e.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构-树</title>
+    <link href="https://cheng102e.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91.html"/>
+    <id>https://cheng102e.github.io/数据结构-树.html</id>
+    <published>2020-02-26T02:42:00.000Z</published>
+    <updated>2020-02-26T03:14:42.313Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数据结构-树"><a href="#数据结构-树" class="headerlink" title="数据结构-树"></a>数据结构-树</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>树是一种非线性的数据结构，由n(n&gt;0)个有限节点组成，是一个有层次关系的集合，像一棵倒立着的树。</p><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol><li>每个节点都只有有限个子节点或无子节点</li><li>没有父节点的节点称为根节点</li><li>每一个非根节点有且只有一个父节点</li><li>除了根节点外，每个子节点可以分为多个不相交的子树</li><li>树里面没有环路(cycle)</li></ol><h3 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h3><ol><li>节点：每个元素都叫节点</li><li>根节点：树的顶端节点</li><li>父子节点：除了根节点以外每个节点都可以找到向上的唯一节点为父节点，下方就是子节点。</li><li>兄弟节点：拥有相同父节点的节点</li><li>叶节点：没有子树的节点</li><li>子树：每个子节点作为根节点所产生的树</li><li>节点的度：节点含有子节点的数量</li><li>树的度：最大的节点的度</li><li>森林：若干棵不相交的树组成的集合</li></ol><h3 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class tree&#123;</span><br><span class="line">    private int data;</span><br><span class="line">    private int parent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这里只是简单的写了一下，因为除根外必有一个父节点，所以这里就写了两部分，值域和指针域，一个存放节点的值，一个指向父节点，具体的操作等我复习到二叉树之类再细写。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;数据结构-树&quot;&gt;&lt;a href=&quot;#数据结构-树&quot; class=&quot;headerlink&quot; title=&quot;数据结构-树&quot;&gt;&lt;/a&gt;数据结构-树&lt;/h2&gt;&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="数据结构" scheme="https://cheng102e.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>数据结构-栈和队列</title>
@@ -104,378 +482,6 @@
     </summary>
     
       <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 1.二维数组中的查找</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%201.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE.html"/>
-    <id>https://cheng102e.github.io/剑指offer 1.二维数组中的查找.html</id>
-    <published>2020-02-24T10:42:00.000Z</published>
-    <updated>2020-02-24T10:49:38.689Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-二维数组中的查找"><a href="#1-二维数组中的查找" class="headerlink" title="1.二维数组中的查找"></a>1.二维数组中的查找</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>思路主要是，从左下或者右上两个角落开始比较，找到了自然就不用继续了，找不到的话一次可以排除一行或一列，这里我变量命名有些随意，但应该不影响阅读。</p><p>（新坑，剑指offer上面的题目的java解法，用博客记录，每个代码都是牛客网上面能通过的，希望能给大家带来些许帮助）</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public boolean Find(int target, int[][] array) &#123;</span><br><span class="line">  int x0 = 0, y0 = 0;</span><br><span class="line">  int x1 = array.length - 1, y1 = array[0].length - 1;</span><br><span class="line">  boolean ans = false;</span><br><span class="line">  while (x1 &gt;= x0 &amp;&amp; y1 &gt;= y0) &#123;</span><br><span class="line">    if (array[x0][y1] == target) &#123;</span><br><span class="line">      ans = true;</span><br><span class="line">      break;</span><br><span class="line">    &#125; else if (array[x0][y1] &lt; target) &#123;</span><br><span class="line">      x0++;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      y1--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;1-二维数组中的查找&quot;&gt;&lt;a href=&quot;#1-二维数组中的查找&quot; class=&quot;headerlink&quot; title=&quot;1.二维数组中的查找&quot;&gt;&lt;/a&gt;1.二维数组中的查找&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerli
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>HashMap和Hashtable的区别</title>
-    <link href="https://cheng102e.github.io/HashMap%E5%92%8CHashtable%E7%9A%84%E5%8C%BA%E5%88%AB.html"/>
-    <id>https://cheng102e.github.io/HashMap和Hashtable的区别.html</id>
-    <published>2020-02-22T12:00:00.000Z</published>
-    <updated>2020-02-22T12:20:52.259Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="HashMap和Hashtable的区别"><a href="#HashMap和Hashtable的区别" class="headerlink" title="HashMap和Hashtable的区别"></a>HashMap和Hashtable的区别</h2><p>HashMap和Hashtable这两个是集合框架中比较常见的问题，所以我做了些总结便于回顾。</p><h3 id="1-继承"><a href="#1-继承" class="headerlink" title="1.继承"></a>1.继承</h3><p>Hashtable 继承自 Dictiionary 而 HashMap继承自AbstractMap</p><h3 id="2-键值要求"><a href="#2-键值要求" class="headerlink" title="2.键值要求"></a>2.键值要求</h3><p>hashtable不允许空值与空键，但是hashmap允许一个空键和任意数量空值。</p><h3 id="3-contains方法"><a href="#3-contains方法" class="headerlink" title="3.contains方法"></a>3.contains方法</h3><p>hashmap去除了contains方法，改为了containsValue和containsKey，但是hashtable这三个方法都有。</p><h3 id="4-线程安全"><a href="#4-线程安全" class="headerlink" title="4.线程安全"></a>4.线程安全</h3><p>HashMap非线程安全，在只有一个线程访问的情况下，效率要高于HashTable。</p><h3 id="5-使用建议"><a href="#5-使用建议" class="headerlink" title="5.使用建议"></a>5.使用建议</h3><p>正常情况下建议使用hashmap，如果是多线程建议选择concurrentHashMap。<br>源码部分等到我更深入的学习的时候会添加。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;HashMap和Hashtable的区别&quot;&gt;&lt;a href=&quot;#HashMap和Hashtable的区别&quot; class=&quot;headerlink&quot; title=&quot;HashMap和Hashtable的区别&quot;&gt;&lt;/a&gt;HashMap和Hashtable的区别&lt;/h2&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://cheng102e.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>不知道来源的题目1</title>
-    <link href="https://cheng102e.github.io/%E4%B8%8D%E7%9F%A5%E9%81%93%E6%9D%A5%E6%BA%90%E7%9A%84%E9%A2%98%E7%9B%AE1.html"/>
-    <id>https://cheng102e.github.io/不知道来源的题目1.html</id>
-    <published>2020-02-22T12:00:00.000Z</published>
-    <updated>2020-02-22T11:57:08.022Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="不知道来源的题目1"><a href="#不知道来源的题目1" class="headerlink" title="不知道来源的题目1"></a>不知道来源的题目1</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有两个数组 A、B，长度都为 N，值为任意整数，无序，要求，通过交换 A、B 中的元素，使得 A 数组元素之和与 B 数组元素之和之间的差值最小。完成代码的同时，写出数组 [100,99,98,1,2, 3]和[1,2,3,4,5,40]交换后的结果。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>解法多种多样，但是我真没想出来什么特别合适的，采用了一种比较繁琐的方法。<br>首先计算两个数组的差值，之后尝试交换，只要能让差值减小，就交换，一直到没有这种可能性再结束，理论上这就是要的答案。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public static void change(int[] a, int[] b, int n, int before) &#123;</span><br><span class="line">  for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">    for (int j = 0; j &lt; n; j++) &#123;</span><br><span class="line">      int after = before - 2 * (a[i] - b[j]);</span><br><span class="line">      if (Math.abs(after) &lt; Math.abs(before)) &#123;</span><br><span class="line">        int temp = a[i];</span><br><span class="line">        a[i] = b[j];</span><br><span class="line">        b[j] = temp;</span><br><span class="line">        change(a, b, n, after);</span><br><span class="line">        return;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">  int[] a = new int[]&#123;100, 99, 98, 1, 2, 3&#125;;</span><br><span class="line">  int[] b = new int[]&#123;1, 2, 3, 4, 5, 40&#125;;</span><br><span class="line">  int suma = 0;</span><br><span class="line">  int sumb = 0;</span><br><span class="line">  int len = a.length;</span><br><span class="line">  for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    suma += a[i];</span><br><span class="line">    sumb += b[i];</span><br><span class="line">  &#125;</span><br><span class="line">  change(a, b, len, Math.abs(suma - sumb));</span><br><span class="line">  for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    System.out.print(a[i] + &quot; &quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  System.out.println();</span><br><span class="line">  for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    System.out.print(b[i] + &quot; &quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;不知道来源的题目1&quot;&gt;&lt;a href=&quot;#不知道来源的题目1&quot; class=&quot;headerlink&quot; title=&quot;不知道来源的题目1&quot;&gt;&lt;/a&gt;不知道来源的题目1&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; 
-      
-    
-    </summary>
-    
-      <category term="其他" scheme="https://cheng102e.github.io/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>非对称加密-RSA算法</title>
-    <link href="https://cheng102e.github.io/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-RSA%E7%AE%97%E6%B3%95.html"/>
-    <id>https://cheng102e.github.io/非对称加密-RSA算法.html</id>
-    <published>2020-02-22T10:00:00.000Z</published>
-    <updated>2020-02-22T10:03:12.245Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="非对称加密-RSA算法"><a href="#非对称加密-RSA算法" class="headerlink" title="非对称加密-RSA算法"></a>非对称加密-RSA算法</h2><h3 id="非对称"><a href="#非对称" class="headerlink" title="非对称"></a>非对称</h3><p>传统算法是对称加密，共用密钥，非对称加密就使用了两个秘钥，一个公钥加密，一个私钥解密。</p><h3 id="加密过程"><a href="#加密过程" class="headerlink" title="加密过程"></a>加密过程</h3><ol><li>随机选取两个质数 p，q</li><li>计算公共模数 n = p*q</li><li>欧拉函数 φ(n) = (p-1) * (q-1)</li><li>计算公钥 e &lt; φ(n),二者互质</li><li>计算私钥 d 使得 e * d % φ(n) = 1</li><li>公钥使用(e,n)私钥使用(d,n)</li><li>公钥加密 c = m^e mod n(m是原文内容，c是加密后的内容)</li><li>私钥解密 m = c^d mod n</li></ol><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>至于RSA算法为什么有效，这些比较专业的我不是太了解，我只了解了大概用法。<br>我这里只写了一个帮助理顺思路的模拟代码，真的要用的话建议使用官方的代码。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public static void rsa() &#123;</span><br><span class="line">  int p = 3;</span><br><span class="line">  int q = 11;</span><br><span class="line"></span><br><span class="line">  int n = p * q;</span><br><span class="line"></span><br><span class="line">  //假装q就是那个符号</span><br><span class="line">  int qn = (p - 1) * (q - 1);</span><br><span class="line"></span><br><span class="line">  //公钥私钥</span><br><span class="line">  int e = 3;</span><br><span class="line">  int d = 7;</span><br><span class="line"></span><br><span class="line">  //原文</span><br><span class="line">  int m = 9;</span><br><span class="line"></span><br><span class="line">  //加密后的</span><br><span class="line">  int c = (int) (Math.pow(m, e) % n);</span><br><span class="line">  System.out.println(c);</span><br><span class="line"></span><br><span class="line">  //解密后的</span><br><span class="line">  int m1 = (int) (Math.pow(c, d) % n);</span><br><span class="line">  System.out.println(m1);</span><br><span class="line">  </span><br><span class="line">  if (m == m1) &#123;</span><br><span class="line">    System.out.println(&quot;解密成功&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;非对称加密-RSA算法&quot;&gt;&lt;a href=&quot;#非对称加密-RSA算法&quot; class=&quot;headerlink&quot; title=&quot;非对称加密-RSA算法&quot;&gt;&lt;/a&gt;非对称加密-RSA算法&lt;/h2&gt;&lt;h3 id=&quot;非对称&quot;&gt;&lt;a href=&quot;#非对称&quot; class=&quot;he
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://cheng102e.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>递归迭代与斐波那契数列</title>
-    <link href="https://cheng102e.github.io/%E9%80%92%E5%BD%92%E8%BF%AD%E4%BB%A3%E4%B8%8E%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97.html"/>
-    <id>https://cheng102e.github.io/递归迭代与斐波那契数列.html</id>
-    <published>2020-02-22T09:00:00.000Z</published>
-    <updated>2020-02-22T09:03:35.048Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="递归迭代与斐波那契数列"><a href="#递归迭代与斐波那契数列" class="headerlink" title="递归迭代与斐波那契数列"></a>递归迭代与斐波那契数列</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>递归: 程序调用自身的编程技巧称为递归,是函数自己调用自己.</p><p>迭代: 利用变量的原值推算出变量的一个新值.</p><h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>如果递归是自己调用自己(A调用A)的话,迭代就是A不停的调用B.</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>这里用了斐波那契数列数列，第一项为0第二项为1，之后每一项都是前两项的和。<br>对于递归反复调用自己，这里其实可以拿一个数组存储答案的。<br>迭代的话一直都是三个变量，一直在循环运算。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static int fic_1(int n) &#123;</span><br><span class="line">  //递归</span><br><span class="line">  if (n == 1) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125; else if (n == 2) &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return fic_1(n - 1) + fic_1(n - 2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static int fic_2(int n) &#123;</span><br><span class="line">  //迭代</span><br><span class="line">  int a2 = 0;</span><br><span class="line">  if (n == 1) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125; else if (n == 2) &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    int a0 = 0, a1 = 1;</span><br><span class="line">    for (int i = 3; i &lt;= n; i++) &#123;</span><br><span class="line">      a2 = a0 + a1;</span><br><span class="line">      a0 = a1;</span><br><span class="line">      a1 = a2;</span><br><span class="line">    &#125;</span><br><span class="line">    return a2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;递归迭代与斐波那契数列&quot;&gt;&lt;a href=&quot;#递归迭代与斐波那契数列&quot; class=&quot;headerlink&quot; title=&quot;递归迭代与斐波那契数列&quot;&gt;&lt;/a&gt;递归迭代与斐波那契数列&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;head
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://cheng102e.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java大数加法乘法</title>
-    <link href="https://cheng102e.github.io/java%E5%A4%A7%E6%95%B0%E5%8A%A0%E6%B3%95%E4%B9%98%E6%B3%95.html"/>
-    <id>https://cheng102e.github.io/java大数加法乘法.html</id>
-    <published>2020-02-22T08:00:00.000Z</published>
-    <updated>2020-02-22T08:06:01.049Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="java大数加法乘法"><a href="#java大数加法乘法" class="headerlink" title="java大数加法乘法"></a>java大数加法乘法</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>正常情况下我们调用加法乘法使用符号就行了，但是如果超出限制了，那就只能调用BigDecimal里面的函数了，但是有的时候oj考察的就是希望自己实现，所以就可以采用别的方法。</p><h3 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h3><p>加法比较简单，直接字符串转置，差的位补0，然后一位一位加，最后注意进位。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public static String add(String s1, String s2) &#123;</span><br><span class="line">  StringBuilder a = new StringBuilder(s1);</span><br><span class="line">  StringBuilder b = new StringBuilder(s2);</span><br><span class="line">  a.reverse();</span><br><span class="line">  b.reverse();</span><br><span class="line"></span><br><span class="line">  int m = a.length();</span><br><span class="line">  int n = b.length();</span><br><span class="line">  int max = Math.max(m, n);</span><br><span class="line">  if (m &lt; n) &#123;</span><br><span class="line">    for (int i = m; i &lt; n; i++) &#123;</span><br><span class="line">      a.append(&apos;0&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    for (int i = n; i &lt; m; i++) &#123;</span><br><span class="line">      b.append(&apos;0&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  int[] ans = new int[max + 1];</span><br><span class="line"></span><br><span class="line">  for (int i = 0; i &lt; max; i++) &#123;</span><br><span class="line">    ans[i] = (a.charAt(i) - &apos;0&apos;) + (b.charAt(i) - &apos;0&apos;);</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = 0; i &lt; max; i++) &#123;</span><br><span class="line">    ans[i + 1] += ans[i] / 10;</span><br><span class="line">    ans[i] %= 10;</span><br><span class="line">  &#125;</span><br><span class="line">  StringBuilder result = new StringBuilder();</span><br><span class="line">  for (int i = 0; i &lt; max; i++) &#123;</span><br><span class="line">    result.append(ans[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  if(ans[max]!=0)</span><br><span class="line">  &#123;</span><br><span class="line">    result.append(ans[max]);</span><br><span class="line">  &#125;</span><br><span class="line">  return result.reverse().toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h3><p>以12*12为例子，第1位的两个2相乘，结果应该放在第1位，是4，然后第一个数的1和第二个数的2相乘是2，应该是第二位，2+2，然后两个1相乘，1应该放在第3位，结果是144，这个没有进位，如果有进位需要遍历一下。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public static String mul(String s1, String s2) &#123;</span><br><span class="line">    StringBuilder a = new StringBuilder(s1);</span><br><span class="line">    StringBuilder b = new StringBuilder(s2);</span><br><span class="line">    a.reverse();</span><br><span class="line">    b.reverse();</span><br><span class="line"></span><br><span class="line">    int m = a.length();</span><br><span class="line">    int n = b.length();</span><br><span class="line"></span><br><span class="line">    int[] ans = new int[m + n];</span><br><span class="line">    for (int i = 0; i &lt; m; i++) &#123;</span><br><span class="line">      for (int j = 0; j &lt; n; j++) &#123;</span><br><span class="line">        ans[i + j] += (a.charAt(i) - &apos;0&apos;) * (b.charAt(j) - &apos;0&apos;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; ans.length - 1; i++) &#123;</span><br><span class="line">      ans[i + 1] += ans[i] / 10;</span><br><span class="line">      ans[i] %= 10;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    StringBuilder result = new StringBuilder();</span><br><span class="line">    for (int i = 0; i &lt; ans.length - 1; i++) &#123;</span><br><span class="line">      result.append(ans[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return result.reverse().toString();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;java大数加法乘法&quot;&gt;&lt;a href=&quot;#java大数加法乘法&quot; class=&quot;headerlink&quot; title=&quot;java大数加法乘法&quot;&gt;&lt;/a&gt;java大数加法乘法&lt;/h2&gt;&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerli
-      
-    
-    </summary>
-    
-      <category term="java" scheme="https://cheng102e.github.io/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java进制转换</title>
-    <link href="https://cheng102e.github.io/java%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2.html"/>
-    <id>https://cheng102e.github.io/java进制转换.html</id>
-    <published>2020-02-22T04:00:00.000Z</published>
-    <updated>2020-02-22T05:20:17.214Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="java进制转换"><a href="#java进制转换" class="headerlink" title="java进制转换"></a>java进制转换</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我们正常使用的是十进制，计算机使用的是二进制，初次之外还有很多不同的进制，但是转换方法都相似，这里就整理一下java的进制转换。</p><h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><p>  十进制转十六进制<br>  Integer.toHexString(int i)</p><p>  十进制转八进制<br>  Integer.toOctalString(int i)</p><p>  十进制转二进制<br>  Integer.toBinaryString(int i)</p><p>  十六进制转十进制(二进制八进制类似)<br>  Integer.valueOf(“FFFF”,16).toString()</p><h3 id="写的代码"><a href="#写的代码" class="headerlink" title="写的代码"></a>写的代码</h3><p>这里还写了一段java代码，可以用于进行16进制之内的转换，如果想要增加，只要修改radix数组即可。<br>两个函数，一个是其他进制转十进制的，一个是十进制转任意进制的。用的都是基础算法，按位乘和取余。<br>(话说我没有考虑过输入异常，比如0进制什么的)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">static char[] radix = new char[]&#123;&apos;0&apos;,&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos;, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;,</span><br><span class="line">    &apos;e&apos;, &apos;f&apos;&#125;;</span><br><span class="line"></span><br><span class="line">static int transRadixtoTen(String num, int fromRadix) &#123;</span><br><span class="line">  StringBuilder s = new StringBuilder(num);</span><br><span class="line">  int number = 0;</span><br><span class="line">  for (int i = 0; i &lt; s.length(); i++) &#123;</span><br><span class="line">    char temp = s.charAt(i);</span><br><span class="line">    if (temp &lt;= &apos;9&apos; &amp;&amp; temp &gt;= &apos;0&apos;) &#123;</span><br><span class="line">      number += temp - &apos;0&apos;;</span><br><span class="line"></span><br><span class="line">    &#125; else if (temp &lt;= &apos;z&apos; &amp;&amp; temp &gt;= &apos;a&apos;) &#123;</span><br><span class="line">      number += temp - &apos;a&apos; + 10;</span><br><span class="line"></span><br><span class="line">    &#125; else if (temp &lt;= &apos;Z&apos; &amp;&amp; temp &gt;= &apos;A&apos;) &#123;</span><br><span class="line">      number += temp - &apos;A&apos; + 10;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    if (i != s.length() - 1) &#123;</span><br><span class="line">      number *= fromRadix;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static String transRadixtoOther(String num, int fromRadix, int toRadix) &#123;</span><br><span class="line">  int number = transRadixtoTen(num, fromRadix);</span><br><span class="line">  System.out.println(number);</span><br><span class="line">  StringBuilder s = new StringBuilder();</span><br><span class="line">  while (number != 0) &#123;</span><br><span class="line">    s.append(radix[number % toRadix]);</span><br><span class="line">    number = number / toRadix;</span><br><span class="line">  &#125;</span><br><span class="line">  return s.reverse().toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;java进制转换&quot;&gt;&lt;a href=&quot;#java进制转换&quot; class=&quot;headerlink&quot; title=&quot;java进制转换&quot;&gt;&lt;/a&gt;java进制转换&lt;/h2&gt;&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; titl
-      
-    
-    </summary>
-    
-      <category term="java" scheme="https://cheng102e.github.io/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 209. Minimum Size Subarray Sum</title>
-    <link href="https://cheng102e.github.io/LeetCode%20209.%20Minimum%20Size%20Subarray%20Sum.html"/>
-    <id>https://cheng102e.github.io/LeetCode 209. Minimum Size Subarray Sum.html</id>
-    <published>2020-02-17T12:30:00.000Z</published>
-    <updated>2020-02-17T12:55:06.074Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="209-Minimum-Size-Subarray-Sum（无重复字符的最长子串）"><a href="#209-Minimum-Size-Subarray-Sum（无重复字符的最长子串）" class="headerlink" title="209. Minimum Size Subarray Sum（无重复字符的最长子串）"></a>209. Minimum Size Subarray Sum（无重复字符的最长子串）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/minimum-size-subarray-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/minimum-size-subarray-sum</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的连续子数组。如果不存在符合条件的连续子数组，返回 0。</p><p>示例: </p><p>  输入: s = 7, nums = [2,3,1,2,4,3]<br>  输出: 2<br>  解释: 子数组 [4,3] 是该条件下的长度最小的连续子数组。<br>进阶:</p><p>如果你已经完成了O(n) 时间复杂度的解法, 请尝试 O(n log n) 时间复杂度的解法。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>滑动窗口的题目，不过这里是数字，相对简单一点。<br>这里设置了两个指针，left就代表左侧，right代表右侧，如果和大于s，就更新min并且减去最左侧；如果小于s，就增加最右侧，最后输出min。这里有一个坑，就是有可能不存在，所以最后要对于min进行一个判断。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int minSubArrayLen(int s, int[] nums) &#123;</span><br><span class="line">  int len = nums.length;</span><br><span class="line">  int sum = 0;</span><br><span class="line">  int min = Integer.MAX_VALUE;</span><br><span class="line">  int left = 0;</span><br><span class="line">  for (int right = 0; right &lt; len; right++) &#123;</span><br><span class="line">    sum += nums[right];</span><br><span class="line">    while (sum &gt;= s) &#123;</span><br><span class="line">      min = Math.min(min, right - left + 1);</span><br><span class="line">      sum -= nums[left];</span><br><span class="line">      left++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if(min== Integer.MAX_VALUE)&#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;209-Minimum-Size-Subarray-Sum（无重复字符的最长子串）&quot;&gt;&lt;a href=&quot;#209-Minimum-Size-Subarray-Sum（无重复字符的最长子串）&quot; class=&quot;headerlink&quot; title=&quot;209. Minim
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="滑动窗口" scheme="https://cheng102e.github.io/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 3. Longest Substring Without Repeating Characters</title>
-    <link href="https://cheng102e.github.io/LeetCode%203.%20Longest%20Substring%20Without%20Repeating%20Characters.html"/>
-    <id>https://cheng102e.github.io/LeetCode 3. Longest Substring Without Repeating Characters.html</id>
-    <published>2020-02-17T12:20:00.000Z</published>
-    <updated>2020-02-17T12:55:07.980Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="3-Longest-Substring-Without-Repeating-Characters（无重复字符的最长子串）"><a href="#3-Longest-Substring-Without-Repeating-Characters（无重复字符的最长子串）" class="headerlink" title="3. Longest Substring Without Repeating Characters（无重复字符的最长子串）"></a>3. Longest Substring Without Repeating Characters（无重复字符的最长子串）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-substring-without-repeating-characters</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p><p>示例 1:</p><p>  输入: “abcabcbb”<br>  输出: 3<br>  解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。<br>示例 2:</p><p>  输入: “bbbbb”<br>  输出: 1<br>  解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。<br>示例 3:</p><p>  输入: “pwwkew”<br>  输出: 3<br>  解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>滑动窗口的题目，做出来不是很难，但是要优化就很麻烦。<br>这里设置了两个指针，同时借助了hashmap来去重。循环比较每一个字符，如果字符不存在就加入，如果存在了，就看在left左还是右，左侧无需在意，右侧更新，最后输出max即可。<br>（这里没有和left比较，而是直接取了较大值，left就代表当前字符串左侧，right代表当前字符串右侧）</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static int lengthOfLongestSubstring(String s) &#123;</span><br><span class="line">  int len = s.length();</span><br><span class="line">  if (len == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  HashMap&lt;Character, Integer&gt; map = new HashMap&lt;Character, Integer&gt;();</span><br><span class="line">  int max = 0;</span><br><span class="line">  int left = 0;</span><br><span class="line">  for (int right = 0; right &lt; len; right++) &#123;</span><br><span class="line">    if (map.containsKey(s.charAt(right))) &#123;</span><br><span class="line">      left = Math.max(left, map.get(s.charAt(right)) + 1);</span><br><span class="line">    &#125;</span><br><span class="line">    map.put(s.charAt(right), right);</span><br><span class="line">    max = Math.max(max, right - left + 1);</span><br><span class="line">  &#125;</span><br><span class="line">  return max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;3-Longest-Substring-Without-Repeating-Characters（无重复字符的最长子串）&quot;&gt;&lt;a href=&quot;#3-Longest-Substring-Without-Repeating-Characters（无重复字符的最长子串）
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="滑动窗口" scheme="https://cheng102e.github.io/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 11. Container With Most Water</title>
-    <link href="https://cheng102e.github.io/LeetCode%2011.%20Container%20With%20Most%20Water.html"/>
-    <id>https://cheng102e.github.io/LeetCode 11. Container With Most Water.html</id>
-    <published>2020-02-16T06:50:00.000Z</published>
-    <updated>2020-02-17T12:55:08.908Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="11-Container-With-Most-Water（反转字符串中的元音字母）"><a href="#11-Container-With-Most-Water（反转字符串中的元音字母）" class="headerlink" title="11. Container With Most Water（反转字符串中的元音字母）"></a>11. Container With Most Water（反转字符串中的元音字母）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/container-with-most-water" target="_blank" rel="noopener">https://leetcode-cn.com/problems/container-with-most-water</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p><p>说明：你不能倾斜容器，且 n 的值至少为 2。<br><img src="https://img2018.cnblogs.com/blog/1493464/202002/1493464-20200216143541248-1914702232.png" alt><br>图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。</p><p>示例:</p><p>  输入: [1,8,6,2,5,4,8,3,7]<br>  输出: 49</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题思路也很清晰，就是要求最大值，方法不少，首先就是最简单的穷举，把所有可能值都算出来，也可以采用动态规划的思想，找到最合适的方法。<br>面积取决于两个值，左右距离，和两边的较小值，当两边距离不等的时候，将较小值更换可能获得更大的面积，思路就是这样，一直选择较小的往内移动，直到两边相遇。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int maxArea(int[] height) &#123;</span><br><span class="line">  int left = 0, right = height.length - 1;</span><br><span class="line">  int max = 0;</span><br><span class="line">  while (left &lt; right) &#123;</span><br><span class="line">    max = Math.max(max, (right - left) * Math.min(height[left], height[right]));</span><br><span class="line">    if (height[left] &lt; height[right]) &#123;</span><br><span class="line">      left++;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      right--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;11-Container-With-Most-Water（反转字符串中的元音字母）&quot;&gt;&lt;a href=&quot;#11-Container-With-Most-Water（反转字符串中的元音字母）&quot; class=&quot;headerlink&quot; title=&quot;11. Contai
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 345. Reverse Vowels of a String</title>
-    <link href="https://cheng102e.github.io/LeetCode%20345.%20Reverse%20Vowels%20of%20a%20String.html"/>
-    <id>https://cheng102e.github.io/LeetCode 345. Reverse Vowels of a String.html</id>
-    <published>2020-02-16T05:50:00.000Z</published>
-    <updated>2020-02-16T06:00:42.256Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="345-Reverse-Vowels-of-a-String（反转字符串中的元音字母）"><a href="#345-Reverse-Vowels-of-a-String（反转字符串中的元音字母）" class="headerlink" title="345. Reverse Vowels of a String（反转字符串中的元音字母）"></a>345. Reverse Vowels of a String（反转字符串中的元音字母）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/reverse-vowels-of-a-string" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-vowels-of-a-string</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p><p>示例 1:</p><p>  输入: “hello”<br>  输出: “holle”<br>示例 2:</p><p>  输入: “leetcode”<br>  输出: “leotcede”<br>说明:<br>元音字母不包含字母”y”。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>也是双指针，不过要注意大小写都可以，所以额外增加了一个判断函数判断是否需要反转，别的和344题基本相同。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public static boolean find(char c) &#123;</span><br><span class="line">  return !(c == &apos;a&apos; || c == &apos;o&apos; || c == &apos;e&apos; || c == &apos;i&apos; || c == &apos;u&apos; || c == &apos;A&apos; || c == &apos;O&apos;</span><br><span class="line">      || c == &apos;E&apos; || c == &apos;I&apos; || c == &apos;U&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static String reverseVowels(String s) &#123;</span><br><span class="line">  char[] arr = s.toCharArray();</span><br><span class="line">  int left = 0, right = arr.length - 1;</span><br><span class="line">  while (left &lt; right) &#123;</span><br><span class="line">    while (left &lt; arr.length &amp;&amp; find(arr[left])) &#123;</span><br><span class="line">      left++;</span><br><span class="line">    &#125;</span><br><span class="line">    while (right &gt;= 0 &amp;&amp; find(arr[right])) &#123;</span><br><span class="line">      right--;</span><br><span class="line">    &#125;</span><br><span class="line">    if (left &gt;= right) &#123;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">    char temp = arr[right];</span><br><span class="line">    arr[right--] = arr[left];</span><br><span class="line">    arr[left++] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  String result = new String(arr);</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;345-Reverse-Vowels-of-a-String（反转字符串中的元音字母）&quot;&gt;&lt;a href=&quot;#345-Reverse-Vowels-of-a-String（反转字符串中的元音字母）&quot; class=&quot;headerlink&quot; title=&quot;345. R
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 344. Reverse String</title>
-    <link href="https://cheng102e.github.io/LeetCode%20344.%20Reverse%20String.html"/>
-    <id>https://cheng102e.github.io/LeetCode 344. Reverse String.html</id>
-    <published>2020-02-16T04:50:00.000Z</published>
-    <updated>2020-02-16T05:11:03.783Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="344-Reverse-String（反转字符串）"><a href="#344-Reverse-String（反转字符串）" class="headerlink" title="344. Reverse String（反转字符串）"></a>344. Reverse String（反转字符串）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/reverse-string" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-string</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。</p><p>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</p><p>你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。</p><p>示例 1：</p><p>  输入：[“h”,”e”,”l”,”l”,”o”]<br>  输出：[“o”,”l”,”l”,”e”,”h”]<br>示例 2：</p><p>  输入：[“H”,”a”,”n”,”n”,”a”,”h”]<br>  输出：[“h”,”a”,”n”,”n”,”a”,”H”]</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>就硬转呗，双指针，一头一尾直接转换位置，当指针相遇就结束。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void reverseString(char[] s) &#123;</span><br><span class="line">    int left = 0, right = s.length - 1;</span><br><span class="line">    while (left &lt; right) &#123;</span><br><span class="line">      char temp = s[left];</span><br><span class="line">      s[left] = s[right];</span><br><span class="line">      s[right] = temp;</span><br><span class="line">      left++;</span><br><span class="line">      right--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;344-Reverse-String（反转字符串）&quot;&gt;&lt;a href=&quot;#344-Reverse-String（反转字符串）&quot; class=&quot;headerlink&quot; title=&quot;344. Reverse String（反转字符串）&quot;&gt;&lt;/a&gt;344. Rever
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 215. Kth Largest Element in an Array</title>
-    <link href="https://cheng102e.github.io/LeetCode%20215.%20Kth%20Largest%20Element%20in%20an%20Array.html"/>
-    <id>https://cheng102e.github.io/LeetCode 215. Kth Largest Element in an Array.html</id>
-    <published>2020-02-16T04:50:00.000Z</published>
-    <updated>2020-02-16T05:09:01.784Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="215-Kth-Largest-Element-in-an-Array（数组中的第K个最大元素）"><a href="#215-Kth-Largest-Element-in-an-Array（数组中的第K个最大元素）" class="headerlink" title="215. Kth Largest Element in an Array（数组中的第K个最大元素）"></a>215. Kth Largest Element in an Array（数组中的第K个最大元素）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/kth-largest-element-in-an-array</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。</p><p>示例 1:</p><p>  输入: [3,2,1,5,6,4] 和 k = 2<br>  输出: 5<br>示例 2:</p><p>  输入: [3,2,3,1,2,4,5,5,6] 和 k = 4<br>  输出: 4<br>说明:</p><p>  你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一道数组题目，解法多种。<br>最简单的就是直接排序，然后找到那个数，直接完成，就是效率相对较低。<br>这里用的是优先队列建堆，最小堆，小的数字在堆顶，然后一个一个往里面加数字，每当堆的规模大于k，就去除最小的数字（堆顶），数字处理完之后的堆顶就是所需数字。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static int findKthLargest(int[] nums, int k) &#123;</span><br><span class="line">  PriorityQueue&lt;Integer&gt; heap =</span><br><span class="line">      new PriorityQueue&lt;Integer&gt;((n1, n2) -&gt; n1 - n2);</span><br><span class="line">  for (int n : nums) &#123;</span><br><span class="line">    heap.add(n);</span><br><span class="line">    if (heap.size() &gt; k) &#123;</span><br><span class="line">      heap.poll();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return heap.poll();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;215-Kth-Largest-Element-in-an-Array（数组中的第K个最大元素）&quot;&gt;&lt;a href=&quot;#215-Kth-Largest-Element-in-an-Array（数组中的第K个最大元素）&quot; class=&quot;headerlink&quot; tit
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 88. Merge Sorted Array</title>
-    <link href="https://cheng102e.github.io/LeetCode%2088.%20Merge%20Sorted%20Array.html"/>
-    <id>https://cheng102e.github.io/LeetCode 88. Merge Sorted Array.html</id>
-    <published>2020-02-14T14:50:00.000Z</published>
-    <updated>2020-02-16T05:08:50.632Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="88-Merge-Sorted-Array（合并两个有序数组）"><a href="#88-Merge-Sorted-Array（合并两个有序数组）" class="headerlink" title="88. Merge Sorted Array（合并两个有序数组）"></a>88. Merge Sorted Array（合并两个有序数组）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/merge-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-sorted-array</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。</p><p>说明:</p><p>初始化 nums1 和 nums2 的元素数量分别为 m 和 n。<br>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。<br>示例:</p><p>  输入:<br>  nums1 = [1,2,3,0,0,0], m = 3<br>  nums2 = [2,5,6],       n = 3</p><p>  输出: [1,2,2,3,5,6]</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一道数组题目，解法多种。<br>可以直接合并再排序，也可以两个数组开头慢慢遍历，倒是官方给了一种很cool的题解，直接从数组后方开始。<br>三指针，两个指针指向两个数组最后的数字，一个指针指向数组1的末尾，比较之后将数字放到数组1的末尾，不需要额外空间，最后将数组2未使用的数字（如果存在的话）放到数组1的前面即可。<br>（这题我去年好像做过，还没做出来233333）</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public static void merge(int[] nums1, int m, int[] nums2, int n) &#123;</span><br><span class="line">  int index = m + n - 1;</span><br><span class="line">  int m1 = m - 1;</span><br><span class="line">  int n1 = n - 1;</span><br><span class="line">  while (m1 &gt;= 0 &amp;&amp; n1 &gt;= 0) &#123;</span><br><span class="line">    if (nums1[m1] &lt; nums2[n1]) &#123;</span><br><span class="line">      nums1[index] = nums2[n1];</span><br><span class="line">      n1--;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      nums1[index] = nums1[m1];</span><br><span class="line">      m1--;</span><br><span class="line">    &#125;</span><br><span class="line">    index--;</span><br><span class="line">  &#125;</span><br><span class="line">  while (n1 &gt;= 0) &#123;</span><br><span class="line">    nums1[index] = nums2[n1];</span><br><span class="line">    n1--;</span><br><span class="line">    index--;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;88-Merge-Sorted-Array（合并两个有序数组）&quot;&gt;&lt;a href=&quot;#88-Merge-Sorted-Array（合并两个有序数组）&quot; class=&quot;headerlink&quot; title=&quot;88. Merge Sorted Array（合并两个有序数
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 75. Sort Colors</title>
-    <link href="https://cheng102e.github.io/LeetCode%2075.%20Sort%20Colors.html"/>
-    <id>https://cheng102e.github.io/LeetCode 75. Sort Colors.html</id>
-    <published>2020-02-14T12:50:00.000Z</published>
-    <updated>2020-02-14T12:48:27.587Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="75-Sort-Colors（颜色分类）"><a href="#75-Sort-Colors（颜色分类）" class="headerlink" title="75. Sort Colors（颜色分类）"></a>75. Sort Colors（颜色分类）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/sort-colors" target="_blank" rel="noopener">https://leetcode-cn.com/problems/sort-colors</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p><p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p><p>注意:<br>不能使用代码库中的排序函数来解决这道题。</p><p>示例:</p><p>  输入: [2,0,2,1,1,0]<br>  输出: [0,0,1,1,2,2]<br>进阶：</p><p>  一个直观的解决方案是使用计数排序的两趟扫描算法。<br>  首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。<br>  你能想出一个仅使用常数空间的一趟扫描算法吗？</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一道数组题目，解法多种。<br>说不让用代码库中的排序函数，那自己写一个应该不算违规吧23333.<br>只有三种数字，012，那么可以遍历统计每个数字的数量，之后直接更改。<br>也可以用三指针法，index012，一共三个变量，index0和1初始值是0，index2初始值是nums.length-1.遍历使用index1，发现那个数字为0，就和index0的数交换，为2就和index2的数交换，这里要注意，index2换过来的数还需要再判断一下。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  public static void swap(int[] nums, int i, int j) &#123;</span><br><span class="line">  int temp = nums[i];</span><br><span class="line">  nums[i] = nums[j];</span><br><span class="line">  nums[j] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void sortColors(int[] nums) &#123;</span><br><span class="line">  int index0 = 0, index1 = 0, index2 = nums.length - 1;</span><br><span class="line">  while (index1 &lt;= index2) &#123;</span><br><span class="line">    if (nums[index1] == 0) &#123;</span><br><span class="line">      swap(nums, index1, index0);</span><br><span class="line">      index0++;</span><br><span class="line">      index1++;</span><br><span class="line">    &#125; else if (nums[index1] == 2) &#123;</span><br><span class="line">      swap(nums, index1, index2);</span><br><span class="line">      index2--;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      index1++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;75-Sort-Colors（颜色分类）&quot;&gt;&lt;a href=&quot;#75-Sort-Colors（颜色分类）&quot; class=&quot;headerlink&quot; title=&quot;75. Sort Colors（颜色分类）&quot;&gt;&lt;/a&gt;75. Sort Colors（颜色分类）&lt;/h2
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 581. Shortest Unsorted Continuous Subarray</title>
-    <link href="https://cheng102e.github.io/LeetCode%20581.%20Shortest%20Unsorted%20Continuous%20Subarray.html"/>
-    <id>https://cheng102e.github.io/LeetCode 581. Shortest Unsorted Continuous Subarray.html</id>
-    <published>2020-02-12T03:13:00.000Z</published>
-    <updated>2020-02-12T03:20:18.132Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="581-Shortest-Unsorted-Continuous-Subarray（最短无序连续子数组）"><a href="#581-Shortest-Unsorted-Continuous-Subarray（最短无序连续子数组）" class="headerlink" title="581. Shortest Unsorted Continuous Subarray（最短无序连续子数组）"></a>581. Shortest Unsorted Continuous Subarray（最短无序连续子数组）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray" target="_blank" rel="noopener">https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。</p><p>你找到的子数组应是最短的，请输出它的长度。</p><p>示例 1:</p><p>  输入: [2, 6, 4, 8, 10, 9, 15]<br>  输出: 5<br>  解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。<br>说明 :</p><p>输入的数组长度范围在 [1, 10,000]。<br>输入的数组可能包含重复元素 ，所以升序的意思是&lt;=。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题方法多种，可以排序之后对比，也可以用别的方法。<br>首先遍历，由前往后由后往前，分别确定两个边界。前向后时寻找右边界，每个数字判断是否小于前方最大值，若小于，就代表这个数需要排序，若大于，就代表这个数可以放在当前位置，若最后全为升序排列那就不用排序，后向前同理。<br>以输入示范，首先max为2，之后往后遍历，6&gt;2,max=6,4&lt;6,需要排序，一直往后，right=5，15大于前方所有数字，无需排序。反向遍历，2小于后方所有数，left=1，5-1+1=5.</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public int findUnsortedSubarray(int[] nums) &#123;</span><br><span class="line">  int len = nums.length;</span><br><span class="line">  int max = nums[0];</span><br><span class="line">  int min = nums[len - 1];</span><br><span class="line">  int left = 0, right = -1;</span><br><span class="line">  for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    if (max &gt; nums[i]) &#123;</span><br><span class="line">      right = i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      max = nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = len - 1; i &gt; -1; i--) &#123;</span><br><span class="line">    if (min &lt; nums[i]) &#123;</span><br><span class="line">      left = i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      min = nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return right - left + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;581-Shortest-Unsorted-Continuous-Subarray（最短无序连续子数组）&quot;&gt;&lt;a href=&quot;#581-Shortest-Unsorted-Continuous-Subarray（最短无序连续子数组）&quot; class=&quot;headerl
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
     
     
   </entry>
