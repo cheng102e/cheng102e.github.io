@@ -1,6 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[剑指offer 29.最小的K个数]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2029.%E6%9C%80%E5%B0%8F%E7%9A%84K%E4%B8%AA%E6%95%B0.html</url>
+    <content type="text"><![CDATA[剑指offer 29.最小的K个数题目输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。 思路几种方法，我一开始想到的是直接快排函数，然后输出k个就行，之后改用优先队列建堆，大小控制为k，大于这个数量就删除堆顶(最大值),最后只剩k个，输出到ans当中即可。 代码123456789101112131415161718192021222324public ArrayList&lt;Integer&gt; GetLeastNumbers_Solution(int[] input, int k) &#123; ArrayList&lt;Integer&gt; ans = new ArrayList&lt;&gt;(); if (input == null || k &lt;= 0 || k &gt; input.length) &#123; return ans; &#125; Queue&lt;Integer&gt; queue = new PriorityQueue&lt;&gt;((o1, o2) -&gt; o2 - o1); for (int i = 0; i &lt; input.length; i++) &#123; if (queue.size() &lt; k) &#123; queue.add(input[i]); &#125; else &#123; if (input[i] &lt; queue.peek()) &#123; queue.remove(); queue.add(input[i]); &#125; &#125; &#125; while (!queue.isEmpty()) &#123; ans.add(queue.remove()); &#125; return ans;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 28.数组中出现次数超过一半的数字]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2028.%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97.html</url>
+    <content type="text"><![CDATA[剑指offer 28.数组中出现次数超过一半的数字题目数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。 思路这有多种方法，我最后选择了图，思路清晰。首先把数组放进一个hashmap当中，value值做出现次数。然后拿迭代器一对一对取出来，若数量大于总长度一半就输出值，不然就下一个。 代码1234567891011121314151617181920212223public int MoreThanHalfNum_Solution(int[] array) &#123; if (array == null || array.length == 0) &#123; return 0; &#125; Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; array.length; i++) &#123; if (map.containsKey(array[i])) &#123; int count = map.get(array[i]); map.put(array[i], ++count); &#125; else &#123; map.put(array[i], 1); &#125; &#125; Iterator iter = map.entrySet().iterator(); while (iter.hasNext()) &#123; Map.Entry&lt;Integer, Integer&gt; entry = (Entry&lt;Integer, Integer&gt;) iter.next(); if (entry.getValue() &gt; array.length / 2) &#123; return entry.getKey(); &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 27.字符串的排列]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2027.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97.html</url>
+    <content type="text"><![CDATA[剑指offer 27.字符串的排列题目题目描述 输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。输入描述: 输入一个字符串,长度不超过9(可能有字符重复),字符只包括大小写字母。 思路回溯法加上递归思路，找到所有可能的排列情况，全部加入到最后的结果集合中，这里要记得去重，最后输出。 代码12345678910111213141516171819202122232425262728293031323334 public ArrayList&lt;String&gt; Permutation(String str) &#123; ArrayList&lt;String&gt; resultList = new ArrayList&lt;&gt;(); if (str.length() == 0) &#123; return resultList; &#125; fun(str.toCharArray(), resultList, 0); Collections.sort(resultList); return resultList;&#125;public void fun(char[] ch, List&lt;String&gt; list, int i) &#123; if (i == ch.length - 1) &#123; if (!list.contains(new String(ch))) &#123; list.add(new String(ch)); return; &#125; &#125; else &#123; for (int j = i; j &lt; ch.length; j++) &#123; swap(ch, i, j); fun(ch, list, i + 1); swap(ch, i, j); &#125; &#125;&#125;public void swap(char[] str, int i, int j) &#123; if (i != j) &#123; char t = str[i]; str[i] = str[j]; str[j] = t; &#125;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 26.二叉搜索树与双向链表]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2026.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8.html</url>
+    <content type="text"><![CDATA[26.二叉搜索树与双向链表题目输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。 思路二叉树还是要递归方法，对于每个节点，若为空直接返回，不然就递归到子节点。这里和正常的不一样，先寻找右节点，然后在找左节点，可以省下来一个存储位。 代码12345678910111213141516171819202122232425262728 public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;TreeNode ans = null;public TreeNode Convert(TreeNode pRootOfTree) &#123; if (pRootOfTree == null) &#123; return pRootOfTree; &#125; Convert(pRootOfTree.right); if (ans == null) &#123; ans = pRootOfTree; &#125; else &#123; ans.left = pRootOfTree; pRootOfTree.right = ans; ans = pRootOfTree; &#125; Convert(pRootOfTree.left); return ans;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 25.复杂链表的复制]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2025.%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6.html</url>
+    <content type="text"><![CDATA[25.复杂链表的复制题目输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针指向任意一个节点），返回结果为复制后复杂链表的head。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空） 思路好繁琐一道题，用了三次遍历，赋值的时候用了三目运算符缩短代码。 在每个节点后增加一个新节点，只有节点本身。 给每个新增节点增加random。 分开两个链表。 代码1234567891011121314151617181920212223242526272829303132333435363738 public class RandomListNode &#123; int label; RandomListNode next = null; RandomListNode random = null; RandomListNode(int label) &#123; this.label = label; &#125;&#125;public RandomListNode Clone(RandomListNode pHead) &#123; if (pHead == null) &#123; return null; &#125; RandomListNode cur = pHead; while (cur != null) &#123; RandomListNode nextnode = cur.next; RandomListNode clone = new RandomListNode(cur.label); cur.next = clone; clone.next = nextnode; cur = nextnode; &#125; cur = pHead; while (cur != null) &#123; cur.next.random = cur.random == null ? null : cur.random.next; cur = cur.next.next; &#125; cur = pHead; RandomListNode newHead = pHead.next; while (cur != null) &#123; RandomListNode clone = cur.next; cur.next = clone.next; cur = cur.next; clone.next = clone.next == null ? null : clone.next.next; &#125; return newHead;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 23.二叉搜索树的后序遍历序列]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2023.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97.html</url>
+    <content type="text"><![CDATA[23.二叉搜索树的后序遍历序列题目输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。 思路二叉搜索树性质就是左子树小于根节点小于右节点，以最右侧为根，判断一下让数组左侧均小于根，根小于右侧，然后分成两块继续运算即可。(我真的不知道为什么越界啊，我也不知道为什么突然就不越界了) 代码123456789101112131415161718192021222324252627282930313233343536 public boolean vt(int[] sequence, int start, int end) &#123; if (start&gt;=end) &#123; return true; &#125; int root = sequence[end]; int mid = start; for (; mid &lt; end; mid++) &#123; if (root &lt; sequence[mid]) &#123; break; &#125; &#125; for (int i = mid; i &lt; end; i++) &#123; if (root &gt; sequence[i]) &#123; return false; &#125; &#125; boolean left = true; boolean right = true; if (start &lt;= mid - 1) &#123; left = vt(sequence, start, mid - 1); &#125; if (mid &lt;= end - 1) &#123; right = vt(sequence, mid, end - 1); &#125; return left &amp;&amp; right;&#125;public boolean VerifySquenceOfBST(int[] sequence) &#123; if (sequence == null || sequence.length == 0) &#123; return false; &#125; if (sequence.length &lt; 3) &#123; return true; &#125; return vt(sequence, 0, sequence.length - 1);&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 24.二叉树中和为某一值的路径]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2024.%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84.html</url>
+    <content type="text"><![CDATA[24.二叉树中和为某一值的路径题目输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。 思路路径问题就直接递归就行了，用一个list存储当前路径，如果成功就加入答案集，不成功就删除最后一个结点回溯。这里还要用sort比较一下，Collections.sort(all, ((o1, o2) -&gt; o2.size() - o1.size()))，比较的时候就是降序排列。 代码1234567891011121314151617181920212223242526272829303132333435 public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;public void find(TreeNode root, int target, ArrayList&lt;ArrayList&lt;Integer&gt;&gt; all, ArrayList list) &#123; if (root == null) &#123; return; &#125; int value = root.val; list.add(value); if (target == value &amp;&amp; root.left == null &amp;&amp; root.right == null) &#123; all.add(new ArrayList&lt;&gt;(list)); &#125; else &#123; find(root.left, target - value, all, list); find(root.right, target - value, all, list); &#125; list.remove(list.size() - 1);&#125;public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindPath(TreeNode root, int target) &#123; ArrayList&lt;ArrayList&lt;Integer&gt;&gt; all = new ArrayList&lt;&gt;(); ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;(); find(root, target, all, list); Collections.sort(all, ((o1, o2) -&gt; o2.size() - o1.size())); return all;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 22.从上往下打印二叉树]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2022.%E4%BB%8E%E4%B8%8A%E5%BE%80%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html</url>
+    <content type="text"><![CDATA[22.从上往下打印二叉树题目从上往下打印出二叉树的每个节点，同层节点从左至右打印。 思路这题就是简单的树的遍历，调节顺序就可以用队列来帮助存储，先把结点存放进队列，从队列头部取出节点，然后查看左子节点和右子节点，取出的时候记得保存值。 代码123456789101112131415161718192021222324252627282930public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125; public ArrayList&lt;Integer&gt; PrintFromTopToBottom(TreeNode root) &#123; ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;(); Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;(); if (root == null) &#123; return list; &#125; queue.offer(root); while (!queue.isEmpty()) &#123; TreeNode temp = queue.poll(); if (temp.left != null) &#123; queue.offer(temp.left); &#125; if (temp.right != null) &#123; queue.offer(temp.right); &#125; list.add(temp.val); &#125; return list; &#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 21.栈的压入、弹出序列]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2021.%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97.html</url>
+    <content type="text"><![CDATA[21.栈的压入、弹出序列题目输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，序列4,5,3,2,1是该压栈序列对应的一个弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。（注意：这两个序列的长度是相等的） 思路这题思路倒是比较清晰，设置一个栈模拟进栈出栈过程，坑一点的就是边界问题，我本来是以出栈为循环条件的，边界越整越多，最后换了入栈为循环条件，简单了很多。如果栈不为空且栈顶和出栈顺序一样，出栈，不然下一位。 代码1234567891011121314151617public boolean IsPopOrder(int[] pushA, int[] popA) &#123; Stack&lt;Integer&gt; stack = new Stack&lt;&gt;(); int len = pushA.length; int in = 0, out = 0; for (; in &lt; len; in++) &#123; stack.push(pushA[in]); while (!stack.empty() &amp;&amp; stack.peek() == popA[out]) &#123; stack.pop(); out++; &#125; &#125; return stack.empty();&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 20.包含min函数的栈]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2020.%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88.html</url>
+    <content type="text"><![CDATA[20.包含min函数的栈题目定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。注意：保证测试中不会当栈为空的时候，对栈调用pop()或者min()或者top()方法。 思路这题给人的启发很深，可以增加一个新的栈专门来存储最小值，push的时候，第一个数据栈直接push，第二个最小值栈若为空或者顶端值大于node，都是直接加入node，如果不是，那么就把栈顶的数再次加入，最小值栈就用于存放最小值，插入值不为最小值就把最小值再次插入一遍确保两个栈相同长度。 代码123456789101112131415161718192021222324252627Stack&lt;Integer&gt; stackdata = new Stack&lt;&gt;();Stack&lt;Integer&gt; stackmin = new Stack&lt;&gt;();public void push(int node) &#123; stackdata.push(node); if (stackmin.empty()) &#123; stackmin.push(node); &#125; else if (node &lt; stackmin.peek()) &#123; stackmin.push(node); &#125; else &#123; stackmin.push(stackmin.peek()); &#125;&#125;public void pop() &#123; stackmin.pop(); stackdata.pop();&#125;public int top() &#123; return stackdata.peek();&#125;public int min() &#123; return stackmin.peek();&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 19.顺时针打印矩阵]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2019.%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.html</url>
+    <content type="text"><![CDATA[19.顺时针打印矩阵题目输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10. 思路这个。。我没找什么特别的方法，就用思路最清晰的方法，用循环来做，并且几个判断条件都要带=，不然结果会出错。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647public ArrayList&lt;Integer&gt; printMatrix(int[][] matrix) &#123; ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;(); int EndX = matrix.length - 1; int EndY = matrix[0].length - 1; int StartX = 0; int StartY = 0; int x = StartX, y = StartY; while (StartX &lt;= EndX &amp;&amp; StartY &lt;= EndY) &#123; if (StartX &lt;= EndX) &#123; while (y &lt;= EndY) &#123; list.add(matrix[x][y]); y++; &#125; y--; StartX++; x = StartX; &#125; if (StartY &lt;= EndY) &#123; while (x &lt;= EndX) &#123; list.add(matrix[x][y]); x++; &#125; x--; EndY--; y = EndY; &#125; if (StartX &lt;= EndX) &#123; while (y &gt;= StartY) &#123; list.add(matrix[x][y]); y--; &#125; y++; EndX--; x = EndX; &#125; if (StartY &lt;= EndY) &#123; while (x &gt;= StartX) &#123; list.add(matrix[x][y]); x--; &#125; x++; StartY++; y = StartY; &#125; &#125; return list;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 18.二叉树的镜像]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2018.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F.html</url>
+    <content type="text"><![CDATA[18.二叉树的镜像题目题目描述操作给定的二叉树，将其变换为源二叉树的镜像。输入描述:二叉树的镜像定义：源二叉树 8 / 6 10 / \ / 5 7 9 11 镜像二叉树 8 / 10 6 / \ / 11 9 7 5 思路同样是递归，不过这题思路很清晰，如果根节点存在，直接交换左右节点，之后递归以左右节点为根，子节点的子节点左右交换，一层一层就行了。 代码123456789101112131415161718192021222324252627 public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;public void Mirror(TreeNode root) &#123; if (root != null) &#123; TreeNode temp = root.left; root.left = root.right; root.right = temp; if (root.left != null) &#123; Mirror(root.left); &#125; if (root.right != null) &#123; Mirror(root.right); &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 17.树的子结构]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2017.%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84.html</url>
+    <content type="text"><![CDATA[17.树的子结构题目输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构） 思路这题应该用递归的，关于树类型的题目递归的话思路会很清晰。首先在A中寻找到B的根节点，找到之后就开始递归比较左子节点和右子节点是否相同，如果找到就返回true，不然的话就是false。 代码12345678910111213141516171819202122232425262728293031323334353637383940 public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;public boolean HasSubtree(TreeNode root1, TreeNode root2) &#123; boolean result = false; if (root1 != null &amp;&amp; root2 != null) &#123; if (root1.val == root2.val) &#123; result = Does1Has2(root1, root2); &#125; if (!result) &#123; result = HasSubtree(root1.left, root2); &#125; if (!result) &#123; result = HasSubtree(root1.right, root2); &#125; &#125; return result;&#125;public boolean Does1Has2(TreeNode root1, TreeNode root2) &#123; if (root2 == null) &#123; return true; &#125; if (root1 == null) &#123; return false; &#125; if (root1.val != root2.val) &#123; return false; &#125; return Does1Has2(root1.left, root2.left) &amp;&amp; Does1Has2(root1.right, root2.right);&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 16.合并两个排序的链表]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2016.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8.html</url>
+    <content type="text"><![CDATA[16.合并两个排序的链表题目输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。 思路这题以前也做过的，只需要新建一个表头，然后比较两边的大小，依次加入新的链表，最后再把没用上的加到结尾即可。now代表当前节点，base代表头结点。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class ListNode &#123; int val; ListNode next = null; ListNode(int val) &#123; this.val = val; &#125;&#125;public ListNode Merge(ListNode list1, ListNode list2) &#123; if (list1 == null) &#123; return list2; &#125; if (list2 == null) &#123; return list1; &#125; ListNode base = null; ListNode now = null; while (list1 != null &amp;&amp; list2 != null) &#123; if (list1.val &lt;= list2.val) &#123; if (base == null) &#123; base = list1; now = list1; &#125; else &#123; now.next = list1; now = now.next; &#125; list1 = list1.next; &#125; else &#123; if (base == null) &#123; base = list2; now = list2; &#125; else &#123; now.next = list2; now = now.next; &#125; list2 = list2.next; &#125; &#125; if (list1 == null) &#123; now.next = list2; &#125; else &#123; now.next = list1; &#125; return base;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 15.反转链表]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2015.%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.html</url>
+    <content type="text"><![CDATA[15.反转链表题目输入一个链表，反转链表后，输出新链表的表头。 思路翻转链表并不是很难，只需要注意一下特殊情况，这里设置两个空节点存储前一个结点和后一个结点。头结点为空直接结束，不为空就开始循环，假设链表为0-&gt;1，head=0，next=null，pre=null；然后next=1，head.next=null(最后一位没有子节点),pre=0,head=1;然后next=null，head.next=0，pre=1，head=null，跳出循环，头结点为pre(1)，结束。最后返回的应该是pre不是head，因为原本尾结点现在是pre，多走了一步，head归为null了。 代码123456789101112131415161718192021222324public class ListNode &#123; int val; ListNode next = null; ListNode(int val) &#123; this.val = val; &#125;&#125;public ListNode ReverseList(ListNode head) &#123; if (head == null) &#123; return null; &#125; ListNode pre = null; ListNode next = null; while (head != null) &#123; next = head.next; head.next = pre; pre = head; head = next; &#125; return pre;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 14.链表中倒数第k个结点]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2014.%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E7%BB%93%E7%82%B9.html</url>
+    <content type="text"><![CDATA[14.链表中倒数第k个结点题目输入一个链表，输出该链表中倒数第k个结点。 思路假设原链表有n个结点，倒数第k个结点就是n-k+1个结点，那么这里可以设置两个结点，一个结点先走k-1步，是第k个结点，然后两个结点一起走，第一个结点再走n-k步就到达末尾，此时第二个结点也走了n-k步，到达了n-k+1个结点，就是所求的值。这里有几点需要注意，就是k的范围，若k&lt;=0那么直接返回null，若链表为空那也返回null，若链表长度小于k一样返回null 代码12345678910111213141516171819202122232425262728public class ListNode &#123; int val; ListNode next = null; ListNode(int val) &#123; this.val = val; &#125;&#125;public ListNode FindKthToTail(ListNode head, int k) &#123; if (head == null || k &lt;= 0) &#123; return null; &#125; ListNode ans = head; for (int i = 0; i &lt; k - 1; i++) &#123; if (head.next != null) &#123; head = head.next; &#125; else &#123; return null; &#125; &#125; while (head.next != null) &#123; head = head.next; ans = ans.next; &#125; return ans;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 13.调整数组顺序使奇数位于偶数前面]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2013.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2.html</url>
+    <content type="text"><![CDATA[13.调整数组顺序使奇数位于偶数前面题目输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。 思路采用了空间换时间，确保相对位置，新建数组把奇数放前面偶数放后面，再赋值给原数组。 代码12345678910111213141516171819 public void reOrderArray(int[] array) &#123; int[] newarray = new int[array.length]; int index = 0; for (int i = 0; i &lt; array.length; i++) &#123; if (array[i] % 2 == 1) &#123; newarray[index] = array[i]; index++; &#125; &#125; for (int i = 0; i &lt; array.length; i++) &#123; if (array[i] % 2 == 0) &#123; newarray[index] = array[i]; index++; &#125; &#125; for (int i = 0; i &lt; array.length; i++) &#123; array[i] = newarray[i]; &#125;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 12.数值的整数次方]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2012.%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.html</url>
+    <content type="text"><![CDATA[12.数值的整数次方题目给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。 保证base和exponent不同时为0 思路问题也不是很大，如果不是要求效率就可以直接分类讨论，一个循环解决，要求效率的话就要用快速幂，我没用快速幂，就分类讨论了一下，最后输出结果。 代码1234567891011121314151617181920212223public double Power(double base, int exponent) &#123; if (exponent == 0) &#123; return 1; &#125; if (base == 0) &#123; return 0; &#125; double ans = 1; boolean flag = false; if (exponent &gt; 0) &#123; flag = true; &#125; else &#123; flag = false; exponent = -exponent; &#125; for (int i = 1; i &lt;= exponent; i++) &#123; ans = ans * base; &#125; if (!flag) &#123; ans = 1.0 / ans; &#125; return ans;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 213. House Robber II]]></title>
     <url>%2FLeetCode%20213.%20House%20Robber%20II.html</url>
     <content type="text"><![CDATA[213. House Robber II（打家劫舍 II）链接https://leetcode-cn.com/problems/house-robber-ii 题目你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。 给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。 示例 1: 输入: [2,3,2]输出: 3解释: 你不能先偷窃 1 号房屋（金额 = 2），然后偷窃 3 号房屋（金额 = 2）, 因为他们是相邻的。示例 2: 输入: [1,2,3,1]输出: 4解释: 你可以先偷窃 1 号房屋（金额 = 1），然后偷窃 3 号房屋（金额 = 3）。 偷窃到的最高金额 = 1 + 3 = 4 。 思路动态规划，对于第三间之后的房子，有拿或者不拿两种选择，如果选择拿，那么前一间房子就不能拿，这样可以得到状态转移方程dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i])，还要考虑到一点就是，第一个和最后一个不能都拿，可以考虑设两个方程，第一个是1到n-1，第二个是2到n，选最大值即可。 代码123456789101112131415161718192021222324public int rob(int[] nums) &#123; int[] dp_0 = new int[nums.length]; int[] dp_1 = new int[nums.length]; if (nums.length == 0) &#123; return 0; &#125; if (nums.length == 1) &#123; return nums[0]; &#125; if (nums.length == 2) &#123; return Math.max(nums[0], nums[1]); &#125; dp_0[0] = nums[0]; dp_0[1] = Math.max(nums[0], nums[1]); for (int i = 2; i &lt; nums.length - 1; i++) &#123; dp_0[i] = Math.max(dp_0[i - 1], dp_0[i - 2] + nums[i]); &#125; dp_1[1] = nums[1]; dp_1[2] = Math.max(nums[1], nums[2]); for (int i = 3; i &lt; nums.length; i++) &#123; dp_1[i] = Math.max(dp_1[i - 1], dp_1[i - 2] + nums[i]); &#125; return Math.max(dp_0[nums.length - 2], dp_1[nums.length - 1]);&#125;]]></content>
@@ -9,6 +177,17 @@
       </categories>
       <tags>
         <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[剑指offer 11.二进制中1的个数]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2011.%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0.html</url>
+    <content type="text"><![CDATA[11.二进制中1的个数题目输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。 思路对我来说蛮难的，虽然解法有多种吧。一开始想的就是直接转二进制字符串遍历，简单，但是这题本意应该是位运算，这方面我不是很熟。把一个整数减去1，再和原整数做与运算，会把该整数最右边一个1变成0。那么一个整数的二进制表示中有多少个1，就可以进行多少次这样的操作。这句话是书上的，每次运算都把一个1变成0，当成为0的时候运算的次数就是1的数量。 代码123456789public int NumberOf1(int n) &#123; int count = 0; while (n != 0) &#123; count++; n = (n - 1) &amp; n; &#125; return count;&#125;]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -29,47 +208,6 @@
       <categories>
         <category>LeetCode</category>
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[动态规划]]></title>
-    <url>%2F%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html</url>
-    <content type="text"><![CDATA[动态规划定义分治法：将问题划分为不相交的子问题,递归的求解子问题,在将它们的解组合起来,求出原问题的解。 动态规划：通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。 动态规划和递归的最大的区别，就是在碰到重叠子问题时，是否只需要计算一次。 过程 拆分子问题，把整体问题拆成可以用递推或是递归实现的小问题，在某一状态下最佳选择是什么 定义问题和状态之间的关系，寻找到状态转移方程 进行编码 例题(LeetCode746)数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值 costi。 每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。 您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。 示例 1: 输入: cost = [10, 15, 20] 输出: 15 解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。示例 2: 输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1] 输出: 6 解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。注意： cost 的长度将会在 [2, 1000]。每一个 cost[i] 将会是一个Integer类型，范围为 [0, 999]。 解法上升到某级(i)有两种方法，从i-1级上一步，从i-2级上两步，那么就可以知道状态转移方程了dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i]，顺着这个思路从3开始，最后再输出一下就行。 代码：1234567891011public int minCostClimbingStairs(int[] cost) &#123; int len = cost.length; int dp[] = new int[len + 1]; dp[0] = cost[0]; dp[1] = cost[1]; for (int i = 2; i &lt; len; i++) &#123; dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i]; &#125; return Math.min(dp[len - 1], dp[len - 2]);&#125;]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 746. Min Cost Climbing Stairs]]></title>
-    <url>%2FLeetCode%20746.%20Min%20Cost%20Climbing%20Stairs.html</url>
-    <content type="text"><![CDATA[746. Min Cost Climbing Stairs （使用最小花费爬楼梯）链接https://leetcode-cn.com/problems/min-cost-climbing-stairs 题目数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值 costi。 每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。 您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。 示例 1: 输入: cost = [10, 15, 20] 输出: 15 解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。示例 2: 输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1] 输出: 6 解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。注意： cost 的长度将会在 [2, 1000]。每一个 cost[i] 将会是一个Integer类型，范围为 [0, 999]。 思路动态规划题目，上升到某级(i)有两种方法，从i-1级上一步，从i-2级上两步，那么就可以知道状态转移方程了dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i]，顺着这个思路从3开始，最后再输出一下就行。 代码：1234567891011public int minCostClimbingStairs(int[] cost) &#123; int len = cost.length; int dp[] = new int[len + 1]; dp[0] = cost[0]; dp[1] = cost[1]; for (int i = 2; i &lt; len; i++) &#123; dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i]; &#125; return Math.min(dp[len - 1], dp[len - 2]);&#125;]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[剑指offer 12.数值的整数次方]]></title>
-    <url>%2F%E5%89%91%E6%8C%87offer%2012.%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.html</url>
-    <content type="text"><![CDATA[12.数值的整数次方题目给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。 保证base和exponent不同时为0 思路问题也不是很大，如果不是要求效率就可以直接分类讨论，一个循环解决，要求效率的话就要用快速幂，我没用快速幂，就分类讨论了一下，最后输出结果。 代码1234567891011121314151617181920212223public double Power(double base, int exponent) &#123; if (exponent == 0) &#123; return 1; &#125; if (base == 0) &#123; return 0; &#125; double ans = 1; boolean flag = false; if (exponent &gt; 0) &#123; flag = true; &#125; else &#123; flag = false; exponent = -exponent; &#125; for (int i = 1; i &lt;= exponent; i++) &#123; ans = ans * base; &#125; if (!flag) &#123; ans = 1.0 / ans; &#125; return ans;&#125;]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[剑指offer 11.二进制中1的个数]]></title>
-    <url>%2F%E5%89%91%E6%8C%87offer%2011.%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0.html</url>
-    <content type="text"><![CDATA[11.二进制中1的个数题目输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。 思路对我来说蛮难的，虽然解法有多种吧。一开始想的就是直接转二进制字符串遍历，简单，但是这题本意应该是位运算，这方面我不是很熟。把一个整数减去1，再和原整数做与运算，会把该整数最右边一个1变成0。那么一个整数的二进制表示中有多少个1，就可以进行多少次这样的操作。这句话是书上的，每次运算都把一个1变成0，当成为0的时候运算的次数就是1的数量。 代码123456789public int NumberOf1(int n) &#123; int count = 0; while (n != 0) &#123; count++; n = (n - 1) &amp; n; &#125; return count;&#125;]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[剑指offer 9.变态跳台阶]]></title>
@@ -128,6 +266,28 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[动态规划]]></title>
+    <url>%2F%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html</url>
+    <content type="text"><![CDATA[动态规划定义分治法：将问题划分为不相交的子问题,递归的求解子问题,在将它们的解组合起来,求出原问题的解。 动态规划：通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。 动态规划和递归的最大的区别，就是在碰到重叠子问题时，是否只需要计算一次。 过程 拆分子问题，把整体问题拆成可以用递推或是递归实现的小问题，在某一状态下最佳选择是什么 定义问题和状态之间的关系，寻找到状态转移方程 进行编码 例题(LeetCode746)数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值 costi。 每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。 您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。 示例 1: 输入: cost = [10, 15, 20] 输出: 15 解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。示例 2: 输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1] 输出: 6 解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。注意： cost 的长度将会在 [2, 1000]。每一个 cost[i] 将会是一个Integer类型，范围为 [0, 999]。 解法上升到某级(i)有两种方法，从i-1级上一步，从i-2级上两步，那么就可以知道状态转移方程了dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i]，顺着这个思路从3开始，最后再输出一下就行。 代码：1234567891011public int minCostClimbingStairs(int[] cost) &#123; int len = cost.length; int dp[] = new int[len + 1]; dp[0] = cost[0]; dp[1] = cost[1]; for (int i = 2; i &lt; len; i++) &#123; dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i]; &#125; return Math.min(dp[len - 1], dp[len - 2]);&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 746. Min Cost Climbing Stairs]]></title>
+    <url>%2FLeetCode%20746.%20Min%20Cost%20Climbing%20Stairs.html</url>
+    <content type="text"><![CDATA[746. Min Cost Climbing Stairs （使用最小花费爬楼梯）链接https://leetcode-cn.com/problems/min-cost-climbing-stairs 题目数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值 costi。 每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。 您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。 示例 1: 输入: cost = [10, 15, 20] 输出: 15 解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。示例 2: 输入: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1] 输出: 6 解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。注意： cost 的长度将会在 [2, 1000]。每一个 cost[i] 将会是一个Integer类型，范围为 [0, 999]。 思路动态规划题目，上升到某级(i)有两种方法，从i-1级上一步，从i-2级上两步，那么就可以知道状态转移方程了dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i]，顺着这个思路从3开始，最后再输出一下就行。 代码：1234567891011public int minCostClimbingStairs(int[] cost) &#123; int len = cost.length; int dp[] = new int[len + 1]; dp[0] = cost[0]; dp[1] = cost[1]; for (int i = 2; i &lt; len; i++) &#123; dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i]; &#125; return Math.min(dp[len - 1], dp[len - 2]);&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据结构-图]]></title>
     <url>%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE.html</url>
     <content type="text"><![CDATA[数据结构-图定义图是一些顶点的集合，这些顶点通过一些边想连接，顶点用圈表示，边通过线表示，是一个多对多的数据结构。可以拆分，就是点集V和边集E的集合。 特点边可以是有方向的，只能单向前进，也可能是双向的，可以来回运动，也有的边带有权重，模拟为长度什么的物理量。 存储方式 邻接表每一个顶点会存储一个从该节点开始的链表，比如说A可以到BC，那么就是A-&gt;B-&gt;C。 邻接矩阵用一个矩阵来存储，假设A能到B且距离为5，那么m[0][1]=5. 相关术语 有向图：边是有方向的图 无向图：边没有方向，正反都可 简单图：不存在重复边，顶点不能直接到自身 完全图：任意两点都存在边(有向的话要有两条方向相反的边) 子图：点集和边集都是原图的子集，且构成图 顶点的度：以该顶点为一个端点的边的数目]]></content>
@@ -184,19 +344,19 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[不知道来源的题目1]]></title>
-    <url>%2F%E4%B8%8D%E7%9F%A5%E9%81%93%E6%9D%A5%E6%BA%90%E7%9A%84%E9%A2%98%E7%9B%AE1.html</url>
-    <content type="text"><![CDATA[不知道来源的题目1题目有两个数组 A、B，长度都为 N，值为任意整数，无序，要求，通过交换 A、B 中的元素，使得 A 数组元素之和与 B 数组元素之和之间的差值最小。完成代码的同时，写出数组 [100,99,98,1,2, 3]和[1,2,3,4,5,40]交换后的结果。 思路解法多种多样，但是我真没想出来什么特别合适的，采用了一种比较繁琐的方法。首先计算两个数组的差值，之后尝试交换，只要能让差值减小，就交换，一直到没有这种可能性再结束，理论上这就是要的答案。 代码1234567891011121314151617181920212223242526272829303132333435public static void change(int[] a, int[] b, int n, int before) &#123; for (int i = 0; i &lt; n; i++) &#123; for (int j = 0; j &lt; n; j++) &#123; int after = before - 2 * (a[i] - b[j]); if (Math.abs(after) &lt; Math.abs(before)) &#123; int temp = a[i]; a[i] = b[j]; b[j] = temp; change(a, b, n, after); return; &#125; &#125; &#125;&#125;public static void main(String[] args) &#123; int[] a = new int[]&#123;100, 99, 98, 1, 2, 3&#125;; int[] b = new int[]&#123;1, 2, 3, 4, 5, 40&#125;; int suma = 0; int sumb = 0; int len = a.length; for (int i = 0; i &lt; len; i++) &#123; suma += a[i]; sumb += b[i]; &#125; change(a, b, len, Math.abs(suma - sumb)); for (int i = 0; i &lt; len; i++) &#123; System.out.print(a[i] + &quot; &quot;); &#125; System.out.println(); for (int i = 0; i &lt; len; i++) &#123; System.out.print(b[i] + &quot; &quot;); &#125;&#125;]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[HashMap和Hashtable的区别]]></title>
     <url>%2FHashMap%E5%92%8CHashtable%E7%9A%84%E5%8C%BA%E5%88%AB.html</url>
     <content type="text"><![CDATA[HashMap和Hashtable的区别HashMap和Hashtable这两个是集合框架中比较常见的问题，所以我做了些总结便于回顾。 1.继承Hashtable 继承自 Dictiionary 而 HashMap继承自AbstractMap 2.键值要求hashtable不允许空值与空键，但是hashmap允许一个空键和任意数量空值。 3.contains方法hashmap去除了contains方法，改为了containsValue和containsKey，但是hashtable这三个方法都有。 4.线程安全HashMap非线程安全，在只有一个线程访问的情况下，效率要高于HashTable。 5.使用建议正常情况下建议使用hashmap，如果是多线程建议选择concurrentHashMap。源码部分等到我更深入的学习的时候会添加。]]></content>
       <categories>
         <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[不知道来源的题目1]]></title>
+    <url>%2F%E4%B8%8D%E7%9F%A5%E9%81%93%E6%9D%A5%E6%BA%90%E7%9A%84%E9%A2%98%E7%9B%AE1.html</url>
+    <content type="text"><![CDATA[不知道来源的题目1题目有两个数组 A、B，长度都为 N，值为任意整数，无序，要求，通过交换 A、B 中的元素，使得 A 数组元素之和与 B 数组元素之和之间的差值最小。完成代码的同时，写出数组 [100,99,98,1,2, 3]和[1,2,3,4,5,40]交换后的结果。 思路解法多种多样，但是我真没想出来什么特别合适的，采用了一种比较繁琐的方法。首先计算两个数组的差值，之后尝试交换，只要能让差值减小，就交换，一直到没有这种可能性再结束，理论上这就是要的答案。 代码1234567891011121314151617181920212223242526272829303132333435public static void change(int[] a, int[] b, int n, int before) &#123; for (int i = 0; i &lt; n; i++) &#123; for (int j = 0; j &lt; n; j++) &#123; int after = before - 2 * (a[i] - b[j]); if (Math.abs(after) &lt; Math.abs(before)) &#123; int temp = a[i]; a[i] = b[j]; b[j] = temp; change(a, b, n, after); return; &#125; &#125; &#125;&#125;public static void main(String[] args) &#123; int[] a = new int[]&#123;100, 99, 98, 1, 2, 3&#125;; int[] b = new int[]&#123;1, 2, 3, 4, 5, 40&#125;; int suma = 0; int sumb = 0; int len = a.length; for (int i = 0; i &lt; len; i++) &#123; suma += a[i]; sumb += b[i]; &#125; change(a, b, len, Math.abs(suma - sumb)); for (int i = 0; i &lt; len; i++) &#123; System.out.print(a[i] + &quot; &quot;); &#125; System.out.println(); for (int i = 0; i &lt; len; i++) &#123; System.out.print(b[i] + &quot; &quot;); &#125;&#125;]]></content>
+      <categories>
+        <category>其他</category>
       </categories>
   </entry>
   <entry>
@@ -270,17 +430,17 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 215. Kth Largest Element in an Array]]></title>
-    <url>%2FLeetCode%20215.%20Kth%20Largest%20Element%20in%20an%20Array.html</url>
-    <content type="text"><![CDATA[215. Kth Largest Element in an Array（数组中的第K个最大元素）链接https://leetcode-cn.com/problems/kth-largest-element-in-an-array 题目在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例 1: 输入: [3,2,1,5,6,4] 和 k = 2 输出: 5示例 2: 输入: [3,2,3,1,2,4,5,5,6] 和 k = 4 输出: 4说明: 你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。 思路一道数组题目，解法多种。最简单的就是直接排序，然后找到那个数，直接完成，就是效率相对较低。这里用的是优先队列建堆，最小堆，小的数字在堆顶，然后一个一个往里面加数字，每当堆的规模大于k，就去除最小的数字（堆顶），数字处理完之后的堆顶就是所需数字。 代码1234567891011public static int findKthLargest(int[] nums, int k) &#123; PriorityQueue&lt;Integer&gt; heap = new PriorityQueue&lt;Integer&gt;((n1, n2) -&gt; n1 - n2); for (int n : nums) &#123; heap.add(n); if (heap.size() &gt; k) &#123; heap.poll(); &#125; &#125; return heap.poll();&#125;]]></content>
+    <title><![CDATA[LeetCode 344. Reverse String]]></title>
+    <url>%2FLeetCode%20344.%20Reverse%20String.html</url>
+    <content type="text"><![CDATA[344. Reverse String（反转字符串）链接https://leetcode-cn.com/problems/reverse-string 题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。 不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。 你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。 示例 1： 输入：[“h”,”e”,”l”,”l”,”o”] 输出：[“o”,”l”,”l”,”e”,”h”]示例 2： 输入：[“H”,”a”,”n”,”n”,”a”,”h”] 输出：[“h”,”a”,”n”,”n”,”a”,”H”] 思路就硬转呗，双指针，一头一尾直接转换位置，当指针相遇就结束。 代码12345678910public void reverseString(char[] s) &#123; int left = 0, right = s.length - 1; while (left &lt; right) &#123; char temp = s[left]; s[left] = s[right]; s[right] = temp; left++; right--; &#125; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 344. Reverse String]]></title>
-    <url>%2FLeetCode%20344.%20Reverse%20String.html</url>
-    <content type="text"><![CDATA[344. Reverse String（反转字符串）链接https://leetcode-cn.com/problems/reverse-string 题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。 不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。 你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。 示例 1： 输入：[“h”,”e”,”l”,”l”,”o”] 输出：[“o”,”l”,”l”,”e”,”h”]示例 2： 输入：[“H”,”a”,”n”,”n”,”a”,”h”] 输出：[“h”,”a”,”n”,”n”,”a”,”H”] 思路就硬转呗，双指针，一头一尾直接转换位置，当指针相遇就结束。 代码12345678910public void reverseString(char[] s) &#123; int left = 0, right = s.length - 1; while (left &lt; right) &#123; char temp = s[left]; s[left] = s[right]; s[right] = temp; left++; right--; &#125; &#125;]]></content>
+    <title><![CDATA[LeetCode 215. Kth Largest Element in an Array]]></title>
+    <url>%2FLeetCode%20215.%20Kth%20Largest%20Element%20in%20an%20Array.html</url>
+    <content type="text"><![CDATA[215. Kth Largest Element in an Array（数组中的第K个最大元素）链接https://leetcode-cn.com/problems/kth-largest-element-in-an-array 题目在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例 1: 输入: [3,2,1,5,6,4] 和 k = 2 输出: 5示例 2: 输入: [3,2,3,1,2,4,5,5,6] 和 k = 4 输出: 4说明: 你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。 思路一道数组题目，解法多种。最简单的就是直接排序，然后找到那个数，直接完成，就是效率相对较低。这里用的是优先队列建堆，最小堆，小的数字在堆顶，然后一个一个往里面加数字，每当堆的规模大于k，就去除最小的数字（堆顶），数字处理完之后的堆顶就是所需数字。 代码1234567891011public static int findKthLargest(int[] nums, int k) &#123; PriorityQueue&lt;Integer&gt; heap = new PriorityQueue&lt;Integer&gt;((n1, n2) -&gt; n1 - n2); for (int n : nums) &#123; heap.add(n); if (heap.size() &gt; k) &#123; heap.poll(); &#125; &#125; return heap.poll();&#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
@@ -329,14 +489,6 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 448. Find All Numbers Disappeared in an Array]]></title>
-    <url>%2FLeetCode%20448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array.html</url>
-    <content type="text"><![CDATA[448. Find All Numbers Disappeared in an Array（找到所有数组中消失的数字）链接https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array 题目给定一个范围在 1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。 示例: 输入: [4,3,2,7,8,2,3,1] 输出: [5,6] 思路这题的题意很简单，就是要找到缺失的数字，但是思路很巧妙，对于每个数字，都设置一个位置，就像例子一样，第一个数字为4，就将第四个数字设置为-7，一遍循环之后，数组就成为[-4,-3,-2,-7,8,2,-3,-1],然后第二次遍历，如果数字为正，就代表数组中不存在这个数，记录到答案中即可，这里要注意数组从0开始，而数字从1开始。 代码1234567891011121314 public static List&lt;Integer&gt; findDisappearedNumbers(int[] nums) &#123; for(int i=0;i&lt;nums.length;i++)&#123; int temp = Math.abs(nums[i]); nums[temp-1]=-Math.abs(nums[temp-1]); &#125; List&lt;Integer&gt;ans = new ArrayList(nums.length); for(int i=0;i&lt;nums.length;i++) &#123; if(nums[i]&gt;0)&#123; ans.add(i+1); &#125; &#125; return ans;&#125;]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[LeetCode 461. Hamming Distance]]></title>
     <url>%2FLeetCode%20461.%20Hamming%20Distance.html</url>
     <content type="text"><![CDATA[461. Hamming Distance（汉明距离）链接https://leetcode-cn.com/problems/hamming-distance 题目两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。 给出两个整数 x 和 y，计算它们之间的汉明距离。 注意：0 ≤ x, y &lt; 231. 示例: 输入: x = 1, y = 4 输出: 2 解释: 1 (0 0 0 1) 4 (0 1 0 0) ↑ ↑ 上面的箭头指出了对应二进制位不同的位置。 思路这题的名词也就是转换一下，需要我们找到二进制位的不同，这时候异或最简单，直接找到不同位，然后可以按位寻找，也可以直接和1进行与运算，然后右移。 代码1234567891011 public static int hammingDistance(int x, int y) &#123; int xor = x ^ y; int num = 0; while (xor != 0) &#123; if ((xor &amp; 1) == 1) &#123; num++; &#125; xor = xor &gt;&gt; 1; &#125; return num;&#125;]]></content>
@@ -346,6 +498,14 @@
       <tags>
         <tag>位运算</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 448. Find All Numbers Disappeared in an Array]]></title>
+    <url>%2FLeetCode%20448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array.html</url>
+    <content type="text"><![CDATA[448. Find All Numbers Disappeared in an Array（找到所有数组中消失的数字）链接https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array 题目给定一个范围在 1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。 示例: 输入: [4,3,2,7,8,2,3,1] 输出: [5,6] 思路这题的题意很简单，就是要找到缺失的数字，但是思路很巧妙，对于每个数字，都设置一个位置，就像例子一样，第一个数字为4，就将第四个数字设置为-7，一遍循环之后，数组就成为[-4,-3,-2,-7,8,2,-3,-1],然后第二次遍历，如果数字为正，就代表数组中不存在这个数，记录到答案中即可，这里要注意数组从0开始，而数字从1开始。 代码1234567891011121314 public static List&lt;Integer&gt; findDisappearedNumbers(int[] nums) &#123; for(int i=0;i&lt;nums.length;i++)&#123; int temp = Math.abs(nums[i]); nums[temp-1]=-Math.abs(nums[temp-1]); &#125; List&lt;Integer&gt;ans = new ArrayList(nums.length); for(int i=0;i&lt;nums.length;i++) &#123; if(nums[i]&gt;0)&#123; ans.add(i+1); &#125; &#125; return ans;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[排序算法总结]]></title>
@@ -1315,7 +1475,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#101;&#x6e;&#x64;&#64;&#49;&#x36;&#x33;&#46;&#99;&#111;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#x72;&#101;&#99;&#101;&#x69;&#x76;&#x65;&#64;&#x31;&#x36;&#51;&#x2e;&#99;&#x6f;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#115;&#x65;&#110;&#x64;&#x40;&#x31;&#54;&#51;&#x2e;&#x63;&#111;&#109; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#x63;&#101;&#x69;&#x76;&#x65;&#x40;&#49;&#54;&#51;&#x2e;&#99;&#111;&#109; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>

@@ -90,7 +90,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="cheng102e的博客">
-<meta property="og:url" content="https://cheng102e.github.io/categories/java/index.html">
+<meta property="og:url" content="https://cheng102e.github.io/categories/Java/index.html">
 <meta property="og:site_name" content="cheng102e的博客">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://cheng102e.github.io/categories/java/">
+  <link rel="canonical" href="https://cheng102e.github.io/categories/Java/">
 
 
 
 
 
-  <title>分类: java | cheng102e的博客</title>
+  <title>分类: Java | cheng102e的博客</title>
   
 
 
@@ -294,7 +294,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>java<small>分类</small>
+        <h1>Java<small>分类</small>
         </h1>
       </div>
 
@@ -306,43 +306,17 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/java大数加法乘法.html" itemprop="url">
+            <a class="post-title-link" href="/java的三种随机数生成方式.html" itemprop="url">
               
-                <span itemprop="name">java大数加法乘法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-02-22T16:00:00+08:00" content="2020-02-22">
-          02-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/java进制转换.html" itemprop="url">
-              
-                <span itemprop="name">java进制转换</span>
+                <span itemprop="name">java的三种随机数生成方式</span>
               
             </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-02-22T12:00:00+08:00" content="2020-02-22">
-          02-22
+        <time class="post-time" itemprop="dateCreated" datetime="2018-09-21T08:41:00+08:00" content="2018-09-21">
+          09-21
         </time>
       </div>
 
@@ -405,7 +379,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">163</span>
+                  <span class="site-state-item-count">180</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -427,7 +401,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -491,23 +465,23 @@
         
         
           <li>
-            <a href="/LeetCode 213. House Robber II.html" title="LeetCode 213. House Robber II" target="_blank">LeetCode 213. House Robber II</a>
+            <a href="/剑指offer 29.最小的K个数.html" title="剑指offer 29.最小的K个数" target="_blank">剑指offer 29.最小的K个数</a>
           </li>
         
           <li>
-            <a href="/LeetCode 198. House Robber.html" title="LeetCode 198. House Robber" target="_blank">LeetCode 198. House Robber</a>
+            <a href="/剑指offer 28.数组中出现次数超过一半的数字.html" title="剑指offer 28.数组中出现次数超过一半的数字" target="_blank">剑指offer 28.数组中出现次数超过一半的数字</a>
           </li>
         
           <li>
-            <a href="/LeetCode 303. Range Sum Query - Immutable.html" title="LeetCode 303. Range Sum Query - Immutable" target="_blank">LeetCode 303. Range Sum Query - Immutable</a>
+            <a href="/剑指offer 27.字符串的排列.html" title="剑指offer 27.字符串的排列" target="_blank">剑指offer 27.字符串的排列</a>
           </li>
         
           <li>
-            <a href="/算法-动态规划.html" title="动态规划" target="_blank">动态规划</a>
+            <a href="/剑指offer 26.二叉搜索树与双向链表.html" title="剑指offer 26.二叉搜索树与双向链表" target="_blank">剑指offer 26.二叉搜索树与双向链表</a>
           </li>
         
           <li>
-            <a href="/LeetCode 746. Min Cost Climbing Stairs.html" title="LeetCode 746. Min Cost Climbing Stairs" target="_blank">LeetCode 746. Min Cost Climbing Stairs</a>
+            <a href="/剑指offer 25.复杂链表的复制.html" title="剑指offer 25.复杂链表的复制" target="_blank">剑指offer 25.复杂链表的复制</a>
           </li>
         
       </ul>
@@ -566,7 +540,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共70.5k字</span>
+  <span class="post-count">博客全站共74.9k字</span>
 </div>
         
 <div class="busuanzi-count">
@@ -1082,6 +1056,26 @@
       ages = ages.replace(/years?/, "年");
       ages = ages.replace(/months?/, "月");
       ages = ages.replace(/days?/, "天");
+      ages = ages.replace(/hours?/, "小时");
+      ages = ages.replace(/minutes?/, "分");
+      ages = ages.replace(/seconds?/, "秒");
+      ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+      div.innerHTML = `已经等待 ${ages}`;
+    }
+    var div = document.createElement("div");
+    //插入到copyright之后
+    var copyright = document.querySelector(".copyright");
+    document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+    timer();
+    setInterval("timer()",1000)
+  </script>
+
+  
+</body>
+</html>
+
+
+eplace(/days?/, "天");
       ages = ages.replace(/hours?/, "小时");
       ages = ages.replace(/minutes?/, "分");
       ages = ages.replace(/seconds?/, "秒");
