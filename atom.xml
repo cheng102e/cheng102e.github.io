@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cheng102e.github.io/"/>
-  <updated>2020-03-03T14:49:41.663Z</updated>
+  <updated>2020-03-04T13:08:52.568Z</updated>
   <id>https://cheng102e.github.io/</id>
   
   <author>
@@ -17,11 +17,264 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>剑指offer 40.数组中只出现一次的数字</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2040.%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97.html"/>
+    <id>https://cheng102e.github.io/剑指offer 40.数组中只出现一次的数字.html</id>
+    <published>2020-03-04T12:47:00.000Z</published>
+    <updated>2020-03-04T13:08:52.568Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-40-数组中只出现一次的数字"><a href="#剑指offer-40-数组中只出现一次的数字" class="headerlink" title="剑指offer 40.数组中只出现一次的数字"></a>剑指offer 40.数组中只出现一次的数字</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>如果只有一个数，当然是异或更好用，相同数字异或为0，但是有两个数字，这种方法无法快速找到，所以不如用hashset，如果存在就删除，不存在就加入，最后把两个数字取出来即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public void FindNumsAppearOnce(int[] array, int num1[], int num2[]) &#123;</span><br><span class="line"></span><br><span class="line">  HashSet&lt;Integer&gt; set = new HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">  for (int i : array) &#123;</span><br><span class="line">    if (set.contains(i)) &#123;</span><br><span class="line">      set.remove(i);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      set.add(i);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  int[] t = new int[2];</span><br><span class="line">  int temp = 0;</span><br><span class="line">  Iterator&lt;Integer&gt; iterator = set.iterator();</span><br><span class="line">  while (iterator.hasNext()) &#123;</span><br><span class="line">    t[temp++] = iterator.next();</span><br><span class="line">  &#125;</span><br><span class="line">  num1[0] = t[0];</span><br><span class="line">  num2[0] = t[1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-40-数组中只出现一次的数字&quot;&gt;&lt;a href=&quot;#剑指offer-40-数组中只出现一次的数字&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 40.数组中只出现一次的数字&quot;&gt;&lt;/a&gt;剑指offer 40.数组中只出现一次的
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 39.平衡二叉树</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2039.%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.html"/>
+    <id>https://cheng102e.github.io/剑指offer 39.平衡二叉树.html</id>
+    <published>2020-03-04T12:37:00.000Z</published>
+    <updated>2020-03-04T12:39:59.394Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-39-平衡二叉树"><a href="#剑指offer-39-平衡二叉树" class="headerlink" title="剑指offer 39.平衡二叉树"></a>剑指offer 39.平衡二叉树</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入一棵二叉树，判断该二叉树是否是平衡二叉树。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>继续偷懒，用前一题的代码，求深度，在返回之前比较一下左右子树深度，若差值大于1，结果置为false。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val = 0;</span><br><span class="line">  TreeNode left = null;</span><br><span class="line">  TreeNode right = null;</span><br><span class="line"></span><br><span class="line">  public TreeNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">boolean ans = true;</span><br><span class="line"></span><br><span class="line">public int TreeDepth(TreeNode root) &#123;</span><br><span class="line">  if (root == null) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  int left = TreeDepth(root.left);</span><br><span class="line">  int right = TreeDepth(root.right);</span><br><span class="line">  if (Math.abs(left - right) &gt; 1) &#123;</span><br><span class="line">    ans = false;</span><br><span class="line">  &#125;</span><br><span class="line">  return Math.max(left, right) + 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean IsBalanced_Solution(TreeNode root) &#123;</span><br><span class="line">  int i = TreeDepth(root);</span><br><span class="line">  return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-39-平衡二叉树&quot;&gt;&lt;a href=&quot;#剑指offer-39-平衡二叉树&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 39.平衡二叉树&quot;&gt;&lt;/a&gt;剑指offer 39.平衡二叉树&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a hr
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 38.二叉树的深度</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2038.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6.html"/>
+    <id>https://cheng102e.github.io/剑指offer 38.二叉树的深度.html</id>
+    <published>2020-03-04T12:17:00.000Z</published>
+    <updated>2020-03-04T12:39:54.547Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-38-二叉树的深度"><a href="#剑指offer-38-二叉树的深度" class="headerlink" title="剑指offer 38.二叉树的深度"></a>剑指offer 38.二叉树的深度</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>偷个懒，直接用递归，如果结点为空就不增长深度，不为空就返回子树的深度加一。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val = 0;</span><br><span class="line">  TreeNode left = null;</span><br><span class="line">  TreeNode right = null;</span><br><span class="line"></span><br><span class="line">  public TreeNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int TreeDepth(TreeNode root) &#123;</span><br><span class="line">  if (root == null) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return Math.max(TreeDepth(root.left), TreeDepth(root.right)) + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-38-二叉树的深度&quot;&gt;&lt;a href=&quot;#剑指offer-38-二叉树的深度&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 38.二叉树的深度&quot;&gt;&lt;/a&gt;剑指offer 38.二叉树的深度&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 37.数字在排序数组中出现的次数</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2037.%E6%95%B0%E5%AD%97%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0.html"/>
+    <id>https://cheng102e.github.io/剑指offer 37.数字在排序数组中出现的次数.html</id>
+    <published>2020-03-04T11:55:00.000Z</published>
+    <updated>2020-03-04T12:17:32.065Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-37-数字在排序数组中出现的次数"><a href="#剑指offer-37-数字在排序数组中出现的次数" class="headerlink" title="剑指offer 37.数字在排序数组中出现的次数"></a>剑指offer 37.数字在排序数组中出现的次数</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>统计一个数字在排序数组中出现的次数。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>虽然递归已经是O(n)了，但是还要缩小，所以二分查找，找到前后的位置就行了。查找设k-0.5和k+0.5，反正都没有，所以能找到应该在的位置，然后减法就行。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public int search(int[] array, double k) &#123;</span><br><span class="line">  int l = 0;</span><br><span class="line">  int r = array.length - 1;</span><br><span class="line">  int m = (r - l) / 2 + l;</span><br><span class="line">  while (l &lt;= r) &#123;</span><br><span class="line">    if (array[m] &lt; k) &#123;</span><br><span class="line">      l = m + 1;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      r = m - 1;</span><br><span class="line">    &#125;</span><br><span class="line">    m = (r - l) / 2 + l;</span><br><span class="line">  &#125;</span><br><span class="line">  return l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int GetNumberOfK(int[] array, int k) &#123;</span><br><span class="line">  int start = search(array, k - 0.5);</span><br><span class="line">  int end = search(array, k + 0.5);</span><br><span class="line">  return end - start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-37-数字在排序数组中出现的次数&quot;&gt;&lt;a href=&quot;#剑指offer-37-数字在排序数组中出现的次数&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 37.数字在排序数组中出现的次数&quot;&gt;&lt;/a&gt;剑指offer 37.数字在
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 36.两个链表的第一个公共结点</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2036.%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E7%BB%93%E7%82%B9.html"/>
+    <id>https://cheng102e.github.io/剑指offer 36.两个链表的第一个公共结点.html</id>
+    <published>2020-03-04T10:55:00.000Z</published>
+    <updated>2020-03-04T11:56:59.070Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-36-两个链表的第一个公共结点"><a href="#剑指offer-36-两个链表的第一个公共结点" class="headerlink" title="剑指offer 36.两个链表的第一个公共结点"></a>剑指offer 36.两个链表的第一个公共结点</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入两个链表，找出它们的第一个公共结点。（注意因为传入数据是链表，所以错误测试数据的提示是用其他方式显示的，保证传入数据是正确的）</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>如果可以的话，从后往前比较最合适。但是不行，我们需要考虑两个链表的长度不同，长度为len1和len2，长的先走完差值，然后两个一起往后面走，就可以找到相同的结点。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public class ListNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  ListNode next = null;</span><br><span class="line"></span><br><span class="line">  ListNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) &#123;</span><br><span class="line">  if (pHead1 == null || pHead2 == null) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  ListNode p1 = pHead1;</span><br><span class="line">  ListNode p2 = pHead2;</span><br><span class="line">  int len1 = 0;</span><br><span class="line">  int len2 = 0;</span><br><span class="line">  while (p1.next != null) &#123;</span><br><span class="line">    len1++;</span><br><span class="line">    p1 = p1.next;</span><br><span class="line">  &#125;</span><br><span class="line">  while (p2.next != null) &#123;</span><br><span class="line">    len2++;</span><br><span class="line">    p2 = p2.next;</span><br><span class="line">  &#125;</span><br><span class="line">  p1 = pHead1;</span><br><span class="line">  p2 = pHead2;</span><br><span class="line">  if (len1 &gt; len2) &#123;</span><br><span class="line">    for (int i = len1 - len2; i &gt;= 0; i--) &#123;</span><br><span class="line">      p1 = p1.next;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    for (int i = len2 - len1; i &gt;= 0; i--) &#123;</span><br><span class="line">      p2 = p2.next;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  while (p1 != p2) &#123;</span><br><span class="line">    p1 = p1.next;</span><br><span class="line">    p2 = p2.next;</span><br><span class="line">  &#125;</span><br><span class="line">  return p1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-36-两个链表的第一个公共结点&quot;&gt;&lt;a href=&quot;#剑指offer-36-两个链表的第一个公共结点&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 36.两个链表的第一个公共结点&quot;&gt;&lt;/a&gt;剑指offer 36.两个链表的第
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 35.数组中的逆序对</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2035.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9.html"/>
+    <id>https://cheng102e.github.io/剑指offer 35.数组中的逆序对.html</id>
+    <published>2020-03-04T10:40:00.000Z</published>
+    <updated>2020-03-04T10:47:29.688Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-35-数组中的逆序对"><a href="#剑指offer-35-数组中的逆序对" class="headerlink" title="剑指offer 35.数组中的逆序对"></a>剑指offer 35.数组中的逆序对</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>题目描述<br>  在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007</p><p>输入描述:<br>  题目保证输入的数组中没有的相同的数字</p><p>数据范围：</p><p>  对于%50的数据,size&lt;=10^4<br>  对于%75的数据,size&lt;=10^5<br>  对于%100的数据,size&lt;=2*10^5</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题好麻烦的，最后选择了模拟归并排序的方法，分成最小的块然后进行归并，归并时内部的逆序对就已经计算了，不需要再计算一次。<br>以158，236为例子，首先1&lt;2，逆序不用计算，然后5&gt;3，应该放3，逆序增加5，8两个数字，为mid-l+1，行了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">long count = 0;</span><br><span class="line"></span><br><span class="line">public void merge(int[] array, int[] copy, int start, int end) &#123;</span><br><span class="line">  if (start &gt;= end) &#123;</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  int mid = (end - start) / 2 + start;</span><br><span class="line">  merge(array, copy, start, mid);</span><br><span class="line">  merge(array, copy, mid + 1, end);</span><br><span class="line">  int l = start;</span><br><span class="line">  int r = mid + 1;</span><br><span class="line">  int temp = start;</span><br><span class="line">  while (l &lt;= mid &amp;&amp; r &lt;= end) &#123;</span><br><span class="line">    if (array[l] &lt;= array[r]) &#123;</span><br><span class="line">      copy[temp++] = array[l++];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      count += mid - l + 1;</span><br><span class="line">      copy[temp++] = array[r++];</span><br><span class="line">      if (count &gt; 1000000007) &#123;</span><br><span class="line">        count %=  1000000007;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  while (l &lt;= mid) &#123;</span><br><span class="line">    copy[temp++] = array[l++];</span><br><span class="line">  &#125;</span><br><span class="line">  while (r &lt;= end) &#123;</span><br><span class="line">    copy[temp++] = array[r++];</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = start; i &lt;= end; i++) &#123;</span><br><span class="line">    array[i] = copy[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int InversePairs(int[] array) &#123;</span><br><span class="line">  int start = 0;</span><br><span class="line">  int end = array.length - 1;</span><br><span class="line">  int[] copy = new int[array.length];</span><br><span class="line">  merge(array, copy, start, end);</span><br><span class="line">  return (int) count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-35-数组中的逆序对&quot;&gt;&lt;a href=&quot;#剑指offer-35-数组中的逆序对&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 35.数组中的逆序对&quot;&gt;&lt;/a&gt;剑指offer 35.数组中的逆序对&lt;/h2&gt;&lt;h3 id=&quot;题
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 34.第一个只出现一次的字符</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2034.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E5%AD%97%E7%AC%A6.html"/>
+    <id>https://cheng102e.github.io/剑指offer 34.第一个只出现一次的字符.html</id>
+    <published>2020-03-04T09:50:00.000Z</published>
+    <updated>2020-03-04T09:59:45.711Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-34-第一个只出现一次的字符"><a href="#剑指offer-34-第一个只出现一次的字符" class="headerlink" title="剑指offer 34.第一个只出现一次的字符"></a>剑指offer 34.第一个只出现一次的字符</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>在一个字符串(0&lt;=字符串长度&lt;=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置, 如果没有则返回 -1（需要区分大小写）.</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这种统计数量的，优先拿hashmap，遍历时若不存在，直接放入，存在的话，数字加一。<br>最后按照字符串中的顺序遍历一下，若次数为1直接输出。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public int FirstNotRepeatingChar(String str) &#123;</span><br><span class="line">  if (str == null || str.length() == 0) &#123;</span><br><span class="line">    return -1;</span><br><span class="line">  &#125;</span><br><span class="line">  HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">  StringBuffer que = new StringBuffer(str);</span><br><span class="line">  for (int i = 0; i &lt; que.length(); i++) &#123;</span><br><span class="line">    char temp = que.charAt(i);</span><br><span class="line">    if (map.containsKey(temp)) &#123;</span><br><span class="line">      int num = map.get(temp);</span><br><span class="line">      map.put(temp, ++num);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      map.put(temp, 1);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = 0; i &lt; que.length(); i++) &#123;</span><br><span class="line">    if (map.get(que.charAt(i)) == 1) &#123;</span><br><span class="line">      return i;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-34-第一个只出现一次的字符&quot;&gt;&lt;a href=&quot;#剑指offer-34-第一个只出现一次的字符&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 34.第一个只出现一次的字符&quot;&gt;&lt;/a&gt;剑指offer 34.第一个只出现一次的
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 33.丑数</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2033.%E4%B8%91%E6%95%B0.html"/>
+    <id>https://cheng102e.github.io/剑指offer 33.丑数.html</id>
+    <published>2020-03-04T04:50:00.000Z</published>
+    <updated>2020-03-04T05:55:33.844Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-33-丑数"><a href="#剑指offer-33-丑数" class="headerlink" title="剑指offer 33.丑数"></a>剑指offer 33.丑数</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>把只包含质因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含质因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这里采用的是三指针法，任意丑数都是比这个数小的丑数乘以2，3，5其中之一得到的，要求按照顺序排列，那么就从之前的数中找到未被使用过的数乘一下，然后比较，就可以得到新的数了。<br>首先初始位为1，设三个指针值n2,n3,n5,初始设为0.之后开始循环，每次循环都找到235未乘过的数字乘一下，然后取最小值为新的丑数。之后，若n2n3n5使用过了，那么指针位+1，下次乘下一个数字，如果都可以，那就都加。把数字记录下来最后输出即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public int GetUglyNumber_Solution(int index) &#123;</span><br><span class="line">  if(index==0)&#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  int[] ans = new int[index];</span><br><span class="line">  int n2 = 0, n3 = 0, n5 = 0;</span><br><span class="line">  ans[0] = 1;</span><br><span class="line">  for (int i = 1; i &lt; index; i++) &#123;</span><br><span class="line">    int min = Math.min(ans[n2] * 2, Math.min(ans[n3] * 3, ans[n5] * 5));</span><br><span class="line">    ans[i] = min;</span><br><span class="line">    if (min == ans[n2]*2) &#123;</span><br><span class="line">      n2++;</span><br><span class="line">    &#125;</span><br><span class="line">    if (min == ans[n3]*3) &#123;</span><br><span class="line">      n3++;</span><br><span class="line">    &#125;</span><br><span class="line">    if (min == ans[n5]*5) &#123;</span><br><span class="line">      n5++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  return ans[index-1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-33-丑数&quot;&gt;&lt;a href=&quot;#剑指offer-33-丑数&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 33.丑数&quot;&gt;&lt;/a&gt;剑指offer 33.丑数&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; cla
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 32.把数组排成最小的数</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2032.%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0.html"/>
+    <id>https://cheng102e.github.io/剑指offer 32.把数组排成最小的数.html</id>
+    <published>2020-03-04T03:50:00.000Z</published>
+    <updated>2020-03-04T03:54:05.812Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-32-把数组排成最小的数"><a href="#剑指offer-32-把数组排成最小的数" class="headerlink" title="剑指offer 32.把数组排成最小的数"></a>剑指offer 32.把数组排成最小的数</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>思路就是，先建一个ArrayList存放数字，对这个进行排序，然后转换成字符串。问题就是中间的排序，排序直接用了sort，改一下比较器就行，假设有两个数字，12，34，1234&lt;3412，所以12就往前面排，以此类推，最后得到答案。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static String PrintMinNumber(int[] numbers) &#123;</span><br><span class="line">  StringBuffer str = new StringBuffer();</span><br><span class="line">  ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">  for (int i:numbers) &#123;</span><br><span class="line">    list.add(i);</span><br><span class="line">  &#125;</span><br><span class="line">  Collections.sort(list, new Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public int compare(Integer o1, Integer o2) &#123;</span><br><span class="line">      String s1 = o1 + &quot;&quot; + o2;</span><br><span class="line">      String s2 = o2 + &quot;&quot; + o1;</span><br><span class="line">      return s1.compareTo(s2);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  for (int i:list)&#123;</span><br><span class="line">    str.append(i);</span><br><span class="line">  &#125;</span><br><span class="line">  return str.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-32-把数组排成最小的数&quot;&gt;&lt;a href=&quot;#剑指offer-32-把数组排成最小的数&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 32.把数组排成最小的数&quot;&gt;&lt;/a&gt;剑指offer 32.把数组排成最小的数&lt;/h2&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 31.整数中1出现的次数（从1到n整数中1出现的次数）</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2031.%E6%95%B4%E6%95%B0%E4%B8%AD1%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0%EF%BC%88%E4%BB%8E1%E5%88%B0n%E6%95%B4%E6%95%B0%E4%B8%AD1%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0%EF%BC%89.html"/>
+    <id>https://cheng102e.github.io/剑指offer 31.整数中1出现的次数（从1到n整数中1出现的次数）.html</id>
+    <published>2020-03-04T03:30:00.000Z</published>
+    <updated>2020-03-04T03:34:00.330Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-31-整数中1出现的次数（从1到n整数中1出现的次数）"><a href="#剑指offer-31-整数中1出现的次数（从1到n整数中1出现的次数）" class="headerlink" title="剑指offer 31.整数中1出现的次数（从1到n整数中1出现的次数）"></a>剑指offer 31.整数中1出现的次数（从1到n整数中1出现的次数）</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>求出1<del>13的整数中1出现的次数,并算出100</del>1300的整数中1出现的次数？为此他特别数了一下1~13中包含1的数字有1、10、11、12、13因此共出现6次,但是对于后面问题他就没辙了。ACMer希望你们帮帮他,并把问题更加普遍化,可以很快的求出任意非负整数区间中1出现的次数（从1 到 n 中1出现的次数）。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>虽然有不少比较巧妙的算法，但我还是选择了最快的方法(思路最清晰)。新建一个StringBuffer，然后把数字全塞进去，遍历一下，成了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public int NumberOf1Between1AndN_Solution(int n) &#123;</span><br><span class="line">  StringBuffer str = new StringBuffer();</span><br><span class="line">  for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    str.append(i);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  int count = 0;</span><br><span class="line">  for (int i = 0; i &lt; str.length(); i++) &#123;</span><br><span class="line">    if (str.charAt(i) == &apos;1&apos;) &#123;</span><br><span class="line">      count++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-31-整数中1出现的次数（从1到n整数中1出现的次数）&quot;&gt;&lt;a href=&quot;#剑指offer-31-整数中1出现的次数（从1到n整数中1出现的次数）&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 31.整数中1出现的次数（从
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>剑指offer 30.连续子数组的最大和</title>
+    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2030.%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C.html"/>
+    <id>https://cheng102e.github.io/剑指offer 30.连续子数组的最大和.html</id>
+    <published>2020-03-04T02:30:00.000Z</published>
+    <updated>2020-03-04T03:31:17.305Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="剑指offer-30-连续子数组的最大和"><a href="#剑指offer-30-连续子数组的最大和" class="headerlink" title="剑指offer 30.连续子数组的最大和"></a>剑指offer 30.连续子数组的最大和</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1)</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这个思路就是动态规划，但是没必要照状态转移方程来写，先设置两个变量，sum代表当前序列的和，max代表最大子序列的和，对于每个数组，若这时的sum已经小于0，那么对于新的序列就是负收益，直接舍弃，若此时sum大于0，那么就是正收益，不用舍弃，继续叠加。于此同时记得保存最大值。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public int FindGreatestSumOfSubArray(int[] array) &#123;</span><br><span class="line"></span><br><span class="line">  int sum = array[0];</span><br><span class="line">  int max = sum;</span><br><span class="line">  for (int i = 1; i &lt; array.length; i++) &#123;</span><br><span class="line">    if (sum &lt; 0) &#123;</span><br><span class="line">      sum = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    sum += array[i];</span><br><span class="line">    if (sum &gt; max) &#123;</span><br><span class="line">      max = sum;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;剑指offer-30-连续子数组的最大和&quot;&gt;&lt;a href=&quot;#剑指offer-30-连续子数组的最大和&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 30.连续子数组的最大和&quot;&gt;&lt;/a&gt;剑指offer 30.连续子数组的最大和&lt;/h2&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>剑指offer 29.最小的K个数</title>
     <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2029.%E6%9C%80%E5%B0%8F%E7%9A%84K%E4%B8%AA%E6%95%B0.html"/>
     <id>https://cheng102e.github.io/剑指offer 29.最小的K个数.html</id>
     <published>2020-03-03T14:30:00.000Z</published>
-    <updated>2020-03-03T14:49:41.663Z</updated>
+    <updated>2020-03-04T03:31:15.450Z</updated>
     
     <content type="html"><![CDATA[<h2 id="剑指offer-29-最小的K个数"><a href="#剑指offer-29-最小的K个数" class="headerlink" title="剑指offer 29.最小的K个数"></a>剑指offer 29.最小的K个数</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>几种方法，我一开始想到的是直接快排函数，然后输出k个就行，之后改用优先队列建堆，大小控制为k，大于这个数量就删除堆顶(最大值),最后只剩k个，输出到ans当中即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public ArrayList&lt;Integer&gt; GetLeastNumbers_Solution(int[] input, int k) &#123;</span><br><span class="line"></span><br><span class="line">  ArrayList&lt;Integer&gt; ans = new ArrayList&lt;&gt;();</span><br><span class="line">  if (input == null || k &lt;= 0 || k &gt; input.length) &#123;</span><br><span class="line">    return ans;</span><br><span class="line">  &#125;</span><br><span class="line">  Queue&lt;Integer&gt; queue = new PriorityQueue&lt;&gt;((o1, o2) -&gt; o2 - o1);</span><br><span class="line"></span><br><span class="line">  for (int i = 0; i &lt; input.length; i++) &#123;</span><br><span class="line"></span><br><span class="line">    if (queue.size() &lt; k) &#123;</span><br><span class="line">      queue.add(input[i]);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      if (input[i] &lt; queue.peek()) &#123;</span><br><span class="line">        queue.remove();</span><br><span class="line">        queue.add(input[i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  while (!queue.isEmpty()) &#123;</span><br><span class="line">    ans.add(queue.remove());</span><br><span class="line">  &#125;</span><br><span class="line">  return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -226,273 +479,6 @@
     
       <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 20.包含min函数的栈</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2020.%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88.html"/>
-    <id>https://cheng102e.github.io/剑指offer 20.包含min函数的栈.html</id>
-    <published>2020-02-29T06:50:00.000Z</published>
-    <updated>2020-02-29T07:33:55.448Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="20-包含min函数的栈"><a href="#20-包含min函数的栈" class="headerlink" title="20.包含min函数的栈"></a>20.包含min函数的栈</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。<br>注意：保证测试中不会当栈为空的时候，对栈调用pop()或者min()或者top()方法。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题给人的启发很深，可以增加一个新的栈专门来存储最小值，push的时候，第一个数据栈直接push，第二个最小值栈若为空或者顶端值大于node，都是直接加入node，如果不是，那么就把栈顶的数再次加入，最小值栈就用于存放最小值，插入值不为最小值就把最小值再次插入一遍确保两个栈相同长度。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Stack&lt;Integer&gt; stackdata = new Stack&lt;&gt;();</span><br><span class="line">Stack&lt;Integer&gt; stackmin = new Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line">public void push(int node) &#123;</span><br><span class="line">  stackdata.push(node);</span><br><span class="line">  if (stackmin.empty()) &#123;</span><br><span class="line">    stackmin.push(node);</span><br><span class="line">  &#125; else if (node &lt; stackmin.peek()) &#123;</span><br><span class="line">    stackmin.push(node);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    stackmin.push(stackmin.peek());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void pop() &#123;</span><br><span class="line">  stackmin.pop();</span><br><span class="line">  stackdata.pop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int top() &#123;</span><br><span class="line">  return stackdata.peek();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int min() &#123;</span><br><span class="line">  return stackmin.peek();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;20-包含min函数的栈&quot;&gt;&lt;a href=&quot;#20-包含min函数的栈&quot; class=&quot;headerlink&quot; title=&quot;20.包含min函数的栈&quot;&gt;&lt;/a&gt;20.包含min函数的栈&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 19.顺时针打印矩阵</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2019.%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.html"/>
-    <id>https://cheng102e.github.io/剑指offer 19.顺时针打印矩阵.html</id>
-    <published>2020-02-29T05:50:00.000Z</published>
-    <updated>2020-02-29T05:56:07.714Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="19-顺时针打印矩阵"><a href="#19-顺时针打印矩阵" class="headerlink" title="19.顺时针打印矩阵"></a>19.顺时针打印矩阵</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这个。。我没找什么特别的方法，就用思路最清晰的方法，用循环来做，并且几个判断条件都要带=，不然结果会出错。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public ArrayList&lt;Integer&gt; printMatrix(int[][] matrix) &#123;</span><br><span class="line">  ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">  int EndX = matrix.length - 1;</span><br><span class="line">  int EndY = matrix[0].length - 1;</span><br><span class="line">  int StartX = 0;</span><br><span class="line">  int StartY = 0;</span><br><span class="line">  int x = StartX, y = StartY;</span><br><span class="line">  while (StartX &lt;= EndX &amp;&amp; StartY &lt;= EndY) &#123;</span><br><span class="line">    if (StartX &lt;= EndX) &#123;</span><br><span class="line">      while (y &lt;= EndY) &#123;</span><br><span class="line">        list.add(matrix[x][y]);</span><br><span class="line">        y++;</span><br><span class="line">      &#125;</span><br><span class="line">      y--;</span><br><span class="line">      StartX++;</span><br><span class="line">      x = StartX;</span><br><span class="line">    &#125;</span><br><span class="line">    if (StartY &lt;= EndY) &#123;</span><br><span class="line">      while (x &lt;= EndX) &#123;</span><br><span class="line">        list.add(matrix[x][y]);</span><br><span class="line">        x++;</span><br><span class="line">      &#125;</span><br><span class="line">      x--;</span><br><span class="line">      EndY--;</span><br><span class="line">      y = EndY;</span><br><span class="line">    &#125;</span><br><span class="line">    if (StartX &lt;= EndX) &#123;</span><br><span class="line">      while (y &gt;= StartY) &#123;</span><br><span class="line">        list.add(matrix[x][y]);</span><br><span class="line">        y--;</span><br><span class="line">      &#125;</span><br><span class="line">      y++;</span><br><span class="line">      EndX--;</span><br><span class="line">      x = EndX;</span><br><span class="line">    &#125;</span><br><span class="line">    if (StartY &lt;= EndY) &#123;</span><br><span class="line">      while (x &gt;= StartX) &#123;</span><br><span class="line">        list.add(matrix[x][y]);</span><br><span class="line">        x--;</span><br><span class="line">      &#125;</span><br><span class="line">      x++;</span><br><span class="line">      StartY++;</span><br><span class="line">      y = StartY;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;19-顺时针打印矩阵&quot;&gt;&lt;a href=&quot;#19-顺时针打印矩阵&quot; class=&quot;headerlink&quot; title=&quot;19.顺时针打印矩阵&quot;&gt;&lt;/a&gt;19.顺时针打印矩阵&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerli
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 18.二叉树的镜像</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2018.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F.html"/>
-    <id>https://cheng102e.github.io/剑指offer 18.二叉树的镜像.html</id>
-    <published>2020-02-29T05:00:00.000Z</published>
-    <updated>2020-02-29T05:04:09.750Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="18-二叉树的镜像"><a href="#18-二叉树的镜像" class="headerlink" title="18.二叉树的镜像"></a>18.二叉树的镜像</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>题目描述<br>操作给定的二叉树，将其变换为源二叉树的镜像。<br>输入描述:<br>二叉树的镜像定义：源二叉树<br>            8<br>           /  <br>          6   10<br>         / \  / <br>        5  7 9 11<br>        镜像二叉树<br>            8<br>           /  <br>          10   6<br>         / \  / <br>        11 9 7  5</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>同样是递归，不过这题思路很清晰，如果根节点存在，直接交换左右节点，之后递归以左右节点为根，子节点的子节点左右交换，一层一层就行了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">  public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val = 0;</span><br><span class="line">  TreeNode left = null;</span><br><span class="line">  TreeNode right = null;</span><br><span class="line"></span><br><span class="line">  public TreeNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public void Mirror(TreeNode root) &#123;</span><br><span class="line">  if (root != null) &#123;</span><br><span class="line">    TreeNode temp = root.left;</span><br><span class="line">    root.left = root.right;</span><br><span class="line">    root.right = temp;</span><br><span class="line">    if (root.left != null) &#123;</span><br><span class="line">      Mirror(root.left);</span><br><span class="line">    &#125;</span><br><span class="line">    if (root.right != null) &#123;</span><br><span class="line">      Mirror(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;18-二叉树的镜像&quot;&gt;&lt;a href=&quot;#18-二叉树的镜像&quot; class=&quot;headerlink&quot; title=&quot;18.二叉树的镜像&quot;&gt;&lt;/a&gt;18.二叉树的镜像&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; 
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-      <category term="树" scheme="https://cheng102e.github.io/tags/%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 17.树的子结构</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2017.%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84.html"/>
-    <id>https://cheng102e.github.io/剑指offer 17.树的子结构.html</id>
-    <published>2020-02-29T04:26:00.000Z</published>
-    <updated>2020-02-29T05:02:14.922Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="17-树的子结构"><a href="#17-树的子结构" class="headerlink" title="17.树的子结构"></a>17.树的子结构</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题应该用递归的，关于树类型的题目递归的话思路会很清晰。<br>首先在A中寻找到B的根节点，找到之后就开始递归比较左子节点和右子节点是否相同，如果找到就返回true，不然的话就是false。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val = 0;</span><br><span class="line">  TreeNode left = null;</span><br><span class="line">  TreeNode right = null;</span><br><span class="line"></span><br><span class="line">  public TreeNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean HasSubtree(TreeNode root1, TreeNode root2) &#123;</span><br><span class="line">  boolean result = false;</span><br><span class="line"></span><br><span class="line">  if (root1 != null &amp;&amp; root2 != null) &#123;</span><br><span class="line">    if (root1.val == root2.val) &#123;</span><br><span class="line">      result = Does1Has2(root1, root2);</span><br><span class="line">    &#125;</span><br><span class="line">    if (!result) &#123;</span><br><span class="line">      result = HasSubtree(root1.left, root2);</span><br><span class="line">    &#125;</span><br><span class="line">    if (!result) &#123;</span><br><span class="line">      result = HasSubtree(root1.right, root2);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean Does1Has2(TreeNode root1, TreeNode root2) &#123;</span><br><span class="line">  if (root2 == null) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  if (root1 == null) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (root1.val != root2.val) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  return Does1Has2(root1.left, root2.left) &amp;&amp; Does1Has2(root1.right, root2.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;17-树的子结构&quot;&gt;&lt;a href=&quot;#17-树的子结构&quot; class=&quot;headerlink&quot; title=&quot;17.树的子结构&quot;&gt;&lt;/a&gt;17.树的子结构&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; titl
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-      <category term="树" scheme="https://cheng102e.github.io/tags/%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 16.合并两个排序的链表</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2016.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8.html"/>
-    <id>https://cheng102e.github.io/剑指offer 16.合并两个排序的链表.html</id>
-    <published>2020-02-29T03:26:00.000Z</published>
-    <updated>2020-02-29T03:45:42.029Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="16-合并两个排序的链表"><a href="#16-合并两个排序的链表" class="headerlink" title="16.合并两个排序的链表"></a>16.合并两个排序的链表</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题以前也做过的，只需要新建一个表头，然后比较两边的大小，依次加入新的链表，最后再把没用上的加到结尾即可。<br>now代表当前节点，base代表头结点。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public class ListNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  ListNode next = null;</span><br><span class="line"></span><br><span class="line">  ListNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public ListNode Merge(ListNode list1, ListNode list2) &#123;</span><br><span class="line">  if (list1 == null) &#123;</span><br><span class="line">    return list2;</span><br><span class="line">  &#125;</span><br><span class="line">  if (list2 == null) &#123;</span><br><span class="line">    return list1;</span><br><span class="line">  &#125;</span><br><span class="line">  ListNode base = null;</span><br><span class="line">  ListNode now = null;</span><br><span class="line">  while (list1 != null &amp;&amp; list2 != null) &#123;</span><br><span class="line">    if (list1.val &lt;= list2.val) &#123;</span><br><span class="line">      if (base == null) &#123;</span><br><span class="line">        base = list1;</span><br><span class="line">        now = list1;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        now.next = list1;</span><br><span class="line">        now = now.next;</span><br><span class="line">      &#125;</span><br><span class="line">      list1 = list1.next;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      if (base == null) &#123;</span><br><span class="line">        base = list2;</span><br><span class="line">        now = list2;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        now.next = list2;</span><br><span class="line">        now = now.next;</span><br><span class="line">      &#125;</span><br><span class="line">      list2 = list2.next;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if (list1 == null) &#123;</span><br><span class="line">    now.next = list2;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    now.next = list1;</span><br><span class="line">  &#125;</span><br><span class="line">  return base;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;16-合并两个排序的链表&quot;&gt;&lt;a href=&quot;#16-合并两个排序的链表&quot; class=&quot;headerlink&quot; title=&quot;16.合并两个排序的链表&quot;&gt;&lt;/a&gt;16.合并两个排序的链表&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-      <category term="链表" scheme="https://cheng102e.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 15.反转链表</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2015.%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.html"/>
-    <id>https://cheng102e.github.io/剑指offer 15.反转链表.html</id>
-    <published>2020-02-28T03:26:00.000Z</published>
-    <updated>2020-02-29T03:43:39.840Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="15-反转链表"><a href="#15-反转链表" class="headerlink" title="15.反转链表"></a>15.反转链表</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入一个链表，反转链表后，输出新链表的表头。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>翻转链表并不是很难，只需要注意一下特殊情况，这里设置两个空节点存储前一个结点和后一个结点。<br>头结点为空直接结束，不为空就开始循环，假设链表为0-&gt;1，head=0，next=null，pre=null；然后next=1，head.next=null(最后一位没有子节点),pre=0,head=1;然后next=null，head.next=0，pre=1，head=null，跳出循环，头结点为pre(1)，结束。<br>最后返回的应该是pre不是head，因为原本尾结点现在是pre，多走了一步，head归为null了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class ListNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  ListNode next = null;</span><br><span class="line"></span><br><span class="line">  ListNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public ListNode ReverseList(ListNode head) &#123;</span><br><span class="line">  if (head == null) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  ListNode pre = null;</span><br><span class="line">  ListNode next = null;</span><br><span class="line">  while (head != null) &#123;</span><br><span class="line">    next = head.next;</span><br><span class="line">    head.next = pre;</span><br><span class="line">    pre = head;</span><br><span class="line">    head = next;</span><br><span class="line">  &#125;</span><br><span class="line">  return pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;15-反转链表&quot;&gt;&lt;a href=&quot;#15-反转链表&quot; class=&quot;headerlink&quot; title=&quot;15.反转链表&quot;&gt;&lt;/a&gt;15.反转链表&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-      <category term="链表" scheme="https://cheng102e.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 14.链表中倒数第k个结点</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2014.%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E7%BB%93%E7%82%B9.html"/>
-    <id>https://cheng102e.github.io/剑指offer 14.链表中倒数第k个结点.html</id>
-    <published>2020-02-28T02:50:00.000Z</published>
-    <updated>2020-02-29T03:43:32.886Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="14-链表中倒数第k个结点"><a href="#14-链表中倒数第k个结点" class="headerlink" title="14.链表中倒数第k个结点"></a>14.链表中倒数第k个结点</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入一个链表，输出该链表中倒数第k个结点。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>假设原链表有n个结点，倒数第k个结点就是n-k+1个结点，那么这里可以设置两个结点，一个结点先走k-1步，是第k个结点，然后两个结点一起走，第一个结点再走n-k步就到达末尾，此时第二个结点也走了n-k步，到达了n-k+1个结点，就是所求的值。<br>这里有几点需要注意，就是k的范围，若k&lt;=0那么直接返回null，若链表为空那也返回null，若链表长度小于k一样返回null</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class ListNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  ListNode next = null;</span><br><span class="line"></span><br><span class="line">  ListNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public ListNode FindKthToTail(ListNode head, int k) &#123;</span><br><span class="line">  if (head == null || k &lt;= 0) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  ListNode ans = head;</span><br><span class="line">  for (int i = 0; i &lt; k - 1; i++) &#123;</span><br><span class="line">    if (head.next != null) &#123;</span><br><span class="line">      head = head.next;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return null;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  while (head.next != null) &#123;</span><br><span class="line">    head = head.next;</span><br><span class="line">    ans = ans.next;</span><br><span class="line">  &#125;</span><br><span class="line">  return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;14-链表中倒数第k个结点&quot;&gt;&lt;a href=&quot;#14-链表中倒数第k个结点&quot; class=&quot;headerlink&quot; title=&quot;14.链表中倒数第k个结点&quot;&gt;&lt;/a&gt;14.链表中倒数第k个结点&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; cla
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-      <category term="链表" scheme="https://cheng102e.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 13.调整数组顺序使奇数位于偶数前面</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2013.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2.html"/>
-    <id>https://cheng102e.github.io/剑指offer 13.调整数组顺序使奇数位于偶数前面.html</id>
-    <published>2020-02-28T02:17:00.000Z</published>
-    <updated>2020-02-28T02:52:42.231Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="13-调整数组顺序使奇数位于偶数前面"><a href="#13-调整数组顺序使奇数位于偶数前面" class="headerlink" title="13.调整数组顺序使奇数位于偶数前面"></a>13.调整数组顺序使奇数位于偶数前面</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>采用了空间换时间，确保相对位置，新建数组把奇数放前面偶数放后面，再赋值给原数组。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  public void reOrderArray(int[] array) &#123;</span><br><span class="line">  int[] newarray = new int[array.length];</span><br><span class="line">  int index = 0;</span><br><span class="line">  for (int i = 0; i &lt; array.length; i++) &#123;</span><br><span class="line">    if (array[i] % 2 == 1) &#123;</span><br><span class="line">      newarray[index] = array[i];</span><br><span class="line">      index++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = 0; i &lt; array.length; i++) &#123;</span><br><span class="line">    if (array[i] % 2 == 0) &#123;</span><br><span class="line">      newarray[index] = array[i];</span><br><span class="line">      index++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = 0; i &lt; array.length; i++) &#123;</span><br><span class="line">    array[i] = newarray[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;13-调整数组顺序使奇数位于偶数前面&quot;&gt;&lt;a href=&quot;#13-调整数组顺序使奇数位于偶数前面&quot; class=&quot;headerlink&quot; title=&quot;13.调整数组顺序使奇数位于偶数前面&quot;&gt;&lt;/a&gt;13.调整数组顺序使奇数位于偶数前面&lt;/h2&gt;&lt;h3 id=&quot;题
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 12.数值的整数次方</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2012.%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.html"/>
-    <id>https://cheng102e.github.io/剑指offer 12.数值的整数次方.html</id>
-    <published>2020-02-27T14:17:00.000Z</published>
-    <updated>2020-02-28T02:41:50.055Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="12-数值的整数次方"><a href="#12-数值的整数次方" class="headerlink" title="12.数值的整数次方"></a>12.数值的整数次方</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p><p>保证base和exponent不同时为0</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>问题也不是很大，如果不是要求效率就可以直接分类讨论，一个循环解决，要求效率的话就要用快速幂，我没用快速幂，就分类讨论了一下，最后输出结果。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public double Power(double base, int exponent) &#123;</span><br><span class="line">  if (exponent == 0) &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  if (base == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  double ans = 1;</span><br><span class="line">  boolean flag = false;</span><br><span class="line">  if (exponent &gt; 0) &#123;</span><br><span class="line">    flag = true;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    flag = false;</span><br><span class="line">    exponent = -exponent;</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = 1; i &lt;= exponent; i++) &#123;</span><br><span class="line">    ans = ans * base;</span><br><span class="line">  &#125;</span><br><span class="line">  if (!flag) &#123;</span><br><span class="line">    ans = 1.0 / ans;</span><br><span class="line">  &#125;</span><br><span class="line">  return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;12-数值的整数次方&quot;&gt;&lt;a href=&quot;#12-数值的整数次方&quot; class=&quot;headerlink&quot; title=&quot;12.数值的整数次方&quot;&gt;&lt;/a&gt;12.数值的整数次方&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerli
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 213. House Robber II</title>
-    <link href="https://cheng102e.github.io/LeetCode%20213.%20House%20Robber%20II.html"/>
-    <id>https://cheng102e.github.io/LeetCode 213. House Robber II.html</id>
-    <published>2020-02-27T10:23:00.000Z</published>
-    <updated>2020-02-27T10:25:15.855Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="213-House-Robber-II（打家劫舍-II）"><a href="#213-House-Robber-II（打家劫舍-II）" class="headerlink" title="213. House Robber II（打家劫舍 II）"></a>213. House Robber II（打家劫舍 II）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/house-robber-ii" target="_blank" rel="noopener">https://leetcode-cn.com/problems/house-robber-ii</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</p><p>给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。</p><p>示例 1:</p><p>输入: [2,3,2]<br>输出: 3<br>解释: 你不能先偷窃 1 号房屋（金额 = 2），然后偷窃 3 号房屋（金额 = 2）, 因为他们是相邻的。<br>示例 2:</p><p>输入: [1,2,3,1]<br>输出: 4<br>解释: 你可以先偷窃 1 号房屋（金额 = 1），然后偷窃 3 号房屋（金额 = 3）。<br>     偷窃到的最高金额 = 1 + 3 = 4 。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>动态规划，对于第三间之后的房子，有拿或者不拿两种选择，如果选择拿，那么前一间房子就不能拿，这样可以得到状态转移方程dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i])，还要考虑到一点就是，第一个和最后一个不能都拿，可以考虑设两个方程，第一个是1到n-1，第二个是2到n，选最大值即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public int rob(int[] nums) &#123;</span><br><span class="line">  int[] dp_0 = new int[nums.length];</span><br><span class="line">  int[] dp_1 = new int[nums.length];</span><br><span class="line">  if (nums.length == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if (nums.length == 1) &#123;</span><br><span class="line">    return nums[0];</span><br><span class="line">  &#125;</span><br><span class="line">  if (nums.length == 2) &#123;</span><br><span class="line">    return Math.max(nums[0], nums[1]);</span><br><span class="line">  &#125;</span><br><span class="line">  dp_0[0] = nums[0];</span><br><span class="line">  dp_0[1] = Math.max(nums[0], nums[1]);</span><br><span class="line">  for (int i = 2; i &lt; nums.length - 1; i++) &#123;</span><br><span class="line">    dp_0[i] = Math.max(dp_0[i - 1], dp_0[i - 2] + nums[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  dp_1[1] = nums[1];</span><br><span class="line">  dp_1[2] = Math.max(nums[1], nums[2]);</span><br><span class="line">  for (int i = 3; i &lt; nums.length; i++) &#123;</span><br><span class="line">    dp_1[i] = Math.max(dp_1[i - 1], dp_1[i - 2] + nums[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  return Math.max(dp_0[nums.length - 2], dp_1[nums.length - 1]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;213-House-Robber-II（打家劫舍-II）&quot;&gt;&lt;a href=&quot;#213-House-Robber-II（打家劫舍-II）&quot; class=&quot;headerlink&quot; title=&quot;213. House Robber II（打家劫舍 II）&quot;&gt;&lt;/a&gt;2
-      
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="动态规划" scheme="https://cheng102e.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 11.二进制中1的个数</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2011.%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0.html"/>
-    <id>https://cheng102e.github.io/剑指offer 11.二进制中1的个数.html</id>
-    <published>2020-02-27T10:17:00.000Z</published>
-    <updated>2020-02-28T02:41:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="11-二进制中1的个数"><a href="#11-二进制中1的个数" class="headerlink" title="11.二进制中1的个数"></a>11.二进制中1的个数</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>对我来说蛮难的，虽然解法有多种吧。<br>一开始想的就是直接转二进制字符串遍历，简单，但是这题本意应该是位运算，这方面我不是很熟。<br>把一个整数减去1，再和原整数做与运算，会把该整数最右边一个1变成0。那么一个整数的二进制表示中有多少个1，就可以进行多少次这样的操作。这句话是书上的，每次运算都把一个1变成0，当成为0的时候运算的次数就是1的数量。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public int NumberOf1(int n) &#123;</span><br><span class="line">  int count = 0;</span><br><span class="line"></span><br><span class="line">  while (n != 0) &#123;</span><br><span class="line">    count++;</span><br><span class="line">    n = (n - 1) &amp; n;</span><br><span class="line">  &#125;</span><br><span class="line">  return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;11-二进制中1的个数&quot;&gt;&lt;a href=&quot;#11-二进制中1的个数&quot; class=&quot;headerlink&quot; title=&quot;11.二进制中1的个数&quot;&gt;&lt;/a&gt;11.二进制中1的个数&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;head
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-      <category term="位运算" scheme="https://cheng102e.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
   </entry>
   
