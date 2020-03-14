@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 1038. Binary Search Tree to Greater Sum Tree]]></title>
+    <url>%2FLeetCode%201038.%20Binary%20Search%20Tree%20to%20Greater%20Sum%20Tree.html</url>
+    <content type="text"><![CDATA[1038. Binary Search Tree to Greater Sum Tree（从二叉搜索树到更大和树）链接https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/ 题目给出二叉 搜索 树的根节点，该二叉树的节点值各不相同，修改二叉树，使每个节点 node 的新值等于原树中大于或等于 node.val 的值之和。 提醒一下，二叉搜索树满足下列约束条件： 节点的左子树仅包含键 小于 节点键的节点。节点的右子树仅包含键 大于 节点键的节点。左右子树也必须是二叉搜索树。 示例： 输入：[4,1,6,0,2,5,7,null,null,null,3,null,null,null,8] 输出：[30,36,21,36,35,26,15,null,null,null,33,null,null,null,8] 提示： 树中的节点数介于 1 和 100 之间。每个节点的值介于 0 和 100 之间。给定的树为二叉搜索树。 注意：该题目与 538: https://leetcode-cn.com/problems/convert-bst-to-greater-tree/ 相同 思路偷了个懒，代码和538的是一样的。直接递归，新建一个sum拿来存储值，然后修改结点值，这里记得右中左的方式。 代码123456789101112int sum = 0;public TreeNode bstToGst(TreeNode root) &#123; if (root != null) &#123; bstToGst(root.right); sum += root.val; root.val = sum; bstToGst(root.left); &#125; return root;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 538. Convert BST to Greater Tree]]></title>
+    <url>%2FLeetCode%20538.%20Convert%20BST%20to%20Greater%20Tree.html</url>
+    <content type="text"><![CDATA[538. Convert BST to Greater Tree（把二叉搜索树转换为累加树）链接https://leetcode-cn.com/problems/convert-bst-to-greater-tree 题目给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。 例如： 输入: 原始二叉搜索树: 5 / 2 13 输出: 转换为累加树: 18 / 20 13 注意：本题和 1038: https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/ 相同 思路直接递归，新建一个sum拿来存储值，然后修改结点值，这里记得右中左的方式。 代码123456789101112int sum = 0;public TreeNode convertBST(TreeNode root) &#123; if (root != null) &#123; convertBST(root.right); sum += root.val; root.val = sum; convertBST(root.left); &#125; return root;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 141. Linked List Cycle]]></title>
+    <url>%2FLeetCode%20141.%20Linked%20List%20Cycle.html</url>
+    <content type="text"><![CDATA[141. Linked List Cycle（环形链表）链接https://leetcode-cn.com/problems/linked-list-cycle 题目给定一个链表，判断链表中是否有环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。 示例 1： 输入：head = [3,2,0,-4], pos = 1 输出：true 解释：链表中有一个环，其尾部连接到第二个节点。 示例 2： 输入：head = [1,2], pos = 0 输出：true 解释：链表中有一个环，其尾部连接到第一个节点。 示例 3： 输入：head = [1], pos = -1 输出：false 解释：链表中没有环。 进阶： 你能用 O(1)（即，常量）内存解决此问题吗？ 思路快慢指针法，快的一次走两步，慢的一次走一步，每次的差值都是1步，如果快的能追上慢的，就代表成环。 代码1234567891011121314151617181920212223242526class ListNode &#123; int val; ListNode next; ListNode(int x) &#123; val = x; next = null; &#125;&#125;public boolean hasCycle(ListNode head) &#123; if (head == null || head.next == null) &#123; return false; &#125; ListNode slow = head; ListNode fast = head.next; while (slow != fast) &#123; if (fast.next == null || fast.next.next == null) &#123; return false; &#125; slow = slow.next; fast = fast.next.next; &#125; return true;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 155. Min Stack]]></title>
+    <url>%2FLeetCode%20155.%20Min%20Stack.html</url>
+    <content type="text"><![CDATA[155. Min Stack（最小栈）链接https://leetcode-cn.com/problems/min-stack 题目设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。 push(x) – 将元素 x 推入栈中。pop() – 删除栈顶的元素。top() – 获取栈顶元素。getMin() – 检索栈中的最小元素。示例: MinStack minStack = new MinStack(); minStack.push(-2); minStack.push(0); minStack.push(-3); minStack.getMin(); –&gt; 返回 -3. minStack.pop(); minStack.top(); –&gt; 返回 0. minStack.getMin(); –&gt; 返回 -2. 思路这里用了两个栈，一个栈用于存放数据，一个栈用于存放最小值。对于新的数据，如果x小于最小值栈的栈顶，那就将这个数字进入最小值栈，不然就将栈顶数字再入栈一次，出栈的时候两个一起出。 代码1234567891011121314151617181920212223242526272829303132333435 Stack&lt;Integer&gt; stackdata; Stack&lt;Integer&gt; stackmin;/* public MinStack() &#123; stackdata = new Stack&lt;&gt;(); stackmin = new Stack&lt;&gt;(); &#125;*/ public void push(int x) &#123; stackdata.push(x); if (stackmin.empty()) &#123; stackmin.push(x); &#125; else if (x &lt; stackmin.peek()) &#123; stackmin.push(x); &#125; else &#123; stackmin.push(stackmin.peek()); &#125; &#125; public void pop() &#123; if (!stackdata.empty()) &#123; stackdata.pop(); stackmin.pop(); &#125; &#125; public int top() &#123; return stackdata.peek(); &#125; public int getMin() &#123; return stackmin.peek(); &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 300. Longest Increasing Subsequence]]></title>
+    <url>%2FLeetCode%20300.%20Longest%20Increasing%20Subsequence.html</url>
+    <content type="text"><![CDATA[300. Longest Increasing Subsequence（最长上升子序列）链接https://leetcode-cn.com/problems/merge-two-binary-trees 题目给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18] 输出: 4 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。说明: 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。 你算法的时间复杂度应该为 O(n2) 。 进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗? 思路n2的我是拿动态规划做的，但是nlogn我没什么思路，就没写。增加一个dp数组，初始值为1，当遍历到第i个数时，比较前方的所有数，若比第i个数小，就可以构成上升子序列，找到最长的那个存储在dp中，最后输出最大值即可。 代码123456789101112131415161718192021public int lengthOfLIS(int[] nums) &#123; int len = nums.length; if (len &lt;= 0) &#123; return 0; &#125; int[] dp = new int[len]; dp[0] = 1; int max = 1; for (int i = 0; i &lt; len; i++) &#123; dp[i] = 1; for (int j = 0; j &lt; i; j++) &#123; if (nums[i] &gt; nums[j]) &#123; dp[i] = Math.max(dp[i], dp[j] + 1); &#125; &#125; if (dp[i] &gt; max) &#123; max = dp[i]; &#125; &#125; return max;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 617. Merge Two Binary Trees]]></title>
+    <url>%2FLeetCode%20617.%20Merge%20Two%20Binary%20Trees.html</url>
+    <content type="text"><![CDATA[617. Merge Two Binary Trees（合并二叉树）链接https://leetcode-cn.com/problems/merge-two-binary-trees 题目给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。 你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。 示例 1: 输入: Tree 1 Tree 2 1 2 / \ / \ 3 2 1 3 / \ \ 5 4 7输出:合并后的树: 3 / 4 5 / \ \ 5 4 7注意: 合并必须从两个树的根节点开始。 思路和前面几道树的题相似，都借助了递归。这里将t2加到t1上，若某一个为空，就接入不为空的，都不为空，就将数值相加。 代码12345678910111213141516171819202122public class TreeNode &#123; int val; TreeNode left; TreeNode right; TreeNode(int x) &#123; val = x; &#125;&#125;public TreeNode mergeTrees(TreeNode t1, TreeNode t2) &#123; if (t1 == null) &#123; return t2; &#125;if (t2 == null) &#123; return t1; &#125; t1.val += t2.val; t1.left = mergeTrees(t1.left, t2.left); t1.right = mergeTrees(t1.right, t2.right); return t1;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 226. Invert Binary Tree]]></title>
+    <url>%2FLeetCode%20226.%20Invert%20Binary%20Tree%20copy.html</url>
+    <content type="text"><![CDATA[226. Invert Binary Tree（翻转二叉树）链接https://leetcode-cn.com/problems/invert-binary-tree 题目翻转一棵二叉树。 示例： 输入： 4 / 2 7 / \ / 1 3 6 9输出： 4 / 7 2 / \ / 9 6 3 1备注:这个问题是受到 Max Howell 的 原问题 启发的 ： 谷歌：我们90％的工程师使用您编写的软件(Homebrew)，但是您却无法在面试时在白板上写出翻转二叉树这道题，这太糟糕了。 思路简单题目，对于每一个结点，都交换左右子节点，然后交换完整棵树就结束了。设置一个临时结点，然后递归即可。 代码12345678910111213141516171819202122232425public class TreeNode &#123; int val; TreeNode left; TreeNode right; TreeNode(int x) &#123; val = x; &#125;&#125;public TreeNode invertTree(TreeNode root) &#123; if (root != null) &#123; TreeNode temp = root.left; root.left = root.right; root.right = temp; if (root.left != null) &#123; invertTree(root.left); &#125; if (root.right != null) &#123; invertTree(root.right); &#125; &#125; return root;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 226. Invert Binary Tree]]></title>
+    <url>%2FLeetCode%20226.%20Invert%20Binary%20Tree.html</url>
+    <content type="text"><![CDATA[226. Invert Binary Tree（翻转二叉树）链接https://leetcode-cn.com/problems/invert-binary-tree 题目翻转一棵二叉树。 示例： 输入： 4 / 2 7 / \ / 1 3 6 9输出： 4 / 7 2 / \ / 9 6 3 1备注:这个问题是受到 Max Howell 的 原问题 启发的 ： 谷歌：我们90％的工程师使用您编写的软件(Homebrew)，但是您却无法在面试时在白板上写出翻转二叉树这道题，这太糟糕了。 思路简单题目，对于每一个结点，都交换左右子节点，然后交换完整棵树就结束了。设置一个临时结点，然后递归即可。 代码12345678910111213141516171819202122232425public class TreeNode &#123; int val; TreeNode left; TreeNode right; TreeNode(int x) &#123; val = x; &#125;&#125;public TreeNode invertTree(TreeNode root) &#123; if (root != null) &#123; TreeNode temp = root.left; root.left = root.right; root.right = temp; if (root.left != null) &#123; invertTree(root.left); &#125; if (root.right != null) &#123; invertTree(root.right); &#125; &#125; return root;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 101. Symmetric Tree]]></title>
+    <url>%2FLeetCode%20101.%20Symmetric%20Tree.html</url>
+    <content type="text"><![CDATA[101. Symmetric Tree（对称二叉树）链接https://leetcode-cn.com/problems/symmetric-tree 题目给定一个二叉树，检查它是否是镜像对称的。 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。 1 / 2 2 / \ / 3 4 4 3但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的: 1 / 2 2 \ 3 3说明: 如果你可以运用递归和迭代两种方法解决这个问题，会很加分。 思路树的题目，尤其是二叉树，用递归和迭代都能减少运算量，这里用递归。首先是根节点的判断，为空那么符合，之后就是递归过程，先查看左右子节点，相同的话继续比较左子树左节点和右子树右节点，左子树右节点和右子树左节点，如果不同，直接false。 代码1234567891011121314151617181920212223242526272829303132public class TreeNode &#123; int val; TreeNode left; TreeNode right; TreeNode(int x) &#123; val = x; &#125;&#125;public boolean test(TreeNode l, TreeNode r) &#123; if (l == null &amp;&amp; r == null) &#123; return true; &#125; if (l == null || r == null) &#123; return false; &#125; if (l.val == r.val) &#123; return test(l.left, r.right) &amp;&amp; test(l.right, r.left); &#125; else &#123; return false; &#125;&#125;public boolean isSymmetric(TreeNode root) &#123; if (root == null) &#123; return true; &#125; else &#123; return test(root.left, root.right); &#125;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 21. Merge Two Sorted Lists]]></title>
+    <url>%2FLeetCode%2021.%20Merge%20Two%20Sorted%20Lists.html</url>
+    <content type="text"><![CDATA[21. Merge Two Sorted Lists（合并两个有序链表）链接https://leetcode-cn.com/problems/merge-two-sorted-lists/ 题目将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例： 输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4 输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4 思路简单的链表题目，可以循环做，也可以递归做，这里采用的是递归。如果结点为空，那么后面就不用继续判断，直接加到尾部即可，不然的话就需要比较两个结点的大小，小的加入，大的继续运算。 代码1234567891011121314151617181920212223242526public class ListNode &#123; int val; ListNode next; ListNode(int x) &#123; val = x; &#125;&#125;public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123; if (l1 == null) &#123; return l2; &#125; if (l2 == null) &#123; return l1; &#125; if(l1.val&lt;l2.val)&#123; l1.next=mergeTwoLists(l1.next,l2); return l1; &#125;else &#123; l2.next=mergeTwoLists(l1,l2.next); return l2; &#125;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 1071. Greatest Common Divisor of Strings]]></title>
+    <url>%2FLeetCode%201071.%20Greatest%20Common%20Divisor%20of%20Strings.html</url>
+    <content type="text"><![CDATA[1071. Greatest Common Divisor of Strings（字符串的最大公因子）链接https://leetcode-cn.com/problems/greatest-common-divisor-of-strings 题目对于字符串 S 和 T，只有在 S = T + … + T（T 与自身连接 1 次或多次）时，我们才认定 “T 能除尽 S”。 返回最长字符串 X，要求满足 X 能除尽 str1 且 X 能除尽 str2。 示例 1： 输入：str1 = “ABCABC”, str2 = “ABC” 输出：”ABC”示例 2： 输入：str1 = “ABABAB”, str2 = “ABAB” 输出：”AB”示例 3： 输入：str1 = “LEET”, str2 = “CODE” 输出：”” 提示： 1 &lt;= str1.length &lt;= 1000 1 &lt;= str2.length &lt;= 1000 str1[i] 和 str2[i] 为大写英文字母 思路算是数学题吧，如果str1+str2和str2+str1相同的话，那就存在想要求的公约数，并且长度就已经知道了，就是字符串长度的公约数，只需要输出长的字符串截取的那部分即可。 代码123456789101112131415public int gcd(int a, int b) &#123; if (b == 0) &#123; return a; &#125; else &#123; return gcd(b, a % b); &#125;&#125;public String gcdOfStrings(String str1, String str2) &#123; if ((str1 + str2).equals(str2 + str1)) &#123; return str1.substring(0, gcd(str1.length(), str2.length())); &#125; else &#123; return &quot;&quot;; &#125;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 1013. Partition Array Into Three Parts With Equal Sum]]></title>
+    <url>%2FLeetCode%201013.%20Partition%20Array%20Into%20Three%20Parts%20With%20Equal%20Sum.html</url>
+    <content type="text"><![CDATA[1013. Partition Array Into Three Parts With Equal Sum（将数组分成和相等的三个部分）链接https://leetcode-cn.com/problems/partition-array-into-three-parts-with-equal-sum 题目给你一个整数数组 A，只有可以将其划分为三个和相等的非空部分时才返回 true，否则返回 false。 形式上，如果可以找出索引 i+1 &lt; j 且满足 (A[0] + A[1] + … + A[i] == A[i+1] + A[i+2] + … + A[j-1] == A[j] + A[j-1] + … + A[A.length - 1]) 就可以将数组三等分。 示例 1： 输出：[0,2,1,-6,6,-7,9,1,2,0,1]输出：true解释：0 + 2 + 1 = -6 + 6 - 7 + 9 + 1 = 2 + 0 + 1示例 2： 输入：[0,2,1,-6,6,7,9,-1,2,0,1]输出：false示例 3： 输入：[3,3,6,5,-2,2,5,1,-9,4]输出：true解释：3 + 3 = 6 = 5 - 2 + 2 + 5 + 1 - 9 + 4 提示： 3 &lt;= A.length &lt;= 50000-10^4 &lt;= A[i] &lt;= 10^4 思路普通的数组题，最多多挖了几个坑。首先统计整个数组的和，如果能被三整除就进行下一步。从前从后同时开始，如果部分和等于总数的三分之一，那么就不在前进，等到两边都为1/3，中间自然也是1/3. 代码123456789101112131415161718192021222324public boolean canThreePartsEqualSum(int[] A) &#123; int sum = 0; for (int i = 0; i &lt; A.length; i++) &#123; sum += A[i]; &#125; if (sum % 3 != 0) &#123; return false; &#125; sum = sum / 3; int suma = A[0], sumc = A[A.length - 1]; int i = 1, j = A.length - 2; while (i &lt; j) &#123; if (suma != sum) &#123; suma += A[i++]; &#125; if (sumc != sum) &#123; sumc += A[j--]; &#125; if (suma == sum &amp;&amp; sumc == sum &amp;&amp; i &lt;= j) &#123; return true; &#125; &#125; return false;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 322. Coin Change]]></title>
+    <url>%2FLeetCode%20322.%20Coin%20Change.html</url>
+    <content type="text"><![CDATA[322. Coin Change（零钱兑换）链接https://leetcode-cn.com/problems/find-numbers-with-even-number-of-digits 题目给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。 示例 1: 输入: coins = [1, 2, 5], amount = 11 输出: 3 解释: 11 = 5 + 5 + 1 示例 2: 输入: coins = [2], amount = 3 输出: -1 说明: 你可以认为每种硬币的数量是无限的。 思路动态规划题目，设置一个dp数组用于存储中间结果，外层循环的i就代表金额的数量，内层代表硬币，状态转移方程是dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1)， 代码123456789101112131415161718192021public int coinChange(int[] coins, int amount) &#123; if (coins.length == 0) &#123; return -1; &#125; int[] dp = new int[amount + 1]; dp[0] = 0; for (int i = 1; i &lt;= amount; i++) &#123; dp[i] = amount + 1; for (int j = 0; j &lt; coins.length; j++) &#123; if (i &gt;= coins[j]) &#123; dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1); &#125; &#125; &#125; if (dp[amount] == amount + 1) &#123; return -1; &#125; else &#123; return dp[amount]; &#125;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[剑指offer 0.n个骰子的点数]]></title>
     <url>%2F%E5%89%91%E6%8C%87offer%200.n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0.html</url>
     <content type="text"><![CDATA[剑指offer 0.n个骰子的点数题目把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。你需要用一个浮点数数组返回答案，其中第 i 个元素代表这 n 个骰子所能掷出的点数集合中第 i 小的那个的概率。 示例 1: 输入: 1 输出: [0.16667,0.16667,0.16667,0.16667,0.16667,0.16667]示例 2: 输入: 2 输出: [0.02778,0.05556,0.08333,0.11111,0.13889,0.16667,0.13889,0.11111,0.08333,0.05556,0.02778] 限制： 1 &lt;= n &lt;= 11 思路这题本来是在书里面的，但是牛客上面没有，所以我就去LeetCode做了这道题。动态规划方法，用dp[i][j]来存储出现的次数，i表示骰子的个数，j表示点数。dp[i][j]=dp[i-1][j-1]+dp[i-1][j-2]+dp[i-1][j-3]+dp[i-1][j-4]+dp[i-1][j-5]+dp[i-1][j-6],设置循环即可。(剑指offer这本书到这就算刷完了) 代码12345678910111213141516171819public double[] twoSum(int n) &#123; int[][] dp = new int[n + 1][6 * n + 1]; double[] ans = new double[5 * n + 1]; double all = Math.pow(6, n); for (int i = 1; i &lt;= 6; i++) &#123; dp[1][i] = 1; &#125; for (int i = 1; i &lt;= n; i++) &#123; for (int j = i; j &lt;= 6 * n; j++) &#123; for (int k = 1; k &lt;= 6; k++) &#123; dp[i][j] += j &gt;= k ? dp[i - 1][j - k] : 0; if (i == n) &#123; ans[j - i] = dp[i][j] / all; &#125; &#125; &#125; &#125; return ans;&#125;]]></content>
@@ -384,17 +494,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[剑指offer 22.从上往下打印二叉树]]></title>
-    <url>%2F%E5%89%91%E6%8C%87offer%2022.%E4%BB%8E%E4%B8%8A%E5%BE%80%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html</url>
-    <content type="text"><![CDATA[22.从上往下打印二叉树题目从上往下打印出二叉树的每个节点，同层节点从左至右打印。 思路这题就是简单的树的遍历，调节顺序就可以用队列来帮助存储，先把结点存放进队列，从队列头部取出节点，然后查看左子节点和右子节点，取出的时候记得保存值。 代码123456789101112131415161718192021222324252627282930public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125; public ArrayList&lt;Integer&gt; PrintFromTopToBottom(TreeNode root) &#123; ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;(); Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;(); if (root == null) &#123; return list; &#125; queue.offer(root); while (!queue.isEmpty()) &#123; TreeNode temp = queue.poll(); if (temp.left != null) &#123; queue.offer(temp.left); &#125; if (temp.right != null) &#123; queue.offer(temp.right); &#125; list.add(temp.val); &#125; return list; &#125;]]></content>
+    <title><![CDATA[剑指offer 21.栈的压入、弹出序列]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2021.%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97.html</url>
+    <content type="text"><![CDATA[21.栈的压入、弹出序列题目输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，序列4,5,3,2,1是该压栈序列对应的一个弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。（注意：这两个序列的长度是相等的） 思路这题思路倒是比较清晰，设置一个栈模拟进栈出栈过程，坑一点的就是边界问题，我本来是以出栈为循环条件的，边界越整越多，最后换了入栈为循环条件，简单了很多。如果栈不为空且栈顶和出栈顺序一样，出栈，不然下一位。 代码1234567891011121314151617public boolean IsPopOrder(int[] pushA, int[] popA) &#123; Stack&lt;Integer&gt; stack = new Stack&lt;&gt;(); int len = pushA.length; int in = 0, out = 0; for (; in &lt; len; in++) &#123; stack.push(pushA[in]); while (!stack.empty() &amp;&amp; stack.peek() == popA[out]) &#123; stack.pop(); out++; &#125; &#125; return stack.empty();&#125;]]></content>
       <categories>
         <category>剑指offer</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[剑指offer 21.栈的压入、弹出序列]]></title>
-    <url>%2F%E5%89%91%E6%8C%87offer%2021.%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97.html</url>
-    <content type="text"><![CDATA[21.栈的压入、弹出序列题目输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，序列4,5,3,2,1是该压栈序列对应的一个弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。（注意：这两个序列的长度是相等的） 思路这题思路倒是比较清晰，设置一个栈模拟进栈出栈过程，坑一点的就是边界问题，我本来是以出栈为循环条件的，边界越整越多，最后换了入栈为循环条件，简单了很多。如果栈不为空且栈顶和出栈顺序一样，出栈，不然下一位。 代码1234567891011121314151617public boolean IsPopOrder(int[] pushA, int[] popA) &#123; Stack&lt;Integer&gt; stack = new Stack&lt;&gt;(); int len = pushA.length; int in = 0, out = 0; for (; in &lt; len; in++) &#123; stack.push(pushA[in]); while (!stack.empty() &amp;&amp; stack.peek() == popA[out]) &#123; stack.pop(); out++; &#125; &#125; return stack.empty();&#125;]]></content>
+    <title><![CDATA[剑指offer 22.从上往下打印二叉树]]></title>
+    <url>%2F%E5%89%91%E6%8C%87offer%2022.%E4%BB%8E%E4%B8%8A%E5%BE%80%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html</url>
+    <content type="text"><![CDATA[22.从上往下打印二叉树题目从上往下打印出二叉树的每个节点，同层节点从左至右打印。 思路这题就是简单的树的遍历，调节顺序就可以用队列来帮助存储，先把结点存放进队列，从队列头部取出节点，然后查看左子节点和右子节点，取出的时候记得保存值。 代码123456789101112131415161718192021222324252627282930public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125; public ArrayList&lt;Integer&gt; PrintFromTopToBottom(TreeNode root) &#123; ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;(); Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;(); if (root == null) &#123; return list; &#125; queue.offer(root); while (!queue.isEmpty()) &#123; TreeNode temp = queue.poll(); if (temp.left != null) &#123; queue.offer(temp.left); &#125; if (temp.right != null) &#123; queue.offer(temp.right); &#125; list.add(temp.val); &#125; return list; &#125;]]></content>
       <categories>
         <category>剑指offer</category>
       </categories>
@@ -662,19 +772,19 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[不知道来源的题目1]]></title>
-    <url>%2F%E4%B8%8D%E7%9F%A5%E9%81%93%E6%9D%A5%E6%BA%90%E7%9A%84%E9%A2%98%E7%9B%AE1.html</url>
-    <content type="text"><![CDATA[不知道来源的题目1题目有两个数组 A、B，长度都为 N，值为任意整数，无序，要求，通过交换 A、B 中的元素，使得 A 数组元素之和与 B 数组元素之和之间的差值最小。完成代码的同时，写出数组 [100,99,98,1,2, 3]和[1,2,3,4,5,40]交换后的结果。 思路解法多种多样，但是我真没想出来什么特别合适的，采用了一种比较繁琐的方法。首先计算两个数组的差值，之后尝试交换，只要能让差值减小，就交换，一直到没有这种可能性再结束，理论上这就是要的答案。 代码1234567891011121314151617181920212223242526272829303132333435public static void change(int[] a, int[] b, int n, int before) &#123; for (int i = 0; i &lt; n; i++) &#123; for (int j = 0; j &lt; n; j++) &#123; int after = before - 2 * (a[i] - b[j]); if (Math.abs(after) &lt; Math.abs(before)) &#123; int temp = a[i]; a[i] = b[j]; b[j] = temp; change(a, b, n, after); return; &#125; &#125; &#125;&#125;public static void main(String[] args) &#123; int[] a = new int[]&#123;100, 99, 98, 1, 2, 3&#125;; int[] b = new int[]&#123;1, 2, 3, 4, 5, 40&#125;; int suma = 0; int sumb = 0; int len = a.length; for (int i = 0; i &lt; len; i++) &#123; suma += a[i]; sumb += b[i]; &#125; change(a, b, len, Math.abs(suma - sumb)); for (int i = 0; i &lt; len; i++) &#123; System.out.print(a[i] + &quot; &quot;); &#125; System.out.println(); for (int i = 0; i &lt; len; i++) &#123; System.out.print(b[i] + &quot; &quot;); &#125;&#125;]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[HashMap和Hashtable的区别]]></title>
     <url>%2FHashMap%E5%92%8CHashtable%E7%9A%84%E5%8C%BA%E5%88%AB.html</url>
     <content type="text"><![CDATA[HashMap和Hashtable的区别HashMap和Hashtable这两个是集合框架中比较常见的问题，所以我做了些总结便于回顾。 1.继承Hashtable 继承自 Dictiionary 而 HashMap继承自AbstractMap 2.键值要求hashtable不允许空值与空键，但是hashmap允许一个空键和任意数量空值。 3.contains方法hashmap去除了contains方法，改为了containsValue和containsKey，但是hashtable这三个方法都有。 4.线程安全HashMap非线程安全，在只有一个线程访问的情况下，效率要高于HashTable。 5.使用建议正常情况下建议使用hashmap，如果是多线程建议选择concurrentHashMap。源码部分等到我更深入的学习的时候会添加。]]></content>
       <categories>
         <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[不知道来源的题目1]]></title>
+    <url>%2F%E4%B8%8D%E7%9F%A5%E9%81%93%E6%9D%A5%E6%BA%90%E7%9A%84%E9%A2%98%E7%9B%AE1.html</url>
+    <content type="text"><![CDATA[不知道来源的题目1题目有两个数组 A、B，长度都为 N，值为任意整数，无序，要求，通过交换 A、B 中的元素，使得 A 数组元素之和与 B 数组元素之和之间的差值最小。完成代码的同时，写出数组 [100,99,98,1,2, 3]和[1,2,3,4,5,40]交换后的结果。 思路解法多种多样，但是我真没想出来什么特别合适的，采用了一种比较繁琐的方法。首先计算两个数组的差值，之后尝试交换，只要能让差值减小，就交换，一直到没有这种可能性再结束，理论上这就是要的答案。 代码1234567891011121314151617181920212223242526272829303132333435public static void change(int[] a, int[] b, int n, int before) &#123; for (int i = 0; i &lt; n; i++) &#123; for (int j = 0; j &lt; n; j++) &#123; int after = before - 2 * (a[i] - b[j]); if (Math.abs(after) &lt; Math.abs(before)) &#123; int temp = a[i]; a[i] = b[j]; b[j] = temp; change(a, b, n, after); return; &#125; &#125; &#125;&#125;public static void main(String[] args) &#123; int[] a = new int[]&#123;100, 99, 98, 1, 2, 3&#125;; int[] b = new int[]&#123;1, 2, 3, 4, 5, 40&#125;; int suma = 0; int sumb = 0; int len = a.length; for (int i = 0; i &lt; len; i++) &#123; suma += a[i]; sumb += b[i]; &#125; change(a, b, len, Math.abs(suma - sumb)); for (int i = 0; i &lt; len; i++) &#123; System.out.print(a[i] + &quot; &quot;); &#125; System.out.println(); for (int i = 0; i &lt; len; i++) &#123; System.out.print(b[i] + &quot; &quot;); &#125;&#125;]]></content>
+      <categories>
+        <category>其他</category>
       </categories>
   </entry>
   <entry>
@@ -748,17 +858,17 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 344. Reverse String]]></title>
-    <url>%2FLeetCode%20344.%20Reverse%20String.html</url>
-    <content type="text"><![CDATA[344. Reverse String（反转字符串）链接https://leetcode-cn.com/problems/reverse-string 题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。 不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。 你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。 示例 1： 输入：[“h”,”e”,”l”,”l”,”o”] 输出：[“o”,”l”,”l”,”e”,”h”]示例 2： 输入：[“H”,”a”,”n”,”n”,”a”,”h”] 输出：[“h”,”a”,”n”,”n”,”a”,”H”] 思路就硬转呗，双指针，一头一尾直接转换位置，当指针相遇就结束。 代码12345678910public void reverseString(char[] s) &#123; int left = 0, right = s.length - 1; while (left &lt; right) &#123; char temp = s[left]; s[left] = s[right]; s[right] = temp; left++; right--; &#125; &#125;]]></content>
+    <title><![CDATA[LeetCode 215. Kth Largest Element in an Array]]></title>
+    <url>%2FLeetCode%20215.%20Kth%20Largest%20Element%20in%20an%20Array.html</url>
+    <content type="text"><![CDATA[215. Kth Largest Element in an Array（数组中的第K个最大元素）链接https://leetcode-cn.com/problems/kth-largest-element-in-an-array 题目在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例 1: 输入: [3,2,1,5,6,4] 和 k = 2 输出: 5示例 2: 输入: [3,2,3,1,2,4,5,5,6] 和 k = 4 输出: 4说明: 你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。 思路一道数组题目，解法多种。最简单的就是直接排序，然后找到那个数，直接完成，就是效率相对较低。这里用的是优先队列建堆，最小堆，小的数字在堆顶，然后一个一个往里面加数字，每当堆的规模大于k，就去除最小的数字（堆顶），数字处理完之后的堆顶就是所需数字。 代码1234567891011public static int findKthLargest(int[] nums, int k) &#123; PriorityQueue&lt;Integer&gt; heap = new PriorityQueue&lt;Integer&gt;((n1, n2) -&gt; n1 - n2); for (int n : nums) &#123; heap.add(n); if (heap.size() &gt; k) &#123; heap.poll(); &#125; &#125; return heap.poll();&#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 215. Kth Largest Element in an Array]]></title>
-    <url>%2FLeetCode%20215.%20Kth%20Largest%20Element%20in%20an%20Array.html</url>
-    <content type="text"><![CDATA[215. Kth Largest Element in an Array（数组中的第K个最大元素）链接https://leetcode-cn.com/problems/kth-largest-element-in-an-array 题目在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例 1: 输入: [3,2,1,5,6,4] 和 k = 2 输出: 5示例 2: 输入: [3,2,3,1,2,4,5,5,6] 和 k = 4 输出: 4说明: 你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。 思路一道数组题目，解法多种。最简单的就是直接排序，然后找到那个数，直接完成，就是效率相对较低。这里用的是优先队列建堆，最小堆，小的数字在堆顶，然后一个一个往里面加数字，每当堆的规模大于k，就去除最小的数字（堆顶），数字处理完之后的堆顶就是所需数字。 代码1234567891011public static int findKthLargest(int[] nums, int k) &#123; PriorityQueue&lt;Integer&gt; heap = new PriorityQueue&lt;Integer&gt;((n1, n2) -&gt; n1 - n2); for (int n : nums) &#123; heap.add(n); if (heap.size() &gt; k) &#123; heap.poll(); &#125; &#125; return heap.poll();&#125;]]></content>
+    <title><![CDATA[LeetCode 344. Reverse String]]></title>
+    <url>%2FLeetCode%20344.%20Reverse%20String.html</url>
+    <content type="text"><![CDATA[344. Reverse String（反转字符串）链接https://leetcode-cn.com/problems/reverse-string 题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。 不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。 你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。 示例 1： 输入：[“h”,”e”,”l”,”l”,”o”] 输出：[“o”,”l”,”l”,”e”,”h”]示例 2： 输入：[“H”,”a”,”n”,”n”,”a”,”h”] 输出：[“h”,”a”,”n”,”n”,”a”,”H”] 思路就硬转呗，双指针，一头一尾直接转换位置，当指针相遇就结束。 代码12345678910public void reverseString(char[] s) &#123; int left = 0, right = s.length - 1; while (left &lt; right) &#123; char temp = s[left]; s[left] = s[right]; s[right] = temp; left++; right--; &#125; &#125;]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
@@ -807,6 +917,14 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[LeetCode 448. Find All Numbers Disappeared in an Array]]></title>
+    <url>%2FLeetCode%20448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array.html</url>
+    <content type="text"><![CDATA[448. Find All Numbers Disappeared in an Array（找到所有数组中消失的数字）链接https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array 题目给定一个范围在 1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。 示例: 输入: [4,3,2,7,8,2,3,1] 输出: [5,6] 思路这题的题意很简单，就是要找到缺失的数字，但是思路很巧妙，对于每个数字，都设置一个位置，就像例子一样，第一个数字为4，就将第四个数字设置为-7，一遍循环之后，数组就成为[-4,-3,-2,-7,8,2,-3,-1],然后第二次遍历，如果数字为正，就代表数组中不存在这个数，记录到答案中即可，这里要注意数组从0开始，而数字从1开始。 代码1234567891011121314 public static List&lt;Integer&gt; findDisappearedNumbers(int[] nums) &#123; for(int i=0;i&lt;nums.length;i++)&#123; int temp = Math.abs(nums[i]); nums[temp-1]=-Math.abs(nums[temp-1]); &#125; List&lt;Integer&gt;ans = new ArrayList(nums.length); for(int i=0;i&lt;nums.length;i++) &#123; if(nums[i]&gt;0)&#123; ans.add(i+1); &#125; &#125; return ans;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 461. Hamming Distance]]></title>
     <url>%2FLeetCode%20461.%20Hamming%20Distance.html</url>
     <content type="text"><![CDATA[461. Hamming Distance（汉明距离）链接https://leetcode-cn.com/problems/hamming-distance 题目两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。 给出两个整数 x 和 y，计算它们之间的汉明距离。 注意：0 ≤ x, y &lt; 231. 示例: 输入: x = 1, y = 4 输出: 2 解释: 1 (0 0 0 1) 4 (0 1 0 0) ↑ ↑ 上面的箭头指出了对应二进制位不同的位置。 思路这题的名词也就是转换一下，需要我们找到二进制位的不同，这时候异或最简单，直接找到不同位，然后可以按位寻找，也可以直接和1进行与运算，然后右移。 代码1234567891011 public static int hammingDistance(int x, int y) &#123; int xor = x ^ y; int num = 0; while (xor != 0) &#123; if ((xor &amp; 1) == 1) &#123; num++; &#125; xor = xor &gt;&gt; 1; &#125; return num;&#125;]]></content>
@@ -816,14 +934,6 @@
       <tags>
         <tag>位运算</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode 448. Find All Numbers Disappeared in an Array]]></title>
-    <url>%2FLeetCode%20448.%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array.html</url>
-    <content type="text"><![CDATA[448. Find All Numbers Disappeared in an Array（找到所有数组中消失的数字）链接https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array 题目给定一个范围在 1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。 找到所有在 [1, n] 范围之间没有出现在数组中的数字。 您能在不使用额外空间且时间复杂度为O(n)的情况下完成这个任务吗? 你可以假定返回的数组不算在额外空间内。 示例: 输入: [4,3,2,7,8,2,3,1] 输出: [5,6] 思路这题的题意很简单，就是要找到缺失的数字，但是思路很巧妙，对于每个数字，都设置一个位置，就像例子一样，第一个数字为4，就将第四个数字设置为-7，一遍循环之后，数组就成为[-4,-3,-2,-7,8,2,-3,-1],然后第二次遍历，如果数字为正，就代表数组中不存在这个数，记录到答案中即可，这里要注意数组从0开始，而数字从1开始。 代码1234567891011121314 public static List&lt;Integer&gt; findDisappearedNumbers(int[] nums) &#123; for(int i=0;i&lt;nums.length;i++)&#123; int temp = Math.abs(nums[i]); nums[temp-1]=-Math.abs(nums[temp-1]); &#125; List&lt;Integer&gt;ans = new ArrayList(nums.length); for(int i=0;i&lt;nums.length;i++) &#123; if(nums[i]&gt;0)&#123; ans.add(i+1); &#125; &#125; return ans;&#125;]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
   </entry>
   <entry>
     <title><![CDATA[排序算法总结]]></title>
@@ -1793,7 +1903,7 @@
   <entry>
     <title><![CDATA[命令行发送SMTP协议邮件（163邮箱）]]></title>
     <url>%2F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81SMTP%E5%8D%8F%E8%AE%AE%E9%82%AE%E4%BB%B6%EF%BC%88163%E9%82%AE%E7%AE%B1%EF%BC%89.html</url>
-    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#x65;&#110;&#100;&#64;&#x31;&#x36;&#51;&#x2e;&#x63;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#x63;&#101;&#x69;&#118;&#101;&#x40;&#49;&#54;&#51;&#46;&#99;&#111;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
+    <content type="text"><![CDATA[命令行发送SMTP协议邮件（163邮箱）这里我们用163邮箱为例子，借助命令行发送smtp邮件 1连接服务器在终端上输入：telnet smtp.163.com 25 回车，然后就连接了服务器的25端口，成功会输出 220 163.com Anti-spam GTfor Coremail System (163com[20141201]) 2表明身份需要输入：helo 163.com 回车，顺利的话会出现 250 OK 3. 登录认证输入：auth login 回车，成功返回 334 dXNlcm5hbWU6 4. 登录输入账号（不需要之后的@163.com），账号需要进行base64加密，输入加密后的字符。返回 334 UGFzc3dvcmQ6 5. 输入授权码这里可以说有点小坑，需要登录网页版的邮箱查看，可以关闭smtp再开启，记住自己的授权码，同样base64加密，输入加密后的字符，返回 235Authentication successful 6. 邮件正文发件邮箱：mail from:&#x73;&#101;&#110;&#x64;&#x40;&#x31;&#x36;&#51;&#x2e;&#x63;&#x6f;&#x6d; 返回 250 Mail OK 收件邮箱：rcpt to:&#114;&#101;&#x63;&#101;&#x69;&#118;&#x65;&#64;&#x31;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d; 返回 250 Mail OK 输入：data 返回 354 End data with . 输入：subject:hello 这里需要注意，要两次回车 邮件正文：这里就随便写了 结束符号：这里要输入 . 表示邮件结束了，之后回车，发送成功会有250开头的返回 打开邮箱，发送成功。]]></content>
       <categories>
         <category>课程</category>
       </categories>

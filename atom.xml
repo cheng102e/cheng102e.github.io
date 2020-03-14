@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cheng102e.github.io/"/>
-  <updated>2020-03-07T02:38:42.821Z</updated>
+  <updated>2020-03-14T09:53:50.004Z</updated>
   <id>https://cheng102e.github.io/</id>
   
   <author>
@@ -15,6 +15,309 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 1038. Binary Search Tree to Greater Sum Tree</title>
+    <link href="https://cheng102e.github.io/LeetCode%201038.%20Binary%20Search%20Tree%20to%20Greater%20Sum%20Tree.html"/>
+    <id>https://cheng102e.github.io/LeetCode 1038. Binary Search Tree to Greater Sum Tree.html</id>
+    <published>2020-03-14T09:21:00.000Z</published>
+    <updated>2020-03-14T09:53:50.004Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1038-Binary-Search-Tree-to-Greater-Sum-Tree（从二叉搜索树到更大和树）"><a href="#1038-Binary-Search-Tree-to-Greater-Sum-Tree（从二叉搜索树到更大和树）" class="headerlink" title="1038. Binary Search Tree to Greater Sum Tree（从二叉搜索树到更大和树）"></a>1038. Binary Search Tree to Greater Sum Tree（从二叉搜索树到更大和树）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给出二叉 搜索 树的根节点，该二叉树的节点值各不相同，修改二叉树，使每个节点 node 的新值等于原树中大于或等于 node.val 的值之和。</p><p>提醒一下，二叉搜索树满足下列约束条件：</p><p>节点的左子树仅包含键 小于 节点键的节点。<br>节点的右子树仅包含键 大于 节点键的节点。<br>左右子树也必须是二叉搜索树。</p><p>示例：</p><p>  输入：[4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]<br>  输出：[30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]</p><p>提示：</p><p>树中的节点数介于 1 和 100 之间。<br>每个节点的值介于 0 和 100 之间。<br>给定的树为二叉搜索树。</p><p>注意：该题目与 538: <a href="https://leetcode-cn.com/problems/convert-bst-to-greater-tree/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/convert-bst-to-greater-tree/</a>  相同</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>偷了个懒，代码和538的是一样的。<br>直接递归，新建一个sum拿来存储值，然后修改结点值，这里记得右中左的方式。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int sum = 0;</span><br><span class="line"></span><br><span class="line">public TreeNode bstToGst(TreeNode root) &#123;</span><br><span class="line">  if (root != null) &#123;</span><br><span class="line"></span><br><span class="line">    bstToGst(root.right);</span><br><span class="line">    sum += root.val;</span><br><span class="line">    root.val = sum;</span><br><span class="line">    bstToGst(root.left);</span><br><span class="line">  &#125;</span><br><span class="line">  return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1038-Binary-Search-Tree-to-Greater-Sum-Tree（从二叉搜索树到更大和树）&quot;&gt;&lt;a href=&quot;#1038-Binary-Search-Tree-to-Greater-Sum-Tree（从二叉搜索树到更大和树）&quot; class=
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 538. Convert BST to Greater Tree</title>
+    <link href="https://cheng102e.github.io/LeetCode%20538.%20Convert%20BST%20to%20Greater%20Tree.html"/>
+    <id>https://cheng102e.github.io/LeetCode 538. Convert BST to Greater Tree.html</id>
+    <published>2020-03-14T09:20:00.000Z</published>
+    <updated>2020-03-14T09:19:52.009Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="538-Convert-BST-to-Greater-Tree（把二叉搜索树转换为累加树）"><a href="#538-Convert-BST-to-Greater-Tree（把二叉搜索树转换为累加树）" class="headerlink" title="538. Convert BST to Greater Tree（把二叉搜索树转换为累加树）"></a>538. Convert BST to Greater Tree（把二叉搜索树转换为累加树）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/convert-bst-to-greater-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/convert-bst-to-greater-tree</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。</p><p>例如：</p><p>输入: 原始二叉搜索树:<br>              5<br>            /   <br>           2     13</p><p>输出: 转换为累加树:<br>             18<br>            /   <br>          20     13</p><p>注意：本题和 1038: <a href="https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/</a> 相同</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>直接递归，新建一个sum拿来存储值，然后修改结点值，这里记得右中左的方式。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int sum = 0;</span><br><span class="line"></span><br><span class="line">public TreeNode convertBST(TreeNode root) &#123;</span><br><span class="line">  if (root != null) &#123;</span><br><span class="line"></span><br><span class="line">    convertBST(root.right);</span><br><span class="line">    sum += root.val;</span><br><span class="line">    root.val = sum;</span><br><span class="line">    convertBST(root.left);</span><br><span class="line">  &#125;</span><br><span class="line">  return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;538-Convert-BST-to-Greater-Tree（把二叉搜索树转换为累加树）&quot;&gt;&lt;a href=&quot;#538-Convert-BST-to-Greater-Tree（把二叉搜索树转换为累加树）&quot; class=&quot;headerlink&quot; title=&quot;53
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 141. Linked List Cycle</title>
+    <link href="https://cheng102e.github.io/LeetCode%20141.%20Linked%20List%20Cycle.html"/>
+    <id>https://cheng102e.github.io/LeetCode 141. Linked List Cycle.html</id>
+    <published>2020-03-14T07:40:00.000Z</published>
+    <updated>2020-03-14T08:17:22.053Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="141-Linked-List-Cycle（环形链表）"><a href="#141-Linked-List-Cycle（环形链表）" class="headerlink" title="141. Linked List Cycle（环形链表）"></a>141. Linked List Cycle（环形链表）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/linked-list-cycle" target="_blank" rel="noopener">https://leetcode-cn.com/problems/linked-list-cycle</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个链表，判断链表中是否有环。</p><p>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。</p><p>示例 1：</p><p>  输入：head = [3,2,0,-4], pos = 1<br>  输出：true<br>  解释：链表中有一个环，其尾部连接到第二个节点。</p><p>示例 2：</p><p>  输入：head = [1,2], pos = 0<br>  输出：true<br>  解释：链表中有一个环，其尾部连接到第一个节点。</p><p>示例 3：</p><p>  输入：head = [1], pos = -1<br>  输出：false<br>  解释：链表中没有环。</p><p>进阶：</p><p>你能用 O(1)（即，常量）内存解决此问题吗？</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>快慢指针法，快的一次走两步，慢的一次走一步，每次的差值都是1步，如果快的能追上慢的，就代表成环。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class ListNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  ListNode next;</span><br><span class="line"></span><br><span class="line">  ListNode(int x) &#123;</span><br><span class="line">    val = x;</span><br><span class="line">    next = null;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean hasCycle(ListNode head) &#123;</span><br><span class="line">  if (head == null || head.next == null) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  ListNode slow = head;</span><br><span class="line">  ListNode fast = head.next;</span><br><span class="line">  while (slow != fast) &#123;</span><br><span class="line">    if (fast.next == null || fast.next.next == null) &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">    slow = slow.next;</span><br><span class="line">    fast = fast.next.next;</span><br><span class="line">  &#125;</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;141-Linked-List-Cycle（环形链表）&quot;&gt;&lt;a href=&quot;#141-Linked-List-Cycle（环形链表）&quot; class=&quot;headerlink&quot; title=&quot;141. Linked List Cycle（环形链表）&quot;&gt;&lt;/a&gt;141.
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 155. Min Stack</title>
+    <link href="https://cheng102e.github.io/LeetCode%20155.%20Min%20Stack.html"/>
+    <id>https://cheng102e.github.io/LeetCode 155. Min Stack.html</id>
+    <published>2020-03-14T03:40:00.000Z</published>
+    <updated>2020-03-14T03:43:03.137Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="155-Min-Stack（最小栈）"><a href="#155-Min-Stack（最小栈）" class="headerlink" title="155. Min Stack（最小栈）"></a>155. Min Stack（最小栈）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/min-stack" target="_blank" rel="noopener">https://leetcode-cn.com/problems/min-stack</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。</p><p>push(x) – 将元素 x 推入栈中。<br>pop() – 删除栈顶的元素。<br>top() – 获取栈顶元素。<br>getMin() – 检索栈中的最小元素。<br>示例:</p><p>  MinStack minStack = new MinStack();<br>  minStack.push(-2);<br>  minStack.push(0);<br>  minStack.push(-3);<br>  minStack.getMin();   –&gt; 返回 -3.<br>  minStack.pop();<br>  minStack.top();      –&gt; 返回 0.<br>  minStack.getMin();   –&gt; 返回 -2.</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这里用了两个栈，一个栈用于存放数据，一个栈用于存放最小值。<br>对于新的数据，如果x小于最小值栈的栈顶，那就将这个数字进入最小值栈，不然就将栈顶数字再入栈一次，出栈的时候两个一起出。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> Stack&lt;Integer&gt; stackdata;</span><br><span class="line"> Stack&lt;Integer&gt; stackmin;</span><br><span class="line"></span><br><span class="line">/* public MinStack() &#123;</span><br><span class="line">   stackdata = new Stack&lt;&gt;();</span><br><span class="line">   stackmin = new Stack&lt;&gt;();</span><br><span class="line"> &#125;*/</span><br><span class="line"></span><br><span class="line"> public void push(int x) &#123;</span><br><span class="line">   stackdata.push(x);</span><br><span class="line"></span><br><span class="line">   if (stackmin.empty()) &#123;</span><br><span class="line">     stackmin.push(x);</span><br><span class="line">   &#125; else if (x &lt; stackmin.peek()) &#123;</span><br><span class="line">     stackmin.push(x);</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">     stackmin.push(stackmin.peek());</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public void pop() &#123;</span><br><span class="line">   if (!stackdata.empty()) &#123;</span><br><span class="line">     stackdata.pop();</span><br><span class="line">     stackmin.pop();</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public int top() &#123;</span><br><span class="line">   return stackdata.peek();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public int getMin() &#123;</span><br><span class="line">   return stackmin.peek();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;155-Min-Stack（最小栈）&quot;&gt;&lt;a href=&quot;#155-Min-Stack（最小栈）&quot; class=&quot;headerlink&quot; title=&quot;155. Min Stack（最小栈）&quot;&gt;&lt;/a&gt;155. Min Stack（最小栈）&lt;/h2&gt;&lt;h3 id=
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 300. Longest Increasing Subsequence</title>
+    <link href="https://cheng102e.github.io/LeetCode%20300.%20Longest%20Increasing%20Subsequence.html"/>
+    <id>https://cheng102e.github.io/LeetCode 300. Longest Increasing Subsequence.html</id>
+    <published>2020-03-14T01:58:00.000Z</published>
+    <updated>2020-03-14T02:04:08.071Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="300-Longest-Increasing-Subsequence（最长上升子序列）"><a href="#300-Longest-Increasing-Subsequence（最长上升子序列）" class="headerlink" title="300. Longest Increasing Subsequence（最长上升子序列）"></a>300. Longest Increasing Subsequence（最长上升子序列）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/merge-two-binary-trees" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-two-binary-trees</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个无序的整数数组，找到其中最长上升子序列的长度。</p><p>示例:</p><p>  输入: [10,9,2,5,3,7,101,18]<br>  输出: 4<br>  解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。<br>说明:</p><p>  可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。<br>  你算法的时间复杂度应该为 O(n2) 。</p><p>进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>n2的我是拿动态规划做的，但是nlogn我没什么思路，就没写。<br>增加一个dp数组，初始值为1，当遍历到第i个数时，比较前方的所有数，若比第i个数小，就可以构成上升子序列，找到最长的那个存储在dp中，最后输出最大值即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public int lengthOfLIS(int[] nums) &#123;</span><br><span class="line">  int len = nums.length;</span><br><span class="line">  if (len &lt;= 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  int[] dp = new int[len];</span><br><span class="line">  dp[0] = 1;</span><br><span class="line">  int max = 1;</span><br><span class="line">  for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    dp[i] = 1;</span><br><span class="line">    for (int j = 0; j &lt; i; j++) &#123;</span><br><span class="line">      if (nums[i] &gt; nums[j]) &#123;</span><br><span class="line">        dp[i] = Math.max(dp[i], dp[j] + 1);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (dp[i] &gt; max) &#123;</span><br><span class="line">      max = dp[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;300-Longest-Increasing-Subsequence（最长上升子序列）&quot;&gt;&lt;a href=&quot;#300-Longest-Increasing-Subsequence（最长上升子序列）&quot; class=&quot;headerlink&quot; title=&quot;300. L
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="动态规划" scheme="https://cheng102e.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 617. Merge Two Binary Trees</title>
+    <link href="https://cheng102e.github.io/LeetCode%20617.%20Merge%20Two%20Binary%20Trees.html"/>
+    <id>https://cheng102e.github.io/LeetCode 617. Merge Two Binary Trees.html</id>
+    <published>2020-03-13T14:16:00.000Z</published>
+    <updated>2020-03-14T01:59:07.102Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="617-Merge-Two-Binary-Trees（合并二叉树）"><a href="#617-Merge-Two-Binary-Trees（合并二叉树）" class="headerlink" title="617. Merge Two Binary Trees（合并二叉树）"></a>617. Merge Two Binary Trees（合并二叉树）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/merge-two-binary-trees" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-two-binary-trees</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。</p><p>你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。</p><p>示例 1:</p><p>输入:<br>    Tree 1                     Tree 2<br>          1                         2<br>         / \                       / \<br>        3   2                     1   3<br>       /                           \   \<br>      5                             4   7<br>输出:<br>合并后的树:<br>         3<br>        / <br>       4   5<br>      / \   \<br>     5   4   7<br>注意: 合并必须从两个树的根节点开始。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>和前面几道树的题相似，都借助了递归。<br>这里将t2加到t1上，若某一个为空，就接入不为空的，都不为空，就将数值相加。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  TreeNode left;</span><br><span class="line">  TreeNode right;</span><br><span class="line"></span><br><span class="line">  TreeNode(int x) &#123;</span><br><span class="line">    val = x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public TreeNode mergeTrees(TreeNode t1, TreeNode t2) &#123;</span><br><span class="line">  if (t1 == null) &#123;</span><br><span class="line">    return t2;</span><br><span class="line">  &#125;if (t2 == null) &#123;</span><br><span class="line">    return t1;</span><br><span class="line">  &#125;</span><br><span class="line">  t1.val += t2.val;</span><br><span class="line">  t1.left = mergeTrees(t1.left, t2.left);</span><br><span class="line">  t1.right = mergeTrees(t1.right, t2.right);</span><br><span class="line">  return t1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;617-Merge-Two-Binary-Trees（合并二叉树）&quot;&gt;&lt;a href=&quot;#617-Merge-Two-Binary-Trees（合并二叉树）&quot; class=&quot;headerlink&quot; title=&quot;617. Merge Two Binary Tree
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 226. Invert Binary Tree</title>
+    <link href="https://cheng102e.github.io/LeetCode%20226.%20Invert%20Binary%20Tree%20copy.html"/>
+    <id>https://cheng102e.github.io/LeetCode 226. Invert Binary Tree copy.html</id>
+    <published>2020-03-13T11:16:00.000Z</published>
+    <updated>2020-03-13T12:03:51.096Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="226-Invert-Binary-Tree（翻转二叉树）"><a href="#226-Invert-Binary-Tree（翻转二叉树）" class="headerlink" title="226. Invert Binary Tree（翻转二叉树）"></a>226. Invert Binary Tree（翻转二叉树）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/invert-binary-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/invert-binary-tree</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>翻转一棵二叉树。</p><p>示例：</p><p>输入：</p><pre><code>4</code></pre><p>   /   <br>  2     7<br> / \   / <br>1   3 6   9<br>输出：</p><pre><code>4</code></pre><p>   /   <br>  7     2<br> / \   / <br>9   6 3   1<br>备注:<br>这个问题是受到 Max Howell 的 原问题 启发的 ：</p><p>谷歌：我们90％的工程师使用您编写的软件(Homebrew)，但是您却无法在面试时在白板上写出翻转二叉树这道题，这太糟糕了。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>简单题目，对于每一个结点，都交换左右子节点，然后交换完整棵树就结束了。设置一个临时结点，然后递归即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  TreeNode left;</span><br><span class="line">  TreeNode right;</span><br><span class="line"></span><br><span class="line">  TreeNode(int x) &#123;</span><br><span class="line">    val = x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public TreeNode invertTree(TreeNode root) &#123;</span><br><span class="line">  if (root != null) &#123;</span><br><span class="line">    TreeNode temp = root.left;</span><br><span class="line">    root.left = root.right;</span><br><span class="line">    root.right = temp;</span><br><span class="line">    if (root.left != null) &#123;</span><br><span class="line">      invertTree(root.left);</span><br><span class="line">    &#125;</span><br><span class="line">    if (root.right != null) &#123;</span><br><span class="line">      invertTree(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;226-Invert-Binary-Tree（翻转二叉树）&quot;&gt;&lt;a href=&quot;#226-Invert-Binary-Tree（翻转二叉树）&quot; class=&quot;headerlink&quot; title=&quot;226. Invert Binary Tree（翻转二叉树）&quot;&gt;&lt;/
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 226. Invert Binary Tree</title>
+    <link href="https://cheng102e.github.io/LeetCode%20226.%20Invert%20Binary%20Tree.html"/>
+    <id>https://cheng102e.github.io/LeetCode 226. Invert Binary Tree.html</id>
+    <published>2020-03-13T11:16:00.000Z</published>
+    <updated>2020-03-13T11:58:52.225Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="226-Invert-Binary-Tree（翻转二叉树）"><a href="#226-Invert-Binary-Tree（翻转二叉树）" class="headerlink" title="226. Invert Binary Tree（翻转二叉树）"></a>226. Invert Binary Tree（翻转二叉树）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/invert-binary-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/invert-binary-tree</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>翻转一棵二叉树。</p><p>示例：</p><p>输入：</p><pre><code>4</code></pre><p>   /   <br>  2     7<br> / \   / <br>1   3 6   9<br>输出：</p><pre><code>4</code></pre><p>   /   <br>  7     2<br> / \   / <br>9   6 3   1<br>备注:<br>这个问题是受到 Max Howell 的 原问题 启发的 ：</p><p>谷歌：我们90％的工程师使用您编写的软件(Homebrew)，但是您却无法在面试时在白板上写出翻转二叉树这道题，这太糟糕了。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>简单题目，对于每一个结点，都交换左右子节点，然后交换完整棵树就结束了。设置一个临时结点，然后递归即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  TreeNode left;</span><br><span class="line">  TreeNode right;</span><br><span class="line"></span><br><span class="line">  TreeNode(int x) &#123;</span><br><span class="line">    val = x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public TreeNode invertTree(TreeNode root) &#123;</span><br><span class="line">  if (root != null) &#123;</span><br><span class="line">    TreeNode temp = root.left;</span><br><span class="line">    root.left = root.right;</span><br><span class="line">    root.right = temp;</span><br><span class="line">    if (root.left != null) &#123;</span><br><span class="line">      invertTree(root.left);</span><br><span class="line">    &#125;</span><br><span class="line">    if (root.right != null) &#123;</span><br><span class="line">      invertTree(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;226-Invert-Binary-Tree（翻转二叉树）&quot;&gt;&lt;a href=&quot;#226-Invert-Binary-Tree（翻转二叉树）&quot; class=&quot;headerlink&quot; title=&quot;226. Invert Binary Tree（翻转二叉树）&quot;&gt;&lt;/
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 101. Symmetric Tree</title>
+    <link href="https://cheng102e.github.io/LeetCode%20101.%20Symmetric%20Tree.html"/>
+    <id>https://cheng102e.github.io/LeetCode 101. Symmetric Tree.html</id>
+    <published>2020-03-13T07:16:00.000Z</published>
+    <updated>2020-03-13T07:15:39.303Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="101-Symmetric-Tree（对称二叉树）"><a href="#101-Symmetric-Tree（对称二叉树）" class="headerlink" title="101. Symmetric Tree（对称二叉树）"></a>101. Symmetric Tree（对称二叉树）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/symmetric-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/symmetric-tree</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个二叉树，检查它是否是镜像对称的。</p><p>例如，二叉树 [1,2,2,3,4,4,3] 是对称的。</p><pre><code>1</code></pre><p>   / <br>  2   2<br> / \ / <br>3  4 4  3<br>但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:</p><pre><code>1</code></pre><p>   / <br>  2   2<br>   \   <br>   3    3<br>说明:</p><p>如果你可以运用递归和迭代两种方法解决这个问题，会很加分。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>树的题目，尤其是二叉树，用递归和迭代都能减少运算量，这里用递归。<br>首先是根节点的判断，为空那么符合，之后就是递归过程，先查看左右子节点，相同的话继续比较左子树左节点和右子树右节点，左子树右节点和右子树左节点，如果不同，直接false。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  TreeNode left;</span><br><span class="line">  TreeNode right;</span><br><span class="line"></span><br><span class="line">  TreeNode(int x) &#123;</span><br><span class="line">    val = x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean test(TreeNode l, TreeNode r) &#123;</span><br><span class="line">  if (l == null &amp;&amp; r == null) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  if (l == null || r == null) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (l.val == r.val) &#123;</span><br><span class="line">    return test(l.left, r.right) &amp;&amp; test(l.right, r.left);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean isSymmetric(TreeNode root) &#123;</span><br><span class="line">  if (root == null) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return test(root.left, root.right);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;101-Symmetric-Tree（对称二叉树）&quot;&gt;&lt;a href=&quot;#101-Symmetric-Tree（对称二叉树）&quot; class=&quot;headerlink&quot; title=&quot;101. Symmetric Tree（对称二叉树）&quot;&gt;&lt;/a&gt;101. Symme
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 21. Merge Two Sorted Lists</title>
+    <link href="https://cheng102e.github.io/LeetCode%2021.%20Merge%20Two%20Sorted%20Lists.html"/>
+    <id>https://cheng102e.github.io/LeetCode 21. Merge Two Sorted Lists.html</id>
+    <published>2020-03-13T06:46:00.000Z</published>
+    <updated>2020-03-13T06:52:56.347Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="21-Merge-Two-Sorted-Lists（合并两个有序链表）"><a href="#21-Merge-Two-Sorted-Lists（合并两个有序链表）" class="headerlink" title="21. Merge Two Sorted Lists（合并两个有序链表）"></a>21. Merge Two Sorted Lists（合并两个有序链表）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-two-sorted-lists/</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p><p>示例：</p><p>  输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>  输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>简单的链表题目，可以循环做，也可以递归做，这里采用的是递归。<br>如果结点为空，那么后面就不用继续判断，直接加到尾部即可，不然的话就需要比较两个结点的大小，小的加入，大的继续运算。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class ListNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  ListNode next;</span><br><span class="line"></span><br><span class="line">  ListNode(int x) &#123;</span><br><span class="line">    val = x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</span><br><span class="line">  if (l1 == null) &#123;</span><br><span class="line">    return l2;</span><br><span class="line">  &#125;</span><br><span class="line">  if (l2 == null) &#123;</span><br><span class="line">    return l1;</span><br><span class="line">  &#125;</span><br><span class="line">  if(l1.val&lt;l2.val)&#123;</span><br><span class="line">    l1.next=mergeTwoLists(l1.next,l2);</span><br><span class="line">    return l1;</span><br><span class="line">  &#125;else &#123;</span><br><span class="line">    l2.next=mergeTwoLists(l1,l2.next);</span><br><span class="line">    return l2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;21-Merge-Two-Sorted-Lists（合并两个有序链表）&quot;&gt;&lt;a href=&quot;#21-Merge-Two-Sorted-Lists（合并两个有序链表）&quot; class=&quot;headerlink&quot; title=&quot;21. Merge Two Sorted L
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 1071. Greatest Common Divisor of Strings</title>
+    <link href="https://cheng102e.github.io/LeetCode%201071.%20Greatest%20Common%20Divisor%20of%20Strings.html"/>
+    <id>https://cheng102e.github.io/LeetCode 1071. Greatest Common Divisor of Strings.html</id>
+    <published>2020-03-11T03:29:00.000Z</published>
+    <updated>2020-03-12T03:51:07.473Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1071-Greatest-Common-Divisor-of-Strings（字符串的最大公因子）"><a href="#1071-Greatest-Common-Divisor-of-Strings（字符串的最大公因子）" class="headerlink" title="1071. Greatest Common Divisor of Strings（字符串的最大公因子）"></a>1071. Greatest Common Divisor of Strings（字符串的最大公因子）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/greatest-common-divisor-of-strings" target="_blank" rel="noopener">https://leetcode-cn.com/problems/greatest-common-divisor-of-strings</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>对于字符串 S 和 T，只有在 S = T + … + T（T 与自身连接 1 次或多次）时，我们才认定 “T 能除尽 S”。</p><p>返回最长字符串 X，要求满足 X 能除尽 str1 且 X 能除尽 str2。</p><p>示例 1：</p><p>  输入：str1 = “ABCABC”, str2 = “ABC”<br>  输出：”ABC”<br>示例 2：</p><p>  输入：str1 = “ABABAB”, str2 = “ABAB”<br>  输出：”AB”<br>示例 3：</p><p>  输入：str1 = “LEET”, str2 = “CODE”<br>  输出：””</p><p>提示：</p><p>  1 &lt;= str1.length &lt;= 1000<br>  1 &lt;= str2.length &lt;= 1000<br>  str1[i] 和 str2[i] 为大写英文字母</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算是数学题吧，如果str1+str2和str2+str1相同的话，那就存在想要求的公约数，并且长度就已经知道了，就是字符串长度的公约数，只需要输出长的字符串截取的那部分即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public int gcd(int a, int b) &#123;</span><br><span class="line">  if (b == 0) &#123;</span><br><span class="line">    return a;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return gcd(b, a % b);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public String gcdOfStrings(String str1, String str2) &#123;</span><br><span class="line">  if ((str1 + str2).equals(str2 + str1)) &#123;</span><br><span class="line">    return str1.substring(0, gcd(str1.length(), str2.length()));</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return &quot;&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1071-Greatest-Common-Divisor-of-Strings（字符串的最大公因子）&quot;&gt;&lt;a href=&quot;#1071-Greatest-Common-Divisor-of-Strings（字符串的最大公因子）&quot; class=&quot;headerlink&quot;
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 1013. Partition Array Into Three Parts With Equal Sum</title>
+    <link href="https://cheng102e.github.io/LeetCode%201013.%20Partition%20Array%20Into%20Three%20Parts%20With%20Equal%20Sum.html"/>
+    <id>https://cheng102e.github.io/LeetCode 1013. Partition Array Into Three Parts With Equal Sum.html</id>
+    <published>2020-03-11T01:29:00.000Z</published>
+    <updated>2020-03-11T02:16:28.008Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1013-Partition-Array-Into-Three-Parts-With-Equal-Sum（将数组分成和相等的三个部分）"><a href="#1013-Partition-Array-Into-Three-Parts-With-Equal-Sum（将数组分成和相等的三个部分）" class="headerlink" title="1013. Partition Array Into Three Parts With Equal Sum（将数组分成和相等的三个部分）"></a>1013. Partition Array Into Three Parts With Equal Sum（将数组分成和相等的三个部分）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/partition-array-into-three-parts-with-equal-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/partition-array-into-three-parts-with-equal-sum</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给你一个整数数组 A，只有可以将其划分为三个和相等的非空部分时才返回 true，否则返回 false。</p><p>形式上，如果可以找出索引 i+1 &lt; j 且满足 (A[0] + A[1] + … + A[i] == A[i+1] + A[i+2] + … + A[j-1] == A[j] + A[j-1] + … + A[A.length - 1]) 就可以将数组三等分。</p><p>示例 1：</p><p>输出：[0,2,1,-6,6,-7,9,1,2,0,1]<br>输出：true<br>解释：0 + 2 + 1 = -6 + 6 - 7 + 9 + 1 = 2 + 0 + 1<br>示例 2：</p><p>输入：[0,2,1,-6,6,7,9,-1,2,0,1]<br>输出：false<br>示例 3：</p><p>输入：[3,3,6,5,-2,2,5,1,-9,4]<br>输出：true<br>解释：3 + 3 = 6 = 5 - 2 + 2 + 5 + 1 - 9 + 4</p><p>提示：</p><p>3 &lt;= A.length &lt;= 50000<br>-10^4 &lt;= A[i] &lt;= 10^4</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>普通的数组题，最多多挖了几个坑。<br>首先统计整个数组的和，如果能被三整除就进行下一步。<br>从前从后同时开始，如果部分和等于总数的三分之一，那么就不在前进，等到两边都为1/3，中间自然也是1/3.</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public boolean canThreePartsEqualSum(int[] A) &#123;</span><br><span class="line">  int sum = 0;</span><br><span class="line">  for (int i = 0; i &lt; A.length; i++) &#123;</span><br><span class="line">    sum += A[i];</span><br><span class="line">  &#125;</span><br><span class="line">  if (sum % 3 != 0) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  sum = sum / 3;</span><br><span class="line">  int suma = A[0], sumc = A[A.length - 1];</span><br><span class="line">  int i = 1, j = A.length - 2;</span><br><span class="line">  while (i &lt; j) &#123;</span><br><span class="line">    if (suma != sum) &#123;</span><br><span class="line">      suma += A[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    if (sumc != sum) &#123;</span><br><span class="line">      sumc += A[j--];</span><br><span class="line">    &#125;</span><br><span class="line">    if (suma == sum &amp;&amp; sumc == sum &amp;&amp; i &lt;= j) &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1013-Partition-Array-Into-Three-Parts-With-Equal-Sum（将数组分成和相等的三个部分）&quot;&gt;&lt;a href=&quot;#1013-Partition-Array-Into-Three-Parts-With-Equal-Sum（
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 322. Coin Change</title>
+    <link href="https://cheng102e.github.io/LeetCode%20322.%20Coin%20Change.html"/>
+    <id>https://cheng102e.github.io/LeetCode 322. Coin Change.html</id>
+    <published>2020-03-08T13:29:00.000Z</published>
+    <updated>2020-03-09T02:41:01.187Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="322-Coin-Change（零钱兑换）"><a href="#322-Coin-Change（零钱兑换）" class="headerlink" title="322. Coin Change（零钱兑换）"></a>322. Coin Change（零钱兑换）</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://leetcode-cn.com/problems/find-numbers-with-even-number-of-digits" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-numbers-with-even-number-of-digits</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。</p><p>示例 1:</p><p>  输入: coins = [1, 2, 5], amount = 11<br>  输出: 3<br>  解释: 11 = 5 + 5 + 1</p><p>示例 2:</p><p>  输入: coins = [2], amount = 3<br>  输出: -1</p><p>说明:<br>  你可以认为每种硬币的数量是无限的。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>动态规划题目，设置一个dp数组用于存储中间结果，外层循环的i就代表金额的数量，内层代表硬币，状态转移方程是dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1)，</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public int coinChange(int[] coins, int amount) &#123;</span><br><span class="line">  if (coins.length == 0) &#123;</span><br><span class="line">    return -1;</span><br><span class="line">  &#125;</span><br><span class="line">  int[] dp = new int[amount + 1];</span><br><span class="line">  dp[0] = 0;</span><br><span class="line">  for (int i = 1; i &lt;= amount; i++) &#123;</span><br><span class="line">    dp[i] = amount + 1;</span><br><span class="line">    for (int j = 0; j &lt; coins.length; j++) &#123;</span><br><span class="line">      if (i &gt;= coins[j]) &#123;</span><br><span class="line">        dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if (dp[amount] == amount + 1) &#123;</span><br><span class="line">    return -1;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return dp[amount];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;322-Coin-Change（零钱兑换）&quot;&gt;&lt;a href=&quot;#322-Coin-Change（零钱兑换）&quot; class=&quot;headerlink&quot; title=&quot;322. Coin Change（零钱兑换）&quot;&gt;&lt;/a&gt;322. Coin Change（零钱兑换）
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://cheng102e.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="动态规划" scheme="https://cheng102e.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指offer 0.n个骰子的点数</title>
@@ -168,305 +471,6 @@
       
       
         &lt;h2 id=&quot;剑指offer-62-二叉搜索树的第k个结点&quot;&gt;&lt;a href=&quot;#剑指offer-62-二叉搜索树的第k个结点&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 62.二叉搜索树的第k个结点&quot;&gt;&lt;/a&gt;剑指offer 62.二叉搜索树的第k个
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 61.序列化二叉树</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2061.%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91.html"/>
-    <id>https://cheng102e.github.io/剑指offer 61.序列化二叉树.html</id>
-    <published>2020-03-06T06:00:00.000Z</published>
-    <updated>2020-03-06T06:25:54.178Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-61-序列化二叉树"><a href="#剑指offer-61-序列化二叉树" class="headerlink" title="剑指offer 61.序列化二叉树"></a>剑指offer 61.序列化二叉树</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>请实现两个函数，分别用来序列化和反序列化二叉树</p><p>二叉树的序列化是指：把一棵二叉树按照某种遍历方式的结果以某种格式保存为字符串，从而使得内存中建立起来的二叉树可以持久保存。序列化可以基于先序、中序、后序、层序的二叉树遍历方式来进行修改，序列化的结果是一个字符串，序列化时通过 某种符号表示空节点（#），以 ！ 表示一个结点值的结束（value!）。</p><p>二叉树的反序列化是指：根据某种遍历顺序得到的序列化字符串结果str，重构二叉树。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题其实可以面向答案编程，直接设一个root返回就行了，牛客不检查那个字符串。<br>正规做法还是递归，中左右前序，直接就行了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val = 0;</span><br><span class="line">  TreeNode left = null;</span><br><span class="line">  TreeNode right = null;</span><br><span class="line"></span><br><span class="line">  public TreeNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int index;</span><br><span class="line">String Serialize(TreeNode root) &#123;</span><br><span class="line"></span><br><span class="line">  StringBuffer sb = new StringBuffer();</span><br><span class="line">  if(root == null)&#123;</span><br><span class="line">    sb.append(&quot;#,&quot;);</span><br><span class="line">    return sb.toString();</span><br><span class="line">  &#125;</span><br><span class="line">  sb.append(root.val+&quot;,&quot;);</span><br><span class="line">  sb.append(Serialize(root.left));</span><br><span class="line">  sb.append(Serialize(root.right));</span><br><span class="line">  return sb.toString();</span><br><span class="line">&#125;</span><br><span class="line">TreeNode Deserialize(String str) &#123;</span><br><span class="line">  </span><br><span class="line">  if(str == null)&#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  index = -1;</span><br><span class="line">  String[] strSeg = str.split(&quot;,&quot;);</span><br><span class="line"></span><br><span class="line">  return DeserializeStr(strSeg);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public TreeNode DeserializeStr(String[] strSeg)&#123;</span><br><span class="line">  index++;</span><br><span class="line">  TreeNode treeNode = null;</span><br><span class="line">  if(!strSeg[index].equals(&quot;#&quot;))&#123;</span><br><span class="line">    treeNode = new TreeNode(Integer.valueOf(strSeg[index]));</span><br><span class="line">    treeNode.left = DeserializeStr(strSeg);</span><br><span class="line">    treeNode.right = DeserializeStr(strSeg);</span><br><span class="line">  &#125;</span><br><span class="line">  return treeNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-61-序列化二叉树&quot;&gt;&lt;a href=&quot;#剑指offer-61-序列化二叉树&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 61.序列化二叉树&quot;&gt;&lt;/a&gt;剑指offer 61.序列化二叉树&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 60.把二叉树打印成多行</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2060.%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%A0%91%E6%89%93%E5%8D%B0%E6%88%90%E5%A4%9A%E8%A1%8C.html"/>
-    <id>https://cheng102e.github.io/剑指offer 60.把二叉树打印成多行.html</id>
-    <published>2020-03-06T05:40:00.000Z</published>
-    <updated>2020-03-06T05:47:30.296Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-60-把二叉树打印成多行"><a href="#剑指offer-60-把二叉树打印成多行" class="headerlink" title="剑指offer 60.把二叉树打印成多行"></a>剑指offer 60.把二叉树打印成多行</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>和上一题类似，不过无需用两个栈了，只需要以队列来存储即可，就是简单的层次遍历，记得设置一个标记来记录每一行的长度，因为是按行输出的。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val = 0;</span><br><span class="line">  TreeNode left = null;</span><br><span class="line">  TreeNode right = null;</span><br><span class="line"></span><br><span class="line">  public TreeNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ArrayList&lt;ArrayList&lt;Integer&gt;&gt; Print(TreeNode pRoot) &#123;</span><br><span class="line"></span><br><span class="line">  ArrayList&lt;ArrayList&lt;Integer&gt;&gt; ans = new ArrayList&lt;&gt;();</span><br><span class="line">  if (pRoot == null) &#123;</span><br><span class="line">    return ans;</span><br><span class="line">  &#125;</span><br><span class="line">  Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();</span><br><span class="line">  ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">  queue.add(pRoot);</span><br><span class="line">  int start = 0, end = 1;</span><br><span class="line">  while (!queue.isEmpty()) &#123;</span><br><span class="line">    TreeNode cur = queue.remove();</span><br><span class="line">    list.add(cur.val);</span><br><span class="line">    start++;</span><br><span class="line">    if (cur.left != null) &#123;</span><br><span class="line">      queue.add(cur.left);</span><br><span class="line">    &#125;</span><br><span class="line">    if (cur.right != null) &#123;</span><br><span class="line">      queue.add(cur.right);</span><br><span class="line">    &#125;</span><br><span class="line">    if (start == end) &#123;</span><br><span class="line">      end = queue.size();</span><br><span class="line">      start = 0;</span><br><span class="line">      ans.add(list);</span><br><span class="line">      list = new ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-60-把二叉树打印成多行&quot;&gt;&lt;a href=&quot;#剑指offer-60-把二叉树打印成多行&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 60.把二叉树打印成多行&quot;&gt;&lt;/a&gt;剑指offer 60.把二叉树打印成多行&lt;/h2&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 59.按之字形顺序打印二叉树</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2059.%E6%8C%89%E4%B9%8B%E5%AD%97%E5%BD%A2%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html"/>
-    <id>https://cheng102e.github.io/剑指offer 59.按之字形顺序打印二叉树.html</id>
-    <published>2020-03-06T04:40:00.000Z</published>
-    <updated>2020-03-06T05:31:17.719Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-59-按之字形顺序打印二叉树"><a href="#剑指offer-59-按之字形顺序打印二叉树" class="headerlink" title="剑指offer 59.按之字形顺序打印二叉树"></a>剑指offer 59.按之字形顺序打印二叉树</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>请实现一个函数按照之字形打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右至左的顺序打印，第三行按照从左到右的顺序打印，其他行以此类推。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>用栈来存储了，一正一负，也不是很麻烦，只是入栈的时候顺序不同，左子树右子树是奇数，右子树左子树是偶数，这里设置一个标记来记录当前是奇数还是偶数。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val = 0;</span><br><span class="line">  TreeNode left = null;</span><br><span class="line">  TreeNode right = null;</span><br><span class="line"></span><br><span class="line">  public TreeNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; Print(TreeNode pRoot) &#123;</span><br><span class="line">  ArrayList&lt;ArrayList&lt;Integer&gt;&gt; ans = new ArrayList&lt;&gt;();</span><br><span class="line">  if (pRoot == null) &#123;</span><br><span class="line">    return ans;</span><br><span class="line">  &#125;</span><br><span class="line">  Stack&lt;TreeNode&gt; odd = new Stack&lt;&gt;();</span><br><span class="line">  Stack&lt;TreeNode&gt; even = new Stack&lt;&gt;();</span><br><span class="line">  odd.push(pRoot);</span><br><span class="line">  boolean isodd = true;</span><br><span class="line">  while (!(odd.empty() &amp;&amp; even.empty())) &#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">    if (isodd) &#123;</span><br><span class="line">      while (!odd.empty()) &#123;</span><br><span class="line">        TreeNode temp = odd.pop();</span><br><span class="line">        list.add(temp.val);</span><br><span class="line">        if (temp.left != null) &#123;</span><br><span class="line">          even.push(temp.left);</span><br><span class="line">        &#125;</span><br><span class="line">        if (temp.right != null) &#123;</span><br><span class="line">          even.push(temp.right);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      ans.add(list);</span><br><span class="line">      isodd = false;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      while (!even.empty()) &#123;</span><br><span class="line">        TreeNode temp = even.pop();</span><br><span class="line">        list.add(temp.val);</span><br><span class="line">        if (temp.right != null) &#123;</span><br><span class="line">          odd.push(temp.right);</span><br><span class="line">        &#125;</span><br><span class="line">        if (temp.left != null) &#123;</span><br><span class="line">          odd.push(temp.left);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      ans.add(list);</span><br><span class="line">      isodd = true;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-59-按之字形顺序打印二叉树&quot;&gt;&lt;a href=&quot;#剑指offer-59-按之字形顺序打印二叉树&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 59.按之字形顺序打印二叉树&quot;&gt;&lt;/a&gt;剑指offer 59.按之字形顺序打印二
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 58.对称的二叉树</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2058.%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91.html"/>
-    <id>https://cheng102e.github.io/剑指offer 58.对称的二叉树.html</id>
-    <published>2020-03-06T03:50:00.000Z</published>
-    <updated>2020-03-06T04:37:25.638Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-58-对称的二叉树"><a href="#剑指offer-58-对称的二叉树" class="headerlink" title="剑指offer 58.对称的二叉树"></a>剑指offer 58.对称的二叉树</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>请实现一个函数，用来判断一颗二叉树是不是对称的。注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这种情况，显然递归了，对于每个节点都递归下去，检查该点的左子树和右子树是否对照，设子节点为p1p2，然后就是p1左子树p2右子树判断，p1右子树p2左子树判断，以此类推。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> public class TreeNode &#123;</span><br><span class="line"></span><br><span class="line">  int val = 0;</span><br><span class="line">  TreeNode left = null;</span><br><span class="line">  TreeNode right = null;</span><br><span class="line"></span><br><span class="line">  public TreeNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean test(TreeNode p1, TreeNode p2) &#123;</span><br><span class="line">  if (p1 == null &amp;&amp; p2 == null) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  if (p1 != null &amp;&amp; p2 != null) &#123;</span><br><span class="line">    return p1.val == p2.val &amp;&amp; test(p1.left, p2.right) &amp;&amp; test(p1.right, p2.left);</span><br><span class="line">  &#125;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">boolean isSymmetrical(TreeNode pRoot) &#123;</span><br><span class="line">  if (pRoot == null) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  return test(pRoot.left, pRoot.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-58-对称的二叉树&quot;&gt;&lt;a href=&quot;#剑指offer-58-对称的二叉树&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 58.对称的二叉树&quot;&gt;&lt;/a&gt;剑指offer 58.对称的二叉树&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 57.二叉树的下一个结点</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2057.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E7%BB%93%E7%82%B9.html"/>
-    <id>https://cheng102e.github.io/剑指offer 57.二叉树的下一个结点.html</id>
-    <published>2020-03-06T03:40:00.000Z</published>
-    <updated>2020-03-06T04:37:24.042Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-57-二叉树的下一个结点"><a href="#剑指offer-57-二叉树的下一个结点" class="headerlink" title="剑指offer 57.二叉树的下一个结点"></a>剑指offer 57.二叉树的下一个结点</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这里的next命名有点憨，指向父节点的命名为next。</p><ol><li>中序是左中右，如果结点存在右子树，那么就找到右子树的最左节点，</li><li>如果不存在右子树<ol><li>若该点为父节点的左子节点，那么下一个就是父节点。</li><li>若该点为父节点的右子节点，那么递归向上，直到找到结点为父节点的左子节点为止。</li></ol></li></ol><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class TreeLinkNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  TreeLinkNode left = null;</span><br><span class="line">  TreeLinkNode right = null;</span><br><span class="line">  TreeLinkNode next = null;</span><br><span class="line"></span><br><span class="line">  TreeLinkNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public TreeLinkNode GetNext(TreeLinkNode pNode) &#123;</span><br><span class="line">  if (pNode == null) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  if (pNode.right != null) &#123;</span><br><span class="line">    pNode = pNode.right;</span><br><span class="line">    while (pNode.left != null) &#123;</span><br><span class="line">      pNode = pNode.left;</span><br><span class="line">    &#125;</span><br><span class="line">    return pNode;</span><br><span class="line">  &#125;</span><br><span class="line">  while (pNode.next != null) &#123;</span><br><span class="line">    if (pNode.next.left == pNode) &#123;</span><br><span class="line">      return pNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">    pNode = pNode.next;</span><br><span class="line">  &#125;</span><br><span class="line">  return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-57-二叉树的下一个结点&quot;&gt;&lt;a href=&quot;#剑指offer-57-二叉树的下一个结点&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 57.二叉树的下一个结点&quot;&gt;&lt;/a&gt;剑指offer 57.二叉树的下一个结点&lt;/h2&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 56.删除链表中重复的结点</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2056.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E7%BB%93%E7%82%B9.html"/>
-    <id>https://cheng102e.github.io/剑指offer 56.删除链表中重复的结点.html</id>
-    <published>2020-03-05T13:50:00.000Z</published>
-    <updated>2020-03-06T03:34:10.161Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-56-删除链表中重复的结点"><a href="#剑指offer-56-删除链表中重复的结点" class="headerlink" title="剑指offer 56.删除链表中重复的结点"></a>剑指offer 56.删除链表中重复的结点</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。 例如，链表1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5 处理后为 1-&gt;2-&gt;5</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>直接找就行了,记得先新建一个结点用于避免头结点也和别的相同值，如果下一个结点和当前节点相等，那么再到下一个结点直到不一样未知，然后直接把连起来就行。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class ListNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  ListNode next = null;</span><br><span class="line"></span><br><span class="line">  ListNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public ListNode deleteDuplication(ListNode pHead) &#123;</span><br><span class="line">  if (pHead == null) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ListNode newhead = new ListNode(1);</span><br><span class="line">  newhead.next = pHead;</span><br><span class="line">  ListNode cur = pHead;</span><br><span class="line">  ListNode pre = newhead;</span><br><span class="line">  while (cur != null) &#123;</span><br><span class="line">    if (cur.next != null &amp;&amp; cur.val == cur.next.val) &#123;</span><br><span class="line">      while (cur.next != null &amp;&amp; cur.val == cur.next.val) &#123;</span><br><span class="line">        cur = cur.next;</span><br><span class="line">      &#125;</span><br><span class="line">      pre.next = cur.next;</span><br><span class="line">      cur = cur.next;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      pre = pre.next;</span><br><span class="line">      cur = cur.next;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return newhead.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-56-删除链表中重复的结点&quot;&gt;&lt;a href=&quot;#剑指offer-56-删除链表中重复的结点&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 56.删除链表中重复的结点&quot;&gt;&lt;/a&gt;剑指offer 56.删除链表中重复的结点&lt;/
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 55.链表中环的入口结点</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2055.%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E7%BB%93%E7%82%B9.html"/>
-    <id>https://cheng102e.github.io/剑指offer 55.链表中环的入口结点.html</id>
-    <published>2020-03-05T13:40:00.000Z</published>
-    <updated>2020-03-05T13:56:31.149Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-55-链表中环的入口结点"><a href="#剑指offer-55-链表中环的入口结点" class="headerlink" title="剑指offer 55.链表中环的入口结点"></a>剑指offer 55.链表中环的入口结点</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>现在成了数学题了，首先设快慢两点都在开头，快结点一下走两步，慢结点一下走一步，当快结点追上慢结点就代表存在环。<br>当二者相遇，快结点回到开头，慢结点继续走，当二者再次相遇时，结点就为环的入口结点。记得要考虑到没有下一个结点的可能性。<br>数学问题我就不证明了，画一个图就能理解了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class ListNode &#123;</span><br><span class="line"></span><br><span class="line">  int val;</span><br><span class="line">  ListNode next = null;</span><br><span class="line"></span><br><span class="line">  ListNode(int val) &#123;</span><br><span class="line">    this.val = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public ListNode EntryNodeOfLoop(ListNode pHead) &#123;</span><br><span class="line">  ListNode fast = pHead;</span><br><span class="line">  ListNode slow = pHead;</span><br><span class="line">  while (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">    fast = fast.next.next;</span><br><span class="line">    slow = slow.next;</span><br><span class="line">    if (fast == slow) &#123;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if (fast == null || fast.next == null) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  fast = pHead;</span><br><span class="line">  while (fast != slow) &#123;</span><br><span class="line">    fast = fast.next;</span><br><span class="line">    slow = slow.next;</span><br><span class="line">  &#125;</span><br><span class="line">  return fast;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-55-链表中环的入口结点&quot;&gt;&lt;a href=&quot;#剑指offer-55-链表中环的入口结点&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 55.链表中环的入口结点&quot;&gt;&lt;/a&gt;剑指offer 55.链表中环的入口结点&lt;/h2&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 54.字符流中第一个不重复的字符</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2054.%E5%AD%97%E7%AC%A6%E6%B5%81%E4%B8%AD%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6.html"/>
-    <id>https://cheng102e.github.io/剑指offer 54.字符流中第一个不重复的字符.html</id>
-    <published>2020-03-05T13:20:00.000Z</published>
-    <updated>2020-03-05T13:27:31.124Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-54-字符流中第一个不重复的字符"><a href="#剑指offer-54-字符流中第一个不重复的字符" class="headerlink" title="剑指offer 54.字符流中第一个不重复的字符"></a>剑指offer 54.字符流中第一个不重复的字符</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>题目描述<br>  请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符”go”时，第一个只出现一次的字符是”g”。当从该字符流中读出前六个字符“google”时，第一个只出现一次的字符是”l”。</p><p>输出描述:<br>  如果当前字符流没有存在出现一次的字符，返回#字符。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>我用LinkedHashMap，然后迭代器老是有问题，所以只能改成Hashmap加ArrayList，多了一个步骤。<br>首先是insert，在这里存放，通过hashmap存放字符和次数，list存放顺序，最后读取一下就行了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">ArrayList&lt;Character&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">public void Insert(char ch) &#123;</span><br><span class="line">  if (map.containsKey(ch)) &#123;</span><br><span class="line">    map.put(ch, map.get(ch) + 1);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    map.put(ch, 1);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  list.add(ch);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public char FirstAppearingOnce() &#123;</span><br><span class="line">  char c = &apos;#&apos;;</span><br><span class="line">  for (char key : list) &#123;</span><br><span class="line">    if (map.get(key) == 1) &#123;</span><br><span class="line">      c = key;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-54-字符流中第一个不重复的字符&quot;&gt;&lt;a href=&quot;#剑指offer-54-字符流中第一个不重复的字符&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 54.字符流中第一个不重复的字符&quot;&gt;&lt;/a&gt;剑指offer 54.字符流
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 53.表示数值的字符串</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2053.%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2.html"/>
-    <id>https://cheng102e.github.io/剑指offer 53.表示数值的字符串.html</id>
-    <published>2020-03-05T13:10:00.000Z</published>
-    <updated>2020-03-05T13:08:13.238Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-53-表示数值的字符串"><a href="#剑指offer-53-表示数值的字符串" class="headerlink" title="剑指offer 53.表示数值的字符串"></a>剑指offer 53.表示数值的字符串</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，字符串”+100”,”5e2”,”-123”,”3.1416”和”-1E-16”都表示数值。 但是”12e”,”1a3.14”,”1.2.3”,”+-5”和”12e+4.3”都不是。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>三种思路：</p><ol><li>正则表达式，这里要注意转义符号的使用。</li><li>自动机，编译原理中的概念，已经忘了.</li><li>遍历，硬算，设几个标签量来记录符号等，然后ifelse结束.</li></ol><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public boolean isNumeric(char[] str) &#123;</span><br><span class="line">  String que=String.valueOf(str);</span><br><span class="line">  return  que.matches(&quot;[\\+-]?[0-9]*(\\.[0-9]*)?([eE][\\+-]?[0-9]+)?&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-53-表示数值的字符串&quot;&gt;&lt;a href=&quot;#剑指offer-53-表示数值的字符串&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 53.表示数值的字符串&quot;&gt;&lt;/a&gt;剑指offer 53.表示数值的字符串&lt;/h2&gt;&lt;h3 i
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 52.正则表达式匹配</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2052.%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D.html"/>
-    <id>https://cheng102e.github.io/剑指offer 52.正则表达式匹配.html</id>
-    <published>2020-03-05T12:10:00.000Z</published>
-    <updated>2020-03-05T13:06:02.422Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-52-正则表达式匹配"><a href="#剑指offer-52-正则表达式匹配" class="headerlink" title="剑指offer 52.正则表达式匹配"></a>剑指offer 52.正则表达式匹配</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>请实现一个函数用来匹配包括’.’和’<em>‘的正则表达式。模式中的字符’.’表示任意一个字符，而’</em>‘表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式”a.a”和”ab<em>ac</em>a”匹配，但是与”aa.a”和”ab*a”均不匹配</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>我对这题还真没什么思路，就，硬算，对于’.’的情况，不需要太过在意，只需要在用到的时候加一个判断即可。对于’*’的时候，需要多加讨论，是匹配当前0个字符就不用，还是匹配一个字符就不用，还是留下来匹配下一个字符。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public static boolean mate(char[] str, char[] pattern, int si, int pi) &#123;</span><br><span class="line"></span><br><span class="line">  if (str.length == si &amp;&amp; pattern.length == pi) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  if (str.length != si &amp;&amp; pattern.length == pi) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  if (pi + 1 &lt; pattern.length &amp;&amp; pattern[pi + 1] == &apos;*&apos;) &#123;</span><br><span class="line">    if (si != str.length &amp;&amp; ((str[si] == pattern[pi] || pattern[pi] == &apos;.&apos;))) &#123;</span><br><span class="line">      boolean t0 = mate(str, pattern, si, pi + 2);</span><br><span class="line">      boolean t1 = mate(str, pattern, si + 1, pi + 2);</span><br><span class="line">      boolean t2 = mate(str, pattern, si + 1, pi);</span><br><span class="line">      return t0 || t1 || t2;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return mate(str, pattern, si, pi + 2);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (si != str.length) &#123;</span><br><span class="line">    if (str[si] == pattern[pi] || pattern[pi] == &apos;.&apos;) &#123;</span><br><span class="line">      return mate(str, pattern, si + 1, pi + 1);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static boolean match(char[] str, char[] pattern) &#123;</span><br><span class="line">  if (str == null || pattern == null) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  int si = 0;</span><br><span class="line">  int pi = 0;</span><br><span class="line">  return mate(str, pattern, si, pi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-52-正则表达式匹配&quot;&gt;&lt;a href=&quot;#剑指offer-52-正则表达式匹配&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 52.正则表达式匹配&quot;&gt;&lt;/a&gt;剑指offer 52.正则表达式匹配&lt;/h2&gt;&lt;h3 id=&quot;题
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 51.构建乘积数组</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2051.%E6%9E%84%E5%BB%BA%E4%B9%98%E7%A7%AF%E6%95%B0%E7%BB%84.html"/>
-    <id>https://cheng102e.github.io/剑指offer 51.构建乘积数组.html</id>
-    <published>2020-03-05T10:10:00.000Z</published>
-    <updated>2020-03-05T12:50:39.413Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-51-构建乘积数组"><a href="#剑指offer-51-构建乘积数组" class="headerlink" title="剑指offer 51.构建乘积数组"></a>剑指offer 51.构建乘积数组</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个数组A[0,1,…,n-1],请构建一个数组B[0,1,…,n-1],其中B中的元素B[i]=A[0]<em>A[1]</em>…<em>A[i-1]*A[i+1]</em>…*A[n-1]。不能使用除法。（注意：规定B[0] = A[1] * A[2] * … * A[n-1]，B[n-1] = A[0] * A[1] * … * A[n-2];）</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这就要从双向往中间计算，首先计算前半部分，就是第一个for循环，对于B[i]来说，这里已经乘上了前半部分，还缺A[i+1]后面的，这时候第二个循环，反向，先给A[len-1]，然后向前逼近，设置一个临时变量表示后半的A乘积。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int[] multiply(int[] A) &#123;</span><br><span class="line">  int len = A.length;</span><br><span class="line">  int[] B = new int[len];</span><br><span class="line">  if (len != 0) &#123;</span><br><span class="line">    B[0] = 1;</span><br><span class="line">    for (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">      B[i] = B[i - 1] * A[i - 1];</span><br><span class="line">    &#125;</span><br><span class="line">    int temp = 1;</span><br><span class="line">    for (int j = len - 2; j &gt;= 0; j--) &#123;</span><br><span class="line">      temp *= A[j + 1];</span><br><span class="line">      B[j] *= temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return B;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-51-构建乘积数组&quot;&gt;&lt;a href=&quot;#剑指offer-51-构建乘积数组&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 51.构建乘积数组&quot;&gt;&lt;/a&gt;剑指offer 51.构建乘积数组&lt;/h2&gt;&lt;h3 id=&quot;题目&quot;&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 50.数组中重复的数字</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2050.%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97.html"/>
-    <id>https://cheng102e.github.io/剑指offer 50.数组中重复的数字.html</id>
-    <published>2020-03-05T09:50:00.000Z</published>
-    <updated>2020-03-05T12:50:40.014Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-50-数组中重复的数字"><a href="#剑指offer-50-数组中重复的数字" class="headerlink" title="剑指offer 50.数组中重复的数字"></a>剑指offer 50.数组中重复的数字</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>没什么特殊的，先判断特殊情况，然后遍历就行，如果数组已经有了，直接返回。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  public boolean duplicate(int numbers[], int length, int[] duplication) &#123;</span><br><span class="line">  if (numbers == null || length &lt;= 0) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for (int i : numbers) &#123;</span><br><span class="line">    if (i &lt; 0 || i &gt; length - 1) &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  int[] ans = new int[length];</span><br><span class="line">  for (int i : numbers) &#123;</span><br><span class="line">    if (ans[i] == 0) &#123;</span><br><span class="line">      ans[i] = i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      duplication[0] = i;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-50-数组中重复的数字&quot;&gt;&lt;a href=&quot;#剑指offer-50-数组中重复的数字&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 50.数组中重复的数字&quot;&gt;&lt;/a&gt;剑指offer 50.数组中重复的数字&lt;/h2&gt;&lt;h3 i
-      
-    
-    </summary>
-    
-      <category term="剑指offer" scheme="https://cheng102e.github.io/categories/%E5%89%91%E6%8C%87offer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>剑指offer 49.把字符串转换成整数</title>
-    <link href="https://cheng102e.github.io/%E5%89%91%E6%8C%87offer%2049.%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B4%E6%95%B0.html"/>
-    <id>https://cheng102e.github.io/剑指offer 49.把字符串转换成整数.html</id>
-    <published>2020-03-05T09:40:00.000Z</published>
-    <updated>2020-03-05T09:42:43.870Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="剑指offer-49-把字符串转换成整数"><a href="#剑指offer-49-把字符串转换成整数" class="headerlink" title="剑指offer 49.把字符串转换成整数"></a>剑指offer 49.把字符串转换成整数</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>题目描述<br>  将一个字符串转换成一个整数，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0</p><p>输入描述:<br>  输入一个字符串,包括数字字母符号,可以为空</p><p>输出描述:<br>  如果是合法的数值表达则返回该数字，否则返回0</p><p>示例<br>  输入<br>  +2147483647<br>      1a33<br>  输出<br>  2147483647<br>      0</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>面向结果编程了，最小负数我技穷做不出来，就额外加了个判断。<br>首先是首位的符号位，若有则记录下来，别的都是*10，再加当前位数，最后输出时候注意前面的符号位。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public int StrToInt(String str) &#123;</span><br><span class="line">  if (str.equals(&quot;&quot;) || str.length() == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if (str.equals(&quot;-2147483648&quot;)) &#123;</span><br><span class="line">    return -2147483648;</span><br><span class="line">  &#125;</span><br><span class="line">  char[] c = str.toCharArray();</span><br><span class="line">  boolean flag = true;</span><br><span class="line">  int sum = 0;</span><br><span class="line">  for (char i : c) &#123;</span><br><span class="line">    if (i == &apos;+&apos;) &#123;</span><br><span class="line">      continue;</span><br><span class="line">    &#125; else if (i == &apos;-&apos;) &#123;</span><br><span class="line">      flag = false;</span><br><span class="line">    &#125; else if (i &lt; 48 || i &gt; 57) &#123;</span><br><span class="line">      return 0;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      int temp = sum * 10 + i - 48;</span><br><span class="line">      if (((temp - i + 48) / 10 != sum) || temp % 10 &lt; 0) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">      &#125;</span><br><span class="line">      sum = temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return flag ? sum : (-1) * sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;剑指offer-49-把字符串转换成整数&quot;&gt;&lt;a href=&quot;#剑指offer-49-把字符串转换成整数&quot; class=&quot;headerlink&quot; title=&quot;剑指offer 49.把字符串转换成整数&quot;&gt;&lt;/a&gt;剑指offer 49.把字符串转换成整数&lt;/h2&gt;&lt;
       
     
     </summary>
